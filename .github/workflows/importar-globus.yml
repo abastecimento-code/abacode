@@ -1,0 +1,71 @@
+name: Preparar atualização de relatório Globus
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'relatorios/entrada/*.TXT'
+      - 'relatorios/entrada/*.txt'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: globus-import-main
+  cancel-in-progress: false
+
+jobs:
+  preparar-atualizacao:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter cópia do repositório
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          AUTH="$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          git -c "http.extraheader=AUTHORIZATION: basic $AUTH" clone --branch main "https://github.com/${REPOSITORY}.git" repo
+
+      - name: Validar e montar dados até 29/10/2026
+        working-directory: repo
+        run: node scripts/build_globus_data.js
+
+      - name: Abrir pull request para revisão
+        working-directory: repo
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- dados/globus-importados.json; then
+            echo 'Nenhum dado novo para propor.'
+            exit 0
+          fi
+          OPEN_IMPORT_PR="$(curl --fail-with-body --silent --show-error \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${REPOSITORY}/pulls?state=open&per_page=100" \
+            | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const a=JSON.parse(s);const p=a.find(x=>x.head.ref.startsWith("globus/import-"));if(p)process.stdout.write(String(p.number))})')"
+          if [ -n "$OPEN_IMPORT_PR" ]; then
+            echo "A proposta #$OPEN_IMPORT_PR ainda está aberta. Integre-a e depois execute manualmente este fluxo para processar relatórios enviados em seguida."
+            exit 1
+          fi
+          BRANCH="globus/import-${RUN_ID}"
+          git checkout -b "$BRANCH"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dados/globus-importados.json
+          git commit -m 'Atualiza dados Globus até 29-10-2026'
+          git -c "http.extraheader=AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)" push origin "$BRANCH"
+          BRANCH="$BRANCH" node -e 'require("fs").writeFileSync("pr.json", JSON.stringify({title:"Atualização de abastecimentos Globus até 29/10/2026",head:process.env.BRANCH,base:"main",body:"Atualização gerada pelo validador Globus.\n\n- Corte analítico: 29/10/2026, inclusive.\n- TXT original permanece em relatorios/entrada.\n- Revise os dados e a contagem antes de integrar."}))'
+          curl --fail-with-body --silent --show-error \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -X POST "https://api.github.com/repos/${REPOSITORY}/pulls" \
+            --data @pr.json
