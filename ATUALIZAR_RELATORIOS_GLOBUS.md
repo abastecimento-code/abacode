@@ -16,4 +16,4 @@ Os TXT e lançamentos aceitos ficam no IndexedDB do navegador atual. O arquivo o
 
 Essa atualização vale para esse navegador e perfil. Ela não altera o `index.html` publicado e não sincroniza os dados com outros usuários ou dispositivos. Para compartilhar uma nova base com todos, é necessária uma atualização/publicação do HTML. Um prefixo que ainda não esteja cadastrado precisa ser incluído no cadastro do dashboard antes que seus lançamentos possam ser aplicados.
 
-O relatório gerencial é consolidado até **29/10/2026, inclusive**. Linhas posteriores continuam preservadas no arquivo original guardado, mas ficam fora dos totais desse relatório.
+O dashboard é analisado até **29/10/2026, inclusive**. Isso vale para a tabela principal, indicadores, suspeitas, evolução e relatório gerencial. Linhas posteriores permanecem preservadas no TXT original e nos lotes/backups, mas ficam fora de todos os cálculos analíticos até que uma nova data de referência seja definida no HTML.

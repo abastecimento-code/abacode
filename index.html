@@ -410,8 +410,8 @@ footer strong{color:#fff;}
         <div class="sub">Fiel Turismo / Confianza Transportes Ltda · CNPJ 03.632.896/0001-10 · Macaé/RJ</div>
       </div>
       <div class="chips">
-        <span class="chip">Período <b id="periodoGlobus">01/07/2026 a 08/11/2026</b></span>
-        <span class="chip">Dados até <b id="dataRefGlobus">08/11/2026</b></span>
+        <span class="chip">Período <b id="periodoGlobus">01/07/2026 a 29/10/2026</b></span>
+        <span class="chip">Dados até <b id="dataRefGlobus">29/10/2026</b></span>
         <span class="chip">Tolerância <b>±0,25 km/L</b></span>
         <span class="chip">Frota <b>150 veículos</b></span>
       </div>
@@ -439,7 +439,7 @@ footer strong{color:#fff;}
     </div>
 
     <div class="info">
-      <b>Km</b>, <b>Litros</b> e <b>QTD ABA</b> = acumulado dos lançamentos disponíveis · <b>km/L calculado</b> = Σ KM entre abastecimentos ÷ Σ litros · a Evolução também compara o Real km/L informado pelo Globus · <b>período efetivo varia por veículo</b> ·
+      <b>Km</b>, <b>Litros</b> e <b>QTD ABA</b> = lançamentos até 29/10/2026, inclusive · <b>km/L calculado</b> = Σ KM entre abastecimentos ÷ Σ litros · a Evolução também compara o Real km/L informado pelo Globus · <b>período efetivo varia por veículo</b> ·
       <b>EXP</b> = referência por modelo · <b>Status</b> = ±0,25 km/L sobre a EXP
     </div>
     <div class="info-nota" id="totalAbastecimentosGlobus">2.841 abastecimentos ativos · período efetivo varia por veículo; uma semana sem lançamento, por si só, não indica falha.</div>
@@ -581,7 +581,7 @@ const PRECO_EXTERNO = 6.92;
 const ECONOMIA_L = PRECO_EXTERNO - PRECO_INTERNO;
 
 /** Data de referência — fim do período coberto pelos relatórios Globus */
-let DATA_REF = new Date(2026, 10, 8); // 08/11/2026
+const DATA_REF = new Date(2026, 9, 29); // 29/10/2026, inclusive
 
 const CONTRATO_LABEL = {
   rj:  'VIBRA - Rio de Janeiro',
@@ -638,7 +638,7 @@ const TANQUES = {
 
 /* ═══════════════════════════════════════════════════════
    FROTA — 56 veículos · totais extraídos fielmente dos TXTs
-   Período: 01/07/2026 → 28/10/2026
+   Período de análise: 01/07/2026 → 29/10/2026 (inclusive)
    ═══════════════════════════════════════════════════════ */
 const FROTA = [
   /* ───── VIBRA (rj) — 16 ───── */
@@ -858,6 +858,14 @@ const FILLS = Object.fromEntries(
 );
 Object.entries(MACAE_FILLS_RAW).forEach(([p, fills]) => { FILLS[p] = parseFills(fills, p); });
 
+/** Conjunto analítico: inclui lançamentos até a referência, sem alterar FILLS de origem. */
+function fillsAteReferencia(prefixo) {
+  return (FILLS[prefixo] || []).filter(f => {
+    const data = parseData(f.data, f.ano);
+    return !Number.isNaN(data.getTime()) && data <= DATA_REF;
+  });
+}
+
 /* ═══════════════════════════════════════════════════════
    RASTREADOR — CONGELADO (31/08 → 11/10/2026 · 6 semanas)
    Não atualizar até novo relatório do rastreador.
@@ -922,7 +930,7 @@ function gravarRevisaoGlobus(db,r){return new Promise((resolve,reject)=>{const t
 function ultimaRevisaoGlobus(sha,linha){return GLOBUS_REVISOES.filter(r=>r.loteSha256===sha&&r.linha===linha).sort((a,b)=>a.criadoEm.localeCompare(b.criadoEm)||(a.id||0)-(b.id||0)).at(-1)||null;}
 function pendenciasAtivasGlobus(){return GLOBUS_LOTES.flatMap(l=>(l.pendencias||[]).filter(p=>{const r=ultimaRevisaoGlobus(l.sha256,p.linha);return !r||!['ANALISADO_SEM_ALTERACAO','DIVERGENCIA_EM_ACOMPANHAMENTO'].includes(r.decisao)}));}
 function atualizarStatusGlobus(){const n=GLOBUS_LOTES.reduce((s,l)=>s+(l.eventosAceitos||[]).length,0),p=pendenciasAtivasGlobus().length;GLOBUS_STORAGE_STATUS=GLOBUS_LOTES.length+' arquivo(s) guardado(s) neste navegador · '+n+' lançamento(s) novo(s) ativo(s)'+(p?' · '+p+' aguardam análise':'')+'.';}
-function atualizarInfoPeriodoGlobus(){const datas=Object.values(FILLS).flat().map(f=>parseData(f.data,f.ano)).filter(d=>!Number.isNaN(d.getTime())).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(datas[datas.length-1]);if(r)r.textContent=fmt(DATA_REF);if(n)n.textContent=Object.values(FILLS).flat().length.toLocaleString('pt-BR')+' abastecimentos ativos';const abertas=pendenciasAtivasGlobus().length;if(b){b.hidden=!abertas;b.textContent=abertas?'⚠ '+abertas+' linha(s) aguardam análise; permanecem fora dos cálculos mesmo após registrar uma decisão.':'';}}
+function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até 29/10/2026';const abertas=pendenciasAtivasGlobus().length;if(b){b.hidden=!abertas;b.textContent=abertas?'⚠ '+abertas+' linha(s) aguardam análise; permanecem fora dos cálculos mesmo após registrar uma decisão.':'';}}
 async function carregarLotesGlobus(){
   const db=await abrirBancoGlobus();
   GLOBUS_LOTES=await lerLojaGlobus(db,'lotes');
@@ -931,13 +939,11 @@ async function carregarLotesGlobus(){
   for(const lote of GLOBUS_LOTES){
     if(!['ACEITO','ACEITO_PARCIAL'].includes(lote.estado))continue;
     const fim=parseData(String(lote.periodo||'').split(' a ').pop());
-    if(!Number.isNaN(fim.getTime())&&fim>DATA_REF)DATA_REF=fim;
     for(const e of lote.eventosAceitos||[]){
       if(!FROTA.some(v=>v.p===e.prefixo))continue;
       if(!FILLS[e.prefixo])FILLS[e.prefixo]=[];
       FILLS[e.prefixo].push({...e,valor:e.valorTotal,tipo:e.origem,kmPorLitroGlobus:e.kmPorLitro,kmPorLitroCalculado:e.litros>0?e.km/e.litros:null,divergenciaHodometro:e.hodometroInicial!=null&&e.hodometroFinal!=null&&e.km!=null&&Math.abs((e.hodometroFinal-e.hodometroInicial)-e.km)>0.01,divergenciaKmL:e.kmPorLitro!=null&&e.litros>0&&e.km!=null&&Math.abs(e.kmPorLitro-e.km/e.litros)>0.002,prefixo:e.prefixo,linhaFonte:e.linha,linhaBruta:e.bruto,errosFonte:[],loteSha256:lote.sha256});
       n++;
-      const d=parseData(e.data,e.ano);if(d>DATA_REF)DATA_REF=d;
     }
   }
   atualizarStatusGlobus();
@@ -948,7 +954,7 @@ function bytesBase64(bytes){let s='';for(let i=0;i<bytes.length;i+=0x8000)s+=Str
 function renderHistoricoGlobus(){if(!GLOBUS_LOTES.length)return '<small>'+escapeHtml(GLOBUS_STORAGE_STATUS)+'</small>';return '<details><summary>'+escapeHtml(GLOBUS_STORAGE_STATUS)+' · histórico</summary><ul>'+GLOBUS_LOTES.slice().sort((a,b)=>b.recebidoEm.localeCompare(a.recebidoEm)).map(l=>'<li>'+escapeHtml(l.nomeArquivo)+' · '+escapeHtml(l.periodo)+' · '+(l.eventosAceitos||[]).length+' novo(s) ativo(s) · '+(l.pendencias||[]).length+' pendência(s)</li>').join('')+'</ul></details>';}
 function renderRevisoesGlobus(){const rows=GLOBUS_LOTES.flatMap(l=>(l.pendencias||[]).map(p=>({l,p,r:ultimaRevisaoGlobus(l.sha256,p.linha)})));if(!rows.length)return '<div class="audit-nota">Nenhuma linha pendente registrada.</div>';return '<div class="audit-nota"><b>Linhas preservadas para análise</b><br>Registrar uma decisão não altera o TXT nem inclui a linha nos cálculos.</div>'+rows.map(({l,p,r})=>{const fechado=r&&['ANALISADO_SEM_ALTERACAO','DIVERGENCIA_EM_ACOMPANHAMENTO'].includes(r.decisao);const form=fechado?'':`<form class="globus-revisar" data-hash="${l.sha256}" data-linha="${p.linha}"><select name="decisao"><option value="ANALISADO_SEM_ALTERACAO">Conferido, manter origem</option><option value="DIVERGENCIA_EM_ACOMPANHAMENTO">Acompanhar divergência</option><option value="MANTER_PENDENTE">Continuar pendente</option><option value="REABRIR_ANALISE">Reabrir análise</option></select><input name="autor" required placeholder="Autor da análise"><input name="justificativa" required placeholder="Justificativa"><button>Registrar</button></form>`;return `<details class="audit-nota"><summary>${escapeHtml(l.nomeArquivo)} · linha ${p.linha} · prefixo ${escapeHtml(p.prefixo||'—')} · ${escapeHtml(p.data||'—')} · ${escapeHtml(r?r.decisao.replaceAll('_',' '):'Aguardando análise')}</summary><div>${escapeHtml(p.estado)} · ${escapeHtml((p.campos||[]).join(', '))}<br><code>${escapeHtml(p.bruto||'')}</code></div>${r?'<p>'+escapeHtml(r.autor)+' · '+new Date(r.criadoEm).toLocaleString('pt-BR')+' · '+escapeHtml(r.justificativa)+'</p>':''}${form}</details>`;}).join('');}
 async function registrarRevisaoGlobus(form){const l=GLOBUS_LOTES.find(x=>x.sha256===form.dataset.hash),p=l?.pendencias.find(x=>x.linha===Number(form.dataset.linha));if(!l||!p)throw new Error('Linha pendente não localizada.');const db=await abrirBancoGlobus();const r={loteSha256:l.sha256,linha:p.linha,prefixo:p.prefixo||null,criadoEm:new Date().toISOString(),autor:form.elements.autor.value.trim(),decisao:form.elements.decisao.value,justificativa:form.elements.justificativa.value.trim(),original:{data:p.data||null,estado:p.estado,campos:p.campos||[],bruto:p.bruto||''},valorAnterior:null,valorNovo:null,alteraFonte:false};if(!r.autor||!r.justificativa)throw new Error('Informe autor e justificativa.');await gravarRevisaoGlobus(db,r);GLOBUS_REVISOES.push(r);atualizarStatusGlobus();renderAuditoria();}
-async function aplicarPreviaGlobus(relatorio,comparacao,file,bytes,sha){const status=document.getElementById('globusAplicacaoStatus');try{const db=await abrirBancoGlobus();if(GLOBUS_LOTES.some(l=>l.sha256===sha)){status.textContent='Arquivo já guardado; nenhum lançamento foi repetido.';return;}const cadastrados=new Set(FROTA.map(v=>v.p));const novos=comparacao.eventos.filter(e=>e.estado==='SOMENTE_RELATORIO'&&cadastrados.has(e.prefixo)&&!(e.camposInvalidos||[]).length);const pendencias=comparacao.eventos.filter(e=>e.estado!=='EXATO'&&!(e.estado==='SOMENTE_RELATORIO'&&cadastrados.has(e.prefixo)&&!(e.camposInvalidos||[]).length)).map(e=>({linha:e.linha,prefixo:e.prefixo,data:e.dataCompleta,estado:e.estado,campos:e.camposInvalidos||[],bruto:e.bruto}));relatorio.linhas.filter(e=>e.tipoLinha!=='ABASTECIMENTO').forEach(e=>pendencias.push({linha:e.linha,prefixo:e.prefixo,data:e.dataCompleta,estado:'LINHA_SEM_COMBUSTIVEL',campos:e.camposInvalidos||[],bruto:e.bruto}));relatorio.erros.filter(e=>!relatorio.linhas.some(l=>l.linha===e.linha)).forEach(e=>pendencias.push({linha:e.linha,prefixo:e.prefixo,data:e.data,estado:'LINHA_NAO_INTERPRETADA',campos:e.campos,bruto:e.bruto}));const eventosAceitos=novos.map(e=>({prefixo:e.prefixo,data:e.data,ano:e.ano,litros:e.litros,precoL:e.precoL,valorTotal:e.valorTotal,km:e.km,origem:e.origem,linha:e.linha,bruto:e.bruto,hora:e.hora,cupom:e.cupom,fornecedor:e.fornecedor,hodometroInicial:e.hodometroInicial,hodometroFinal:e.hodometroFinal,kmAcumulado:e.kmAcumulado,kmPorLitro:e.kmPorLitro,idealKmL:e.idealKmL,perdaPct:e.perdaPct}));const lote={sha256:sha,nomeArquivo:file.name,bytes:bytes.length,originalBase64:bytesBase64(bytes),periodo:relatorio.faixaInicio+' a '+relatorio.faixaFim,recebidoEm:new Date().toISOString(),eventosAceitos,pendencias,estado:pendencias.length?(eventosAceitos.length?'ACEITO_PARCIAL':'PENDENTE'):(eventosAceitos.length?'ACEITO':'CONFERIDO')};await gravarLoteGlobus(db,lote);GLOBUS_LOTES.push(lote);if(relatorio.fim>DATA_REF)DATA_REF=relatorio.fim;eventosAceitos.forEach(e=>{if(!FILLS[e.prefixo])FILLS[e.prefixo]=[];FILLS[e.prefixo].push({...e,valor:e.valorTotal,tipo:e.origem,kmPorLitroGlobus:e.kmPorLitro,kmPorLitroCalculado:e.litros>0?e.km/e.litros:null,divergenciaHodometro:e.hodometroInicial!=null&&e.hodometroFinal!=null&&e.km!=null&&Math.abs((e.hodometroFinal-e.hodometroInicial)-e.km)>0.01,divergenciaKmL:e.kmPorLitro!=null&&e.litros>0&&e.km!=null&&Math.abs(e.kmPorLitro-e.km/e.litros)>0.002,prefixo:e.prefixo,linhaFonte:e.linha,linhaBruta:e.bruto,errosFonte:[],loteSha256:sha});const d=parseData(e.data,e.ano);if(d>DATA_REF)DATA_REF=d;});atualizarStatusGlobus();if(eventosAceitos.length){recalcularFrota();SUSPEITOS=detectarSuspeitos();render();}atualizarInfoPeriodoGlobus();GLOBUS_LAST_MESSAGE=eventosAceitos.length+' lançamento(s) novo(s) aplicado(s); '+pendencias.length+' linha(s) guardadas para análise.';renderAuditoria();}catch(e){if(status)status.textContent='Falha ao guardar; base não foi alterada: '+e.message;}}
+async function aplicarPreviaGlobus(relatorio,comparacao,file,bytes,sha){const status=document.getElementById('globusAplicacaoStatus');try{const db=await abrirBancoGlobus();if(GLOBUS_LOTES.some(l=>l.sha256===sha)){status.textContent='Arquivo já guardado; nenhum lançamento foi repetido.';return;}const cadastrados=new Set(FROTA.map(v=>v.p));const novos=comparacao.eventos.filter(e=>e.estado==='SOMENTE_RELATORIO'&&cadastrados.has(e.prefixo)&&!(e.camposInvalidos||[]).length);const pendencias=comparacao.eventos.filter(e=>e.estado!=='EXATO'&&!(e.estado==='SOMENTE_RELATORIO'&&cadastrados.has(e.prefixo)&&!(e.camposInvalidos||[]).length)).map(e=>({linha:e.linha,prefixo:e.prefixo,data:e.dataCompleta,estado:e.estado,campos:e.camposInvalidos||[],bruto:e.bruto}));relatorio.linhas.filter(e=>e.tipoLinha!=='ABASTECIMENTO').forEach(e=>pendencias.push({linha:e.linha,prefixo:e.prefixo,data:e.dataCompleta,estado:'LINHA_SEM_COMBUSTIVEL',campos:e.camposInvalidos||[],bruto:e.bruto}));relatorio.erros.filter(e=>!relatorio.linhas.some(l=>l.linha===e.linha)).forEach(e=>pendencias.push({linha:e.linha,prefixo:e.prefixo,data:e.data,estado:'LINHA_NAO_INTERPRETADA',campos:e.campos,bruto:e.bruto}));const eventosAceitos=novos.map(e=>({prefixo:e.prefixo,data:e.data,ano:e.ano,litros:e.litros,precoL:e.precoL,valorTotal:e.valorTotal,km:e.km,origem:e.origem,linha:e.linha,bruto:e.bruto,hora:e.hora,cupom:e.cupom,fornecedor:e.fornecedor,hodometroInicial:e.hodometroInicial,hodometroFinal:e.hodometroFinal,kmAcumulado:e.kmAcumulado,kmPorLitro:e.kmPorLitro,idealKmL:e.idealKmL,perdaPct:e.perdaPct}));const lote={sha256:sha,nomeArquivo:file.name,bytes:bytes.length,originalBase64:bytesBase64(bytes),periodo:relatorio.faixaInicio+' a '+relatorio.faixaFim,recebidoEm:new Date().toISOString(),eventosAceitos,pendencias,estado:pendencias.length?(eventosAceitos.length?'ACEITO_PARCIAL':'PENDENTE'):(eventosAceitos.length?'ACEITO':'CONFERIDO')};await gravarLoteGlobus(db,lote);GLOBUS_LOTES.push(lote);eventosAceitos.forEach(e=>{if(!FILLS[e.prefixo])FILLS[e.prefixo]=[];FILLS[e.prefixo].push({...e,valor:e.valorTotal,tipo:e.origem,kmPorLitroGlobus:e.kmPorLitro,kmPorLitroCalculado:e.litros>0?e.km/e.litros:null,divergenciaHodometro:e.hodometroInicial!=null&&e.hodometroFinal!=null&&e.km!=null&&Math.abs((e.hodometroFinal-e.hodometroInicial)-e.km)>0.01,divergenciaKmL:e.kmPorLitro!=null&&e.litros>0&&e.km!=null&&Math.abs(e.kmPorLitro-e.km/e.litros)>0.002,prefixo:e.prefixo,linhaFonte:e.linha,linhaBruta:e.bruto,errosFonte:[],loteSha256:sha});});atualizarStatusGlobus();if(eventosAceitos.length){recalcularFrota();SUSPEITOS=detectarSuspeitos();render();}atualizarInfoPeriodoGlobus();GLOBUS_LAST_MESSAGE=eventosAceitos.length+' lançamento(s) novo(s) aplicado(s); '+pendencias.length+' linha(s) guardadas para análise.';renderAuditoria();}catch(e){if(status)status.textContent='Falha ao guardar; base não foi alterada: '+e.message;}}
 async function exportarBackupGlobus(){const pacote={formato:'Painel ABA Globus backup v1',lotes:GLOBUS_LOTES,revisoes:GLOBUS_REVISOES,exportadoEm:new Date().toISOString()};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(pacote)],{type:'application/json'}));a.download='backup_globus_painel_aba.json';a.click();URL.revokeObjectURL(a.href);}
 async function restaurarBackupGlobus(file){try{const x=JSON.parse(await file.text());if(x.formato!=='Painel ABA Globus backup v1'||!Array.isArray(x.lotes))throw new Error('Formato inválido.');for(const l of x.lotes){const bytes=Uint8Array.from(atob(l.originalBase64),c=>c.charCodeAt(0));if(await sha256Bytes(bytes)!==l.sha256)throw new Error('SHA-256 não confere para '+l.nomeArquivo);}const db=await abrirBancoGlobus();const lotes=x.lotes.filter(l=>!GLOBUS_LOTES.some(a=>a.sha256===l.sha256));await new Promise((resolve,reject)=>{const tx=db.transaction(['lotes','revisoes'],'readwrite');lotes.forEach(l=>tx.objectStore('lotes').put(l));(x.revisoes||[]).filter(r=>!GLOBUS_REVISOES.some(a=>a.id===r.id)).forEach(r=>tx.objectStore('revisoes').put(r));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});alert(lotes.length+' lote(s) restaurado(s). O painel será recarregado.');location.reload();}catch(e){alert('Backup não restaurado: '+e.message);}}
 
@@ -1038,7 +1044,7 @@ function calcularKmL(litros, km) {
 
 /** Retorna a semana mais recente com dados até DATA_REF e marca a semana incompleta. */
 function calcularUltimaSemana(p) {
-  const fills = FILLS[p];
+  const fills = fillsAteReferencia(p);
   if (!fills || fills.length === 0) return null;
   const semanas = agruparPorSemana(fills.filter(f => parseData(f.data, f.ano) <= DATA_REF));
   if (semanas.length === 0) return null;
@@ -1187,7 +1193,7 @@ function calcularAuditoria(p, modo) {
   if (!rast || rast.semRastreador) return null;
   const v = FROTA.find(x => x.p === p);
   if (!v) return null;
-  if (!FILLS[p] || FILLS[p].length === 0) return null;
+  if (fillsAteReferencia(p).length === 0) return null;
 
   let kmRast = 0, dataInicio, dataFim;
   if (modo === 'ultima') {
@@ -1340,8 +1346,8 @@ function detectarSuspeitos() {
   const anomalias = [];
 
   FROTA.forEach(v => {
-    const fills = FILLS[v.p];
-    if (!fills || fills.length === 0) return;
+    const fills = fillsAteReferencia(v.p);
+    if (fills.length === 0) return;
 
     const caps = capacidadesDoModelo(v.modelo);
     const precosPorOrigem = {
@@ -1545,14 +1551,16 @@ function render() {
   tfoot.innerHTML = '';
 
   let lista = getListaFiltrada().map(v => {
-    const real = v.litros > 0 && v.km != null ? v.km / v.litros : null;
+    const fillsAteCorte = fillsAteReferencia(v.p);
+    const kmCorte = fillsAteCorte.length ? fillsAteCorte.reduce((s, f) => s + f.km, 0) : null;
+    const litrosCorte = fillsAteCorte.length ? +fillsAteCorte.reduce((s, f) => s + f.litros, 0).toFixed(2) : null;
     return {
       ...v,
-      _km: v.km,
-      _litros: v.litros,
-      _real: real,
-      _abast: v.abast,
-      _st: v.abast === 0 ? { cls: '', label: 'Sem lançamentos', row: '', prio: 9 } : statusDe(v, real),
+      _km: kmCorte,
+      _litros: litrosCorte,
+      _real: litrosCorte > 0 && kmCorte != null ? kmCorte / litrosCorte : null,
+      _abast: fillsAteCorte.length,
+      _st: fillsAteCorte.length === 0 ? { cls: '', label: 'Sem lançamentos', row: '', prio: 9 } : statusPorKmL(litrosCorte > 0 ? kmCorte / litrosCorte : null, v.exp),
     };
   });
 
@@ -1844,7 +1852,7 @@ function abrirModalGeral() {
     if (u && u.abast > 0) somaAbast += u.abast;
     expPond += v.exp * litros;
 
-    const st = statusDe(v, u ? u.kmL : null);
+    const st = statusPorKmL(u ? u.kmL : null, v.exp);
     if (st.cls === 'ps-ok') stCount.ok++;
     else if (st.cls === 'ps-acima') stCount.acima++;
     else if (st.cls === 'ps-abaixo') stCount.abaixo++;
@@ -2070,8 +2078,8 @@ function renderNivel1() {
   let html = '<div class="barra" style="margin:0 0 14px;"><div><span class="lbl">Contrato</span><select id="selContratoDrill" aria-label="Filtrar cartões de evolução por contrato">' + select + '</select></div></div><div class="drill-grid">';
   const frotaOrdenada = getListaEvolucaoFiltrada().slice().sort((a, b) => Number(a.p) - Number(b.p));
   frotaOrdenada.forEach(v => {
-    const fills = FILLS[v.p];
-    const hasData = !!fills && fills.length > 0;
+    const fills = fillsAteReferencia(v.p);
+    const hasData = fills.length > 0;
 
     if (!hasData) {
       html += `<div class="drill-veic drill-vazio" onclick="drillAbrirVeiculo('${v.p}')">
@@ -2132,7 +2140,7 @@ function renderNivel1() {
 
 function renderNivel2(p) {
   const v = FROTA.find(x => x.p === p);
-  const fills = FILLS[p];
+  const fills = fillsAteReferencia(p);
 
   if (!fills || fills.length === 0) {
     return `<div class="sem-dados" style="padding:40px;">Sem dados de abastecimento para o veículo <b>${p}</b>.</div>`;
@@ -2237,7 +2245,7 @@ function renderNivel2(p) {
 
 function renderNivel3(p, semanaKey) {
   const v = FROTA.find(x => x.p === p);
-  const semanas = agruparPorSemana(FILLS[p]);
+  const semanas = agruparPorSemana(fillsAteReferencia(p));
   const s = semanas.find(x => x.inicio.toISOString().slice(0, 10) === semanaKey);
   if (!s) return '<div class="sem-dados">Semana não encontrada.</div>';
 
@@ -2569,7 +2577,7 @@ async function mostrarPreviaGlobus(file) {
       <b>Prévia · ${escapeHtml(file.name)}</b><br>Período consolidado até 29/10/2026 (inclusive) · período original ${escapeHtml(relatorio.faixaInicio)} a ${escapeHtml(relatorio.fimOriginal ? dataLabel(relatorio.fimOriginal) : relatorio.faixaFim)} · Prefixos: ${prefixos.map(escapeHtml).join(', ')} · ${relatorio.linhas.length} linhas interpretadas · ${relatorio.eventos.length} linhas com Comb. > 0 · ${relatorio.linhasHodometro.length} sem combustível com hodômetro · ${relatorio.linhasOutros.length} com outros insumos · ${relatorio.erros.length} linha(s) com campo para conferir<br>
       Linhas com data/I-E/litros/KM iguais: <b>${contagens.EXATO}</b> · Possível par por data/origem/litros com KM diferente: <b>${contagens.KM_DIVERGENTE}</b> · Possível par por data/origem, com campos diferentes: <b>${contagens.PAREAMENTO_POSSIVEL}</b> · Sem par identificado no relatório: <b>${contagens.SOMENTE_RELATORIO}</b> · Sem par na base neste período: <b>${comparacao.somenteBase.length}</b> · KM diferente da variação do hodômetro: <b>${divergenciasHodometro}</b> · km/L informado diferente de KM/litros: <b>${divergenciasKmL}</b><br>
       KM Globus disponível: <b>${fmtKmNum(somaKmRelatorio)}</b> em ${linhasComKm}/${relatorio.linhas.length} linhas · KM nas linhas de abastecimento da base atual: <b>${fmtKmNum(somaKmBase)}</b> · diferença para investigar: <b>${(somaKmRelatorio - somaKmBase >= 0 ? '+' : '') + fmtKmNum(somaKmRelatorio - somaKmBase)}</b><br>
-      <small>A fonte original será preservada. Eventos ambíguos ou inválidos ficam fora dos cálculos e vão para revisão. A base reconstruída inicial não conserva hora ou hodômetros por lançamento; os novos lotes mantêm esses campos quando o TXT os fornece. Alertas não confirmam erro ou causa.</small><br>
+      <small>A fonte original e todas as linhas posteriores a 29/10/2026 são preservadas, mas ficam fora desta análise. Eventos ambíguos ou inválidos ficam fora dos cálculos e vão para revisão. A base reconstruída inicial não conserva hora ou hodômetros por lançamento; os novos lotes mantêm esses campos quando o TXT os fornece. Alertas não confirmam erro ou causa.</small><br>
       ${GLOBUS_LOTES.some(l=>l.sha256===hashArquivo)?'<div class="audit-nota">Este arquivo já foi guardado; não haverá duplicação.</div>':erroHash?'<div class="audit-nota">Aplicação indisponível: '+escapeHtml(erroHash)+'</div>':'<button id="aplicarLoteGlobus" type="button" style="margin-top:10px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:600 12px var(--f-ui);cursor:pointer;">Guardar arquivo e aplicar somente lançamentos novos não ambíguos</button><span id="globusAplicacaoStatus" aria-live="polite"></span>'}<br>
       <button id="baixarPreviaGlobus" type="button" style="margin-top:10px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:600 12px var(--f-ui);cursor:pointer;">Baixar CSV completo da prévia</button>
       <small style="display:block;margin-top:4px;">O CSV é gerado localmente e inclui as linhas originais do TXT selecionado.</small>
@@ -2619,7 +2627,7 @@ function renderAuditoria() {
   const veiculosSemRegistroNoRast = getListaFiltrada().filter(v => !RASTREADOR.some(r => r.p === v.p)).length;
   const veiculosSemRast = rastsFiltrados.filter(r => r.semRastreador).length;
   const veiculosComRast = rastsFiltrados.filter(r => !r.semRastreador).map(r => r.p);
-  const veiculosSemGlobusDetalhado = veiculosComRast.filter(p => !FILLS[p] || FILLS[p].length === 0).length;
+  const veiculosSemGlobusDetalhado = veiculosComRast.filter(p => fillsAteReferencia(p).length === 0).length;
   const total = veiculosComRast.length;
 
   const resultados = veiculosComRast
@@ -2643,7 +2651,7 @@ function renderAuditoria() {
   const somaRsTxt = somaRs > 0 ? '− ' + fmtR(somaRs) : '+ ' + fmtR(Math.abs(somaRs));
 
   let html = `<div class="audit-resumo">
-    📊 Período: <b>Acumulado · 31/08 – 11/10/2026</b> · <b>${total}</b> veículo${total > 1 ? 's' : ''} com dados de rastreador${veiculosSemRast ? ` · ${veiculosSemRast} sem dados` : ''}${veiculosSemGlobusDetalhado ? ` · ${veiculosSemGlobusDetalhado} sem lançamentos Globus detalhados` : ''}${veiculosSemRegistroNoRast ? ` · ${veiculosSemRegistroNoRast} sem registro neste conjunto` : ''}<br>
+    📊 Comparação adicional · Rastreador: <b>31/08–11/10/2026</b> · Globus: abastecimentos na mesma janela · painel geral até 29/10 · <b>${total}</b> veículo${total > 1 ? 's' : ''} com dados de rastreador${veiculosSemRast ? ` · ${veiculosSemRast} sem dados` : ''}${veiculosSemGlobusDetalhado ? ` · ${veiculosSemGlobusDetalhado} sem lançamentos Globus detalhados` : ''}${veiculosSemRegistroNoRast ? ` · ${veiculosSemRegistroNoRast} sem registro neste conjunto` : ''}<br>
     Km Rastreador: <b>${fmtKmNum(somaKmRast)}</b> · Km das linhas de abastecimento Globus: <b>${fmtKmNum(somaKmGlobus)}</b> ·
     Litros estimados: <b>${fmtL(somaLitrosEsp)}</b> · Litros Globus: <b>${fmtL(somaLitrosReal)}</b> ·
     Impacto estimado: <b style="color:${somaRsCor};">${somaRsTxt}</b> · somatório inclui comparações parciais<br>
@@ -2703,12 +2711,13 @@ function renderAuditoria() {
     <td class="rs">${somaRsTxt}</td>
   </tr></tfoot></table>`;
 
+  html += `<div class="audit-nota">A comparação Rastreador × Globus usa o período fixo de 31/08 a 11/10/2026; não representa o acumulado da análise geral até 29/10.</div>`;
   const totalCamposDivergentes = DIVERGENCIAS_FROTA.reduce((s, item) => s + item.diferencas.length, 0);
   const modelosSemTanque = modelosSemTanqueConfigurado();
   html += `<div class="audit-resumo" style="margin-top:18px;border-left-color:var(--amber);">
     <b>Conferência FROTA × FILLS_RAW (dados Globus)</b><br>
     ${DIVERGENCIAS_FROTA.length} veículo(s) com diferença registrada · ${totalCamposDivergentes} campo(s) divergente(s).<br>
-    <small>Os valores originais são preservados separadamente. A soma dos abastecimentos é exibida como métrica derivada; divergências são sinalizadas para conferência, sem normalização silenciosa ou atribuição de culpa.</small>
+    <small>O período original da fonte e todas as linhas permanecem preservados. Para esta conferência, valores base e soma dos abastecimentos usam somente lançamentos até 29/10/2026, inclusive; divergências são sinalizadas para conferência.</small>
   </div>`;
   if (modelosSemTanque.length) {
     html += `<div class="audit-resumo" style="margin-top:18px;border-left-color:var(--amber);">
@@ -2827,7 +2836,7 @@ function recalcularFrota() {
   DIVERGENCIAS_FROTA = [];
   VEICULOS_SEM_FILLS = [];
   FROTA.forEach(v => {
-    const fills = FILLS[v.p] || [];
+    const fills = fillsAteReferencia(v.p);
     const original = FROTA_ORIGINAL.find(o => o.p === v.p) || v;
     if (fills.length === 0) {
       VEICULOS_SEM_FILLS.push({ p: v.p, modelo: v.modelo, original });
@@ -2852,6 +2861,9 @@ function recalcularFrota() {
       }
     });
     if (diferencas.length) DIVERGENCIAS_FROTA.push({ p: v.p, modelo: v.modelo, diferencas });
+
+    // O resumo da frota compara exatamente a mesma janela analítica que os relatórios.
+    Object.assign(original, derivado);
 
     // Métricas operacionais derivadas seguem disponíveis ao dashboard;
     // valores de origem ficam preservados em FROTA_ORIGINAL e no registro de diferenças.
