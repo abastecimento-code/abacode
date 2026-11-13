@@ -439,7 +439,7 @@ footer strong{color:#fff;}
     </div>
 
     <div class="info">
-      <b>Km</b>, <b>Litros</b> e <b>QTD ABA</b> = lançamentos até 29/10/2026, inclusive · <b>km/L calculado</b> = Σ KM entre abastecimentos ÷ Σ litros · a Evolução também compara o Real km/L informado pelo Globus · <b>período efetivo varia por veículo</b> ·
+      <b>Km</b>, <b>Litros</b> e <b>QTD ABA</b> = acumulado até 29/10/2026, inclusive · <b>km/L da última semana</b> = Σ KM ÷ Σ litros nas linhas daquela semana, igual à Evolução · <b>período semanal efetivo varia por veículo</b> ·
       <b>EXP</b> = referência por modelo · <b>Status</b> = ±0,25 km/L sobre a EXP
     </div>
     <div class="info-nota" id="totalAbastecimentosGlobus">2.841 abastecimentos ativos · período efetivo varia por veículo; uma semana sem lançamento, por si só, não indica falha.</div>
@@ -460,7 +460,7 @@ footer strong{color:#fff;}
             <th class="sortable" data-sort="contrato">Contrato <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="km">Km <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="litros">Litros <span class="sort-ind">▲▼</span></th>
-            <th class="sortable" data-sort="real">km/L calculado <span class="sort-ind">▲▼</span></th>
+            <th class="sortable" data-sort="real" title="Média recalculada da última semana com abastecimento para cada veículo">km/L última semana <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="exp">EXP km/L <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="abast">QTD ABA <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="status">Status <span class="sort-ind">▲▼</span></th>
@@ -1555,13 +1555,16 @@ function render() {
     const fillsAteCorte = fillsAteReferencia(v.p);
     const kmCorte = fillsAteCorte.length ? fillsAteCorte.reduce((s, f) => s + f.km, 0) : null;
     const litrosCorte = fillsAteCorte.length ? +fillsAteCorte.reduce((s, f) => s + f.litros, 0).toFixed(2) : null;
+    const ultimaSemana = calcularUltimaSemana(v.p);
+    const kmLUltimaSemana = ultimaSemana ? ultimaSemana.kmL : null;
     return {
       ...v,
       _km: kmCorte,
       _litros: litrosCorte,
-      _real: litrosCorte > 0 && kmCorte != null ? kmCorte / litrosCorte : null,
+      _real: kmLUltimaSemana,
+      _ultimaSemana: ultimaSemana,
       _abast: fillsAteCorte.length,
-      _st: fillsAteCorte.length === 0 ? { cls: '', label: 'Sem lançamentos', row: '', prio: 9 } : statusPorKmL(litrosCorte > 0 ? kmCorte / litrosCorte : null, v.exp),
+      _st: statusDe(v, kmLUltimaSemana),
     };
   });
 
@@ -1592,13 +1595,19 @@ function render() {
     return;
   }
 
-  let somaKm = 0, somaL = 0, expPond = 0, abastTotal = 0, nComAbast = 0;
+  let somaKm = 0, somaL = 0, kmSemanasRecentes = 0, litrosSemanasRecentes = 0;
+  let expPondSemanasRecentes = 0, abastTotal = 0, nComAbast = 0, nComSemana = 0;
 
   lista.forEach(v => {
     if (v._km != null && v._litros != null) {
       somaKm += v._km;
       somaL  += v._litros;
-      expPond += v.exp * v._litros;
+    }
+    if (v._ultimaSemana && v._ultimaSemana.litros > 0) {
+      kmSemanasRecentes += v._ultimaSemana.km;
+      litrosSemanasRecentes += v._ultimaSemana.litros;
+      expPondSemanasRecentes += v.exp * v._ultimaSemana.litros;
+      nComSemana++;
     }
     if (v._abast > 0) { abastTotal += v._abast; nComAbast++; }
     const realCls = v._st.cls === 'ps-ok' ? 'ok'
@@ -1615,24 +1624,24 @@ function render() {
       <td><span class="pill ${CONTRATO_PILL[v.contrato]}">${CONTRATO_LABEL[v.contrato]}</span></td>
       <td class="num">${v._km != null ? fmtKmNum(v._km) : '—'}</td>
       <td class="litros">${v._litros != null ? fmtL(v._litros) : '—'}</td>
-      <td class="num ${realCls}">${v._real != null ? fmt3safe(v._real) : '—'}</td>
+      <td class="num ${realCls}" title="${v._ultimaSemana ? 'Período: ' + v._ultimaSemana.label + (v._ultimaSemana.parcial ? ' · parcial até 29/10/2026' : '') : 'Sem semana com abastecimento até 29/10/2026'}">${v._real != null ? fmt3safe(v._real) : '—'}</td>
       <td class="faixa">${fmt2(v.exp)}</td>
       <td class="num">${v._abast > 0 ? fmt0(v._abast) : '—'}</td>
       <td><span class="pill-status ${v._st.cls}">${v._st.label}</span></td>`;
     tbody.appendChild(tr);
   });
 
-  const realGeral = somaL > 0 ? somaKm / somaL : null;
-  const expGeral  = somaL > 0 ? expPond / somaL : null;
+  const realGeral = litrosSemanasRecentes > 0 ? kmSemanasRecentes / litrosSemanasRecentes : null;
+  const expGeral  = litrosSemanasRecentes > 0 ? expPondSemanasRecentes / litrosSemanasRecentes : null;
 
   const stGeral = statusDe({ exp: expGeral ?? 0 }, realGeral);
 
   tfoot.innerHTML = `<tr>
-    <td colspan="3">TOTAL — Acumulado · ${nComAbast} de ${lista.length} veículos com lançamentos</td>
+    <td colspan="3">TOTAL — acumulado até o corte · ${nComAbast} de ${lista.length} com lançamentos; média km/L ponderada das últimas semanas de ${nComSemana} veículos</td>
     <td class="num">${fmtKmNum(somaKm)}</td>
     <td class="litros">${fmtL(somaL)}</td>
-    <td class="num">${realGeral ? fmt3safe(realGeral) : '—'}</td>
-    <td class="faixa">${expGeral ? fmt2(expGeral) : '—'}</td>
+    <td class="num">${realGeral != null ? fmt3safe(realGeral) : '—'}</td>
+    <td class="faixa">${expGeral != null ? fmt2(expGeral) : '—'}</td>
     <td class="num">${nComAbast > 0 ? fmt0(abastTotal) : '—'}</td>
     <td><span class="pill-status ${stGeral.cls}">${stGeral.label}</span></td>
   </tr>`;
