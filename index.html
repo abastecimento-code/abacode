@@ -454,6 +454,11 @@ tfoot td.num.azul { color:#64b5f6!important; }
 #tabela tbody td.modelo{white-space:normal;padding:8px 7px;line-height:1.25;overflow-wrap:anywhere;}
 #tabela tbody td:nth-child(3){padding-left:5px;padding-right:5px;}
 #tabela tbody td:nth-child(3) .pill{padding:3px 7px;font-size:10px;}
+
+/* Camadas temporais: barras proporcionais e status discretos */
+.drill-spark-bar.acima{background:#64b5f6!important;opacity:.95}
+.drill-spark-bar.ok{background:#38a169!important;opacity:.95}
+.drill-spark-bar.crit{background:#e05252!important;opacity:.95}
 </style>
 </head>
 <body>
@@ -1228,6 +1233,7 @@ const state = {
   drillNivel: 1,
   drillPrefixo: null,
   drillSemanaKey: null,
+  drillMesKey: null,
   drillContrato: 'todos',
   auditModo: 'acumulado',
   abaRep: 'repetidos', // 'repetidos' | 'anomalias'
@@ -2103,10 +2109,8 @@ function fecharModalEscala() {
   document.body.style.overflow = '';
 }
 /* ═══════════════════════════════════════════════════════
-   DRILL-DOWN — 3 níveis
-   Nível 1: lista de todos os veículos
-   Nível 2: semanas de um veículo
-   Nível 3: fills de uma semana
+   DRILL-DOWN — frota > mês > semana > dia > abastecimentos
+   Cada camada calcula KM/L com seus próprios totais ponderados.
    ═══════════════════════════════════════════════════════ */
 function abrirDrilldown(prefixo) {
   state.drillNivel = prefixo ? 2 : 1;
@@ -2124,12 +2128,16 @@ function fecharDrilldown() {
 }
 
 function drillVoltar() {
-  if (state.drillNivel === 3) {
+  if (state.drillNivel === 4) {
+    state.drillNivel = 3;
+    state.drillDiaKey = null;
+  } else if (state.drillNivel === 3) {
     state.drillNivel = 2;
     state.drillSemanaKey = null;
   } else if (state.drillNivel === 2) {
     state.drillNivel = 1;
     state.drillPrefixo = null;
+    state.drillMesKey = null;
   }
   renderDrill();
 }
@@ -2137,37 +2145,68 @@ function drillVoltar() {
 function drillAbrirVeiculo(p) {
   state.drillNivel = 2;
   state.drillPrefixo = p;
+  state.drillMesKey = null;
   state.drillSemanaKey = null;
+  state.drillDiaKey = null;
+  renderDrill();
+}
+
+function drillAbrirMes(k) {
+  state.drillNivel = 3;
+  state.drillMesKey = k;
+  state.drillSemanaKey = null;
+  state.drillDiaKey = null;
   renderDrill();
 }
 
 function drillAbrirSemana(k) {
-  state.drillNivel = 3;
+  state.drillNivel = 4;
   state.drillSemanaKey = k;
+  state.drillDiaKey = null;
+  renderDrill();
+}
+
+function drillAbrirDia(k) {
+  state.drillNivel = 5;
+  state.drillDiaKey = k;
   renderDrill();
 }
 
 function renderDrill() {
-  const body   = document.getElementById('drillBody');
+  const body = document.getElementById('drillBody');
   const titulo = document.getElementById('drillTitulo');
-  const sub    = document.getElementById('drillSub');
-  const back   = document.getElementById('drillBack');
+  const sub = document.getElementById('drillSub');
+  const back = document.getElementById('drillBack');
   back.style.display = state.drillNivel > 1 ? 'inline-block' : 'none';
 
   if (state.drillNivel === 1) {
-    titulo.textContent = 'Evolução Semanal — Frota';
-    sub.textContent = 'Clique em um veículo para ver semanas com abastecimento · ' + getListaEvolucaoFiltrada().length + ' veículos no contrato selecionado';
+    titulo.textContent = 'Evolução — Frota';
+    sub.textContent = 'Selecione um veículo para analisar mês, semana e dia · ' + getListaEvolucaoFiltrada().length + ' veículos no contrato selecionado';
     body.innerHTML = renderNivel1();
     body.querySelector('#selContratoDrill')?.addEventListener('change', e => { state.drillContrato=e.target.value; renderDrill(); });
-  } else if (state.drillNivel === 2) {
-    const v = FROTA.find(x => x.p === state.drillPrefixo);
-    titulo.textContent = 'Evolução Semanal — ' + state.drillPrefixo;
-    sub.textContent = v.modelo + ' · ' + v.ano + ' · ' + CONTRATO_LABEL[v.contrato];
+    return;
+  }
+
+  const v = FROTA.find(x => x.p === state.drillPrefixo);
+  if (!v) { body.innerHTML = '<div class="sem-dados">Veículo não encontrado.</div>'; return; }
+  const contexto = v.modelo + ' · ' + v.ano + ' · ' + CONTRATO_LABEL[v.contrato];
+
+  if (state.drillNivel === 2) {
+    titulo.textContent = 'Análise mensal — ' + state.drillPrefixo;
+    sub.textContent = contexto + ' · cada mês tem cálculo próprio';
     body.innerHTML = renderNivel2(state.drillPrefixo);
+  } else if (state.drillNivel === 3) {
+    titulo.textContent = 'Análise semanal — ' + state.drillPrefixo;
+    sub.textContent = contexto + ' · ' + state.drillMesKey;
+    body.innerHTML = renderNivel3(state.drillPrefixo, state.drillMesKey);
+  } else if (state.drillNivel === 4) {
+    titulo.textContent = 'Análise diária — ' + state.drillPrefixo;
+    sub.textContent = contexto + ' · ' + state.drillSemanaKey;
+    body.innerHTML = renderNivel4(state.drillPrefixo, state.drillSemanaKey);
   } else {
     titulo.textContent = 'Abastecimentos — ' + state.drillPrefixo;
-    sub.textContent = 'Detalhamento dos fills da semana selecionada';
-    body.innerHTML = renderNivel3(state.drillPrefixo, state.drillSemanaKey);
+    sub.textContent = 'Lançamentos registrados em ' + state.drillDiaKey;
+    body.innerHTML = renderNivel5(state.drillPrefixo, state.drillDiaKey);
   }
 }
 
@@ -2243,177 +2282,125 @@ function renderNivel1() {
   return html;
 }
 
-function renderNivel2(p) {
-  const v = FROTA.find(x => x.p === p);
-  const fills = fillsAteReferencia(p);
-
-  if (!fills || fills.length === 0) {
-    return `<div class="sem-dados" style="padding:40px;">Sem dados de abastecimento para o veículo <b>${p}</b>.</div>`;
-  }
-
-  const semanas  = agruparPorSemana(fills);
-  const datasOrdenadas = fills.map(f => parseData(f.data, f.ano)).sort((a, b) => a - b);
-  const dataInicial = dataLabel(datasOrdenadas[0]);
-  const dataFinal = dataLabel(datasOrdenadas[datasOrdenadas.length - 1]);
-  const totalL   = fills.reduce((s, f) => s + f.litros, 0);
-  const fillsComReal = fills.filter(f => Number.isFinite(f.kmPorLitroGlobus ?? f.kmPorLitro));
-  const litrosComReal = fillsComReal.reduce((sum,f)=>sum+f.litros,0);
-  const realGlobusPonderado = litrosComReal>0 ? fillsComReal.reduce((sum,f)=>sum+(f.kmPorLitroGlobus??f.kmPorLitro)*f.litros,0)/litrosComReal : null;
-  const totalKm  = fills.reduce((s, f) => s + f.km, 0);
-  const totalV   = fills.reduce((s, f) => s + f.valor, 0);
-  const kmLGeral = calcularKmL(totalL, totalKm);
-
-  let html = `<div class="rast-resumo" style="background:#ece5fa;border-color:rgba(107,63,196,.2);">
-    <span><b>${semanas.length}</b> semanas com dados</span><span class="divisor">·</span>
-    <span><b>${fills.length}</b> abastecimentos</span><span class="divisor">·</span>
-    <span><b>${fmtKmNum(totalKm)}</b> km</span><span class="divisor">·</span>
-    <span><b>${fmtL(totalL)}</b> litros</span><span class="divisor">·</span>
-    <span><b>${fmtR(totalV)}</b> em diesel</span><span class="divisor">·</span>
-    <span>km/L recalculado: <b>${fmt3safe(kmLGeral)}</b></span><span class="divisor">·</span>
-    <span>Real Globus ponderado: <b>${realGlobusPonderado!=null?fmt3safe(realGlobusPonderado):'—'}</b></span><span class="divisor">·</span>
-    <span>Referência manual: <b>${fmt2(v.exp)}</b> km/L</span>
-    <div class="obs" style="color:#6b3fc4;">📅 Lançamentos disponíveis: ${dataInicial} a ${dataFinal} · km/L semanal = soma do KM entre abastecimentos ÷ soma dos litros nas linhas da semana, agrupadas pela data do abastecimento. Não representa quilometragem diária; semanas sem lançamento não entram na série.</div>
-  </div>`;
-
-  const audit = calcularAuditoria(p, 'acumulado');
-  if (audit) {
-    const dkCor = Math.abs(audit.deltaKmPct) > 10 ? 'var(--red)' : 'var(--green)';
-    const dlCor = audit.deltaLitros < 0 ? 'var(--red)' : 'var(--green)';
-    const rsCor = 'var(--amber)';
-    const rsTxt = (audit.reaisImpacto > 0 ? '− ' : '+ ') + fmtR(Math.abs(audit.reaisImpacto));
-
-    html += `<div style="background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:18px;">
-      <div style="font-size:10.5px;text-transform:uppercase;letter-spacing:1.4px;color:var(--tx2);font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:10px;">
-        🔍 Comparação adicional Rastreador × Globus — período fixo 31/08–11/10/2026 · ${audit.rastDiasComDados}/${audit.rastDiasEsperados} dias com valor · ${audit.rastFalhas} falhas
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:18px;">
-        <div>
-          <div style="font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">Km Rastreador</div>
-          <div style="font-family:var(--f-num);font-size:18px;font-weight:700;color:var(--tx);margin-top:4px;letter-spacing:-.4px;">${fmtKmNum(audit.kmRast)}</div>
-        </div>
-        <div>
-          <div style="font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">Km das linhas de abastecimento Globus</div>
-          <div style="font-family:var(--f-num);font-size:18px;font-weight:700;color:var(--tx);margin-top:4px;letter-spacing:-.4px;">${fmtKmNum(audit.kmGlobus)}</div>
-        </div>
-        <div>
-          <div style="font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">Δ Km</div>
-          <div style="font-family:var(--f-num);font-size:18px;font-weight:700;color:${dkCor};margin-top:4px;letter-spacing:-.4px;">${(audit.deltaKm >= 0 ? '+' : '') + fmtKmNum(audit.deltaKm)}</div>
-          <div style="font-size:11px;color:${dkCor};margin-top:2px;font-weight:700;">${(audit.deltaKmPct >= 0 ? '+' : '') + fmt1(audit.deltaKmPct) + '%'}</div>
-        </div>
-        <div>
-          <div style="font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">L Esperados</div>
-          <div style="font-family:var(--f-num);font-size:18px;font-weight:700;color:var(--tx);margin-top:4px;letter-spacing:-.4px;">${fmtL(audit.litrosEsperados)}</div>
-        </div>
-        <div>
-          <div style="font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">L Globus</div>
-          <div style="font-family:var(--f-num);font-size:18px;font-weight:700;color:var(--tx);margin-top:4px;letter-spacing:-.4px;">${fmtL(audit.litrosGlobus)}</div>
-        </div>
-        <div>
-          <div style="font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">Δ Litros</div>
-          <div style="font-family:var(--f-num);font-size:18px;font-weight:700;color:${dlCor};margin-top:4px;letter-spacing:-.4px;">${(audit.deltaLitros >= 0 ? '+' : '') + fmtL(audit.deltaLitros)}</div>
-        </div>
-        <div style="background:var(--amber-bg);padding:10px 14px;border-radius:10px;">
-          <div style="font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.8px;">Impacto R$</div>
-          <div style="font-family:var(--f-num);font-size:20px;font-weight:800;color:${rsCor};margin-top:4px;letter-spacing:-.6px;">${rsTxt}</div>
-        </div>
-      </div>
-    </div>`;
-  }
-
-  html += '<div class="audit-nota" style="margin-bottom:14px">Os cards agrupam abastecimentos pela data registrada no Globus. km/L é recalculado como soma do KM entre abastecimentos ÷ soma dos litros das linhas. Esse KM pode ter sido percorrido em dias anteriores à data do abastecimento; o relatório não informa a distribuição diária. Semanas sem lançamentos não são preenchidas com zero nem tratadas como irregulares.</div><div class="drill-grid">';
-  semanas.forEach(s => {
-    const kmL = calcularKmL(s.litros, s.km);
-    const st = statusPorKmL(kmL, v.exp);
-    const key = s.inicio.toISOString().slice(0, 10);
-    const parcial = s.fim > DATA_REF;
-    html += `<div class="drill-semana" onclick="drillAbrirSemana('${key}')">
-      <div class="drill-semana-head">
-        <span class="drill-semana-data">${s.label}${parcial ? ' · PARCIAL ATÉ ' + dataLabel(DATA_REF) : ''}</span>
-        <span class="drill-semana-fills">${s.fills.length} fill${s.fills.length > 1 ? 's' : ''}</span>
-      </div>
-      <div class="drill-semana-km">${fmt3safe(kmL)}<span class="un">km/L recalculado${parcial?' · parcial':''}</span></div>
-      <div class="drill-semana-meta">
-        <div class="linha"><span>KM Globus</span><b>${fmtKmNum(s.km)}</b></div>
-        <div class="linha"><span>Litros Globus</span><b>${fmtL(s.litros)}</b></div>
-        <div class="linha"><span>Valor registrado</span><b>${fmtR(s.valor)}</b></div>
-        <div class="linha"><span>Real Globus</span><b>${s.linhasComRealGlobus?fmt3safe(s.kmLGlobusPonderado/s.litrosComRealGlobus)+' km/L':'—'}</b></div>
-        <div class="linha"><span>Referência manual</span><b>${fmt2(v.exp)} km/L</b></div>
-        ${s.divergenciasRealGlobus?`<div class="linha" style="color:var(--red)"><span>Real Globus difere do recálculo</span><b>${s.divergenciasRealGlobus}</b></div>`:''}
-        ${s.divergenciasHodometro?`<div class="linha" style="color:var(--red)"><span>KM ≠ variação dos hodômetros</span><b>${s.divergenciasHodometro}</b></div>`:''}
-      </div>
-      <div style="margin-top:8px;text-align:center;"><span class="pill-status ${st.cls}" style="font-size:9px;">${st.label}</span></div>
-    </div>`;
+function chaveMes(dt) {
+  return dt.getFullYear() + '-' + String(dt.getMonth()+1).padStart(2,'0');
+}
+function agruparPorMes(fills) {
+  const grupos = {};
+  fills.forEach(f => {
+    const dt = parseData(f.data, f.ano);
+    if (!Number.isFinite(dt.getTime())) return;
+    const key = chaveMes(dt);
+    if (!grupos[key]) grupos[key] = { key, ano:dt.getFullYear(), mes:dt.getMonth(), inicio:new Date(dt.getFullYear(),dt.getMonth(),1), fim:new Date(dt.getFullYear(),dt.getMonth()+1,0), km:0, litros:0, valor:0, fills:[] };
+    grupos[key].km += Number(f.km)||0;
+    grupos[key].litros += Number(f.litros)||0;
+    grupos[key].valor += Number(f.valor)||0;
+    grupos[key].fills.push(f);
   });
-  html += '</div>';
-  return html;
+  return Object.values(grupos).sort((a,b)=>a.inicio-b.inicio);
+}
+function agregarPeriodo(fills) {
+  return { km:fills.reduce((s,f)=>s+(Number(f.km)||0),0), litros:fills.reduce((s,f)=>s+(Number(f.litros)||0),0), valor:fills.reduce((s,f)=>s+(Number(f.valor)||0),0), abast:fills.length, kmL:calcularKmL(fills.reduce((s,f)=>s+(Number(f.litros)||0),0),fills.reduce((s,f)=>s+(Number(f.km)||0),0)) };
+}
+function rotuloMes(g) {
+  return g.inicio.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+}
+function classeBarra(kmL,ref) {
+  if (kmL==null) return '';
+  return statusPorKmL(kmL,ref).cls==='ps-acima'?'acima':statusPorKmL(kmL,ref).cls==='ps-abaixo'?'crit':'ok';
+}
+function renderResumoPeriodo(g,ref,rotulo,parcial=false,onclick='') {
+  const r=agregarPeriodo(g.fills), st=statusPorKmL(r.kmL,ref);
+  return `<div class="drill-semana" ${onclick}>
+    <div class="drill-semana-head"><span class="drill-semana-data">${rotulo}${parcial?' · PARCIAL':''}</span><span class="drill-semana-fills">${r.abast} abastecimento(s)</span></div>
+    <div class="drill-semana-km">${r.kmL!=null?fmt3safe(r.kmL):'—'}<span class="un">km/L do período</span></div>
+    <div class="drill-spark" aria-label="Indicador visual do consumo no período"><div class="drill-spark-bar ${classeBarra(r.kmL,ref)}" style="height:${r.kmL!=null?Math.max(3,Math.min(100,(r.kmL/Math.max(ref*1.8,r.kmL,1))*100)):3}%"></div></div>
+    <div class="drill-semana-meta">
+      <div class="linha"><span>KM considerados</span><b>${fmtKmNum(r.km)}</b></div>
+      <div class="linha"><span>Litros considerados</span><b>${fmtL(r.litros)}</b></div>
+      <div class="linha"><span>Referência do modelo</span><b>${fmt2(ref)} km/L</b></div>
+      <div class="linha"><span>Valor registrado</span><b>${fmtR(r.valor)}</b></div>
+    </div>
+    <div style="margin-top:8px;text-align:center"><span class="pill-status ${st.cls}" style="font-size:9px">${st.label}</span></div>
+  </div>`;
 }
 
-function renderNivel3(p, semanaKey) {
-  const v = FROTA.find(x => x.p === p);
-  const semanas = agruparPorSemana(fillsAteReferencia(p));
-  const s = semanas.find(x => x.inicio.toISOString().slice(0, 10) === semanaKey);
-  if (!s) return '<div class="sem-dados">Semana não encontrada.</div>';
-
-  const kmL = calcularKmL(s.litros, s.km);
-  const kmLGlobus = s.litrosComRealGlobus>0?s.kmLGlobusPonderado/s.litrosComRealGlobus:null;
-  const st = statusPorKmL(kmL, v.exp);
-  const semanaParcial = s.fim > DATA_REF;
-
-  let html = `<div class="rast-resumo" style="background:#ece5fa;border-color:rgba(107,63,196,.2);">
-    <span><b>${s.label}${semanaParcial ? ' · PARCIAL ATÉ ' + dataLabel(DATA_REF) : ''}</b></span><span class="divisor">·</span>
-    <span><b>${s.fills.length}</b> abastecimento${s.fills.length > 1 ? 's' : ''}</span><span class="divisor">·</span>
-    <span><b>${fmtKmNum(s.km)}</b> km</span><span class="divisor">·</span>
-    <span><b>${fmtL(s.litros)}</b> L</span><span class="divisor">·</span>
-    <span><b>${fmtR(s.valor)}</b></span><span class="divisor">·</span>
-    <span><b>${fmt3safe(kmL)}</b> km/L recalculado</span><span class="divisor">·</span>
-    <span>Real Globus: <b>${kmLGlobus!=null?fmt3safe(kmLGlobus):'—'}</b> km/L</span><span class="divisor">·</span>
-    <span>Referência manual: <b>${fmt2(v.exp)}</b> km/L</span>
-    <span class="pill-status ${st.cls}" style="font-size:9px;">${st.label}${semanaParcial?' · parcial':''}</span>
-  </div>`;
-
-  html += '<div class="audit-nota" style="margin:10px 0">O painel preserva o Real, o Ideal e a Perda informados pelo Globus. O km/L recalculado usa KM ÷ litros; diferença acima de 0,002 km/L e divergência entre KM e hodômetros ficam destacadas para conferência, sem substituir os valores de origem.</div>';
-  html += `<div style="overflow-x:auto"><table class="drill-tabela">
-    <thead><tr>
-      <th>Data</th><th>Origem</th><th>Litros</th><th>R$/L Globus</th><th>Valor Globus</th><th>KM entre abastecimentos</th>
-      <th>Hodômetro inicial</th><th>Hodômetro final</th><th>KM acumulado</th><th>km/L recalculado</th><th>Ideal km/L Globus</th><th>Real km/L Globus</th><th>Perda% Globus</th><th>Conferência</th>
-    </tr></thead><tbody>`;
-  s.fills.forEach(f => {
-    const kmLFill = f.kmPorLitroCalculado ?? calcularKmL(f.litros,f.km);
-    const realGlobus = f.kmPorLitroGlobus ?? f.kmPorLitro;
-    const clsKmL = kmLFill < v.exp - TOLERANCIA_KM ? 'crit' : 'ok';
-    const conferencias=[];
-    if(f.divergenciaHodometro) conferencias.push('KM difere do hodômetro');
-    if(f.divergenciaKmL) conferencias.push('Real Globus difere do recálculo');
-    if(!conferencias.length) conferencias.push(realGlobus==null?'Real Globus indisponível':'Compatível com arredondamento');
-    const conferencia=conferencias.join(' · ');
-    html += `<tr>
-      <td class="dt">${dataLabel(parseData(f.data,f.ano))}</td>
-      <td class="tipo tipo-${f.tipo}">${f.tipo==='I'?'Interno':'Externo'}</td>
-      <td class="num">${fmtL(f.litros)}</td>
-      <td class="num">${fmt3safe(f.precoL)}</td>
-      <td class="num">${fmtR(f.valor)}</td>
-      <td class="num">${fmtKmNum(f.km)}</td>
-      <td class="num">${f.hodometroInicial!=null?fmtKmNum(f.hodometroInicial):'—'}</td>
-      <td class="num">${f.hodometroFinal!=null?fmtKmNum(f.hodometroFinal):'—'}</td>
-      <td class="num">${f.kmAcumulado!=null?fmtKmNum(f.kmAcumulado):'—'}</td>
-      <td class="num ${clsKmL}">${kmLFill!=null?fmt3safe(kmLFill):'—'}</td>
-      <td class="num">${f.idealKmL!=null?fmt3safe(f.idealKmL):'—'}</td>
-      <td class="num">${realGlobus!=null?fmt3safe(realGlobus):'—'}</td>
-      <td class="num">${f.perdaPct!=null?fmt2(f.perdaPct):'—'}</td>
-      <td>${conferencia}${f.arquivoFonte?` · ${escapeHtml(f.arquivoFonte)}:${f.linhaFonte}`:''}</td>
-    </tr>`;
+function renderNivel2(p) {
+  const v=FROTA.find(x=>x.p===p), fills=fillsAteReferencia(p);
+  if(!fills.length) return '<div class="sem-dados" style="padding:40px">Sem dados de abastecimento para este veículo.</div>';
+  const meses=agruparPorMes(fills), total=agregarPeriodo(fills);
+  const max=Math.max(1,...meses.map(m=>agregarPeriodo(m.fills).kmL||0));
+  let html=`<div class="rast-resumo">
+    <span><b>${meses.length}</b> mês(es) com registros</span><span class="divisor">·</span>
+    <span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span>
+    <span><b>${fmtKmNum(total.km)}</b> km</span><span class="divisor">·</span>
+    <span><b>${fmtL(total.litros)}</b> litros</span><span class="divisor">·</span>
+    <span>Média do histórico disponível: <b>${total.kmL!=null?fmt3safe(total.kmL):'—'} km/L</b></span>
+  </div>
+  <div class="audit-nota" style="margin:10px 0 14px">A média de cada mês é calculada separadamente: total de KM do mês ÷ total de litros do mês. A referência de comparação é a expectativa cadastrada para o modelo (${fmt2(v.exp)} km/L), não a média de outro mês. Selecione um mês para abrir suas semanas.</div>
+  <div class="drill-spark" style="height:100px;align-items:flex-end;padding:10px 8px">`;
+  meses.forEach(m=>{
+    const r=agregarPeriodo(m.fills), h=r.kmL!=null?Math.max(3,r.kmL/max*100):3;
+    html+=`<div class="drill-spark-bar ${classeBarra(r.kmL,v.exp)}" title="${rotuloMes(m)}: ${r.kmL!=null?fmt3safe(r.kmL):'sem dados'} km/L · ${r.abast} abastecimento(s)" style="height:${h}%;cursor:pointer" onclick="drillAbrirMes('${m.key}')"></div>`;
   });
-  html += `</tbody><tfoot><tr>
-    <td>TOTAL</td><td></td>
-    <td class="num">${fmtL(s.litros)}</td><td></td>
-    <td class="num">${fmtR(s.valor)}</td>
-    <td class="num">${fmtKmNum(s.km)}</td>
-    <td></td><td></td><td></td>
-    <td class="num">${fmt3safe(kmL)}</td><td></td>
-    <td class="num">${s.litrosComRealGlobus>0?fmt3safe(s.kmLGlobusPonderado/s.litrosComRealGlobus):'—'}</td><td></td>
-    <td>${s.divergenciasRealGlobus||s.divergenciasHodometro?'Conferir: '+s.divergenciasRealGlobus+' KM/L · '+s.divergenciasHodometro+' hodômetro(s)':'Sem divergência nessas conferências'}</td>
-  </tr></tfoot></table></div>`;
-  return html;
+  html+='</div><div class="drill-grid">';
+  meses.forEach(m=>{
+    const label=rotuloMes(m), parcial=m.ano===DATA_REF.getFullYear()&&m.mes===DATA_REF.getMonth();
+    html+=renderResumoPeriodo(m,v.exp,label,parcial,`onclick="drillAbrirMes('${m.key}')"`);
+  });
+  return html+'</div>';
+}
+
+function renderNivel3(p, mesKey) {
+  const v=FROTA.find(x=>x.p===p), mes=agruparPorMes(fillsAteReferencia(p)).find(m=>m.key===mesKey);
+  if(!mes) return '<div class="sem-dados">Mês não encontrado.</div>';
+  const semanas=agruparPorSemana(mes.fills), total=agregarPeriodo(mes.fills);
+  let html=`<div class="rast-resumo"><span><b>${rotuloMes(mes)}</b></span><span class="divisor">·</span><span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span><span><b>${fmtKmNum(total.km)}</b> km</span><span class="divisor">·</span><span><b>${fmtL(total.litros)}</b> litros</span><span class="divisor">·</span><span>Média mensal: <b>${total.kmL!=null?fmt3safe(total.kmL):'—'} km/L</b></span></div>
+  <div class="audit-nota" style="margin:10px 0 14px">Cada semana é recalculada com os abastecimentos registrados naquela semana e dentro do mês selecionado. A semana que atravessa dois meses é separada entre os meses para evitar dupla contagem. Referência do modelo: ${fmt2(v.exp)} km/L.</div><div class="drill-grid">`;
+  semanas.forEach(s=>{
+    const key=s.inicio.toISOString().slice(0,10), inicio=s.inicio<mes.inicio?mes.inicio:s.inicio, fim=s.fim>mes.fim?mes.fim:s.fim;
+    const label=dataLabel(inicio)+' – '+dataLabel(fim);
+    const parcial=fim>DATA_REF;
+    html+=renderResumoPeriodo(s,v.exp,label,parcial,`onclick="drillAbrirSemana('${key}')"`);
+  });
+  return html+'</div>';
+}
+
+function renderNivel4(p, semanaKey) {
+  const v=FROTA.find(x=>x.p===p);
+  const mes=agruparPorMes(fillsAteReferencia(p)).find(m=>m.key===state.drillMesKey);
+  if(!mes) return '<div class="sem-dados">Mês não encontrado.</div>';
+  const s=agruparPorSemana(mes.fills).find(x=>x.inicio.toISOString().slice(0,10)===semanaKey);
+  if(!s) return '<div class="sem-dados">Semana não encontrada.</div>';
+  const dias=agruparPorDia(s.fills), total=agregarPeriodo(s.fills);
+  let html=`<div class="rast-resumo"><span><b>${s.label}</b></span><span class="divisor">·</span><span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span><span><b>${fmtKmNum(total.km)}</b> km</span><span class="divisor">·</span><span><b>${fmtL(total.litros)}</b> litros</span><span class="divisor">·</span><span>Média semanal: <b>${total.kmL!=null?fmt3safe(total.kmL):'—'} km/L</b></span></div>
+  <div class="audit-nota" style="margin:10px 0 14px">A visão diária agrupa somente os abastecimentos registrados em cada data. O KM de cada linha é o intervalo entre abastecimentos informado no Globus e pode ter sido percorrido em dias anteriores; portanto, este indicador diário representa a data do lançamento, não uma medição exata do consumo rodado naquele dia. Dias sem lançamento não recebem zero nem entram no cálculo.</div><div class="drill-grid">`;
+  dias.forEach(d=>{
+    const key=d.dt.getFullYear()+'-'+String(d.dt.getMonth()+1).padStart(2,'0')+'-'+String(d.dt.getDate()).padStart(2,'0');
+    const r=agregarPeriodo(d.fills);
+    html+=renderResumoPeriodo(d,v.exp,dataLabel(d.dt),false,`onclick="drillAbrirDia('${key}')"`);
+  });
+  return html+'</div>';
+}
+
+function renderNivel5(p,diaKey) {
+  const v=FROTA.find(x=>x.p===p);
+  const fills=fillsAteReferencia(p).filter(f=>{
+    const dt=parseData(f.data,f.ano);
+    const key=dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');
+    return key===diaKey;
+  });
+  if(!fills.length) return '<div class="sem-dados">Não há abastecimentos registrados nesta data.</div>';
+  const r=agregarPeriodo(fills), st=statusPorKmL(r.kmL,v.exp);
+  let html=`<div class="rast-resumo"><span><b>${dataLabel(parseData(fills[0].data,fills[0].ano))}</b></span><span class="divisor">·</span><span><b>${r.abast}</b> abastecimento(s)</span><span class="divisor">·</span><span><b>${fmtKmNum(r.km)}</b> km informados</span><span class="divisor">·</span><span><b>${fmtL(r.litros)}</b> litros</span><span class="divisor">·</span><span>KM/L do lançamento: <b>${r.kmL!=null?fmt3safe(r.kmL):'—'}</b></span><span class="pill-status ${st.cls}">${st.label}</span></div>
+  <div class="audit-nota" style="margin:10px 0">Este detalhe mostra os registros associados à data. O KM entre abastecimentos não deve ser interpretado como quilometragem necessariamente percorrida no mesmo dia.</div>
+  <div style="overflow-x:auto"><table class="drill-tabela"><thead><tr><th>Data</th><th>Origem</th><th>Litros</th><th>Valor</th><th>KM entre abastecimentos</th><th>km/L calculado no lançamento</th><th>Real Globus</th><th>Conferência</th></tr></thead><tbody>`;
+  fills.forEach(f=>{
+    const calc=f.km!=null&&f.litros>0?f.km/f.litros:null, real=f.kmPorLitroGlobus??f.kmPorLitro;
+    const conf=[f.divergenciaHodometro?'KM difere do hodômetro':null,f.divergenciaKmL?'Real Globus difere do recálculo':null].filter(Boolean).join(' · ')||'Conferir origem e intervalo';
+    html+=`<tr><td class="dt">${dataLabel(parseData(f.data,f.ano))}</td><td class="tipo tipo-${f.tipo}">${f.tipo==='I'?'Interno':'Externo'}</td><td class="num">${fmtL(f.litros)}</td><td class="num">${fmtR(f.valor)}</td><td class="num">${fmtKmNum(f.km)}</td><td class="num">${calc!=null?fmt3safe(calc):'—'}</td><td class="num">${real!=null?fmt3safe(real):'—'}</td><td>${conf}</td></tr>`;
+  });
+  return html+`</tbody><tfoot><tr><td>TOTAL</td><td></td><td class="num">${fmtL(r.litros)}</td><td class="num">${fmtR(r.valor)}</td><td class="num">${fmtKmNum(r.km)}</td><td class="num">${r.kmL!=null?fmt3safe(r.kmL):'—'}</td><td></td><td></td></tr></tfoot></table></div>`;
 }
 
 /* ═══════════════════════════════════════════════════════
