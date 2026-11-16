@@ -640,7 +640,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
 <div class="modal-overlay" id="modalRast" hidden>
   <div class="modal modal--largo" role="dialog" aria-modal="true">
     <div class="modal-head modal-head--drill">
-      <div><div class="modal-title">Rastreador — análise do prefixo 200</div><div class="modal-sub">Histórico mensal · semanas · dias · eventos originais</div></div>
+      <div><div class="modal-title">Rastreador — análise por veículo</div><div class="modal-sub">Histórico mensal · semanas · dias · eventos originais</div></div>
       <div class="modal-head-actions"><button class="drill-back" id="drillBack" onclick="r200Voltar()" style="display:none;">← Voltar</button><button class="modal-x" onclick="fecharModalRast()">×</button></div>
     </div>
     <div class="modal-body" id="modalRastBody"></div>
@@ -1970,6 +1970,8 @@ function abrirModalRastLegado() {
    equivale a zero e distância zero permanece como registro válido.
    ═══════════════════════════════════════════════════════ */
 let R200_RAST_DATA = null;
+let RAST_DADOS = {};
+let RAST_PREFIXO_ATUAL = '200';
 let R200_VIEW = { level: 'mes', month: null, week: null, day: null };
 
 function r200Esc(v) {
@@ -2020,12 +2022,7 @@ function r200MonthWeeks(monthKey) {
       days:dates.filter(d=>r200Records(d).length>0).length};
   });
 }
-function r200BaseVisible() {
-  const q=state.busca.trim().toLowerCase();
-  const contratoOk=state.contrato==='todos'||state.contrato==='res';
-  const buscaOk=!q||'200'.includes(q)||'lmr3j62'.includes(q)||'m.benz/marcopolo senior on'.includes(q);
-  return contratoOk&&buscaOk;
-}
+function r200BaseVisible() { return !!R200_RAST_DATA; }
 function r200Header(title,sub,back) {
   return '<div class="r200-top"><div><div class="r200-kicker">RASTREADOR · NOVA BASE</div><div class="r200-title">'+title+'</div><div class="r200-sub">'+sub+'</div></div>'+
     (back?'<button class="r200-back" onclick="r200Voltar()">← Voltar</button>':'')+'</div>';
@@ -2037,10 +2034,11 @@ function r200Render() {
   R200_VIEW.month=monthKey;
   const m=months.find(x=>x.key===monthKey)||months[months.length-1];
   const weeks=r200MonthWeeks(monthKey);
-  const monthSelect=months.map(x=>'<option value="'+x.key+'" '+(x.key===monthKey?'selected':'')+'>'+x.label+' 2026</option>').join('');
+  const monthSelect=months.map(x=>'<option value="'+x.key+'" '+(x.key===monthKey?'selected':'')+'>'+x.label+' '+x.key.slice(0,4)+'</option>').join('');
+  const vehicleSelect=['200','202','208'].map(p=>{const d=RAST_DADOS[p];return d?'<option value="'+p+'" '+(p===RAST_PREFIXO_ATUAL?'selected':'')+'>Prefixo '+p+' · '+r200Esc(d.vehicle.plate.match(/\(([^)]+)\)/)?.[1]||d.vehicle.plate)+'</option>':'';}).join('');
   let html='<div class="r200-section" id="r200RastSection">';
   if(R200_VIEW.level==='mes') {
-    html+='<section class="monthly-overview"><div class="monthly-topline"><div><div class="monthly-eyebrow">VEÍCULO EM ANÁLISE</div><div class="monthly-vehicle">Prefixo 200 · '+r200Esc(data.vehicle.plate)+' · Rastreador</div></div><label class="monthly-month-select">MÊS ANALISADO <select id="r200MonthSelect">'+monthSelect+'</select></label></div>';
+    html+='<section class="monthly-overview"><div class="monthly-topline"><div><div class="monthly-eyebrow">VEÍCULO EM ANÁLISE</div><div class="monthly-vehicle">Prefixo '+r200Esc(data.vehicle.prefix)+' · '+r200Esc(data.vehicle.plate)+' · Rastreador</div><label class="monthly-month-select" style="display:block;margin-top:12px">VEÍCULO <select id="r200VehicleSelect">'+vehicleSelect+'</select></label></div><label class="monthly-month-select">MÊS ANALISADO <select id="r200MonthSelect">'+monthSelect+'</select></label></div>';
     html+='<div class="monthly-kpis"><div class="monthly-kpi"><span>QUILOMETRAGEM DO MÊS</span><strong>'+r200Km(m.total_km)+'</strong><em>Soma da coluna Distância</em></div><div class="monthly-kpi"><span>REGISTROS</span><strong>'+m.records+'</strong><em>Eventos no relatório original</em></div><div class="monthly-kpi"><span>DIAS COM REGISTROS</span><strong>'+data.days.filter(d=>d.date.startsWith(monthKey)).length+'</strong><em>Dias com eventos registrados</em></div><div class="monthly-kpi"><span>ARQUIVO-FONTE</span><strong style="font-size:13px;white-space:normal">'+r200Esc(m.source)+'</strong><em>Relatório original</em></div></div><div class="monthly-history">Período total disponível: <b>'+r200Br(data.period.start)+' a '+r200Br(data.period.end)+'</b> · '+data.records.length+' eventos em '+months.length+' relatórios.</div></section>';
     html+='<div class="monthly-weeks-title"><b>Semanas do mês</b><span>Selecione um card para investigar os dias</span></div><div class="drill-grid monthly-weeks-grid">';
     weeks.forEach((w,i)=>{const max=Math.max(1,...w.dates.map(d=>r200DaySummary(d).km));html+='<div class="drill-semana" onclick="r200AbrirSemana(\''+w.key+'\')"><div class="drill-semana-head"><span class="drill-semana-data">Semana '+(i+1)+' · '+r200Br(w.start)+' – '+r200Br(w.end)+'</span><span class="drill-semana-fills">'+w.rows.length+' registros</span></div><div class="drill-semana-km">'+r200Km(w.km)+'<span class="un">no período</span></div><div class="drill-week-days">';w.dates.forEach(d=>{const x=r200DaySummary(d),h=x.km?Math.max(3,x.km/max*100):0;html+='<div class="drill-week-day"><div class="drill-week-track"><span class="drill-week-bar '+(x.count?'':'sem-dado')+'" style="height:'+h+'%"></span></div><span class="drill-week-name">'+['DOM','SEG','TER','QUA','QUI','SEX','SÁB'][r200DateObj(d).getDay()]+'</span></div>';});html+='</div><div class="drill-semana-meta"><div class="linha"><span>Dias com registros</span><b>'+w.days+'</b></div><div class="linha"><span>Participação no mês</span><b>'+(m.total_km?w.km/m.total_km*100:0).toFixed(1).replace('.',',')+'%</b></div></div></div>';});
@@ -2065,6 +2063,14 @@ function r200Atualizar() {
   if(back){back.onclick=r200Voltar;back.style.display=R200_VIEW.level==='mes'?'none':'inline-block';}
   const sel=document.getElementById('r200MonthSelect');
   if(sel)sel.addEventListener('change',e=>r200AbrirMes(e.target.value));
+  const vs=document.getElementById('r200VehicleSelect');
+  if(vs)vs.addEventListener('change',e=>r200AbrirVeiculo(e.target.value));
+}
+
+function r200AbrirVeiculo(prefix) {
+  if(!RAST_DADOS[prefix]) return;
+  RAST_PREFIXO_ATUAL=prefix; R200_RAST_DATA=RAST_DADOS[prefix];
+  R200_VIEW={level:'mes',month:null,week:null,day:null}; r200Atualizar();
 }
 
 function r200AbrirMes(key) { R200_VIEW={level:'mes',month:key,week:null,day:null}; r200Atualizar(); }
@@ -2077,17 +2083,21 @@ function r200Voltar() {
 }
 
 async function abrirModalRast() {
-  abrirModalRastLegado();
   R200_VIEW={level:'mes',month:null,week:null,day:null};
   const body=document.getElementById('modalRastBody');
-  if(!r200BaseVisible()) return;
-  if(!R200_RAST_DATA){
-    body.innerHTML='<div class="sem-dados" id="r200RastSection">Carregando os relatórios originais do prefixo 200…</div>';
-    try{const resp=await fetch('dados/rastreador-r200.json',{cache:'no-cache'});if(!resp.ok)throw new Error('HTTP '+resp.status);R200_RAST_DATA=await resp.json();}
-    catch(err){const el=document.getElementById('r200RastSection');if(el)el.textContent='Não foi possível carregar a base original do prefixo 200.';return;}
+  document.getElementById('modalRast').hidden=false; document.body.style.overflow='hidden';
+  if(!RAST_DADOS['200']) {
+    body.innerHTML='<div class="sem-dados">Carregando os relatórios dos rastreadores…</div>';
+    try {
+      const prefixes=['200','202','208'];
+      const loaded=await Promise.all(prefixes.map(async p=>{const resp=await fetch('dados/rastreador-r'+p+'.json',{cache:'no-cache'});if(!resp.ok)throw new Error('Prefixo '+p+': HTTP '+resp.status);return [p,await resp.json()];}));
+      RAST_DADOS=Object.fromEntries(loaded);
+    } catch(err) { body.innerHTML='<div class="sem-dados">Não foi possível carregar todos os relatórios dos rastreadores. '+r200Esc(err.message)+'</div>'; return; }
   }
+  RAST_PREFIXO_ATUAL='200'; R200_RAST_DATA=RAST_DADOS[RAST_PREFIXO_ATUAL];
   body.innerHTML=r200Render();
   const sel=document.getElementById('r200MonthSelect');if(sel)sel.addEventListener('change',e=>r200AbrirMes(e.target.value));
+  const vs=document.getElementById('r200VehicleSelect');if(vs)vs.addEventListener('change',e=>r200AbrirVeiculo(e.target.value));
   const back=document.getElementById('drillBack');if(back){back.onclick=r200Voltar;back.style.display='none';}
 }
 
