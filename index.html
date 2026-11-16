@@ -438,6 +438,22 @@ tbody tr.clicavel-linha:hover{background:#302529!important;}
 /* KM/L acima da referência: número azul na tabela principal */
 tbody td.num.azul,
 tfoot td.num.azul { color:#64b5f6!important; }
+
+/* Compactação da listagem principal: melhor distribuição das colunas */
+#tabela{table-layout:fixed;width:100%;}
+#tabela th:nth-child(1),#tabela td:nth-child(1){width:7%;}
+#tabela th:nth-child(2),#tabela td:nth-child(2){width:25%;}
+#tabela th:nth-child(3),#tabela td:nth-child(3){width:9%;}
+#tabela th:nth-child(4),#tabela td:nth-child(4){width:9%;}
+#tabela th:nth-child(5),#tabela td:nth-child(5){width:10%;}
+#tabela th:nth-child(6),#tabela td:nth-child(6){width:13%;}
+#tabela th:nth-child(7),#tabela td:nth-child(7){width:9%;}
+#tabela th:nth-child(8),#tabela td:nth-child(8){width:9%;}
+#tabela th:nth-child(9),#tabela td:nth-child(9){width:9%;}
+#tabela thead th:nth-child(2){white-space:normal;line-height:1.25;padding-left:6px;padding-right:6px;}
+#tabela tbody td.modelo{white-space:normal;padding:8px 7px;line-height:1.25;overflow-wrap:anywhere;}
+#tabela tbody td:nth-child(3){padding-left:5px;padding-right:5px;}
+#tabela tbody td:nth-child(3) .pill{padding:3px 7px;font-size:10px;}
 </style>
 </head>
 <body>
