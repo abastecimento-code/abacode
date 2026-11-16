@@ -2114,13 +2114,19 @@ async function abrirModalRast() {
   if(!RAST_CADASTRO) {
     body.innerHTML='<div class="sem-dados">Carregando cadastro dos veículos e relatórios…</div>';
     try {
-      const [cad, ...loaded]=await Promise.all([
-        fetch('dados/rastreador-cadastro.json',{cache:'no-cache'}),
-        ...['200','202','208','211'].map(p=>fetch('dados/rastreador-r'+p+'.json',{cache:'no-cache'}))
-      ]);
+      const cad=await fetch('dados/rastreador-cadastro.json',{cache:'no-cache'});
       if(!cad.ok)throw new Error('Cadastro: HTTP '+cad.status);
       RAST_CADASTRO=await cad.json();
-      RAST_DADOS=Object.fromEntries(await Promise.all(loaded.map(async(resp,i)=>{if(!resp.ok)throw new Error('Prefixo '+['200','202','208','211'][i]+': HTTP '+resp.status);return [['200','202','208','211'][i],await resp.json()];})));
+      const cadastrados=RAST_CADASTRO.contracts.flatMap(c=>c.vehicles)
+        .filter(v=>v.status==='integrated'&&v.data_file);
+      const loaded=await Promise.all(cadastrados.map(async v=>{
+        const resp=await fetch(v.data_file,{cache:'no-cache'});
+        if(!resp.ok)throw new Error('Prefixo '+v.prefix+': HTTP '+resp.status+' ('+v.data_file+')');
+        return [String(v.prefix),await resp.json()];
+      }));
+      RAST_DADOS=Object.fromEntries(loaded);
+      const faltantes=cadastrados.filter(v=>!RAST_DADOS[String(v.prefix)]);
+      if(faltantes.length)throw new Error('Há veículos cadastrados sem base carregada: '+faltantes.map(v=>v.prefix).join(', '));
     } catch(err) { body.innerHTML='<div class="sem-dados">Não foi possível carregar o cadastro do Rastreador. '+r200Esc(err.message)+'</div>'; return; }
   }
   body.innerHTML=r200Render();
