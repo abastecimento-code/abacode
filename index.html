@@ -2116,11 +2116,11 @@ async function abrirModalRast() {
     try {
       const [cad, ...loaded]=await Promise.all([
         fetch('dados/rastreador-cadastro.json',{cache:'no-cache'}),
-        ...['200','202','208'].map(p=>fetch('dados/rastreador-r'+p+'.json',{cache:'no-cache'}))
+        ...['200','202','208','211'].map(p=>fetch('dados/rastreador-r'+p+'.json',{cache:'no-cache'}))
       ]);
       if(!cad.ok)throw new Error('Cadastro: HTTP '+cad.status);
       RAST_CADASTRO=await cad.json();
-      RAST_DADOS=Object.fromEntries(await Promise.all(loaded.map(async(resp,i)=>{if(!resp.ok)throw new Error('Prefixo '+['200','202','208'][i]+': HTTP '+resp.status);return [['200','202','208'][i],await resp.json()];})));
+      RAST_DADOS=Object.fromEntries(await Promise.all(loaded.map(async(resp,i)=>{if(!resp.ok)throw new Error('Prefixo '+['200','202','208','211'][i]+': HTTP '+resp.status);return [['200','202','208','211'][i],await resp.json()];})));
     } catch(err) { body.innerHTML='<div class="sem-dados">Não foi possível carregar o cadastro do Rastreador. '+r200Esc(err.message)+'</div>'; return; }
   }
   body.innerHTML=r200Render();
