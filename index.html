@@ -434,6 +434,10 @@ tbody tr.linha-acima td:first-child{
   box-shadow:none!important;
 }
 tbody tr.clicavel-linha:hover{background:#302529!important;}
+
+/* KM/L acima da referência: número azul na tabela principal */
+tbody td.num.azul,
+tfoot td.num.azul { color:#64b5f6!important; }
 </style>
 </head>
 <body>
@@ -3018,8 +3022,3 @@ Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FR
 </script>
 </body>
 </html>
-
-/* AJUSTE FINAL — azul visível nos números de km/L acima da referência */
-/* A classe 'azul' já é atribuída à célula km/L quando supera a referência. */
-tbody td.num.azul,
-tfoot td.num.azul { color:#64b5f6!important; }
