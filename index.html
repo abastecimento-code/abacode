@@ -2345,6 +2345,8 @@ function renderNivel2(p) {
     <span><b>${total.litros!=null?fmtL(total.litros):'—'}</b> litros</span><span class="divisor">·</span>
     <span>Média do histórico disponível: <b>${total.kmL!=null?fmt3safe(total.kmL):'Dados insuficientes'} km/L</b></span>
   </div>
+  const audit=calcularAuditoria(p,'acumulado');
+  if(audit) html+=`<div class="audit-nota" style="margin:10px 0 14px"><b>Conferência complementar — Rastreador × Globus</b><br>Rastreador: ${fmtKmNum(audit.kmRast)} km · Globus: ${fmtKmNum(audit.kmGlobus)} km · diferença: ${fmtKmNum(audit.deltaKm)} km (${fmt1(audit.deltaKmPct)}%) · ${audit.rastDiasComDados}/${audit.rastDiasEsperados} dias com dados · ${audit.rastFalhas} falhas. Esta conferência permanece separada da média de consumo mensal.</div>`;
   <div class="audit-nota" style="margin:10px 0 14px">A média de cada mês é calculada separadamente: total de KM do mês ÷ total de litros do mês. A referência de comparação é a expectativa cadastrada para o modelo (${fmt2(v.exp)} km/L), não a média de outro mês. Selecione um mês para abrir suas semanas.</div>
   <div class="drill-spark" style="height:100px;align-items:flex-end;padding:10px 8px">`;
   meses.forEach(m=>{
@@ -2363,7 +2365,7 @@ function renderNivel3(p, mesKey) {
   const v=FROTA.find(x=>x.p===p), mes=agruparPorMes(fillsAteReferencia(p)).find(m=>m.key===mesKey);
   if(!mes) return '<div class="sem-dados">Mês não encontrado.</div>';
   const semanas=agruparPorSemana(mes.fills), total=agregarPeriodo(mes.fills);
-  let html=`<div class="rast-resumo"><span><b>${rotuloMes(mes)}</b></span><span class="divisor">·</span><span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span><span><b>${fmtKmNum(total.km)}</b> km</span><span class="divisor">·</span><span><b>${fmtL(total.litros)}</b> litros</span><span class="divisor">·</span><span>Média mensal: <b>${total.kmL!=null?fmt3safe(total.kmL):'—'} km/L</b></span></div>
+  let html=`<div class="rast-resumo"><span><b>${rotuloMes(mes)}</b></span><span class="divisor">·</span><span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span><span><b>${total.km!=null?fmtKmNum(total.km):'—'}</b> km</span><span class="divisor">·</span><span><b>${total.litros!=null?fmtL(total.litros):'—'}</b> litros</span><span class="divisor">·</span><span>Média mensal: <b>${total.kmL!=null?fmt3safe(total.kmL):'Dados insuficientes'} km/L</b></span></div>
   <div class="audit-nota" style="margin:10px 0 14px">Cada semana é recalculada com os abastecimentos registrados naquela semana e dentro do mês selecionado. A semana que atravessa dois meses é separada entre os meses para evitar dupla contagem. Referência do modelo: ${fmt2(v.exp)} km/L.</div><div class="drill-grid">`;
   semanas.forEach(s=>{
     const key=s.inicio.toISOString().slice(0,10), inicio=s.inicio<mes.inicio?mes.inicio:s.inicio, fim=s.fim>mes.fim?mes.fim:s.fim;
