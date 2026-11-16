@@ -2258,7 +2258,7 @@ function renderNivel1() {
     ultimas8.forEach(s => {
       const kml = calcularKmL(s.litros, s.km) || 0;
       const h = maxKmL > 0 ? Math.max(2, (kml / maxKmL) * 100) : 2;
-      const cls = kml < v.exp - TOLERANCIA_KM ? 'crit' : 'ok';
+      const cls = classeBarra(kml, v.exp);
       spark += `<div class="drill-spark-bar ${cls}" title="${s.label}: ${fmt2(kml)} km/L recalculado · ${s.fills.length} abastecimento(s)" style="height:${h}%"></div>`;
     });
     spark += '</div>';
