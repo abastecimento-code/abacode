@@ -2383,7 +2383,7 @@ function renderNivel4(p, semanaKey) {
   const s=agruparPorSemana(mes.fills).find(x=>x.inicio.toISOString().slice(0,10)===semanaKey);
   if(!s) return '<div class="sem-dados">Semana não encontrada.</div>';
   const dias=agruparPorDia(s.fills), total=agregarPeriodo(s.fills);
-  let html=`<div class="rast-resumo"><span><b>${s.label}</b></span><span class="divisor">·</span><span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span><span><b>${fmtKmNum(total.km)}</b> km</span><span class="divisor">·</span><span><b>${fmtL(total.litros)}</b> litros</span><span class="divisor">·</span><span>Média semanal: <b>${total.kmL!=null?fmt3safe(total.kmL):'—'} km/L</b></span></div>
+  let html=`<div class="rast-resumo"><span><b>${s.label}</b></span><span class="divisor">·</span><span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span><span><b>${total.km!=null?fmtKmNum(total.km):'—'}</b> km</span><span class="divisor">·</span><span><b>${total.litros!=null?fmtL(total.litros):'—'}</b> litros</span><span class="divisor">·</span><span>Média semanal: <b>${total.kmL!=null?fmt3safe(total.kmL):'Dados insuficientes'} km/L</b></span></div>
   <div class="audit-nota" style="margin:10px 0 14px">A visão diária agrupa somente os abastecimentos registrados em cada data. O KM de cada linha é o intervalo entre abastecimentos informado no Globus e pode ter sido percorrido em dias anteriores; portanto, este indicador diário representa a data do lançamento, não uma medição exata do consumo rodado naquele dia. Dias sem lançamento não recebem zero nem entram no cálculo.</div><div class="drill-grid">`;
   dias.forEach(d=>{
     const key=d.dt.getFullYear()+'-'+String(d.dt.getMonth()+1).padStart(2,'0')+'-'+String(d.dt.getDate()).padStart(2,'0');
@@ -2402,7 +2402,7 @@ function renderNivel5(p,diaKey) {
   });
   if(!fills.length) return '<div class="sem-dados">Não há abastecimentos registrados nesta data.</div>';
   const r=agregarPeriodo(fills), st=statusPorKmL(r.kmL,v.exp);
-  let html=`<div class="rast-resumo"><span><b>${dataLabel(parseData(fills[0].data,fills[0].ano))}</b></span><span class="divisor">·</span><span><b>${r.abast}</b> abastecimento(s)</span><span class="divisor">·</span><span><b>${fmtKmNum(r.km)}</b> km informados</span><span class="divisor">·</span><span><b>${fmtL(r.litros)}</b> litros</span><span class="divisor">·</span><span>KM/L do lançamento: <b>${r.kmL!=null?fmt3safe(r.kmL):'—'}</b></span><span class="pill-status ${st.cls}">${st.label}</span></div>
+  let html=`<div class="rast-resumo"><span><b>${dataLabel(parseData(fills[0].data,fills[0].ano))}</b></span><span class="divisor">·</span><span><b>${r.abast}</b> abastecimento(s)</span><span class="divisor">·</span><span><b>${r.km!=null?fmtKmNum(r.km):'—'}</b> km informados</span><span class="divisor">·</span><span><b>${r.litros!=null?fmtL(r.litros):'—'}</b> litros</span><span class="divisor">·</span><span>KM/L do lançamento: <b>${r.kmL!=null?fmt3safe(r.kmL):'—'}</b></span><span class="pill-status ${st.cls}">${st.label}</span></div>
   <div class="audit-nota" style="margin:10px 0">Este detalhe mostra os registros associados à data. O KM entre abastecimentos não deve ser interpretado como quilometragem necessariamente percorrida no mesmo dia.</div>
   <div style="overflow-x:auto"><table class="drill-tabela"><thead><tr><th>Data</th><th>Origem</th><th>Litros</th><th>Valor</th><th>KM entre abastecimentos</th><th>km/L calculado no lançamento</th><th>Real Globus</th><th>Conferência</th></tr></thead><tbody>`;
   fills.forEach(f=>{
