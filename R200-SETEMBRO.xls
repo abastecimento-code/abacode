@@ -1,0 +1,237 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Placa</th><th scope="col">Motorista</th><th scope="col">Reinicio</th><th scope="col">End. Inicio</th><th scope="col">Ign. Ligada</th><th scope="col">Hor&#237;metro</th><th scope="col">Distancia</th><th scope="col">Dist. FHT</th><th scope="col">Tempo Mov.</th><th scope="col">Ligado sem Mov.</th><th scope="col">Vel. Max</th><th scope="col">Consumo</th><th scope="col">Gasto</th><th scope="col">Ign. Desligada</th><th scope="col">End. Final</th>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:00</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 15:08</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:57</td><td>00:04:03</td><td>9</td><td>0,00</td><td>0,00</td><td>01/09/2026 15:13</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:04:08</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 15:17</td><td>00:16:00</td><td>0</td><td>0</td><td>00:00:25</td><td>00:15:35</td><td>3</td><td>0,00</td><td>0,00</td><td>01/09/2026 15:32</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:31:48</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 16:04</td><td>00:09:00</td><td>0,5</td><td>0</td><td>00:03:12</td><td>00:05:48</td><td>19</td><td>0,00</td><td>0,00</td><td>01/09/2026 16:12</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:06:13</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 16:18</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:57</td><td>00:02:03</td><td>7</td><td>0,00</td><td>0,00</td><td>01/09/2026 16:21</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:36:05</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 17:57</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>01/09/2026 17:58</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:58:54</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 19:57</td><td>00:18:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:18:00</td><td>0</td><td>0,00</td><td>0,00</td><td>01/09/2026 20:15</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:27</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 20:15</td><td>00:20:00</td><td>6,0</td><td>0</td><td>00:14:59</td><td>00:05:01</td><td>47</td><td>0,00</td><td>0,00</td><td>01/09/2026 20:35</td><td>Rua Visconde Alvarenga, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:14:29</td><td>Rua Visconde Alvarenga, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 21:50</td><td>02:42:00</td><td>123,5</td><td>10,2</td><td>02:32:55</td><td>00:09:05</td><td>96</td><td>0,00</td><td>0,00</td><td>02/09/2026 00:31</td><td>Rua Professora Ilma Moreira Ramos, Quissam&#227;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:16</td><td>Rua Professora Ilma Moreira Ramos, Quissam&#227;, Rio de Janeiro, Brasil</td><td>02/09/2026 00:31</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>02/09/2026 00:32</td><td>Rua Professora Ilma Moreira Ramos, Quissam&#227;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>14:42:37</td><td>Rua Professora Ilma Moreira Ramos, Quissam&#227;, Rio de Janeiro, Brasil</td><td>02/09/2026 15:15</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>02/09/2026 15:15</td><td>Rua Professora Ilma Moreira Ramos, Quissam&#227;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:05:34</td><td>Rua Professora Ilma Moreira Ramos, Quissam&#227;, Rio de Janeiro, Brasil</td><td>02/09/2026 15:20</td><td>03:14:00</td><td>111,7</td><td>0</td><td>02:49:26</td><td>00:24:34</td><td>96</td><td>0,00</td><td>0,00</td><td>02/09/2026 18:34</td><td>Rua Santiago Carvalhido Filho, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:04:42</td><td>Rua Santiago Carvalhido Filho, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>02/09/2026 18:38</td><td>00:26:00</td><td>4,7</td><td>0</td><td>00:14:17</td><td>00:11:43</td><td>64</td><td>0,00</td><td>0,00</td><td>02/09/2026 19:04</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:01:38</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>02/09/2026 19:06</td><td>00:06:00</td><td>0</td><td>0</td><td>00:01:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>02/09/2026 19:12</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:29:57</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>02/09/2026 19:42</td><td>00:22:00</td><td>0,2</td><td>0</td><td>00:02:04</td><td>00:19:56</td><td>10</td><td>0,00</td><td>0,00</td><td>02/09/2026 20:02</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:39</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>02/09/2026 20:03</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>02/09/2026 20:03</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:13:09</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>02/09/2026 21:16</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:45</td><td>00:02:15</td><td>6</td><td>0,00</td><td>0,00</td><td>02/09/2026 21:19</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:13:35</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>02/09/2026 21:33</td><td>02:41:00</td><td>99,1</td><td>0</td><td>01:49:46</td><td>00:51:14</td><td>96</td><td>0,00</td><td>0,00</td><td>03/09/2026 09:56</td><td>Rodovia Amaral Peixoto, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:04:58</td><td>Rodovia Amaral Peixoto, Maca&#233;, Rio de Janeiro, Brasil</td><td>03/09/2026 10:01</td><td>00:28:00</td><td>22,5</td><td>0</td><td>00:23:55</td><td>00:04:05</td><td>86</td><td>0,00</td><td>0,00</td><td>03/09/2026 10:28</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:41:40</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>03/09/2026 11:10</td><td>00:10:00</td><td>0</td><td>0</td><td>00:00:02</td><td>00:09:58</td><td>0</td><td>0,00</td><td>0,00</td><td>03/09/2026 11:19</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>03:21:05</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>03/09/2026 14:40</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:18</td><td>00:06:42</td><td>5</td><td>0,00</td><td>0,00</td><td>03/09/2026 14:48</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:32</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>03/09/2026 14:48</td><td>00:18:00</td><td>0</td><td>0</td><td>00:02:40</td><td>00:15:20</td><td>5</td><td>0,00</td><td>0,00</td><td>03/09/2026 15:06</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:04:03</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>03/09/2026 15:10</td><td>00:14:00</td><td>3,6</td><td>0</td><td>00:06:53</td><td>00:07:07</td><td>72</td><td>0,00</td><td>0,00</td><td>03/09/2026 15:23</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:05:23</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>03/09/2026 15:28</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>4</td><td>0,00</td><td>0,00</td><td>03/09/2026 15:29</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:54:50</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>03/09/2026 16:24</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>03/09/2026 16:29</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:22</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>03/09/2026 16:29</td><td>03:34:00</td><td>117,0</td><td>0</td><td>02:38:01</td><td>00:55:59</td><td>93</td><td>0,00</td><td>0,00</td><td>03/09/2026 20:03</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:25:28</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>03/09/2026 21:28</td><td>03:12:00</td><td>143,6</td><td>4,7</td><td>02:47:33</td><td>00:24:27</td><td>100</td><td>0,00</td><td>0,00</td><td>04/09/2026 00:40</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>03:41:50</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>04/09/2026 04:22</td><td>00:14:00</td><td>0,1</td><td>0</td><td>00:00:53</td><td>00:13:07</td><td>7</td><td>0,00</td><td>0,00</td><td>04/09/2026 04:35</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:46:40</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>04/09/2026 06:22</td><td>01:48:00</td><td>40,7</td><td>0</td><td>01:27:59</td><td>00:20:01</td><td>75</td><td>0,00</td><td>0,00</td><td>04/09/2026 08:10</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:25:54</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>04/09/2026 08:36</td><td>00:38:00</td><td>0,2</td><td>0</td><td>00:02:38</td><td>00:35:22</td><td>10</td><td>0,00</td><td>0,00</td><td>04/09/2026 09:14</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:11:41</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>04/09/2026 10:26</td><td>00:11:00</td><td>0,7</td><td>0</td><td>00:04:24</td><td>00:06:36</td><td>39</td><td>0,00</td><td>0,00</td><td>04/09/2026 10:36</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:15:33</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>04/09/2026 17:52</td><td>02:20:00</td><td>111,5</td><td>0</td><td>01:56:58</td><td>00:23:02</td><td>103</td><td>0,00</td><td>0,00</td><td>04/09/2026 20:12</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:52</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>04/09/2026 20:12</td><td>00:04:00</td><td>0</td><td>0</td><td>00:01:00</td><td>00:03:00</td><td>4</td><td>0,00</td><td>0,00</td><td>04/09/2026 20:15</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:05:44</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>04/09/2026 20:21</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>04/09/2026 20:21</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>12:03:06</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>05/09/2026 08:24</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/09/2026 08:25</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>02:16:56</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>05/09/2026 10:42</td><td>00:17:00</td><td>0</td><td>0</td><td>00:01:09</td><td>00:15:51</td><td>4</td><td>0,00</td><td>0,00</td><td>05/09/2026 10:58</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:14:10</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>05/09/2026 11:12</td><td>00:06:00</td><td>0</td><td>0</td><td>00:01:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/09/2026 11:18</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>19:16:54</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>06/09/2026 06:35</td><td>01:53:00</td><td>61,7</td><td>0</td><td>01:25:27</td><td>00:27:33</td><td>83</td><td>0,00</td><td>0,00</td><td>06/09/2026 08:27</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:03:59</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>06/09/2026 08:31</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>06/09/2026 08:35</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>04:07:28</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>06/09/2026 12:43</td><td>02:01:00</td><td>63,7</td><td>0</td><td>01:35:38</td><td>00:25:22</td><td>75</td><td>0,00</td><td>0,00</td><td>06/09/2026 14:43</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:51:03</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>06/09/2026 15:34</td><td>00:10:00</td><td>2,9</td><td>0</td><td>00:07:41</td><td>00:02:19</td><td>57</td><td>0,00</td><td>0,00</td><td>06/09/2026 15:44</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:47</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>06/09/2026 15:45</td><td>05:54:00</td><td>0</td><td>0</td><td>00:00:00</td><td>05:54:00</td><td>0</td><td>0,00</td><td>0,00</td><td>06/09/2026 21:38</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>12:35:42</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>07/09/2026 10:14</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>07/09/2026 10:15</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>22:12:16</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 08:27</td><td>00:32:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:32:00</td><td>4</td><td>0,00</td><td>0,00</td><td>08/09/2026 08:59</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:04:01</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 09:03</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>08/09/2026 09:04</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>04:34:27</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 13:38</td><td>00:05:00</td><td>0</td><td>0</td><td>00:01:01</td><td>00:03:59</td><td>14</td><td>0,00</td><td>0,00</td><td>08/09/2026 13:43</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:44</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 13:44</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>08/09/2026 13:46</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:33:21</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 15:19</td><td>00:13:00</td><td>0</td><td>0</td><td>00:00:31</td><td>00:12:29</td><td>5</td><td>0,00</td><td>0,00</td><td>08/09/2026 15:32</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:03:28</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 15:35</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:37</td><td>00:01:23</td><td>5</td><td>0,00</td><td>0,00</td><td>08/09/2026 15:37</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:33:13</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 16:10</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:42</td><td>00:02:18</td><td>7</td><td>0,00</td><td>0,00</td><td>08/09/2026 16:13</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:12:31</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 16:26</td><td>00:20:00</td><td>0,2</td><td>0</td><td>00:02:33</td><td>00:17:27</td><td>10</td><td>0,00</td><td>0,00</td><td>08/09/2026 16:45</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:36:18</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 18:22</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:09</td><td>00:02:51</td><td>4</td><td>0,00</td><td>0,00</td><td>08/09/2026 18:24</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:06:15</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 18:31</td><td>00:13:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:13:00</td><td>3</td><td>0,00</td><td>0,00</td><td>08/09/2026 18:44</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:03:44</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 18:47</td><td>00:07:00</td><td>0</td><td>0</td><td>00:01:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>08/09/2026 18:54</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>42:24:11</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>10/09/2026 13:18</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:58</td><td>00:04:02</td><td>6</td><td>0,00</td><td>0,00</td><td>10/09/2026 13:22</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:47:33</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>10/09/2026 15:10</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>10/09/2026 15:14</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:25:58</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>10/09/2026 16:40</td><td>00:21:00</td><td>0</td><td>0</td><td>00:00:37</td><td>00:20:23</td><td>9</td><td>0,00</td><td>0,00</td><td>10/09/2026 16:59</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>23:00:23</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>11/09/2026 16:00</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>11/09/2026 16:01</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>12:45:28</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>12/09/2026 04:47</td><td>04:08:00</td><td>126,0</td><td>0</td><td>02:59:30</td><td>01:08:30</td><td>93</td><td>0,00</td><td>0,00</td><td>12/09/2026 08:55</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:28:16</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>12/09/2026 16:23</td><td>04:32:00</td><td>128,7</td><td>0</td><td>03:16:32</td><td>01:15:28</td><td>95</td><td>0,00</td><td>0,00</td><td>12/09/2026 20:54</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:58:58</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>13/09/2026 04:53</td><td>04:09:00</td><td>126,4</td><td>0</td><td>03:01:32</td><td>01:07:28</td><td>77</td><td>0,00</td><td>0,00</td><td>13/09/2026 09:01</td><td>Rua Doutor &#193;lvaro Grain, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:25:21</td><td>Rua Doutor &#193;lvaro Grain, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>13/09/2026 16:27</td><td>04:33:00</td><td>127,9</td><td>0</td><td>03:06:04</td><td>01:26:56</td><td>82</td><td>0,00</td><td>0,00</td><td>13/09/2026 21:00</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>09:01:32</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>14/09/2026 06:02</td><td>01:44:00</td><td>56,4</td><td>0</td><td>01:21:00</td><td>00:23:00</td><td>79</td><td>0,00</td><td>0,00</td><td>14/09/2026 07:45</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>02:45:42</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>14/09/2026 10:31</td><td>01:48:00</td><td>56,0</td><td>0</td><td>01:36:16</td><td>00:11:44</td><td>62</td><td>0,00</td><td>0,00</td><td>14/09/2026 12:18</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>29:53:53</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>15/09/2026 18:11</td><td>00:08:00</td><td>0</td><td>0</td><td>00:00:49</td><td>00:07:11</td><td>6</td><td>0,00</td><td>0,00</td><td>15/09/2026 18:19</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>02:53:54</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>15/09/2026 21:13</td><td>00:23:00</td><td>4,4</td><td>0</td><td>00:11:10</td><td>00:11:50</td><td>43</td><td>0,00</td><td>0,00</td><td>15/09/2026 21:34</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:28:35</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>15/09/2026 22:03</td><td>01:10:00</td><td>33,8</td><td>0</td><td>00:53:30</td><td>00:16:30</td><td>84</td><td>0,00</td><td>0,00</td><td>15/09/2026 23:13</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>05:27:32</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>16/09/2026 04:40</td><td>04:43:00</td><td>140,1</td><td>0</td><td>03:32:11</td><td>01:10:49</td><td>87</td><td>0,00</td><td>0,00</td><td>16/09/2026 09:23</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:15:02</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>16/09/2026 16:38</td><td>04:33:00</td><td>130,2</td><td>0</td><td>03:15:18</td><td>01:17:42</td><td>84</td><td>0,00</td><td>0,00</td><td>16/09/2026 21:11</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:32:59</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>17/09/2026 04:44</td><td>04:43:00</td><td>138,6</td><td>0</td><td>03:31:30</td><td>01:11:30</td><td>87</td><td>0,00</td><td>0,00</td><td>17/09/2026 09:26</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:05:53</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>17/09/2026 16:32</td><td>00:26:00</td><td>12,1</td><td>0</td><td>00:14:48</td><td>00:11:12</td><td>87</td><td>0,00</td><td>0,00</td><td>17/09/2026 16:58</td><td>Estrada Jangada, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:14:47</td><td>Estrada Jangada, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>17/09/2026 17:13</td><td>04:08:00</td><td>120,4</td><td>0</td><td>03:04:59</td><td>01:03:01</td><td>87</td><td>0,00</td><td>0,00</td><td>17/09/2026 21:19</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:21:06</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>18/09/2026 04:40</td><td>04:29:00</td><td>130,2</td><td>0</td><td>03:11:12</td><td>01:17:48</td><td>88</td><td>0,00</td><td>0,00</td><td>18/09/2026 09:10</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:35:41</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>18/09/2026 16:45</td><td>04:36:00</td><td>138,1</td><td>0</td><td>03:34:49</td><td>01:01:11</td><td>86</td><td>0,00</td><td>0,00</td><td>18/09/2026 21:20</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:25:33</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>19/09/2026 04:46</td><td>04:01:00</td><td>124,5</td><td>0</td><td>03:05:11</td><td>00:55:49</td><td>86</td><td>0,00</td><td>0,00</td><td>19/09/2026 08:47</td><td>Estrada Jangada, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:13:05</td><td>Estrada Jangada, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>19/09/2026 09:00</td><td>00:23:00</td><td>12,3</td><td>0</td><td>00:17:50</td><td>00:05:10</td><td>75</td><td>0,00</td><td>0,00</td><td>19/09/2026 09:21</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:44:25</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>19/09/2026 17:06</td><td>04:13:00</td><td>136,6</td><td>0</td><td>03:21:35</td><td>00:51:25</td><td>85</td><td>0,00</td><td>0,00</td><td>19/09/2026 21:19</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>13:36:27</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>20/09/2026 10:56</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/09/2026 11:01</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:18:48</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>20/09/2026 18:20</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/09/2026 18:22</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>10:22:37</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>21/09/2026 04:44</td><td>04:14:00</td><td>111,3</td><td>0</td><td>02:57:33</td><td>01:16:27</td><td>86</td><td>0,00</td><td>0,00</td><td>21/09/2026 08:57</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>03:57:03</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>21/09/2026 12:54</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:28</td><td>00:02:32</td><td>4</td><td>0,00</td><td>0,00</td><td>21/09/2026 12:56</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:20:27</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>21/09/2026 13:17</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:07</td><td>00:00:53</td><td>6</td><td>0,00</td><td>0,00</td><td>21/09/2026 13:18</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>03:18:17</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>21/09/2026 16:36</td><td>04:20:00</td><td>121,7</td><td>0</td><td>03:09:58</td><td>01:10:02</td><td>83</td><td>0,00</td><td>0,00</td><td>21/09/2026 20:56</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:51:22</td><td>RJ-240, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>22/09/2026 04:47</td><td>04:50:00</td><td>145,6</td><td>0</td><td>03:34:26</td><td>01:15:34</td><td>84</td><td>0,00</td><td>0,00</td><td>22/09/2026 09:38</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:24:22</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>22/09/2026 10:03</td><td>00:09:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:07:00</td><td>2</td><td>0,00</td><td>0,00</td><td>22/09/2026 10:11</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:24:09</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>22/09/2026 10:35</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/09/2026 10:35</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>02:48:35</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>22/09/2026 13:24</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/09/2026 13:24</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:14:37</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>22/09/2026 13:39</td><td>00:13:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:13:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/09/2026 13:52</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>06:44:40</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>22/09/2026 20:36</td><td>00:13:00</td><td>2,6</td><td>0</td><td>00:08:15</td><td>00:04:45</td><td>45</td><td>0,00</td><td>0,00</td><td>22/09/2026 20:48</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>09:16:46</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>23/09/2026 06:05</td><td>03:52:00</td><td>114,7</td><td>0</td><td>02:53:13</td><td>00:58:47</td><td>78</td><td>0,00</td><td>0,00</td><td>23/09/2026 09:57</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>04:03:56</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>23/09/2026 14:00</td><td>03:27:00</td><td>115,0</td><td>0</td><td>02:42:28</td><td>00:44:32</td><td>84</td><td>0,00</td><td>0,00</td><td>23/09/2026 17:27</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>10:36:56</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>24/09/2026 04:04</td><td>05:43:00</td><td>168,5</td><td>0</td><td>04:17:21</td><td>01:25:39</td><td>84</td><td>0,00</td><td>0,00</td><td>24/09/2026 09:46</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>06:19:46</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>24/09/2026 16:05</td><td>05:09:00</td><td>168,9</td><td>0</td><td>04:03:52</td><td>01:05:08</td><td>85</td><td>0,00</td><td>0,00</td><td>24/09/2026 21:13</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>06:46:58</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>25/09/2026 04:00</td><td>06:56:00</td><td>147,5</td><td>0</td><td>04:02:26</td><td>02:53:34</td><td>84</td><td>0,00</td><td>0,00</td><td>25/09/2026 10:56</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>04:58:08</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>25/09/2026 15:54</td><td>05:02:00</td><td>141,3</td><td>0</td><td>03:52:20</td><td>01:09:40</td><td>81</td><td>0,00</td><td>0,00</td><td>25/09/2026 20:56</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:16:20</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>26/09/2026 04:12</td><td>05:00:00</td><td>139,0</td><td>0</td><td>03:37:23</td><td>01:22:37</td><td>84</td><td>0,00</td><td>0,00</td><td>26/09/2026 09:13</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>06:57:26</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>26/09/2026 16:10</td><td>04:48:00</td><td>141,3</td><td>0</td><td>03:41:27</td><td>01:06:33</td><td>79</td><td>0,00</td><td>0,00</td><td>26/09/2026 20:58</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>08:13:25</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>27/09/2026 05:11</td><td>04:04:00</td><td>131,6</td><td>0</td><td>03:14:13</td><td>00:49:47</td><td>81</td><td>0,00</td><td>0,00</td><td>27/09/2026 09:15</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:04:41</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>27/09/2026 09:19</td><td>00:22:00</td><td>2,8</td><td>0</td><td>00:06:41</td><td>00:15:19</td><td>50</td><td>0,00</td><td>0,00</td><td>27/09/2026 09:40</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>01:01:41</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>27/09/2026 10:42</td><td>00:18:00</td><td>4,4</td><td>0</td><td>00:11:42</td><td>00:06:18</td><td>49</td><td>0,00</td><td>0,00</td><td>27/09/2026 10:59</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>17:15:55</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>28/09/2026 04:15</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>28/09/2026 04:15</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:55</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>28/09/2026 04:16</td><td>03:56:00</td><td>132,4</td><td>0</td><td>03:16:24</td><td>00:39:36</td><td>76</td><td>0,00</td><td>0,00</td><td>28/09/2026 08:12</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:36</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>28/09/2026 08:12</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>28/09/2026 08:16</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>08:16:58</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>28/09/2026 16:33</td><td>01:49:00</td><td>59,2</td><td>0</td><td>01:25:20</td><td>00:23:40</td><td>76</td><td>0,00</td><td>0,00</td><td>28/09/2026 18:22</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:21:47</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>28/09/2026 18:44</td><td>02:08:00</td><td>64,0</td><td>0</td><td>01:37:06</td><td>00:30:54</td><td>78</td><td>0,00</td><td>0,00</td><td>28/09/2026 20:52</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:29:55</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 04:21</td><td>00:15:00</td><td>4,0</td><td>0</td><td>00:10:17</td><td>00:04:43</td><td>43</td><td>0,00</td><td>0,00</td><td>29/09/2026 04:35</td><td>Rua Bar&#227;o da Lagoa Dourada, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:02:55</td><td>Rua Bar&#227;o da Lagoa Dourada, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 04:38</td><td>03:55:00</td><td>124,5</td><td>0</td><td>03:08:15</td><td>00:46:45</td><td>79</td><td>0,00</td><td>0,00</td><td>29/09/2026 08:32</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:17:55</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 08:50</td><td>01:33:00</td><td>14,8</td><td>0</td><td>00:44:05</td><td>00:48:55</td><td>60</td><td>0,00</td><td>0,00</td><td>29/09/2026 10:23</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>06:12:56</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 16:36</td><td>01:57:00</td><td>59,2</td><td>0</td><td>01:27:52</td><td>00:29:08</td><td>76</td><td>0,00</td><td>0,00</td><td>29/09/2026 18:32</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:20:20</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>29/09/2026 18:52</td><td>02:02:00</td><td>65,9</td><td>0</td><td>01:38:48</td><td>00:23:12</td><td>76</td><td>0,00</td><td>0,00</td><td>29/09/2026 20:54</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:00:12</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 20:54</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>29/09/2026 20:58</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>07:22:40</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>30/09/2026 04:20</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>30/09/2026 04:21</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>00:03:50</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>30/09/2026 04:25</td><td>04:11:00</td><td>124,8</td><td>0</td><td>03:06:54</td><td>01:04:06</td><td>80</td><td>0,00</td><td>0,00</td><td>30/09/2026 08:35</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>03:06:20</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>30/09/2026 11:41</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>2</td><td>0,00</td><td>0,00</td><td>30/09/2026 11:42</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>04:35:27</td><td>Rua Isalvo Lima, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>30/09/2026 16:17</td><td>00:15:00</td><td>5,0</td><td>0</td><td>00:13:21</td><td>00:01:39</td><td>47</td><td>0,00</td><td>0,00</td><td>30/09/2026 16:32</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>200  (LMR3J62)</td><td>&nbsp;</td><td>02:21:10</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>30/09/2026 18:53</td><td>01:55:00</td><td>0</td><td>0</td><td>00:00:36</td><td>01:54:24</td><td>4</td><td>0,00</td><td>0,00</td><td>30/09/2026 20:47</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr>
+	</table>
+</div>
