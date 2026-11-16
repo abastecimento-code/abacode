@@ -1,0 +1,267 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Placa</th><th scope="col">Motorista</th><th scope="col">Reinicio</th><th scope="col">End. Inicio</th><th scope="col">Ign. Ligada</th><th scope="col">Hor&#237;metro</th><th scope="col">Distancia</th><th scope="col">Dist. FHT</th><th scope="col">Tempo Mov.</th><th scope="col">Ligado sem Mov.</th><th scope="col">Vel. Max</th><th scope="col">Consumo</th><th scope="col">Gasto</th><th scope="col">Ign. Desligada</th><th scope="col">End. Final</th>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:00</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>01/08/2026 11:08</td><td>00:08:00</td><td>0,5</td><td>0</td><td>00:04:47</td><td>00:03:13</td><td>9</td><td>0,00</td><td>0,00</td><td>01/08/2026 11:16</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>41:06:27</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>03/08/2026 04:23</td><td>02:31:00</td><td>74,7</td><td>0</td><td>02:25:11</td><td>00:05:49</td><td>96</td><td>0,00</td><td>0,00</td><td>03/08/2026 06:53</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:16:54</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/08/2026 07:10</td><td>00:08:00</td><td>0,4</td><td>0</td><td>00:02:37</td><td>00:05:23</td><td>33</td><td>0,00</td><td>0,00</td><td>03/08/2026 07:18</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:02:55</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/08/2026 07:20</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>3</td><td>0,00</td><td>0,00</td><td>03/08/2026 07:25</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>03:45:10</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/08/2026 11:10</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:01</td><td>00:00:59</td><td>0</td><td>0,00</td><td>0,00</td><td>03/08/2026 11:11</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>04:15:24</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/08/2026 15:27</td><td>03:04:00</td><td>61,4</td><td>0</td><td>02:12:10</td><td>00:51:50</td><td>85</td><td>0,00</td><td>0,00</td><td>03/08/2026 18:30</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:28:26</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>03/08/2026 18:58</td><td>00:21:00</td><td>4,0</td><td>0</td><td>00:12:23</td><td>00:08:37</td><td>33</td><td>0,00</td><td>0,00</td><td>03/08/2026 19:20</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:57:55</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>04/08/2026 04:18</td><td>02:39:00</td><td>72,3</td><td>0</td><td>02:10:04</td><td>00:28:56</td><td>92</td><td>0,00</td><td>0,00</td><td>04/08/2026 07:56</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:24:37</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>04/08/2026 08:20</td><td>01:39:00</td><td>49,1</td><td>0</td><td>01:28:04</td><td>00:10:56</td><td>86</td><td>0,00</td><td>0,00</td><td>04/08/2026 09:58</td><td>Rua Beatriz Segall, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:13:15</td><td>Rua Beatriz Segall, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>04/08/2026 10:11</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>04/08/2026 10:12</td><td>Rua Beatriz Segall, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:07:49</td><td>Rua Beatriz Segall, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>04/08/2026 10:20</td><td>01:34:00</td><td>42,9</td><td>0</td><td>01:06:49</td><td>00:27:11</td><td>82</td><td>0,00</td><td>0,00</td><td>04/08/2026 11:53</td><td>Rua Coronel Nicolau Silva, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>02:38:12</td><td>Rua Coronel Nicolau Silva, Duque de Caxias, Rio de Janeiro, Brasil</td><td>04/08/2026 14:31</td><td>03:54:00</td><td>70,5</td><td>0</td><td>03:15:56</td><td>00:38:04</td><td>89</td><td>0,00</td><td>0,00</td><td>04/08/2026 19:00</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>09:03:32</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>05/08/2026 04:04</td><td>03:01:00</td><td>83,7</td><td>0</td><td>02:59:42</td><td>00:01:18</td><td>92</td><td>0,00</td><td>0,00</td><td>05/08/2026 07:11</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:35:00</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>05/08/2026 15:46</td><td>03:35:00</td><td>64,9</td><td>0</td><td>03:09:09</td><td>00:25:51</td><td>85</td><td>0,00</td><td>0,00</td><td>05/08/2026 19:21</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:18</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>05/08/2026 19:22</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/08/2026 19:22</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:39:52</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>05/08/2026 21:02</td><td>00:18:00</td><td>4,2</td><td>0</td><td>00:13:33</td><td>00:04:27</td><td>32</td><td>0,00</td><td>0,00</td><td>05/08/2026 21:19</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>07:14:46</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>06/08/2026 04:34</td><td>02:23:00</td><td>66,1</td><td>0</td><td>02:10:18</td><td>00:12:42</td><td>93</td><td>0,00</td><td>0,00</td><td>06/08/2026 06:57</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:54:27</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>06/08/2026 15:51</td><td>02:39:00</td><td>52,4</td><td>0</td><td>02:13:45</td><td>00:25:15</td><td>88</td><td>0,00</td><td>0,00</td><td>06/08/2026 18:30</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:30:45</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>06/08/2026 20:00</td><td>00:07:00</td><td>1,0</td><td>0</td><td>00:03:27</td><td>00:03:33</td><td>28</td><td>0,00</td><td>0,00</td><td>06/08/2026 20:06</td><td>Rua Copacabana, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:50:00</td><td>Rua Copacabana, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>06/08/2026 20:56</td><td>00:23:00</td><td>4,7</td><td>0</td><td>00:15:32</td><td>00:07:28</td><td>30</td><td>0,00</td><td>0,00</td><td>06/08/2026 21:19</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>06:45:47</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>07/08/2026 04:05</td><td>02:31:00</td><td>64,7</td><td>0</td><td>02:16:56</td><td>00:14:04</td><td>89</td><td>0,00</td><td>0,00</td><td>07/08/2026 06:35</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:49:58</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/08/2026 08:25</td><td>00:19:00</td><td>1,6</td><td>0</td><td>00:07:54</td><td>00:11:06</td><td>32</td><td>0,00</td><td>0,00</td><td>07/08/2026 08:43</td><td>Avenida Actura, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:02:40</td><td>Avenida Actura, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/08/2026 08:45</td><td>00:03:00</td><td>0,5</td><td>0</td><td>00:01:39</td><td>00:01:21</td><td>32</td><td>0,00</td><td>0,00</td><td>07/08/2026 08:48</td><td>Avenida Actura, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:07:57</td><td>Avenida Actura, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/08/2026 08:56</td><td>00:44:00</td><td>19,5</td><td>0</td><td>00:41:10</td><td>00:02:50</td><td>72</td><td>0,00</td><td>0,00</td><td>07/08/2026 09:39</td><td>Rua Dezoito de Setembro, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:08:49</td><td>Rua Dezoito de Setembro, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>07/08/2026 09:48</td><td>00:10:00</td><td>0,6</td><td>0</td><td>00:05:51</td><td>00:04:09</td><td>12</td><td>0,00</td><td>0,00</td><td>07/08/2026 09:57</td><td>Rua Castro Menezes, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:50:10</td><td>Rua Castro Menezes, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>07/08/2026 11:47</td><td>03:17:00</td><td>86,3</td><td>0</td><td>02:12:05</td><td>01:04:55</td><td>87</td><td>0,00</td><td>0,00</td><td>07/08/2026 15:05</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:07:41</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/08/2026 15:12</td><td>00:10:00</td><td>3,5</td><td>0</td><td>00:08:00</td><td>00:02:00</td><td>74</td><td>0,00</td><td>0,00</td><td>07/08/2026 15:21</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:31:34</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/08/2026 15:53</td><td>01:47:00</td><td>50,1</td><td>0</td><td>01:25:06</td><td>00:21:54</td><td>83</td><td>0,00</td><td>0,00</td><td>07/08/2026 17:39</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:28:54</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>07/08/2026 18:08</td><td>00:19:00</td><td>4,0</td><td>0</td><td>00:15:00</td><td>00:04:00</td><td>27</td><td>0,00</td><td>0,00</td><td>07/08/2026 18:26</td><td>Avenida Get&#250;lio de Moura, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:03:52</td><td>Avenida Get&#250;lio de Moura, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>07/08/2026 18:30</td><td>00:07:00</td><td>1,4</td><td>0</td><td>00:06:10</td><td>00:00:50</td><td>21</td><td>0,00</td><td>0,00</td><td>07/08/2026 18:37</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:16:32</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>07/08/2026 19:53</td><td>00:40:00</td><td>14,2</td><td>0</td><td>00:35:31</td><td>00:04:29</td><td>58</td><td>0,00</td><td>0,00</td><td>07/08/2026 20:32</td><td>Rua Castro Menezes, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:10:02</td><td>Rua Castro Menezes, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>08/08/2026 04:42</td><td>02:22:00</td><td>77,8</td><td>0</td><td>02:05:09</td><td>00:16:51</td><td>87</td><td>0,00</td><td>0,00</td><td>08/08/2026 07:04</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:51</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>08/08/2026 07:05</td><td>00:03:00</td><td>0</td><td>0</td><td>00:01:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>08/08/2026 07:08</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:43:55</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>08/08/2026 07:52</td><td>01:47:00</td><td>72,2</td><td>0</td><td>01:42:17</td><td>00:04:43</td><td>86</td><td>0,00</td><td>0,00</td><td>08/08/2026 09:38</td><td>Rua Castro Menezes, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>03:02:24</td><td>Rua Castro Menezes, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>08/08/2026 12:40</td><td>05:37:00</td><td>110,2</td><td>0</td><td>03:48:42</td><td>01:48:18</td><td>93</td><td>0,00</td><td>0,00</td><td>08/08/2026 18:16</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>26:48:26</td><td>Rua Visconde da Inhauma, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>09/08/2026 21:05</td><td>00:15:00</td><td>3,9</td><td>0</td><td>00:11:19</td><td>00:03:41</td><td>34</td><td>0,00</td><td>0,00</td><td>09/08/2026 21:20</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>07:06:15</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>10/08/2026 04:26</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:06</td><td>00:00:54</td><td>0</td><td>0,00</td><td>0,00</td><td>10/08/2026 04:27</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:46</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>10/08/2026 04:28</td><td>02:57:00</td><td>69,2</td><td>0</td><td>02:34:54</td><td>00:22:06</td><td>87</td><td>0,00</td><td>0,00</td><td>10/08/2026 07:24</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:06:12</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>10/08/2026 07:30</td><td>00:09:00</td><td>2,2</td><td>0</td><td>00:06:58</td><td>00:02:02</td><td>45</td><td>0,00</td><td>0,00</td><td>10/08/2026 07:40</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:04:35</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>10/08/2026 15:44</td><td>02:40:00</td><td>55,3</td><td>0</td><td>02:14:15</td><td>00:25:45</td><td>82</td><td>0,00</td><td>0,00</td><td>10/08/2026 18:23</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:33:01</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>10/08/2026 19:56</td><td>00:20:00</td><td>0</td><td>0</td><td>00:01:35</td><td>00:18:25</td><td>6</td><td>0,00</td><td>0,00</td><td>10/08/2026 20:16</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>07:59:23</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>11/08/2026 04:16</td><td>02:46:00</td><td>68,7</td><td>0</td><td>02:35:12</td><td>00:10:48</td><td>87</td><td>0,00</td><td>0,00</td><td>11/08/2026 07:01</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:46:47</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>11/08/2026 15:48</td><td>02:48:00</td><td>57,8</td><td>0</td><td>02:00:12</td><td>00:47:48</td><td>84</td><td>0,00</td><td>0,00</td><td>11/08/2026 18:35</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>09:44:11</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>12/08/2026 04:19</td><td>02:28:00</td><td>71,1</td><td>0</td><td>02:20:09</td><td>00:07:51</td><td>94</td><td>0,00</td><td>0,00</td><td>12/08/2026 06:47</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>09:03:24</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>12/08/2026 15:51</td><td>02:05:00</td><td>57,1</td><td>0</td><td>01:45:24</td><td>00:19:36</td><td>92</td><td>0,00</td><td>0,00</td><td>12/08/2026 17:55</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:19:52</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>12/08/2026 19:15</td><td>00:09:00</td><td>1,3</td><td>0</td><td>00:04:27</td><td>00:04:33</td><td>28</td><td>0,00</td><td>0,00</td><td>12/08/2026 19:23</td><td>Rua Urca, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:45:22</td><td>Rua Urca, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>12/08/2026 21:09</td><td>00:13:00</td><td>3,4</td><td>0</td><td>00:10:35</td><td>00:02:25</td><td>38</td><td>0,00</td><td>0,00</td><td>12/08/2026 21:21</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>06:51:46</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>13/08/2026 04:13</td><td>02:43:00</td><td>77,8</td><td>0</td><td>02:30:40</td><td>00:12:20</td><td>92</td><td>0,00</td><td>0,00</td><td>13/08/2026 06:55</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:48:14</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>13/08/2026 08:43</td><td>01:54:00</td><td>107,6</td><td>0</td><td>01:42:25</td><td>00:11:35</td><td>87</td><td>0,00</td><td>0,00</td><td>13/08/2026 10:37</td><td>Rua Anatalia de Melo Alves, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:26:13</td><td>Avenida Devanir Jose de Carvalho, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>13/08/2026 12:03</td><td>03:21:00</td><td>87,0</td><td>0</td><td>02:30:55</td><td>00:50:05</td><td>92</td><td>0,00</td><td>0,00</td><td>13/08/2026 15:25</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:22:08</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>13/08/2026 15:47</td><td>02:28:00</td><td>52,0</td><td>0</td><td>01:58:20</td><td>00:29:40</td><td>94</td><td>0,00</td><td>0,00</td><td>13/08/2026 18:14</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>10:20:33</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>14/08/2026 04:35</td><td>03:06:00</td><td>69,3</td><td>0</td><td>02:49:07</td><td>00:16:53</td><td>84</td><td>0,00</td><td>0,00</td><td>14/08/2026 07:40</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:09:58</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>14/08/2026 15:50</td><td>02:24:00</td><td>52,1</td><td>0</td><td>01:59:56</td><td>00:24:04</td><td>87</td><td>0,00</td><td>0,00</td><td>14/08/2026 18:13</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>11:18:23</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>15/08/2026 05:32</td><td>01:33:00</td><td>81,4</td><td>0</td><td>01:30:46</td><td>00:02:14</td><td>99</td><td>0,00</td><td>0,00</td><td>15/08/2026 07:04</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:08:27</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/08/2026 07:13</td><td>00:18:00</td><td>2,8</td><td>0</td><td>00:10:37</td><td>00:07:23</td><td>43</td><td>0,00</td><td>0,00</td><td>15/08/2026 07:30</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:14:11</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/08/2026 07:44</td><td>02:16:00</td><td>67,7</td><td>0</td><td>01:50:09</td><td>00:25:51</td><td>107</td><td>0,00</td><td>0,00</td><td>15/08/2026 10:00</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>03:24:57</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>15/08/2026 13:25</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/08/2026 13:26</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:04</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>15/08/2026 13:26</td><td>00:33:00</td><td>13,9</td><td>0</td><td>00:32:11</td><td>00:00:49</td><td>65</td><td>0,00</td><td>0,00</td><td>15/08/2026 13:59</td><td>Rua Aracua, Belford Roxo, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:13:08</td><td>Rua Aracua, Belford Roxo, Rio de Janeiro, Brasil</td><td>15/08/2026 14:13</td><td>00:56:00</td><td>19,3</td><td>0</td><td>00:44:19</td><td>00:11:41</td><td>59</td><td>0,00</td><td>0,00</td><td>15/08/2026 15:09</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:40:01</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/08/2026 15:49</td><td>01:52:00</td><td>72,3</td><td>0</td><td>01:32:12</td><td>00:19:48</td><td>93</td><td>0,00</td><td>0,00</td><td>15/08/2026 17:39</td><td>Rua Ant&#244;nio David, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:20:32</td><td>Rua Ant&#244;nio David, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/08/2026 18:00</td><td>00:13:00</td><td>3,2</td><td>0</td><td>00:10:47</td><td>00:02:13</td><td>40</td><td>0,00</td><td>0,00</td><td>15/08/2026 18:12</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:07:14</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>15/08/2026 18:19</td><td>00:33:00</td><td>8,6</td><td>0</td><td>00:24:17</td><td>00:08:43</td><td>43</td><td>0,00</td><td>0,00</td><td>15/08/2026 18:52</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:23</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>15/08/2026 18:53</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/08/2026 18:58</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>33:24:49</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>17/08/2026 04:23</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>17/08/2026 04:24</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:21</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>17/08/2026 04:24</td><td>02:39:00</td><td>67,4</td><td>0</td><td>02:18:46</td><td>00:20:14</td><td>90</td><td>0,00</td><td>0,00</td><td>17/08/2026 07:03</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:11:57</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>17/08/2026 15:15</td><td>00:19:00</td><td>1,8</td><td>0</td><td>00:05:51</td><td>00:13:09</td><td>44</td><td>0,00</td><td>0,00</td><td>17/08/2026 15:34</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:03:57</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>17/08/2026 15:38</td><td>02:37:00</td><td>58,0</td><td>0</td><td>02:02:44</td><td>00:34:16</td><td>90</td><td>0,00</td><td>0,00</td><td>17/08/2026 18:13</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>10:14:30</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>18/08/2026 04:28</td><td>02:21:00</td><td>62,7</td><td>0</td><td>01:57:00</td><td>00:24:00</td><td>94</td><td>0,00</td><td>0,00</td><td>18/08/2026 06:48</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:51:22</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>18/08/2026 07:40</td><td>01:02:00</td><td>19,2</td><td>0</td><td>00:56:07</td><td>00:05:53</td><td>77</td><td>0,00</td><td>0,00</td><td>18/08/2026 08:41</td><td>Rua Iguaba, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:12:48</td><td>Rua Iguaba, Duque de Caxias, Rio de Janeiro, Brasil</td><td>18/08/2026 08:54</td><td>00:30:00</td><td>4,3</td><td>0</td><td>00:16:46</td><td>00:13:14</td><td>51</td><td>0,00</td><td>0,00</td><td>18/08/2026 09:23</td><td>Rua Santa Isabel, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>02:35:40</td><td>Rua Santa Isabel, Duque de Caxias, Rio de Janeiro, Brasil</td><td>18/08/2026 11:59</td><td>01:03:00</td><td>11,3</td><td>0</td><td>00:35:25</td><td>00:27:35</td><td>38</td><td>0,00</td><td>0,00</td><td>18/08/2026 13:01</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:18</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>18/08/2026 13:01</td><td>00:00:20</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:20</td><td>0</td><td>0,00</td><td>0,00</td><td>18/08/2026 13:02</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:44:53</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>18/08/2026 14:47</td><td>01:11:00</td><td>29,3</td><td>0</td><td>00:53:45</td><td>00:17:15</td><td>87</td><td>0,00</td><td>0,00</td><td>18/08/2026 15:57</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:02:21</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>18/08/2026 15:59</td><td>02:51:00</td><td>55,5</td><td>0</td><td>02:30:56</td><td>00:20:04</td><td>73</td><td>0,00</td><td>0,00</td><td>18/08/2026 18:49</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:21:04</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>18/08/2026 19:10</td><td>00:06:00</td><td>0,5</td><td>0</td><td>00:04:00</td><td>00:02:00</td><td>24</td><td>0,00</td><td>0,00</td><td>18/08/2026 19:16</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:14:23</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>18/08/2026 19:30</td><td>00:04:00</td><td>0,7</td><td>0</td><td>00:04:00</td><td>00:00:00</td><td>31</td><td>0,00</td><td>0,00</td><td>18/08/2026 19:34</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:44:02</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>19/08/2026 04:18</td><td>02:31:00</td><td>68,4</td><td>0</td><td>02:11:21</td><td>00:19:39</td><td>86</td><td>0,00</td><td>0,00</td><td>19/08/2026 06:49</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:54:10</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>19/08/2026 15:43</td><td>02:17:00</td><td>51,3</td><td>0</td><td>01:43:09</td><td>00:33:51</td><td>84</td><td>0,00</td><td>0,00</td><td>19/08/2026 18:00</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>10:19:39</td><td>Rua Sete de Setembro, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>20/08/2026 04:20</td><td>02:24:00</td><td>77,2</td><td>0</td><td>02:14:58</td><td>00:09:02</td><td>93</td><td>0,00</td><td>0,00</td><td>20/08/2026 06:43</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:08:29</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 06:52</td><td>00:11:00</td><td>2,5</td><td>0</td><td>00:06:20</td><td>00:04:40</td><td>62</td><td>0,00</td><td>0,00</td><td>20/08/2026 07:02</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:49:16</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 08:51</td><td>00:09:00</td><td>2,1</td><td>0</td><td>00:05:04</td><td>00:03:56</td><td>50</td><td>0,00</td><td>0,00</td><td>20/08/2026 09:01</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:46:05</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 09:47</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/08/2026 09:47</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:13:46</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 10:01</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/08/2026 10:01</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:06</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 10:01</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/08/2026 10:03</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:01:08</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 10:04</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/08/2026 10:05</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:01:39</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 10:07</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/08/2026 10:07</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:48:28</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 10:56</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>1</td><td>0,00</td><td>0,00</td><td>20/08/2026 10:57</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>02:50:18</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 13:48</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/08/2026 13:48</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:01:35</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 13:50</td><td>00:15:00</td><td>2,8</td><td>0</td><td>00:06:23</td><td>00:08:37</td><td>52</td><td>0,00</td><td>0,00</td><td>20/08/2026 14:04</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:35</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 14:04</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/08/2026 14:05</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>01:54:50</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/08/2026 16:00</td><td>02:02:00</td><td>46,3</td><td>0</td><td>01:43:17</td><td>00:18:43</td><td>83</td><td>0,00</td><td>0,00</td><td>20/08/2026 18:01</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>10:28:46</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>21/08/2026 04:30</td><td>02:26:00</td><td>64,1</td><td>0</td><td>02:05:41</td><td>00:20:19</td><td>94</td><td>0,00</td><td>0,00</td><td>21/08/2026 06:56</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:51:11</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>21/08/2026 15:47</td><td>01:27:00</td><td>36,9</td><td>0</td><td>01:03:13</td><td>00:23:47</td><td>95</td><td>0,00</td><td>0,00</td><td>21/08/2026 17:13</td><td>Rua Ana Rosa Oliveira, Mesquita, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:12:55</td><td>Rua Ana Rosa Oliveira, Mesquita, Rio de Janeiro, Brasil</td><td>21/08/2026 17:26</td><td>00:34:00</td><td>10,0</td><td>0</td><td>00:20:41</td><td>00:13:19</td><td>73</td><td>0,00</td><td>0,00</td><td>21/08/2026 18:00</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>11:28:09</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>22/08/2026 05:28</td><td>01:24:00</td><td>58,5</td><td>0</td><td>01:19:18</td><td>00:04:42</td><td>87</td><td>0,00</td><td>0,00</td><td>22/08/2026 06:52</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:48:59</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>22/08/2026 07:41</td><td>01:44:00</td><td>66,7</td><td>0</td><td>01:33:12</td><td>00:10:48</td><td>93</td><td>0,00</td><td>0,00</td><td>22/08/2026 09:24</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>03:53:32</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>22/08/2026 13:18</td><td>02:00:00</td><td>40,5</td><td>0</td><td>01:44:29</td><td>00:15:31</td><td>61</td><td>0,00</td><td>0,00</td><td>22/08/2026 15:17</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:12:10</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>22/08/2026 15:29</td><td>00:06:00</td><td>0,7</td><td>0</td><td>00:04:25</td><td>00:01:35</td><td>15</td><td>0,00</td><td>0,00</td><td>22/08/2026 15:35</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:26:17</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>22/08/2026 16:02</td><td>01:12:00</td><td>44,5</td><td>0</td><td>01:04:21</td><td>00:07:39</td><td>92</td><td>0,00</td><td>0,00</td><td>22/08/2026 17:14</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>14:52:21</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>23/08/2026 08:06</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>1</td><td>0,00</td><td>0,00</td><td>23/08/2026 08:12</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>06:42:14</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>23/08/2026 14:54</td><td>00:07:00</td><td>1,0</td><td>0</td><td>00:04:10</td><td>00:02:50</td><td>28</td><td>0,00</td><td>0,00</td><td>23/08/2026 15:01</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>13:28:54</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>24/08/2026 04:30</td><td>02:18:00</td><td>62,4</td><td>0</td><td>01:54:06</td><td>00:23:54</td><td>90</td><td>0,00</td><td>0,00</td><td>24/08/2026 06:47</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:13:34</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/08/2026 15:01</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>24/08/2026 15:01</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:48:11</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/08/2026 15:49</td><td>02:41:00</td><td>59,6</td><td>0</td><td>02:11:07</td><td>00:29:53</td><td>81</td><td>0,00</td><td>0,00</td><td>24/08/2026 18:30</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>09:58:36</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>25/08/2026 04:28</td><td>02:22:00</td><td>58,4</td><td>0</td><td>01:55:33</td><td>00:26:27</td><td>92</td><td>0,00</td><td>0,00</td><td>25/08/2026 06:50</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:19:26</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>25/08/2026 07:10</td><td>00:07:00</td><td>2,2</td><td>0</td><td>00:06:00</td><td>00:01:00</td><td>64</td><td>0,00</td><td>0,00</td><td>25/08/2026 07:17</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:31:27</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>25/08/2026 15:48</td><td>01:51:00</td><td>34,4</td><td>0</td><td>01:16:40</td><td>00:34:20</td><td>84</td><td>0,00</td><td>0,00</td><td>25/08/2026 17:38</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>10:55:49</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>26/08/2026 04:34</td><td>02:09:00</td><td>66,8</td><td>0</td><td>01:59:17</td><td>00:09:43</td><td>92</td><td>0,00</td><td>0,00</td><td>26/08/2026 06:43</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>04:20:28</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>26/08/2026 11:03</td><td>04:00:00</td><td>124,8</td><td>0</td><td>03:00:34</td><td>00:59:26</td><td>90</td><td>0,00</td><td>0,00</td><td>26/08/2026 15:03</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:12</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>26/08/2026 15:04</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>26/08/2026 15:04</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:42</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>26/08/2026 15:05</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>26/08/2026 15:05</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:00:14</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>26/08/2026 15:05</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>26/08/2026 15:10</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:33:09</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>26/08/2026 15:43</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>1</td><td>0,00</td><td>0,00</td><td>26/08/2026 15:45</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:01:43</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>26/08/2026 15:46</td><td>02:42:00</td><td>48,5</td><td>0</td><td>02:11:11</td><td>00:30:49</td><td>86</td><td>0,00</td><td>0,00</td><td>26/08/2026 18:28</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>10:03:38</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>27/08/2026 04:32</td><td>02:18:00</td><td>63,7</td><td>0</td><td>02:11:30</td><td>00:06:30</td><td>84</td><td>0,00</td><td>0,00</td><td>27/08/2026 06:49</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:52:40</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>27/08/2026 07:42</td><td>00:46:00</td><td>17,5</td><td>0</td><td>00:42:41</td><td>00:03:19</td><td>65</td><td>0,00</td><td>0,00</td><td>27/08/2026 08:27</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>06:13:33</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>27/08/2026 14:41</td><td>00:37:00</td><td>25,5</td><td>0</td><td>00:33:58</td><td>00:03:02</td><td>84</td><td>0,00</td><td>0,00</td><td>27/08/2026 15:17</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:33:28</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>27/08/2026 15:50</td><td>02:27:00</td><td>55,3</td><td>0</td><td>02:03:01</td><td>00:23:59</td><td>91</td><td>0,00</td><td>0,00</td><td>27/08/2026 18:17</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>10:19:08</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>28/08/2026 04:37</td><td>02:11:00</td><td>68,2</td><td>0</td><td>01:52:05</td><td>00:18:55</td><td>100</td><td>0,00</td><td>0,00</td><td>28/08/2026 06:47</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:06:01</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>28/08/2026 06:53</td><td>00:09:00</td><td>2,2</td><td>0</td><td>00:07:51</td><td>00:01:09</td><td>62</td><td>0,00</td><td>0,00</td><td>28/08/2026 07:02</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:46:08</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>28/08/2026 15:48</td><td>02:25:00</td><td>49,3</td><td>0</td><td>01:58:06</td><td>00:26:54</td><td>89</td><td>0,00</td><td>0,00</td><td>28/08/2026 18:14</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:58:39</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>28/08/2026 19:12</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>1</td><td>0,00</td><td>0,00</td><td>28/08/2026 19:18</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>09:52:28</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>29/08/2026 05:10</td><td>01:47:00</td><td>65,8</td><td>0</td><td>01:43:15</td><td>00:03:45</td><td>88</td><td>0,00</td><td>0,00</td><td>29/08/2026 06:57</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:37:28</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>29/08/2026 07:35</td><td>02:18:00</td><td>79,5</td><td>0</td><td>02:01:06</td><td>00:16:54</td><td>96</td><td>0,00</td><td>0,00</td><td>29/08/2026 09:52</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:36:14</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>29/08/2026 10:28</td><td>00:22:00</td><td>4,3</td><td>0</td><td>00:15:39</td><td>00:06:21</td><td>58</td><td>0,00</td><td>0,00</td><td>29/08/2026 10:51</td><td>Avenida Get&#250;lio de Moura, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>02:45:21</td><td>Avenida Get&#250;lio de Moura, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>29/08/2026 13:36</td><td>00:21:00</td><td>4,6</td><td>0</td><td>00:14:00</td><td>00:07:00</td><td>44</td><td>0,00</td><td>0,00</td><td>29/08/2026 13:56</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>00:51:15</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>29/08/2026 14:47</td><td>03:10:00</td><td>90,6</td><td>0</td><td>02:30:31</td><td>00:39:29</td><td>87</td><td>0,00</td><td>0,00</td><td>29/08/2026 17:57</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>03:43:44</td><td>Rua Sete de Setembro, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>29/08/2026 21:41</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:24</td><td>00:04:36</td><td>1</td><td>0,00</td><td>0,00</td><td>29/08/2026 21:45</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>30:39:09</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td><td>31/08/2026 04:25</td><td>02:27:00</td><td>60,6</td><td>0</td><td>01:59:30</td><td>00:27:30</td><td>82</td><td>0,00</td><td>0,00</td><td>31/08/2026 06:51</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>202 - VIBRA - MESQUITA (RJE1D34)</td><td>&nbsp;</td><td>08:59:00</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>31/08/2026 15:50</td><td>02:37:00</td><td>51,4</td><td>0</td><td>02:12:35</td><td>00:24:25</td><td>89</td><td>0,00</td><td>0,00</td><td>31/08/2026 18:28</td><td>Rua Doutor Brasil Valerio, S&#227;o Jo&#227;o de Meriti, Rio de Janeiro, Brasil</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,343 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Placa</th><th scope="col">Motorista</th><th scope="col">Reinicio</th><th scope="col">End. Inicio</th><th scope="col">Ign. Ligada</th><th scope="col">Hor&#237;metro</th><th scope="col">Distancia</th><th scope="col">Dist. FHT</th><th scope="col">Tempo Mov.</th><th scope="col">Ligado sem Mov.</th><th scope="col">Vel. Max</th><th scope="col">Consumo</th><th scope="col">Gasto</th><th scope="col">Ign. Desligada</th><th scope="col">End. Final</th>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:00:00</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>01/07/2026 15:23</td><td>10275:46:00</td><td>4,3</td><td>0</td><td>00:09:58</td><td>10275:36:02</td><td>57</td><td>0,00</td><td>0,00</td><td>01/07/2026 15:44</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>01:26:52</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>01/07/2026 17:11</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>01/07/2026 17:12</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:01:20</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>01/07/2026 17:13</td><td>10275:51:00</td><td>0</td><td>0</td><td>00:00:51</td><td>10275:50:09</td><td>8</td><td>0,00</td><td>0,00</td><td>01/07/2026 17:17</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>13:03:36</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 06:20</td><td>10276:17:00</td><td>7,7</td><td>0</td><td>00:19:54</td><td>10275:57:06</td><td>50</td><td>0,00</td><td>0,00</td><td>02/07/2026 06:46</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:00:41</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 06:46</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>02/07/2026 06:47</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:54:41</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 07:41</td><td>10276:20:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10276:20:00</td><td>0</td><td>0,00</td><td>0,00</td><td>02/07/2026 07:42</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>01:25:26</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 09:08</td><td>00:17:00</td><td>6,2</td><td>0</td><td>00:13:49</td><td>00:03:11</td><td>56</td><td>0,00</td><td>0,00</td><td>02/07/2026 09:26</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:58:48</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 10:24</td><td>00:20:00</td><td>0</td><td>0</td><td>00:00:07</td><td>00:19:53</td><td>0</td><td>0,00</td><td>0,00</td><td>02/07/2026 10:44</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:50:45</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 11:35</td><td>10277:19:00</td><td>6,8</td><td>0</td><td>00:16:33</td><td>10277:02:27</td><td>55</td><td>0,00</td><td>0,00</td><td>02/07/2026 11:54</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>01:25:28</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 13:19</td><td>10277:42:00</td><td>7,9</td><td>0</td><td>00:19:38</td><td>10277:22:22</td><td>56</td><td>0,00</td><td>0,00</td><td>02/07/2026 13:42</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>01:02:41</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 14:45</td><td>10277:52:00</td><td>2,1</td><td>0</td><td>00:06:00</td><td>10277:46:00</td><td>52</td><td>0,00</td><td>0,00</td><td>02/07/2026 14:54</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:27:36</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 15:21</td><td>10277:56:00</td><td>0,7</td><td>0</td><td>00:01:50</td><td>10277:54:10</td><td>54</td><td>0,00</td><td>0,00</td><td>02/07/2026 15:25</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:06:13</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td><td>02/07/2026 15:31</td><td>10278:54:00</td><td>10,0</td><td>0</td><td>00:23:48</td><td>10278:30:12</td><td>65</td><td>0,00</td><td>0,00</td><td>02/07/2026 16:29</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>13:47:08</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/07/2026 06:16</td><td>00:36:00</td><td>8,7</td><td>0</td><td>00:29:00</td><td>00:07:00</td><td>54</td><td>0,00</td><td>0,00</td><td>03/07/2026 06:52</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>02:00:17</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/07/2026 08:53</td><td>00:01:00</td><td>2,1</td><td>0</td><td>00:01:00</td><td>00:00:00</td><td>52</td><td>0,00</td><td>0,00</td><td>03/07/2026 09:19</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:27:34</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/07/2026 09:47</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>03/07/2026 09:49</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:00:34</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/07/2026 09:50</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>03/07/2026 09:50</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:07:26</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/07/2026 09:57</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>03/07/2026 09:58</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:02:28</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/07/2026 10:00</td><td>10281:01:00</td><td>49,2</td><td>0</td><td>01:07:06</td><td>10279:53:54</td><td>89</td><td>0,00</td><td>0,00</td><td>03/07/2026 11:26</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:17:33</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>03/07/2026 11:43</td><td>10284:20:00</td><td>66,6</td><td>0</td><td>01:46:59</td><td>10282:33:01</td><td>88</td><td>0,00</td><td>0,00</td><td>03/07/2026 15:02</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:02:06</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td><td>03/07/2026 15:04</td><td>10289:23:00</td><td>87,5</td><td>0</td><td>03:38:18</td><td>10285:44:42</td><td>97</td><td>0,00</td><td>0,00</td><td>03/07/2026 20:05</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>08:10:22</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>04/07/2026 04:15</td><td>10291:56:00</td><td>90,5</td><td>0</td><td>02:16:23</td><td>10289:39:37</td><td>90</td><td>0,00</td><td>0,00</td><td>04/07/2026 06:48</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>03:29:11</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>04/07/2026 10:17</td><td>10293:14:00</td><td>51,1</td><td>0</td><td>01:12:52</td><td>10292:01:08</td><td>84</td><td>0,00</td><td>0,00</td><td>04/07/2026 11:35</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>01:47:17</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>04/07/2026 13:22</td><td>10294:36:00</td><td>56,0</td><td>0</td><td>01:10:56</td><td>10293:25:04</td><td>88</td><td>0,00</td><td>0,00</td><td>04/07/2026 14:44</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:14:05</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td><td>04/07/2026 14:58</td><td>10294:45:00</td><td>3,4</td><td>0</td><td>00:06:53</td><td>10294:38:07</td><td>59</td><td>0,00</td><td>0,00</td><td>04/07/2026 15:06</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:45:56</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>04/07/2026 15:52</td><td>04:29:00</td><td>142,2</td><td>0</td><td>03:51:03</td><td>00:37:57</td><td>86</td><td>0,00</td><td>0,00</td><td>04/07/2026 20:20</td><td>Rua Guaramiranga, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>22:46:33</td><td>Rua Guaramiranga, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>05/07/2026 19:07</td><td>10300:36:00</td><td>52,0</td><td>0</td><td>01:09:24</td><td>10299:26:36</td><td>80</td><td>0,00</td><td>0,00</td><td>05/07/2026 20:28</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>07:19:11</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>06/07/2026 03:48</td><td>10303:44:00</td><td>96,1</td><td>0</td><td>02:39:37</td><td>10301:04:23</td><td>85</td><td>0,00</td><td>0,00</td><td>06/07/2026 06:55</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:00:37</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>06/07/2026 06:56</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:01</td><td>00:00:59</td><td>0</td><td>0,00</td><td>0,00</td><td>06/07/2026 06:57</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>02:33:27</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>06/07/2026 09:30</td><td>10303:59:00</td><td>2,8</td><td>0</td><td>00:07:49</td><td>10303:51:11</td><td>47</td><td>0,00</td><td>0,00</td><td>06/07/2026 09:43</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:05:51</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td><td>06/07/2026 09:49</td><td>10305:05:00</td><td>49,8</td><td>0</td><td>01:01:40</td><td>10304:03:20</td><td>82</td><td>0,00</td><td>0,00</td><td>06/07/2026 10:54</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:28:35</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>06/07/2026 11:23</td><td>10305:16:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10305:16:00</td><td>0</td><td>0,00</td><td>0,00</td><td>06/07/2026 11:33</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>01:01:28</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>06/07/2026 12:34</td><td>10307:37:00</td><td>74,3</td><td>0</td><td>01:48:35</td><td>10305:48:25</td><td>87</td><td>0,00</td><td>0,00</td><td>06/07/2026 14:55</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:48:40</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>06/07/2026 15:44</td><td>00:01:00</td><td>90,7</td><td>0</td><td>00:01:00</td><td>00:00:00</td><td>89</td><td>0,00</td><td>0,00</td><td>06/07/2026 19:47</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>08:04:29</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>07/07/2026 03:52</td><td>03:05:00</td><td>96,6</td><td>0</td><td>02:39:57</td><td>00:25:03</td><td>86</td><td>0,00</td><td>0,00</td><td>07/07/2026 06:56</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:34:15</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/07/2026 07:30</td><td>00:00:21</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:21</td><td>0</td><td>0,00</td><td>0,00</td><td>07/07/2026 07:30</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:02:37</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/07/2026 07:33</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>4</td><td>0,00</td><td>0,00</td><td>07/07/2026 07:34</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:09:49</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/07/2026 07:44</td><td>10317:14:00</td><td>69,5</td><td>0</td><td>01:46:16</td><td>10315:27:44</td><td>89</td><td>0,00</td><td>0,00</td><td>07/07/2026 09:39</td><td>Rua Anatalia de Melo Alves, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:12:37</td><td>Rua Anatalia de Melo Alves, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>07/07/2026 09:52</td><td>10319:28:00</td><td>13,7</td><td>0</td><td>00:30:22</td><td>10318:57:38</td><td>67</td><td>0,00</td><td>0,00</td><td>07/07/2026 12:05</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:06:20</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>07/07/2026 12:12</td><td>00:06:00</td><td>1,4</td><td>0</td><td>00:05:04</td><td>00:00:56</td><td>34</td><td>0,00</td><td>0,00</td><td>07/07/2026 12:18</td><td>Estrada do Cantagalo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:47:44</td><td>Estrada do Cantagalo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>07/07/2026 13:06</td><td>10321:50:00</td><td>77,0</td><td>0</td><td>01:55:38</td><td>10319:54:22</td><td>92</td><td>0,00</td><td>0,00</td><td>07/07/2026 15:21</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:27:59</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>07/07/2026 15:49</td><td>10325:10:00</td><td>83,7</td><td>0</td><td>03:16:05</td><td>10321:53:55</td><td>87</td><td>0,00</td><td>0,00</td><td>07/07/2026 19:37</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>08:15:34</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>08/07/2026 03:53</td><td>10328:44:00</td><td>102,5</td><td>0</td><td>02:59:00</td><td>10325:45:00</td><td>84</td><td>0,00</td><td>0,00</td><td>08/07/2026 07:26</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:05:02</td><td>Rua Antonio Carvalho, Duque de Caxias, Rio de Janeiro, Brasil</td><td>08/07/2026 07:31</td><td>10328:58:00</td><td>4,1</td><td>0</td><td>00:07:19</td><td>10328:50:41</td><td>60</td><td>0,00</td><td>0,00</td><td>08/07/2026 07:44</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>01:52:38</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>08/07/2026 09:37</td><td>10330:15:00</td><td>51,1</td><td>0</td><td>01:13:23</td><td>10329:01:37</td><td>86</td><td>0,00</td><td>0,00</td><td>08/07/2026 10:53</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>01:47:01</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>08/07/2026 12:40</td><td>10333:04:00</td><td>103,2</td><td>0</td><td>02:21:38</td><td>10330:42:22</td><td>103</td><td>0,00</td><td>0,00</td><td>08/07/2026 15:28</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:22:10</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>08/07/2026 15:50</td><td>10336:31:00</td><td>82,8</td><td>0</td><td>02:53:04</td><td>10333:37:56</td><td>90</td><td>0,00</td><td>0,00</td><td>08/07/2026 19:18</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>08:32:11</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>09/07/2026 03:50</td><td>10340:01:00</td><td>102,0</td><td>0</td><td>02:57:10</td><td>10337:03:50</td><td>82</td><td>0,00</td><td>0,00</td><td>09/07/2026 07:19</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>RUBENS CORREA LEAL</td><td>00:16:05</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>09/07/2026 07:35</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>09/07/2026 07:36</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:33:07</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>09/07/2026 08:09</td><td>10342:01:00</td><td>49,3</td><td>0</td><td>01:22:58</td><td>10340:38:02</td><td>85</td><td>0,00</td><td>0,00</td><td>09/07/2026 09:36</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>02:48:28</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>09/07/2026 12:25</td><td>10344:53:00</td><td>86,1</td><td>0</td><td>02:28:16</td><td>10342:24:44</td><td>90</td><td>0,00</td><td>0,00</td><td>09/07/2026 15:16</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:25:12</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>09/07/2026 15:41</td><td>10345:41:00</td><td>5,6</td><td>0</td><td>00:21:06</td><td>10345:19:54</td><td>39</td><td>0,00</td><td>0,00</td><td>09/07/2026 16:34</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>01:55:26</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>09/07/2026 18:29</td><td>10345:45:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10345:45:00</td><td>4</td><td>0,00</td><td>0,00</td><td>09/07/2026 18:33</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>11:37:27</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>10/07/2026 06:10</td><td>10346:25:00</td><td>7,5</td><td>0</td><td>00:25:30</td><td>10345:59:30</td><td>46</td><td>0,00</td><td>0,00</td><td>10/07/2026 06:49</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:58:30</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>10/07/2026 07:48</td><td>10346:29:00</td><td>0</td><td>0</td><td>00:00:30</td><td>10346:28:30</td><td>8</td><td>0,00</td><td>0,00</td><td>10/07/2026 07:51</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>02:21:30</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>10/07/2026 10:12</td><td>10346:41:00</td><td>4,3</td><td>0</td><td>00:09:59</td><td>10346:31:01</td><td>48</td><td>0,00</td><td>0,00</td><td>10/07/2026 10:25</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>03:34:06</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>10/07/2026 13:59</td><td>10347:48:00</td><td>10,4</td><td>0</td><td>00:33:02</td><td>10347:14:58</td><td>61</td><td>0,00</td><td>0,00</td><td>10/07/2026 15:04</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:49:00</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>10/07/2026 15:53</td><td>10351:54:00</td><td>86,8</td><td>0</td><td>03:08:50</td><td>10348:45:10</td><td>98</td><td>0,00</td><td>0,00</td><td>10/07/2026 19:55</td><td>Rua Anona, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>08:30:18</td><td>Rua Anona, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>11/07/2026 04:25</td><td>02:43:00</td><td>124,8</td><td>0</td><td>02:36:18</td><td>00:06:42</td><td>99</td><td>0,00</td><td>0,00</td><td>11/07/2026 07:08</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:48:51</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>11/07/2026 07:57</td><td>10355:58:00</td><td>59,5</td><td>0</td><td>01:17:16</td><td>10354:40:44</td><td>84</td><td>0,00</td><td>0,00</td><td>11/07/2026 09:17</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>03:33:30</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>11/07/2026 12:50</td><td>01:18:00</td><td>5,2</td><td>0</td><td>00:15:31</td><td>01:02:29</td><td>71</td><td>0,00</td><td>0,00</td><td>11/07/2026 14:08</td><td>Rua Vicente Francisco dos Santos, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:02:27</td><td>Rua Vicente Francisco dos Santos, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>11/07/2026 14:11</td><td>10357:18:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10357:18:00</td><td>0</td><td>0,00</td><td>0,00</td><td>11/07/2026 14:12</td><td>Rua Vicente Francisco dos Santos, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:19:31</td><td>Rua Vicente Francisco dos Santos, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>11/07/2026 14:31</td><td>10357:22:00</td><td>0</td><td>0</td><td>00:00:31</td><td>10357:21:29</td><td>4</td><td>0,00</td><td>0,00</td><td>11/07/2026 14:34</td><td>Rua Vicente Francisco dos Santos, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:10:07</td><td>Rua Vicente Francisco dos Santos, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>11/07/2026 14:44</td><td>10357:25:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10357:25:00</td><td>0</td><td>0,00</td><td>0,00</td><td>11/07/2026 14:47</td><td>Rua Vicente Francisco dos Santos, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>43:33:25</td><td>Rua Vicente Francisco dos Santos, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>13/07/2026 10:20</td><td>00:01:00</td><td>7,3</td><td>0</td><td>00:01:00</td><td>00:00:00</td><td>48</td><td>0,00</td><td>0,00</td><td>13/07/2026 11:16</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>01:29:59</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>13/07/2026 12:46</td><td>10360:23:00</td><td>70,8</td><td>0</td><td>01:39:57</td><td>10358:43:03</td><td>89</td><td>0,00</td><td>0,00</td><td>13/07/2026 14:46</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>01:03:54</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>13/07/2026 15:50</td><td>00:40:00</td><td>5,6</td><td>0</td><td>00:21:23</td><td>00:18:37</td><td>42</td><td>0,00</td><td>0,00</td><td>13/07/2026 16:29</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>13:46:18</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>14/07/2026 06:16</td><td>00:36:00</td><td>7,6</td><td>0</td><td>00:24:51</td><td>00:11:09</td><td>42</td><td>0,00</td><td>0,00</td><td>14/07/2026 06:52</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:39:48</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>14/07/2026 07:32</td><td>10361:38:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10361:38:00</td><td>0</td><td>0,00</td><td>0,00</td><td>14/07/2026 07:33</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:11:52</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>14/07/2026 07:45</td><td>10361:27:00</td><td>1,9</td><td>0</td><td>00:05:43</td><td>10361:21:17</td><td>63</td><td>0,00</td><td>0,00</td><td>14/07/2026 07:59</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:10:12</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>14/07/2026 08:09</td><td>10361:30:00</td><td>3,0</td><td>0</td><td>00:05:34</td><td>10361:24:26</td><td>59</td><td>0,00</td><td>0,00</td><td>14/07/2026 08:16</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:08:30</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>14/07/2026 08:24</td><td>10361:36:00</td><td>0</td><td>0</td><td>00:01:04</td><td>10361:34:56</td><td>2</td><td>0,00</td><td>0,00</td><td>14/07/2026 08:27</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>01:11:16</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>14/07/2026 09:38</td><td>10363:06:00</td><td>49,3</td><td>0</td><td>01:16:35</td><td>10361:49:25</td><td>87</td><td>0,00</td><td>0,00</td><td>14/07/2026 11:07</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>01:37:39</td><td>Rua Capit&#227;o Danilo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>14/07/2026 12:45</td><td>10365:29:00</td><td>75,5</td><td>0</td><td>01:58:26</td><td>10363:30:34</td><td>87</td><td>0,00</td><td>0,00</td><td>14/07/2026 15:07</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:40:22</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>14/07/2026 15:47</td><td>00:38:00</td><td>5,6</td><td>0</td><td>00:18:43</td><td>00:19:17</td><td>41</td><td>0,00</td><td>0,00</td><td>14/07/2026 16:25</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>13:39:53</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/07/2026 06:05</td><td>10366:43:00</td><td>1,6</td><td>0</td><td>00:06:41</td><td>10366:36:19</td><td>26</td><td>0,00</td><td>0,00</td><td>15/07/2026 06:14</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:12:48</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/07/2026 06:27</td><td>10367:04:00</td><td>5,5</td><td>0</td><td>00:17:56</td><td>10366:46:04</td><td>47</td><td>0,00</td><td>0,00</td><td>15/07/2026 06:47</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:00:52</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/07/2026 06:48</td><td>10367:10:00</td><td>0,9</td><td>0</td><td>00:04:49</td><td>10367:05:11</td><td>28</td><td>0,00</td><td>0,00</td><td>15/07/2026 06:53</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:01:03</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/07/2026 06:54</td><td>10367:12:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10367:12:00</td><td>1</td><td>0,00</td><td>0,00</td><td>15/07/2026 06:56</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:44:39</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/07/2026 07:40</td><td>10367:48:00</td><td>15,6</td><td>0</td><td>00:27:57</td><td>10367:20:03</td><td>90</td><td>0,00</td><td>0,00</td><td>15/07/2026 08:12</td><td>Avenida Pelotas, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:41:59</td><td>Avenida Pelotas, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/07/2026 08:54</td><td>10368:54:00</td><td>39,7</td><td>0</td><td>00:55:10</td><td>10367:58:50</td><td>77</td><td>0,00</td><td>0,00</td><td>15/07/2026 09:58</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>02:09:39</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>15/07/2026 12:07</td><td>10371:42:00</td><td>80,5</td><td>0</td><td>02:07:58</td><td>10369:34:02</td><td>93</td><td>0,00</td><td>0,00</td><td>15/07/2026 14:56</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>MARCOS CHAVES DA SILVA</td><td>00:46:00</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/07/2026 15:42</td><td>10371:46:00</td><td>0,6</td><td>0</td><td>00:02:29</td><td>10371:43:31</td><td>22</td><td>0,00</td><td>0,00</td><td>15/07/2026 15:46</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:15:58</td><td>Rua do Piano, Duque de Caxias, Rio de Janeiro, Brasil</td><td>15/07/2026 16:02</td><td>00:26:00</td><td>5,4</td><td>0</td><td>00:18:57</td><td>00:07:03</td><td>42</td><td>0,00</td><td>0,00</td><td>15/07/2026 16:27</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>13:47:11</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>16/07/2026 06:14</td><td>00:01:00</td><td>7,6</td><td>0</td><td>00:01:00</td><td>00:00:00</td><td>57</td><td>0,00</td><td>0,00</td><td>16/07/2026 06:49</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>08:32:30</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>16/07/2026 15:21</td><td>10373:45:00</td><td>10,0</td><td>0</td><td>00:30:12</td><td>10373:14:48</td><td>61</td><td>0,00</td><td>0,00</td><td>16/07/2026 16:21</td><td>Avenida Vicente Celestino, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:31:53</td><td>Avenida Vicente Celestino, Duque de Caxias, Rio de Janeiro, Brasil</td><td>16/07/2026 16:53</td><td>10373:47:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10373:47:00</td><td>0</td><td>0,00</td><td>0,00</td><td>16/07/2026 16:55</td><td>Avenida Vicente Celestino, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:14:16</td><td>Avenida Vicente Celestino, Duque de Caxias, Rio de Janeiro, Brasil</td><td>16/07/2026 17:09</td><td>10373:52:00</td><td>0,5</td><td>0</td><td>00:02:36</td><td>10373:49:24</td><td>29</td><td>0,00</td><td>0,00</td><td>16/07/2026 17:13</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>02:19:54</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>16/07/2026 19:33</td><td>10373:55:00</td><td>0</td><td>0</td><td>00:01:18</td><td>10373:53:42</td><td>11</td><td>0,00</td><td>0,00</td><td>16/07/2026 19:35</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>10:42:48</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>17/07/2026 06:18</td><td>10374:26:00</td><td>7,8</td><td>0</td><td>00:24:22</td><td>10374:01:38</td><td>41</td><td>0,00</td><td>0,00</td><td>17/07/2026 06:48</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>01:03:41</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>17/07/2026 07:52</td><td>10375:10:00</td><td>17,2</td><td>0</td><td>00:24:46</td><td>10374:45:14</td><td>88</td><td>0,00</td><td>0,00</td><td>17/07/2026 08:29</td><td>Rua Jacurut&#227;, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:08:45</td><td>Rua Jacurut&#227;, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>17/07/2026 08:37</td><td>00:59:00</td><td>35,4</td><td>0</td><td>00:50:37</td><td>00:08:23</td><td>89</td><td>0,00</td><td>0,00</td><td>17/07/2026 09:36</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>02:57:33</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>17/07/2026 12:34</td><td>10382:25:00</td><td>165,2</td><td>0</td><td>05:10:55</td><td>10377:14:05</td><td>96</td><td>0,00</td><td>0,00</td><td>17/07/2026 18:52</td><td>Rua Santo Ant&#244;nio, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:46:08</td><td>Rua Santo Ant&#244;nio, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>17/07/2026 19:38</td><td>10385:46:00</td><td>165,7</td><td>0</td><td>02:51:53</td><td>10382:54:07</td><td>89</td><td>0,00</td><td>0,00</td><td>17/07/2026 22:59</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:00:08</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>17/07/2026 22:59</td><td>10385:48:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10385:48:00</td><td>0</td><td>0,00</td><td>0,00</td><td>17/07/2026 23:00</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>05:27:32</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>18/07/2026 04:28</td><td>10388:16:00</td><td>113,6</td><td>0</td><td>02:20:27</td><td>10385:55:33</td><td>96</td><td>0,00</td><td>0,00</td><td>18/07/2026 06:55</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:57:50</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>18/07/2026 07:53</td><td>10388:39:00</td><td>17,9</td><td>0</td><td>00:21:03</td><td>10388:17:57</td><td>84</td><td>0,00</td><td>0,00</td><td>18/07/2026 08:15</td><td>Rua Jacurut&#227;, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:09:54</td><td>Rua Jacurut&#227;, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>18/07/2026 08:25</td><td>10389:26:00</td><td>35,5</td><td>0</td><td>00:42:45</td><td>10388:43:15</td><td>75</td><td>0,00</td><td>0,00</td><td>18/07/2026 09:12</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>04:22:13</td><td>Rua Ministro Carlos Medeiros, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>18/07/2026 13:34</td><td>10390:50:00</td><td>54,8</td><td>0</td><td>01:14:08</td><td>10389:35:52</td><td>85</td><td>0,00</td><td>0,00</td><td>18/07/2026 14:57</td><td>Rua Pedro Toledo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:27:14</td><td>Rua Pedro Toledo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>18/07/2026 15:25</td><td>10392:45:00</td><td>56,5</td><td>0</td><td>10392:08:05</td><td>00:36:55</td><td>96</td><td>0,00</td><td>0,00</td><td>18/07/2026 17:19</td><td>Rua Icoraci, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>02:52:40</td><td>Rua Icoraci, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>18/07/2026 20:12</td><td>10393:45:00</td><td>32,7</td><td>0</td><td>00:52:45</td><td>10392:52:15</td><td>95</td><td>0,00</td><td>0,00</td><td>18/07/2026 21:11</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>11:36:26</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>19/07/2026 08:47</td><td>10393:48:00</td><td>0</td><td>0</td><td>00:01:02</td><td>10393:46:58</td><td>12</td><td>0,00</td><td>0,00</td><td>19/07/2026 08:50</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:54:36</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>19/07/2026 09:44</td><td>10395:08:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10395:08:00</td><td>0</td><td>0,00</td><td>0,00</td><td>19/07/2026 11:04</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>04:25:32</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>19/07/2026 15:30</td><td>10397:49:00</td><td>30,5</td><td>0</td><td>00:43:51</td><td>10397:05:09</td><td>85</td><td>0,00</td><td>0,00</td><td>19/07/2026 18:10</td><td>T&#250;nel Senador Nelson Carneiro, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>10:35:17</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>20/07/2026 04:46</td><td>10400:04:00</td><td>106,6</td><td>0</td><td>02:02:41</td><td>10398:01:19</td><td>89</td><td>0,00</td><td>0,00</td><td>20/07/2026 07:00</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>THIAGO GOTGTROY RODRIGUES</td><td>00:26:56</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/07/2026 07:27</td><td>00:00:14</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:14</td><td>0</td><td>0,00</td><td>0,00</td><td>20/07/2026 07:27</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>08:15:33</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>20/07/2026 15:43</td><td>10400:39:00</td><td>5,4</td><td>0</td><td>00:19:22</td><td>10400:19:38</td><td>41</td><td>0,00</td><td>0,00</td><td>20/07/2026 16:20</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>14:02:31</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>21/07/2026 06:23</td><td>10401:06:00</td><td>7,8</td><td>0</td><td>00:23:13</td><td>10400:42:47</td><td>51</td><td>0,00</td><td>0,00</td><td>21/07/2026 06:49</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>01:41:45</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>21/07/2026 08:31</td><td>00:41:00</td><td>17,2</td><td>0</td><td>00:38:21</td><td>00:02:39</td><td>88</td><td>0,00</td><td>0,00</td><td>21/07/2026 09:12</td><td>Rua Jacurut&#227;, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:00:21</td><td>Rua Jacurut&#227;, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>21/07/2026 09:13</td><td>10401:59:00</td><td>0</td><td>0</td><td>00:00:05</td><td>10401:58:55</td><td>2</td><td>0,00</td><td>0,00</td><td>21/07/2026 09:19</td><td>Rua Jacurut&#227;, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:03:01</td><td>Rua Jacurut&#227;, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>21/07/2026 09:22</td><td>10402:54:00</td><td>19,3</td><td>0</td><td>00:33:59</td><td>10402:20:01</td><td>79</td><td>0,00</td><td>0,00</td><td>21/07/2026 10:17</td><td>Rua Ibiracoa, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:56:45</td><td>Rua Ibiracoa, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>21/07/2026 11:14</td><td>10404:05:00</td><td>38,4</td><td>0</td><td>01:02:38</td><td>10403:02:22</td><td>85</td><td>0,00</td><td>0,00</td><td>21/07/2026 12:23</td><td>Estrada do Cantagalo, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:40:26</td><td>Estrada do Cantagalo, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>21/07/2026 13:04</td><td>10405:52:00</td><td>71,4</td><td>0</td><td>01:42:23</td><td>10404:09:37</td><td>103</td><td>0,00</td><td>0,00</td><td>21/07/2026 14:50</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:50:59</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>21/07/2026 15:41</td><td>10406:30:00</td><td>5,4</td><td>0</td><td>00:18:28</td><td>10406:11:32</td><td>39</td><td>0,00</td><td>0,00</td><td>21/07/2026 16:23</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>13:53:36</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>22/07/2026 06:17</td><td>10407:04:00</td><td>7,3</td><td>0</td><td>00:24:13</td><td>10406:39:47</td><td>36</td><td>0,00</td><td>0,00</td><td>22/07/2026 06:50</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:51:09</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>22/07/2026 07:41</td><td>10409:19:00</td><td>112,0</td><td>0</td><td>01:58:23</td><td>10407:20:37</td><td>93</td><td>0,00</td><td>0,00</td><td>22/07/2026 09:52</td><td>Rua Anatalia de Melo Alves, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>02:19:10</td><td>Rua Anatalia de Melo Alves, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>22/07/2026 12:11</td><td>10411:59:00</td><td>83,4</td><td>0</td><td>02:08:01</td><td>10409:50:59</td><td>88</td><td>0,00</td><td>0,00</td><td>22/07/2026 14:50</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:52:32</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>22/07/2026 15:43</td><td>10412:38:00</td><td>5,6</td><td>0</td><td>00:19:21</td><td>10412:18:39</td><td>42</td><td>0,00</td><td>0,00</td><td>22/07/2026 16:21</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>13:57:12</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>23/07/2026 06:18</td><td>10413:07:00</td><td>7,3</td><td>0</td><td>00:22:53</td><td>10412:44:07</td><td>54</td><td>0,00</td><td>0,00</td><td>23/07/2026 06:51</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:06:20</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>23/07/2026 06:57</td><td>10413:38:00</td><td>17,2</td><td>0</td><td>00:25:48</td><td>10413:12:12</td><td>82</td><td>0,00</td><td>0,00</td><td>23/07/2026 07:24</td><td>Rua General Argolo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>02:00:11</td><td>Rua General Argolo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>23/07/2026 09:24</td><td>10413:58:00</td><td>11,7</td><td>0</td><td>00:18:56</td><td>10413:39:04</td><td>94</td><td>0,00</td><td>0,00</td><td>23/07/2026 09:44</td><td>Rua Ibiracoa, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>03:03:00</td><td>Rua Ibiracoa, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>23/07/2026 12:47</td><td>10414:00:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10414:00:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 12:48</td><td>Rua Ibiracoa, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>06:32:18</td><td>Rua Ibiracoa, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>23/07/2026 19:21</td><td>10414:38:00</td><td>23,5</td><td>0</td><td>00:34:35</td><td>10414:03:25</td><td>81</td><td>0,00</td><td>0,00</td><td>23/07/2026 19:59</td><td>Rua Anona, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>08:40:54</td><td>Rua Anona, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>24/07/2026 04:39</td><td>10417:02:00</td><td>101,4</td><td>0</td><td>02:07:55</td><td>10414:54:05</td><td>94</td><td>0,00</td><td>0,00</td><td>24/07/2026 07:02</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:37:18</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 07:39</td><td>10417:20:00</td><td>3,0</td><td>0</td><td>00:11:55</td><td>10417:08:05</td><td>50</td><td>0,00</td><td>0,00</td><td>24/07/2026 08:01</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:18:00</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 08:19</td><td>00:06:00</td><td>0,8</td><td>0</td><td>00:02:44</td><td>00:03:16</td><td>26</td><td>0,00</td><td>0,00</td><td>24/07/2026 08:24</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:26:56</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 08:51</td><td>10417:27:00</td><td>0</td><td>0</td><td>00:00:01</td><td>10417:26:59</td><td>0</td><td>0,00</td><td>0,00</td><td>24/07/2026 08:52</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:21:48</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 09:14</td><td>10417:47:00</td><td>5,0</td><td>0</td><td>00:10:42</td><td>10417:36:18</td><td>58</td><td>0,00</td><td>0,00</td><td>24/07/2026 09:32</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:09:29</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 09:41</td><td>10417:58:00</td><td>4,7</td><td>0</td><td>00:09:20</td><td>10417:48:40</td><td>59</td><td>0,00</td><td>0,00</td><td>24/07/2026 09:53</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:16:50</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 10:10</td><td>10418:10:00</td><td>2,8</td><td>0</td><td>00:09:09</td><td>10418:00:51</td><td>28</td><td>0,00</td><td>0,00</td><td>24/07/2026 10:20</td><td>Rua Assemblea, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>01:09:45</td><td>Rua Assemblea, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 11:30</td><td>10418:28:00</td><td>5,9</td><td>0</td><td>00:13:41</td><td>10418:14:19</td><td>54</td><td>0,00</td><td>0,00</td><td>24/07/2026 11:47</td><td>Avenida Actura, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:30:22</td><td>Avenida Actura, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 12:17</td><td>10418:42:00</td><td>4,0</td><td>0</td><td>00:12:21</td><td>10418:29:39</td><td>38</td><td>0,00</td><td>0,00</td><td>24/07/2026 12:32</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>02:16:28</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 14:48</td><td>10419:01:00</td><td>7,2</td><td>0</td><td>00:16:24</td><td>10418:44:36</td><td>57</td><td>0,00</td><td>0,00</td><td>24/07/2026 15:06</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:48:14</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>24/07/2026 15:54</td><td>10422:11:00</td><td>88,7</td><td>0</td><td>02:44:29</td><td>10419:26:31</td><td>89</td><td>0,00</td><td>0,00</td><td>24/07/2026 19:00</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>01:25:51</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>24/07/2026 20:26</td><td>10422:21:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10422:21:00</td><td>0</td><td>0,00</td><td>0,00</td><td>24/07/2026 20:35</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:12:58</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>24/07/2026 20:48</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:52</td><td>00:00:08</td><td>0</td><td>0,00</td><td>0,00</td><td>24/07/2026 20:48</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:00:16</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>24/07/2026 20:48</td><td>10425:55:00</td><td>110,1</td><td>0</td><td>01:46:44</td><td>10424:08:16</td><td>81</td><td>0,00</td><td>0,00</td><td>25/07/2026 00:21</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>32:28:05</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>26/07/2026 08:50</td><td>00:32:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:32:00</td><td>0</td><td>0,00</td><td>0,00</td><td>26/07/2026 09:21</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>05:51:56</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>26/07/2026 15:13</td><td>10427:35:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10427:35:00</td><td>0</td><td>0,00</td><td>0,00</td><td>26/07/2026 16:19</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:15:23</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>26/07/2026 16:35</td><td>10429:44:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10429:44:00</td><td>0</td><td>0,00</td><td>0,00</td><td>26/07/2026 18:43</td><td>Rua Monodora, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>09:24:08</td><td>Rua Acapori, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>27/07/2026 04:07</td><td>00:01:00</td><td>106,5</td><td>0</td><td>00:01:00</td><td>00:00:00</td><td>89</td><td>0,00</td><td>0,00</td><td>27/07/2026 06:47</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>01:02:03</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>27/07/2026 07:49</td><td>10432:36:00</td><td>1,9</td><td>0</td><td>00:05:23</td><td>10432:30:37</td><td>55</td><td>0,00</td><td>0,00</td><td>27/07/2026 08:00</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:00:45</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>27/07/2026 08:01</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>27/07/2026 08:01</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:07:49</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>27/07/2026 08:09</td><td>10432:45:00</td><td>0,3</td><td>0</td><td>00:02:56</td><td>10432:42:04</td><td>38</td><td>0,00</td><td>0,00</td><td>27/07/2026 08:16</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:10:59</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td><td>27/07/2026 08:27</td><td>10432:52:00</td><td>0,6</td><td>0</td><td>00:03:40</td><td>10432:48:20</td><td>21</td><td>0,00</td><td>0,00</td><td>27/07/2026 08:33</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:15:01</td><td>Rua Luiz de Cam&#245;es, Duque de Caxias, Rio de Janeiro, Brasil</td><td>27/07/2026 08:48</td><td>01:54:00</td><td>111,4</td><td>0</td><td>01:48:25</td><td>00:05:35</td><td>95</td><td>0,00</td><td>0,00</td><td>27/07/2026 10:41</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:10:00</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>27/07/2026 10:51</td><td>10434:48:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10434:48:00</td><td>0</td><td>0,00</td><td>0,00</td><td>27/07/2026 10:52</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:48:22</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>27/07/2026 11:40</td><td>10437:57:00</td><td>89,6</td><td>0</td><td>02:19:23</td><td>10435:37:37</td><td>88</td><td>0,00</td><td>0,00</td><td>27/07/2026 14:49</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>01:00:03</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>27/07/2026 15:49</td><td>10441:32:00</td><td>103,6</td><td>0</td><td>03:06:58</td><td>10438:25:02</td><td>99</td><td>0,00</td><td>0,00</td><td>27/07/2026 19:24</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>09:24:27</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>28/07/2026 04:48</td><td>10443:54:00</td><td>86,0</td><td>0</td><td>01:54:49</td><td>10441:59:11</td><td>93</td><td>0,00</td><td>0,00</td><td>28/07/2026 07:09</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>06:33:58</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>28/07/2026 13:43</td><td>10444:01:00</td><td>2,1</td><td>0</td><td>00:05:22</td><td>10443:55:38</td><td>54</td><td>0,00</td><td>0,00</td><td>28/07/2026 13:54</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:51:45</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>28/07/2026 14:45</td><td>10444:12:00</td><td>3,0</td><td>0</td><td>00:07:24</td><td>10444:04:36</td><td>56</td><td>0,00</td><td>0,00</td><td>28/07/2026 14:56</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:45:46</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>28/07/2026 15:42</td><td>10446:49:00</td><td>61,6</td><td>0</td><td>02:07:02</td><td>10444:41:58</td><td>84</td><td>0,00</td><td>0,00</td><td>28/07/2026 18:17</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>11:58:59</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>29/07/2026 06:16</td><td>10447:25:00</td><td>7,3</td><td>0</td><td>00:25:27</td><td>10446:59:33</td><td>45</td><td>0,00</td><td>0,00</td><td>29/07/2026 06:52</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>08:49:11</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>29/07/2026 15:41</td><td>10448:12:00</td><td>5,7</td><td>0</td><td>00:19:01</td><td>10447:52:59</td><td>41</td><td>0,00</td><td>0,00</td><td>29/07/2026 16:28</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>04:43:45</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>29/07/2026 21:11</td><td>10448:28:00</td><td>5,5</td><td>0</td><td>00:12:56</td><td>10448:15:04</td><td>54</td><td>0,00</td><td>0,00</td><td>29/07/2026 21:26</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>&nbsp;</td><td>00:07:08</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>29/07/2026 21:33</td><td>00:00:15</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:15</td><td>0</td><td>0,00</td><td>0,00</td><td>29/07/2026 21:34</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>00:00:34</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>29/07/2026 21:34</td><td>10448:46:00</td><td>4,7</td><td>0</td><td>00:12:13</td><td>10448:33:47</td><td>41</td><td>0,00</td><td>0,00</td><td>29/07/2026 21:52</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>ROBERTO CARLOS C. DE OLIVEIRA</td><td>04:44:26</td><td>Rua Vigo, Duque de Caxias, Rio de Janeiro, Brasil</td><td>30/07/2026 02:36</td><td>10453:23:00</td><td>165,6</td><td>0</td><td>03:55:08</td><td>10449:27:52</td><td>89</td><td>0,00</td><td>0,00</td><td>30/07/2026 07:13</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>01:29:40</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>30/07/2026 08:43</td><td>10454:10:00</td><td>25,7</td><td>0</td><td>00:38:37</td><td>10453:31:23</td><td>89</td><td>0,00</td><td>0,00</td><td>30/07/2026 09:25</td><td>Rua Ibiracoa, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>01:37:27</td><td>Rua Ibiracoa, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>30/07/2026 11:02</td><td>10458:01:00</td><td>108,3</td><td>0</td><td>02:27:56</td><td>10455:33:04</td><td>99</td><td>0,00</td><td>0,00</td><td>30/07/2026 14:53</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>WELLINTON DE OLIVEIRA</td><td>00:00:32</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>30/07/2026 14:53</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>30/07/2026 14:54</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:14:25</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>30/07/2026 15:08</td><td>10457:47:00</td><td>1,9</td><td>0</td><td>00:07:56</td><td>10457:39:04</td><td>37</td><td>0,00</td><td>0,00</td><td>30/07/2026 15:23</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:05:52</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>30/07/2026 15:29</td><td>10461:24:00</td><td>84,8</td><td>0</td><td>02:46:01</td><td>10458:37:59</td><td>89</td><td>0,00</td><td>0,00</td><td>30/07/2026 19:04</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>08:51:18</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>31/07/2026 03:56</td><td>03:07:00</td><td>91,8</td><td>0</td><td>02:28:39</td><td>00:38:21</td><td>92</td><td>0,00</td><td>0,00</td><td>31/07/2026 07:02</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>01:35:25</td><td>Avenida Fabor, Duque de Caxias, Rio de Janeiro, Brasil</td><td>31/07/2026 08:38</td><td>10466:19:00</td><td>69,1</td><td>0</td><td>01:42:14</td><td>10464:36:46</td><td>97</td><td>0,00</td><td>0,00</td><td>31/07/2026 10:26</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:30:11</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>31/07/2026 10:56</td><td>10466:21:00</td><td>0</td><td>0</td><td>00:00:00</td><td>10466:21:00</td><td>1</td><td>0,00</td><td>0,00</td><td>31/07/2026 10:58</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>208 - VIBRA - RESERVA GPS2 (RIS1J97)</td><td>EDMAR LARA ROZA </td><td>00:59:02</td><td>Rua Pedro Leit&#227;o, Rio de Janeiro, Rio de Janeiro, Brasil</td><td>31/07/2026 11:57</td><td>10473:16:00</td><td>172,8</td><td>0</td><td>06:03:48</td><td>10467:12:12</td><td>94</td><td>0,00</td><td>0,00</td><td>31/07/2026 18:50</td><td>Rua Peroba, Rio de Janeiro, Rio de Janeiro, Brasil</td>
+		</tr>
+	</table>
+</div>
