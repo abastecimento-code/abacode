@@ -2107,7 +2107,7 @@ function r200Render() {
     html+=r200Header('Prefixo 200 · '+r200Br(R200_VIEW.day),m.label+' de 2026 · '+x.count+' eventos · '+r200Km(x.km),true);
     html+='<div class="r200-note">Cada linha abaixo corresponde a um evento do relatório original. Endereços, horários, horímetro, distância, tempo em movimento, tempo parado e velocidade máxima foram preservados.</div>';
     html+='<div class="r200-table-wrap"><table class="r200-table"><thead><tr><th>Ignição</th><th>Distância</th><th>Horímetro</th><th>Em movimento</th><th>Parado</th><th>Vel. máx.</th><th>Origem → destino</th><th>Arquivo-fonte</th></tr></thead><tbody>';
-    rows.forEach(r=>{html+='<tr><td>'+r200Esc(r.time)+'</td><td class="r200-distance">'+r200Esc(r.distance_raw)+' km</td><td>'+r200Esc(r.horimeter)+'</td><td>'+r200Esc(r.moving_time)+'</td><td>'+r200Esc(r.idle_time)+'</td><td>'+r200Esc(r.max_speed_kmh)+' km/h</td><td class="r200-address">'+r200Esc(r.start_address)+'<span>↓</span>'+r200Esc(r.end_address)+'</td><td>'+r200Esc(r.source)+'</td></tr>';});
+    rows.forEach(r=>{html+='<tr><td>'+r200Esc(r.time)+'</td><td class="r200-distance">'+r200Esc(r.distance_raw)+' km</td><td>'+r200Esc(r.horimeter)+'</td><td>'+r200Esc(r.moving_time)+'</td><td>'+r200Esc(r.idle_time)+'</td><td>'+r200Esc(r.max_speed_kmh)+' km/h</td><td class="r200-address">'+r200Esc(r.start_address)+'<span>↓</span>'+r200Esc(r.end_address)+'</td><td>'+r200Esc(r.source)+' · linha '+r200Esc(r.source_row)+'</td></tr>';});
     html+='</tbody></table></div>';
   }
   html+='</section>';
