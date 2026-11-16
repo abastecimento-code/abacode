@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>Fuel Intelligence | Central de Controle</title>
+<style>
+:root{--bg:#080e19;--panel:#101a2a;--panel2:#142238;--line:#23344c;--text:#edf4ff;--muted:#8ea3bd;--green:#39d98a;--yellow:#f6c85f;--red:#ff6b73;--blue:#67a9ff;--cyan:#55d6d2;--shadow:0 14px 40px #0004}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% -10%,#17324d 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}.sidebar{border-right:1px solid var(--line);padding:24px 16px;background:#0b1422eF;position:sticky;top:0;height:100vh}.brand{display:flex;gap:12px;align-items:center;padding:0 10px 24px}.brandmark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#39d98a,#147d79);display:grid;place-items:center;color:#062016;font-weight:900;font-size:18px}.brand strong{display:block;font-size:14px;letter-spacing:.09em}.brand small{color:var(--muted);font-size:10px;letter-spacing:.16em}.navlabel{color:#647b98;font-size:10px;font-weight:800;letter-spacing:.16em;padding:15px 12px 8px}.nav{display:grid;gap:5px}.nav button{background:transparent;border:1px solid transparent;color:#a8bad1;text-align:left;padding:11px 12px;border-radius:10px;display:flex;align-items:center;gap:12px}.nav button:hover,.nav button.active{background:#17263b;border-color:#263b55;color:white}.nav .ico{width:20px;text-align:center;color:var(--green)}.sidefoot{position:absolute;bottom:18px;left:20px;right:20px;color:#7890ad;font-size:11px;border-top:1px solid var(--line);padding-top:14px}.main{min-width:0;padding:28px clamp(16px,3vw,42px) 50px;max-width:1800px;width:100%;margin:auto}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:24px}.eyebrow{font-size:10px;color:var(--green);letter-spacing:.18em;font-weight:800;text-transform:uppercase}.top h1{font-size:clamp(24px,3vw,34px);margin:5px 0 4px;letter-spacing:-.04em}.sub{color:var(--muted);font-size:13px}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{background:#17283e;color:#dceaff;border:1px solid #2b405c;padding:9px 13px;border-radius:9px}.btn:hover{border-color:var(--green)}.btn.primary{background:var(--green);color:#062016;border-color:var(--green);font-weight:800}.filters{display:flex;gap:9px;flex-wrap:wrap;padding:12px;background:#0f1a2a;border:1px solid var(--line);border-radius:13px;margin-bottom:18px}.filters label{color:var(--muted);font-size:10px;display:grid;gap:5px}.filters input,.filters select,.search{background:#0a1422;color:var(--text);border:1px solid #2a3d56;border-radius:8px;padding:8px 10px;min-width:120px}.filters .wide{min-width:180px}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px}.card{background:linear-gradient(150deg,#132138,#0e1929);border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:var(--shadow);min-width:0}.kpi-top{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.kpi-icon{color:var(--green);font-size:17px}.kpi-value{font-size:clamp(22px,2.5vw,30px);font-weight:800;letter-spacing:-.04em;margin:10px 0 3px;white-space:nowrap}.kpi-foot{font-size:11px;color:#8ca2bc}.green{color:var(--green)}.yellow{color:var(--yellow)}.red{color:var(--red)}.blue{color:var(--blue)}.two{grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr)}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 12px}.sectionhead h2{font-size:16px;margin:0}.sectionhead p{margin:3px 0 0;color:var(--muted);font-size:11px}.chart{height:260px;position:relative}.chart canvas{width:100%;height:100%}.legend{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin-top:8px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;background:var(--green)}.dot.blue{background:var(--blue)}.dot.yellow{background:var(--yellow)}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{border-collapse:collapse;width:100%;min-width:720px}th,td{padding:11px 12px;border-bottom:1px solid #203149;text-align:left;font-size:12px;white-space:nowrap}th{background:#14243a;color:#9fb3cd;font-size:10px;text-transform:uppercase;letter-spacing:.08em;position:sticky;top:0}tr:hover td{background:#14243a66}tr:last-child td{border-bottom:0}.pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:99px;font-size:10px;font-weight:800;background:#1c344a;color:#9ec6ff}.pill.ok{background:#12392d;color:#62e6a4}.pill.warn{background:#47371b;color:#ffdb81}.pill.danger{background:#48252d;color:#ff9ca2}.muted{color:var(--muted)}.empty{padding:30px;text-align:center;color:var(--muted)}.alertlist{display:grid;gap:9px}.alert{border:1px solid var(--line);border-left:3px solid var(--yellow);border-radius:10px;padding:12px;background:#111d2d}.alert.high{border-left-color:var(--red)}.alert h3{margin:0 0 4px;font-size:12px}.alert p{margin:0;color:var(--muted);font-size:11px}.alert small{display:block;margin-top:7px;color:#7088a6}.progress{height:7px;background:#24364c;border-radius:9px;overflow:hidden}.progress span{height:100%;display:block;background:var(--green)}.vehicle-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.vehicle{cursor:pointer;transition:.15s}.vehicle:hover{transform:translateY(-2px);border-color:#4c6d8e}.vehicle h3{font-size:15px;margin:0}.vehicle .plate{font-size:11px;color:var(--muted)}.vehicle .big{font-size:22px;font-weight:800;margin:12px 0 2px}.split{display:flex;justify-content:space-between;align-items:center;gap:10px}.hidden{display:none!important}.notice{padding:12px 14px;border-radius:10px;background:#172b40;border:1px solid #2c4966;color:#c4d8ee;font-size:12px;margin-bottom:15px}.notice.warn{background:#382d1a;border-color:#69501f;color:#f6d995}.detailhead{display:flex;align-items:center;justify-content:space-between;gap:12px}.detailstats{grid-template-columns:repeat(3,minmax(0,1fr))}.footer{text-align:center;color:#637a98;font-size:10px;padding:25px 0 0}.loading{color:var(--muted);padding:40px;text-align:center}
+@media(max-width:1050px){.shell{grid-template-columns:210px 1fr}.kpis{grid-template-columns:repeat(2,1fr)}.vehicle-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.shell{display:block}.sidebar{height:auto;position:relative;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 8px 10px}.nav{display:flex;overflow:auto}.navlabel,.sidefoot{display:none}.nav button{white-space:nowrap;padding:9px}.main{padding:20px 13px}.top{display:block}.actions{margin-top:12px}.two,.three{grid-template-columns:1fr}.vehicle-grid{grid-template-columns:1fr}.detailstats{grid-template-columns:1fr 1fr}.kpis{gap:9px}.card{padding:13px}.kpi-value{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+ <div class="brand"><div class="brandmark">F</div><div><strong>FUEL INTELLIGENCE</strong><small>OPERAÇÕES & AUDITORIA</small></div></div>
+ <div class="navlabel">CENTRAL DE CONTROLE</div>
+ <nav class="nav" id="nav">
+  <button class="active" data-page="overview"><span class="ico">◈</span>Visão geral</button>
+  <button data-page="vehicles"><span class="ico">▣</span>Frota & veículos</button>
+  <button data-page="transactions"><span class="ico">⇄</span>Abastecimentos</button>
+  <button data-page="consumption"><span class="ico">⌁</span>Consumo</button>
+  <button data-page="investigation"><span class="ico">⌕</span>Investigações</button>
+  <button data-page="flow"><span class="ico">⇢</span>Fluxo do combustível</button>
+  <button data-page="reports"><span class="ico">▤</span>Relatórios</button>
+ </nav>
+ <div class="sidefoot">BASE AUDITADA · 16 NOV 2026<br>Dados locais do repositório · v1.0</div>
+</aside>
+<main class="main">
+ <header class="top"><div><div class="eyebrow">Painel executivo · combustível</div><h1 id="pageTitle">Visão geral da operação</h1><div class="sub" id="pageSub">Acompanhe a frota, identifique desvios e investigue cada movimentação.</div></div><div class="actions"><button class="btn" id="exportBtn">↓ Exportar CSV</button><button class="btn primary" id="refreshBtn">↻ Atualizar dados</button></div></header>
+ <div class="filters" id="filters">
+  <label>De<input type="date" id="dateFrom" value="2026-07-01"></label>
+  <label>Até<input type="date" id="dateTo" value="2026-11-16"></label>
+  <label>Empresa<select id="company"><option value="">Todas</option></select></label>
+  <label>Faixa de prefixo<select id="range"><option value="">Todas</option><option>200-299</option><option>300-399</option><option>500-700</option><option>1000-4000</option></select></label>
+  <label>Prefixo / placa<input class="wide" id="prefixSearch" placeholder="Buscar prefixo ou placa"></label>
+  <label>Tipo de registro<select id="type"><option value="">Todos</option><option value="E">E</option><option value="I">I</option></select></label>
+  <button class="btn" id="clearFilters">Limpar filtros</button>
+ </div>
+ <div id="content"><div class="loading">Carregando base operacional…</div></div>
+ <div class="footer">FUEL INTELLIGENCE · Alertas são sinais para conferência, não conclusões de fraude. Valores dependem da qualidade dos registros de origem.</div>
+</main>
+</div>
+<script>
+const BASE='./dados/painel-inteligencia/';
+const state={vehicles:[],prefixes:[],events:[],manifest:null,unparsed:[],page:'overview',selected:null};
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n||0);
+const number=(n,d=0)=>new Intl.NumberFormat('pt-BR',{maximumFractionDigits:d,minimumFractionDigits:d}).format(n||0);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dateBR=s=>s?new Date(s+'T12:00:00').toLocaleDateString('pt-BR'):'—';
+const ranges=[['200-299',200,299],['300-399',300,399],['500-700',500,700],['1000-4000',1000,4000]];
+function vehicleMap(){return new Map(state.vehicles.map(v=>[v[0],{prefix:v[0],company:v[1],model:v[2],plate:v[3],year:v[4],chassis:v[5]}]));}
+function rangeOf(p){const n=Number(p);return ranges.find(r=>n>=r[1]&&n<=r[2])?.[0]||'Outros';}
+function allFiltered(){
+ const from=$('dateFrom').value,to=$('dateTo').value,company=$('company').value,range=$('range').value,query=$('prefixSearch').value.trim().toUpperCase(),type=$('type').value;
+ const vm=vehicleMap();
+ return state.events.filter(e=>{
+  const v=vm.get(e[0]),date=e[1];
+  if(from&&date<from||to&&date>to)return false;
+  if(company&&v?.company!==company)return false;
+  if(range&&rangeOf(e[0])!==range)return false;
+  if(query&&!e[0].includes(query)&&!(v?.plate||'').toUpperCase().includes(query)&&!(v?.model||'').toUpperCase().includes(query))return false;
+  if(type&&e[2]!==type)return false;
+  return true;
+ });
+}
+function sum(a,fn){return a.reduce((s,x)=>s+fn(x),0);}
+function uniq(a,fn){return new Set(a.map(fn)).size;}
+function dailyAverage(events){if(!events.length)return 0;const days=uniq(events,e=>e[1]);return sum(events,e=>e[4])/Math.max(1,days);}
+function weightedKmL(events){const valid=events.filter(e=>e[7]>0&&e[4]>0);return valid.length?sum(valid,e=>e[7])/sum(valid,e=>e[4]):0;}
+function groupBy(a,fn){const m=new Map();for(const x of a){const k=fn(x);if(!m.has(k))m.set(k,[]);m.get(k).push(x);}return m;}
+function fmtDate(s){return dateBR(s);}
+function card(label,value,foot,icon='◈',tone='green'){return '<div class="card"><div class="kpi-top"><span>'+label+'</span><span class="kpi-icon '+tone+'">'+icon+'</span></div><div class="kpi-value">'+value+'</div><div class="kpi-foot">'+foot+'</div></div>';}
+function chartLine(id,series){
+ setTimeout(()=>{const c=$(id);if(!c)return;const ctx=c.getContext('2d'),w=c.width=c.clientWidth*devicePixelRatio,h=c.height=c.clientHeight*devicePixelRatio;ctx.scale(devicePixelRatio,devicePixelRatio);const W=c.clientWidth,H=c.clientHeight,p={l:42,r:12,t:14,b:28},max=Math.max(1,...series.flatMap(s=>s.values)),min=0;ctx.font='10px system-ui';ctx.strokeStyle='#263a52';ctx.fillStyle='#8299b6';ctx.lineWidth=1;
+ for(let i=0;i<=4;i++){const y=p.t+(H-p.t-p.b)*i/4;ctx.beginPath();ctx.moveTo(p.l,y);ctx.lineTo(W-p.r,y);ctx.stroke();ctx.fillText(number(max*(1-i/4),0),3,y+3);}
+ const n=series[0]?.labels.length||0;if(!n)return;
+ series.forEach(s=>{ctx.strokeStyle=s.color;ctx.lineWidth=2;ctx.beginPath();s.values.forEach((v,i)=>{const x=p.l+(W-p.l-p.r)*(n===1?.5:i/(n-1)),y=H-p.b-(H-p.t-p.b)*(v/max);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.stroke();s.values.forEach((v,i)=>{const x=p.l+(W-p.l-p.r)*(n===1?.5:i/(n-1)),y=H-p.b-(H-p.t-p.b)*(v/max);ctx.fillStyle=s.color;ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fill();});});
+ series[0].labels.forEach((l,i)=>{if(i%Math.ceil(n/7)===0||i===n-1){const x=p.l+(W-p.l-p.r)*(n===1?.5:i/(n-1));ctx.fillStyle='#8299b6';ctx.fillText(l,x-13,H-7);}});
+ },20);
+}
+function bars(id,items){
+ setTimeout(()=>{const c=$(id);if(!c)return;const ctx=c.getContext('2d'),W=c.width=c.clientWidth*devicePixelRatio,H=c.height=c.clientHeight*devicePixelRatio;ctx.scale(devicePixelRatio,devicePixelRatio);const w=c.clientWidth,h=c.clientHeight,max=Math.max(1,...items.map(x=>x.value)),left=100,right=45,row=29;ctx.font='10px system-ui';items.forEach((it,i)=>{const y=12+i*row;ctx.fillStyle='#8ea3bd';ctx.fillText(it.label.slice(0,14),0,y+11);ctx.fillStyle='#20344c';ctx.fillRect(left,y,w-left-right,12);ctx.fillStyle=it.color||'#39d98a';ctx.fillRect(left,y,(w-left-right)*it.value/max,12);ctx.fillStyle='#dceaff';ctx.fillText(it.display||number(it.value,0),w-right+5,y+11);});},20);
+}
+function header(title,sub){return '<div class="sectionhead"><div><h2>'+title+'</h2><p>'+sub+'</p></div></div>';}
+function table(headers,rows){return '<div class="tablewrap"><table><thead><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+(rows.length?rows.join(''):'<tr><td colspan="'+headers.length+'" class="empty">Nenhum registro neste filtro.</td></tr>')+'</tbody></table></div>';}
+function row(cells){return '<tr>'+cells.map(x=>'<td>'+x+'</td>').join('')+'</tr>';}
+function monthly(events){
+ const m=groupBy(events,e=>e[1].slice(0,7));return [...m.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([k,a])=>({label:k.slice(5)+'/'+k.slice(0,4),liters:sum(a,e=>e[4]),amount:sum(a,e=>e[6]),km:sum(a,e=>e[7])}));
+}
+function alertItems(events){
+ const out=[],byVehicle=groupBy(events,e=>e[0]);
+ const keys=new Set();
+ for(const e of events){
+  const k=dupeKey(e);if(keys.has(k)){continue;}keys.add(k);
+ }
+ const dup=groupBy(events,e=>dupeKey(e));
+ for(const [k,a] of dup)if(a.length>1)out.push({level:'high',title:'Possível lançamento duplicado · '+a[0][0],desc:a.length+' registros com data, tipo, litros, preço, valor e hodômetros coincidentes.',meta:fmtDate(a[0][1])+' · '+number(a[0][4],2)+' L'});
+ for(const e of events)if(e[7]===0)out.push({level:'warn',title:'Abastecimento sem quilometragem · '+e[0],desc:number(e[4],2)+' L lançados sem distância percorrida informada.',meta:fmtDate(e[1])+' · '+money(e[6])});
+ for(const e of events)if(e[9]<e[8])out.push({level:'high',title:'Hodômetro regressivo · '+e[0],desc:'Leitura final inferior à inicial; conferir digitação, troca de painel ou origem.',meta:fmtDate(e[1])});
+ for(const e of events)if(Math.abs((e[9]-e[8])-e[7])>1&&e[7]>0)out.push({level:'warn',title:'Quilometragem divergente · '+e[0],desc:'KM informado não coincide com a diferença entre hodômetro final e inicial.',meta:fmtDate(e[1])});
+ for(const e of events)if(e[14]&&e[2]==='E'){} 
+ for(const [p,a] of byVehicle){const sorted=[...a].sort((x,y)=>x[1].localeCompare(y[1]));for(let i=1;i<sorted.length;i++){const prev=sorted[i-1],cur=sorted[i];if(cur[8]<prev[9]&&cur[8]!==0&&prev[9]!==0){out.push({level:'warn',title:'Sequência de hodômetro inconsistente · '+p,desc:'Leitura inicial do novo lançamento menor que a leitura final anterior.',meta:fmtDate(cur[1])});break;}}}
+ return out;
+}
+function dupeKey(e){return [e[0],e[1],e[2],e[3],e[4],e[5],e[6],e[7],e[8],e[9],e[10]].join('|');}
+function renderOverview(ev){
+ const vm=vehicleMap(), liters=sum(ev,e=>e[4]),amount=sum(ev,e=>e[6]),km=sum(ev.filter(e=>e[7]>0),e=>e[7]),kml=weightedKmL(ev),days=uniq(ev,e=>e[1]),alerts=alertItems(ev),months=monthly(ev);
+ const daily=liters/Math.max(1,days),cars=uniq(ev,e=>e[0]);
+ const series=months.slice(-6), top=[...groupBy(ev,e=>e[0]).entries()].map(([p,a])=>({p,a,liters:sum(a,e=>e[4]),amount:sum(a,e=>e[6]),km:sum(a,e=>e[7])})).sort((a,b)=>b.liters-a.liters).slice(0,6);
+ return '<div class="grid kpis">'+card('Litros registrados',number(liters,0)+' L',number(ev.length)+' movimentações','◉')+card('Valor movimentado',money(amount),number(ev.length)+' registros somados','R$','blue')+card('Média por dia',number(daily,1)+' L',days+' dias com lançamentos','⌁','yellow')+card('Consumo ponderado',kml?number(kml,2)+' km/L':'N/D',number(km,0)+' km válidos · '+cars+' veículos','↗')+'</div>'+
+ '<div class="grid two"><div class="card">'+header('Evolução mensal','Litros abastecidos e valores no período filtrado')+'<div class="chart"><canvas id="monthChart"></canvas></div><div class="legend"><span><i class="dot"></i>Litros</span></div></div><div class="card">'+header('Fila de atenção','Sinais que merecem conferência')+'<div class="alertlist">'+alerts.slice(0,5).map(a=>'<div class="alert '+(a.level==='high'?'high':'')+'"><h3>'+esc(a.title)+'</h3><p>'+esc(a.desc)+'</p><small>'+esc(a.meta)+'</small></div>').join('')+'</div><p class="muted" style="font-size:10px">Alertas não comprovam fraude. São critérios de priorização para auditoria.</p></div></div>'+
+ header('Maiores volumes por prefixo','Ordenação por litros registrados, não representa eficiência')+
+ table(['Prefixo','Veículo','Mov.','Litros','Valor','KM válidos'],top.map(x=>row(['<b>'+x.p+'</b>',esc(vm.get(x.p)?.model||'Cadastro pendente'),x.a.length,number(x.liters,1)+' L',money(x.amount),number(x.km,0)])))+
+ '<div class="notice" style="margin-top:14px">Os relatórios não trazem entradas de compra, estoque inicial/final ou leituras de tanque. Por isso, a conciliação física do combustível ainda não pode ser calculada.</div>';
+ setTimeout(()=>chartLine('monthChart',[{labels:series.map(x=>x.label),values:series.map(x=>x.liters),color:'#39d98a'}]),25);
+}
+function renderVehicles(ev){
+ const vm=vehicleMap(),by=groupBy(ev,e=>e[0]),list=state.vehicles.filter(v=>v[0]!=='9000').map(v=>{const a=by.get(v[0])||[];return {v,a,liters:sum(a,e=>e[4]),amount:sum(a,e=>e[6]),km:sum(a,e=>e[7]),kml:weightedKmL(a)};}).filter(x=>x.a.length||!$('prefixSearch').value);
+ return '<div class="notice">Cadastro mestre importado da planilha NOVEMBRO 26. Clique em um veículo para abrir a ficha e seu histórico de movimentações.</div>'+header('Frota cadastrada',list.length+' veículos exibidos · '+state.vehicles.length+' linhas no cadastro')+'<div class="grid vehicle-grid">'+list.slice(0,180).map(x=>'<div class="card vehicle" data-vehicle="'+x.v[0]+'"><div class="split"><h3>Prefixo '+x.v[0]+'</h3><span class="pill '+(x.a.length?'ok':'warn')+'">'+(x.a.length?'Com histórico':'Sem relatório')+'</span></div><div class="plate">'+esc(x.v[3]||'Placa não cadastrada')+' · '+esc(x.v[1])+'</div><div style="font-size:12px;margin-top:8px">'+esc(x.v[2]||'Modelo não informado')+'</div><div class="big">'+number(x.liters,0)+' L</div><div class="muted" style="font-size:11px">'+money(x.amount)+' · '+x.a.length+' abastecimentos</div><div class="split muted" style="font-size:10px;margin-top:12px"><span>'+esc(x.v[4]||'Ano n/d')+'</span><span>'+(x.kml?number(x.kml,2)+' km/L':'Consumo N/D')+'</span></div></div>').join('')+'</div><p class="muted" style="font-size:11px;margin-top:12px">Exibição limitada aos primeiros 180 veículos para manter a navegação leve. Use a busca de prefixo ou placa para localizar qualquer cadastro.</p>';
+}
+function renderTransactions(ev){
+ const vm=vehicleMap(),sorted=[...ev].sort((a,b)=>b[1].localeCompare(a[1]));
+ return header('Livro de movimentações','Cada linha preserva o registro de origem e sua linha no arquivo TXT')+table(['Data','Prefixo','Veículo','Tipo','Cupom/NF','Litros','R$/L','Valor','KM','Fornecedor','Origem'],sorted.slice(0,500).map(e=>row([fmtDate(e[1]),'<b>'+e[0]+'</b>',esc(vm.get(e[0])?.model||'Sem cadastro'),'<span class="pill">'+e[2]+'</span>',esc(e[3]||'—'),number(e[4],2),money(e[5]),money(e[6]),number(e[7],0),esc(e[14]||'—'),esc(e[15]||'—')])) )+'<p class="muted" style="font-size:11px;margin-top:10px">Mostrando até 500 registros nesta tabela. Use filtros e exportação CSV para trabalhar com o conjunto completo.</p>';
+}
+function renderConsumption(ev){
+ const by=groupBy(ev,e=>e[0]),vm=vehicleMap(),rows=[...by.entries()].map(([p,a])=>({p,a,l:sum(a,e=>e[4]),km:sum(a.filter(e=>e[7]>0),e=>e[7]),valid:a.filter(e=>e[7]>0).length,kml:weightedKmL(a),daily:dailyAverage(a),amount:sum(a,e=>e[6])})).sort((a,b)=>b.l-a.l);
+ const months=monthly(ev);
+ return '<div class="notice">Consumo por distância calculado como KM informado ÷ litros abastecidos, somente para registros com KM maior que zero. Não equivale a uma medição de tanque cheio a tanque cheio. Médias diárias abaixo dividem litros pelo número de dias com movimentação.</div><div class="grid two"><div class="card">'+header('Litros por mês','Distribuição mensal do volume')+'<div class="chart"><canvas id="consChart"></canvas></div></div><div class="card">'+header('Indicadores do período','Base atual filtrada')+'<div class="grid">'+card('Média diária',number(dailyAverage(ev),1)+' L','Por dia com abastecimento')+card('Média por veículo',number(sum(ev,e=>e[4])/Math.max(1,uniq(ev,e=>e[0])),1)+' L','Litros por veículo no período')+card('KM válido',number(sum(ev.filter(e=>e[7]>0),e=>e[7]),0)+' km','Registros com KM positivo')+'</div></div></div>'+header('Consumo por veículo','Comparação por prefixo · ordenado por volume')+table(['Prefixo','Modelo','Mov.','Litros','KM válido','Média km/L','Média L/dia','Valor'],rows.map(x=>row(['<b>'+x.p+'</b>',esc(vm.get(x.p)?.model||'Cadastro pendente'),x.a.length,number(x.l,1),number(x.km,0),x.kml?number(x.kml,2):'N/D',number(x.daily,1),money(x.amount)])));
+ setTimeout(()=>bars('consChart',months.slice(-8).map(x=>({label:x.label,value:x.liters,display:number(x.liters,0)+' L'}))),25);
+}
+function renderInvestigation(ev){
+ const alerts=alertItems(ev),byLevel={high:alerts.filter(a=>a.level==='high').length,warn:alerts.filter(a=>a.level==='warn').length};
+ const unreg=new Set(state.prefixes.filter(p=>!vehicleMap().has(p[0])).map(p=>p[0]));
+ const noKm=ev.filter(e=>e[7]===0).length,dup=groupBy(ev,e=>dupeKey(e));
+ const duplicateGroups=[...dup.entries()].filter(([k,a])=>a.length>1);
+ return '<div class="grid kpis">'+card('Sinais de alta prioridade',number(byLevel.high),'Duplicidades e hodômetros regressivos','!','red')+card('Sinais para revisão',number(byLevel.warn),'KM zero, divergências e sequência','⌕','yellow')+card('Prefixos sem cadastro',number(unreg.size),'Exigem regularização cadastral','▣','blue')+card('Movimentos sem KM',number(noKm),'Não entram no consumo km/L','↯','yellow')+'</div>'+header('Ocorrências para apuração','Cada alerta precisa ser validado com documento, responsável e contexto operacional')+'<div class="alertlist">'+alerts.slice(0,300).map(a=>'<div class="alert '+(a.level==='high'?'high':'')+'"><div class="split"><h3>'+esc(a.title)+'</h3><span class="pill '+(a.level==='high'?'danger':'warn')+'">'+(a.level==='high'?'Prioridade alta':'Revisar')+'</span></div><p>'+esc(a.desc)+'</p><small>'+esc(a.meta)+'</small></div>').join('')+'</div>'+header('Pendências de cadastro','Prefixos presentes no relatório e ausentes no cadastro mestre')+table(['Prefixo','Placa no relatório','Grupo'],state.prefixes.filter(p=>!vehicleMap().has(p[0])).map(p=>row([p[0],esc(p[1]),esc(p[2])])) )+'<div class="notice warn" style="margin-top:12px">O sistema não acusa roubo automaticamente. Desvio só poderá ser concluído após confronto com comprovantes, estoque físico, autorização e demais registros.</div>';
+}
+function renderFlow(ev){
+ const e=sum(ev,x=>x[4]),v=sum(ev,x=>x[6]);
+ return '<div class="notice warn">O fluxo físico ainda não está fechado: os arquivos atuais documentam abastecimentos, mas não contêm notas de compra completas, estoque inicial, medições dos tanques ou transferências internas.</div><div class="grid three">'+card('Entradas de compra','Não disponível','Aguardando notas fiscais e recebimentos','↓','yellow')+card('Estoque físico','Não disponível','Aguardando aferições e capacidade dos tanques','▤','yellow')+card('Abastecimentos registrados',number(e,0)+' L',money(v)+' no período','↑','green')+'</div>'+header('Cadeia de custódia proposta','Etapas que deverão ser conciliadas para localizar perdas')+'<div class="grid three">'+[['01 · Compra','NF, fornecedor, litros faturados e preço.'],['02 · Recebimento','Data, tanque, medição antes/depois e responsável.'],['03 · Armazenamento','Saldo teórico, saldo físico, aferição e perdas técnicas.'],['04 · Transferência','Origem, destino, litros, data e operador.'],['05 · Abastecimento','Veículo, prefixo, hodômetro, litros e autorização.'],['06 · Conciliação','Comprado − estoque final − distribuído = diferença a explicar.']].map(x=>'<div class="card"><div class="eyebrow">'+x[0]+'</div><p style="font-size:12px;color:#b8c9dd">'+x[1]+'</p></div>').join('')+'</div><div class="card" style="margin-top:14px">'+header('Equação de controle','Conciliação de estoque')+'<div style="font-size:20px;font-weight:800;text-align:center;padding:25px 0">Estoque inicial + entradas − saídas = estoque teórico final</div><p class="muted">A diferença entre estoque teórico e estoque físico aferido será uma das métricas centrais da investigação. Ainda não há dados suficientes para calculá-la.</p></div>';
+}
+function renderReports(ev){
+ const vm=vehicleMap(),m=monthly(ev),groups=groupBy(ev,e=>vm.get(e[0])?.company||'Sem cadastro');
+ return header('Resumo executivo','Indicadores consolidados conforme filtros aplicados')+table(['Empresa do cadastro','Mov.','Litros','Valor','KM válido','Média km/L'],[...groups.entries()].map(([c,a])=>row([esc(c),a.length,number(sum(a,e=>e[4]),1),money(sum(a,e=>e[6])),number(sum(a.filter(e=>e[7]>0),e=>e[7]),0),weightedKmL(a)?number(weightedKmL(a),2):'N/D'])) )+header('Fechamento mensal','Litros e valor registrados')+table(['Mês','Mov.','Litros','Valor','KM'],m.map(x=>{const a=ev.filter(e=>e[1].startsWith(x.label.slice(3)+'-'+x.label.slice(0,2)));return row([x.label,a.length,number(x.liters,1),money(x.amount),number(x.km,0)]);}))+header('Qualidade da base','Limitações que afetam a leitura dos indicadores')+table(['Controle','Resultado','Tratamento'],[
+ row(['Registros com KM zero',number(ev.filter(e=>e[7]===0).length),'Excluídos do cálculo de km/L']),
+ row(['Hodômetro final menor que inicial',number(ev.filter(e=>e[9]<e[8]).length),'Sinalizados para revisão']),
+ row(['Diferença KM × hodômetro',number(ev.filter(e=>Math.abs((e[9]-e[8])-e[7])>1&&e[7]>0).length),'Sinalizados para revisão']),
+ row(['Linha não interpretada','1 no conjunto original','Mantida em pendências']),
+ row(['Motorista no TXT','Não identificado nas linhas importadas','Campo aguardando fonte estruturada'])
+ ]);
+}
+function renderVehicleDetail(p,ev){
+ const v=vehicleMap().get(p),a=ev.filter(e=>e[0]===p).sort((x,y)=>y[1].localeCompare(x[1]));
+ if(!v)return '<div class="notice warn">Prefixo não localizado no cadastro mestre.</div>';
+ const l=sum(a,e=>e[4]),amt=sum(a,e=>e[6]),kml=weightedKmL(a),m=monthly(a);
+ return '<button class="btn" id="backVehicles">← Voltar para frota</button><div class="card" style="margin-top:14px"><div class="detailhead"><div><div class="eyebrow">Ficha individual</div><h2 style="margin:4px 0">Prefixo '+p+'</h2><div class="sub">'+esc(v.model)+' · '+esc(v.plate)+'</div></div><span class="pill ok">'+a.length+' movimentações</span></div><div class="grid detailstats" style="margin-top:20px">'+card('Litros',number(l,1)+' L','No período filtrado')+card('Valor',money(amt),'Valor registrado')+card('Consumo ponderado',kml?number(kml,2)+' km/L':'N/D','Somente KM positivo')+'</div><div class="grid two" style="margin-top:14px"><div><b>Cadastro</b><p class="muted">Empresa: '+esc(v.company)+'<br>Modelo: '+esc(v.model)+'<br>Ano: '+esc(v.year)+'<br>Placa: '+esc(v.plate)+'<br>Chassi: '+esc(v.chassis)+'</p></div><div><b>Indicadores de qualidade</b><p class="muted">KM zero: '+a.filter(e=>e[7]===0).length+'<br>Hodômetro regressivo: '+a.filter(e=>e[9]<e[8]).length+'<br>KM divergente: '+a.filter(e=>e[7]>0&&Math.abs((e[9]-e[8])-e[7])>1).length+'</p></div></div></div>'+header('Histórico de abastecimento','Registros individuais do prefixo')+table(['Data','Tipo','Cupom','Litros','Preço/L','Valor','KM','KM/L real','Perda %'],a.map(e=>row([fmtDate(e[1]),e[2],esc(e[3]||'—'),number(e[4],2),money(e[5]),money(e[6]),number(e[7],0),e[12]?number(e[12],2):'N/D',number(e[13],2)+'%'])));
+}
+function render(){
+ const ev=allFiltered(),page=state.page;
+ const titles={overview:['Visão geral da operação','Acompanhe a frota, identifique desvios e investigue cada movimentação.'],vehicles:['Frota & veículos','Cadastro mestre, desempenho e histórico individual.'],transactions:['Abastecimentos','Livro de movimentações e rastreabilidade de origem.'],consumption:['Inteligência de consumo','Consumo por distância, médias e comparação de veículos.'],investigation:['Central de investigação','Anomalias priorizadas e pendências que exigem conferência.'],flow:['Fluxo do combustível','Acompanhe a cadeia da compra até a distribuição.'],reports:['Relatórios executivos','Consolidação por empresa, período e qualidade da base.']};
+ $('pageTitle').textContent=state.selected?'Ficha do veículo · '+state.selected:titles[page][0];
+ $('pageSub').textContent=state.selected?'Histórico, indicadores e registros rastreáveis.':titles[page][1];
+ let html=state.selected?renderVehicleDetail(state.selected,ev):({overview:renderOverview,vehicles:renderVehicles,transactions:renderTransactions,consumption:renderConsumption,investigation:renderInvestigation,flow:renderFlow,reports:renderReports}[page])(ev);
+ $('content').innerHTML=html;
+ document.querySelectorAll('[data-vehicle]').forEach(el=>el.addEventListener('click',()=>{state.selected=el.dataset.vehicle;render();}));
+ const back=$('backVehicles');if(back)back.onclick=()=>{state.selected=null;state.page='vehicles';setActive();render();};
+}
+function setActive(){document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===state.page));}
+function exportCsv(){
+ const ev=allFiltered(),vm=vehicleMap(),head=['prefixo','data','tipo','cupom','litros','preco_litro','valor','km','hodometro_inicial','hodometro_final','km_acumulado','km_l_ideal','km_l_real','perda_pct','fornecedor','empresa_cadastro','modelo','placa','arquivo_origem','linha_origem'];
+ const rows=ev.map(e=>[e[0],e[1],e[2],e[3],...e.slice(4,14),e[14],vm.get(e[0])?.company||'',vm.get(e[0])?.model||'',vm.get(e[0])?.plate||'',e[15],e[16]]);
+ const csv=[head,...rows].map(r=>r.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(';')).join('\r\n');
+ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='fuel-intelligence-'+new Date().toISOString().slice(0,10)+'.csv';a.click();URL.revokeObjectURL(url);
+}
+async function load(){
+ $('content').innerHTML='<div class="loading">Atualizando base…</div>';
+ const get=async p=>{const r=await fetch(BASE+p+'?v=1');if(!r.ok)throw new Error('Falha ao carregar '+p);return r.json();};
+ const [manifest,vehicles,prefixes,g1,g2,g3,g4,unparsed]=await Promise.all([get('manifest.json'),get('veiculos.json'),get('prefixos-relatorios.json'),get('abastecimentos-200-299.json'),get('abastecimentos-300-399.json'),get('abastecimentos-500-700.json'),get('abastecimentos-1000-4000.json'),get('pendencias.json')]);
+ state.manifest=manifest;state.vehicles=vehicles;state.prefixes=prefixes;state.events=[...g1,...g2,...g3,...g4];state.unparsed=unparsed;
+ const companies=[...new Set(vehicles.map(v=>v[1]).filter(Boolean))].sort();$('company').innerHTML='<option value="">Todas</option>'+companies.map(c=>'<option>'+esc(c)+'</option>').join('');
+ $('content').innerHTML='';render();
+}
+$('nav').addEventListener('click',e=>{const b=e.target.closest('button[data-page]');if(!b)return;state.page=b.dataset.page;state.selected=null;setActive();render();});
+['dateFrom','dateTo','company','range','prefixSearch','type'].forEach(id=>$(id).addEventListener('input',()=>render()));
+$('clearFilters').onclick=()=>{$('dateFrom').value='2026-07-01';$('dateTo').value='2026-11-16';$('company').value='';$('range').value='';$('prefixSearch').value='';$('type').value='';render();};
+$('refreshBtn').onclick=()=>load().catch(e=>{$('content').innerHTML='<div class="notice warn">'+esc(e.message)+'</div>';});
+$('exportBtn').onclick=exportCsv;
+load().catch(e=>{$('content').innerHTML='<div class="notice warn">Não foi possível carregar os arquivos de dados. Abra o painel pelo GitHub Pages ou por um servidor local, não diretamente como arquivo file://. Detalhe: '+esc(e.message)+'</div>';});
+</script>
+</body></html>
