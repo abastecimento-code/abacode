@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-16",
+  "periodStart": "2026-07-01",
+  "periodEnd": "2026-11-16",
+  "registry": {
+    "rows": 754,
+    "actualVehicles": 753,
+    "genericRows": 1,
+    "missingModel": 6,
+    "missingPlate": 12,
+    "missingChassis": 3
+  },
+  "reports": {
+    "sources": [
+      {
+        "id": 0,
+        "file": "200-299.TXT",
+        "range": "200-299",
+        "reportCompany": "CONFIANZA TRANSPORTES LTDA",
+        "companyCode": "001",
+        "candidates": 1287,
+        "parsed": 1287,
+        "unparsed": 0
+      },
+      {
+        "id": 1,
+        "file": "300-399.TXT",
+        "range": "300-399",
+        "reportCompany": "CONFIANZA TRANSPORTES LTDA",
+        "companyCode": "001",
+        "candidates": 2771,
+        "parsed": 2771,
+        "unparsed": 0
+      },
+      {
+        "id": 2,
+        "file": "500-700.TXT",
+        "range": "500-700",
+        "reportCompany": "MACSERVICES LOCACAO DE VEICULOS LTDA",
+        "companyCode": "002",
+        "candidates": 1889,
+        "parsed": 1888,
+        "unparsed": 1
+      },
+      {
+        "id": 3,
+        "file": "1000-4000.TXT",
+        "range": "1000-4000",
+        "reportCompany": "CONFIANZA TRANSPORTES LTDA",
+        "companyCode": "001",
+        "candidates": 2952,
+        "parsed": 2952,
+        "unparsed": 0
+      }
+    ],
+    "totalCandidates": 8899,
+    "parsedEvents": 8898,
+    "unparsedEvents": 1,
+    "reportedPrefixes": 351,
+    "matchedPrefixes": 349,
+    "unregisteredPrefixes": [
+      {
+        "prefix": "0320",
+        "plate": "KNT-0424",
+        "fleetType": "LOCACAO",
+        "source": "300-399.TXT"
+      },
+      {
+        "prefix": "0518",
+        "plate": "LTS 3A15",
+        "fleetType": "FRETAMENTO",
+        "source": "500-700.TXT"
+      }
+    ],
+    "registeredVehiclesInRanges": 405,
+    "registeredWithoutReport": 56,
+    "registeredWithoutReportByRange": {
+      "200-299": 3,
+      "300-399": 7,
+      "500-700": 14,
+      "1000-4000": 32
+    }
+  },
+  "totals": {
+    "events": 8898,
+    "liters": 820295.03,
+    "amount": 4947163.73,
+    "zeroKm": 504,
+    "after2026_10_29": 815,
+    "odometerMismatch": 92,
+    "odometerDecreasing": 21,
+    "exactDuplicateGroups": 3,
+    "typeE": 1940,
+    "typeI": 6958
+  },
+  "transactionColumns": [
+    "prefix",
+    "date",
+    "type",
+    "coupon",
+    "liters",
+    "pricePerLiter",
+    "amount",
+    "km",
+    "odometerStart",
+    "odometerEnd",
+    "cumulativeKm",
+    "idealKmL",
+    "actualKmL",
+    "lossPercent",
+    "supplier",
+    "driver",
+    "sourceLine"
+  ],
+  "vehicleColumns": [
+    "prefix",
+    "company",
+    "model",
+    "plate",
+    "year",
+    "chassis"
+  ],
+  "prefixColumns": [
+    "prefix",
+    "reportPlate",
+    "fleetType",
+    "sourceId"
+  ],
+  "notes": [
+    "Relatórios emitidos em 16/11/2026, período informado de 01/07/2026 a 16/11/2026.",
+    "Os códigos de tipo I/E foram preservados como aparecem na origem; o significado deve ser confirmado com o responsável pelo Globus.",
+    "As linhas com KM=0 não permitem calcular consumo por distância.",
+    "Uma linha do arquivo 500-700.TXT não foi interpretada automaticamente e permanece em pendências.",
+    "Empresa do relatório e empresa do cadastro são campos distintos e não devem ser fundidos sem validação."
+  ]
+}
