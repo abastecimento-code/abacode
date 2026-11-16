@@ -2304,7 +2304,11 @@ function agruparPorMes(fills) {
   return Object.values(grupos).sort((a,b)=>a.inicio-b.inicio);
 }
 function agregarPeriodo(fills) {
-  return { km:fills.reduce((s,f)=>s+(Number(f.km)||0),0), litros:fills.reduce((s,f)=>s+(Number(f.litros)||0),0), valor:fills.reduce((s,f)=>s+(Number(f.valor)||0),0), abast:fills.length, kmL:calcularKmL(fills.reduce((s,f)=>s+(Number(f.litros)||0),0),fills.reduce((s,f)=>s+(Number(f.km)||0),0)) };
+  const kmCompleto=fills.length>0&&fills.every(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
+  const litrosCompletos=fills.length>0&&fills.every(f=>f.litros!==null&&f.litros!==undefined&&f.litros!==''&&Number.isFinite(Number(f.litros))&&Number(f.litros)>0);
+  const km=kmCompleto?fills.reduce((s,f)=>s+Number(f.km),0):null;
+  const litros=litrosCompletos?fills.reduce((s,f)=>s+Number(f.litros),0):null;
+  return { km, litros, valor:fills.reduce((s,f)=>s+(Number(f.valor)||0),0), abast:fills.length, kmL:km!=null&&litros>0?km/litros:null };
 }
 function rotuloMes(g) {
   return g.inicio.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
@@ -2317,11 +2321,11 @@ function renderResumoPeriodo(g,ref,rotulo,parcial=false,onclick='') {
   const r=agregarPeriodo(g.fills), st=statusPorKmL(r.kmL,ref);
   return `<div class="drill-semana" ${onclick}>
     <div class="drill-semana-head"><span class="drill-semana-data">${rotulo}${parcial?' · PARCIAL':''}</span><span class="drill-semana-fills">${r.abast} abastecimento(s)</span></div>
-    <div class="drill-semana-km">${r.kmL!=null?fmt3safe(r.kmL):'—'}<span class="un">km/L do período</span></div>
+    <div class="drill-semana-km">${r.kmL!=null?fmt3safe(r.kmL):'Dados insuficientes'}<span class="un">km/L do período</span></div>
     <div class="drill-spark" aria-label="Indicador visual do consumo no período"><div class="drill-spark-bar ${classeBarra(r.kmL,ref)}" style="height:${r.kmL!=null?Math.max(3,Math.min(100,(r.kmL/Math.max(ref*1.8,r.kmL,1))*100)):3}%"></div></div>
     <div class="drill-semana-meta">
-      <div class="linha"><span>KM considerados</span><b>${fmtKmNum(r.km)}</b></div>
-      <div class="linha"><span>Litros considerados</span><b>${fmtL(r.litros)}</b></div>
+      <div class="linha"><span>KM considerados</span><b>${r.km!=null?fmtKmNum(r.km):'—'}</b></div>
+      <div class="linha"><span>Litros considerados</span><b>${r.litros!=null?fmtL(r.litros):'—'}</b></div>
       <div class="linha"><span>Referência do modelo</span><b>${fmt2(ref)} km/L</b></div>
       <div class="linha"><span>Valor registrado</span><b>${fmtR(r.valor)}</b></div>
     </div>
@@ -2337,9 +2341,9 @@ function renderNivel2(p) {
   let html=`<div class="rast-resumo">
     <span><b>${meses.length}</b> mês(es) com registros</span><span class="divisor">·</span>
     <span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span>
-    <span><b>${fmtKmNum(total.km)}</b> km</span><span class="divisor">·</span>
-    <span><b>${fmtL(total.litros)}</b> litros</span><span class="divisor">·</span>
-    <span>Média do histórico disponível: <b>${total.kmL!=null?fmt3safe(total.kmL):'—'} km/L</b></span>
+    <span><b>${total.km!=null?fmtKmNum(total.km):'—'}</b> km</span><span class="divisor">·</span>
+    <span><b>${total.litros!=null?fmtL(total.litros):'—'}</b> litros</span><span class="divisor">·</span>
+    <span>Média do histórico disponível: <b>${total.kmL!=null?fmt3safe(total.kmL):'Dados insuficientes'} km/L</b></span>
   </div>
   <div class="audit-nota" style="margin:10px 0 14px">A média de cada mês é calculada separadamente: total de KM do mês ÷ total de litros do mês. A referência de comparação é a expectativa cadastrada para o modelo (${fmt2(v.exp)} km/L), não a média de outro mês. Selecione um mês para abrir suas semanas.</div>
   <div class="drill-spark" style="height:100px;align-items:flex-end;padding:10px 8px">`;
@@ -2404,7 +2408,7 @@ function renderNivel5(p,diaKey) {
     const conf=[f.divergenciaHodometro?'KM difere do hodômetro':null,f.divergenciaKmL?'Real Globus difere do recálculo':null].filter(Boolean).join(' · ')||'Conferir origem e intervalo';
     html+=`<tr><td class="dt">${dataLabel(parseData(f.data,f.ano))}</td><td class="tipo tipo-${f.tipo}">${f.tipo==='I'?'Interno':'Externo'}</td><td class="num">${fmtL(f.litros)}</td><td class="num">${fmtR(f.valor)}</td><td class="num">${fmtKmNum(f.km)}</td><td class="num">${calc!=null?fmt3safe(calc):'—'}</td><td class="num">${real!=null?fmt3safe(real):'—'}</td><td>${conf}</td></tr>`;
   });
-  return html+`</tbody><tfoot><tr><td>TOTAL</td><td></td><td class="num">${fmtL(r.litros)}</td><td class="num">${fmtR(r.valor)}</td><td class="num">${fmtKmNum(r.km)}</td><td class="num">${r.kmL!=null?fmt3safe(r.kmL):'—'}</td><td></td><td></td></tr></tfoot></table></div>`;
+  return html+`</tbody><tfoot><tr><td>TOTAL</td><td></td><td class="num">${r.litros!=null?fmtL(r.litros):'—'}</td><td class="num">${fmtR(r.valor)}</td><td class="num">${r.km!=null?fmtKmNum(r.km):'—'}</td><td class="num">${r.kmL!=null?fmt3safe(r.kmL):'Dados insuficientes'}</td><td></td><td></td></tr></tfoot></table></div>`;
 }
 
 /* ═══════════════════════════════════════════════════════
