@@ -3018,3 +3018,8 @@ Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FR
 </script>
 </body>
 </html>
+
+/* AJUSTE FINAL — azul visível nos números de km/L acima da referência */
+/* A classe 'azul' já é atribuída à célula km/L quando supera a referência. */
+tbody td.num.azul,
+tfoot td.num.azul { color:#64b5f6!important; }
