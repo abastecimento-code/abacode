@@ -1234,6 +1234,7 @@ const state = {
   drillPrefixo: null,
   drillSemanaKey: null,
   drillMesKey: null,
+  drillDiaKey: null,
   drillContrato: 'todos',
   auditModo: 'acumulado',
   abaRep: 'repetidos', // 'repetidos' | 'anomalias'
@@ -2128,7 +2129,10 @@ function fecharDrilldown() {
 }
 
 function drillVoltar() {
-  if (state.drillNivel === 4) {
+  if (state.drillNivel === 5) {
+    state.drillNivel = 4;
+    state.drillDiaKey = null;
+  } else if (state.drillNivel === 4) {
     state.drillNivel = 3;
     state.drillDiaKey = null;
   } else if (state.drillNivel === 3) {
