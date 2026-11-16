@@ -459,6 +459,35 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .drill-spark-bar.acima{background:#64b5f6!important;opacity:.95}
 .drill-spark-bar.ok{background:#38a169!important;opacity:.95}
 .drill-spark-bar.crit{background:#e05252!important;opacity:.95}
+
+/* Análise mensal: cabeçalho informativo e cards semanais com mini-barras diárias */
+.monthly-overview{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:18px}
+.monthly-topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.monthly-eyebrow{font-size:9px;font-weight:800;letter-spacing:1px;color:var(--tx2);margin-bottom:4px}
+.monthly-vehicle{font-size:13px;font-weight:700;color:var(--tx)}
+.monthly-month-select{display:flex;align-items:center;gap:8px;font-size:9px;font-weight:800;letter-spacing:.7px;color:var(--tx2)}
+.monthly-month-select select{background:var(--surface2);color:var(--tx);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:600 12px var(--f-ui)}
+.monthly-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding-top:13px}
+.monthly-kpi{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:11px;min-width:0}
+.monthly-kpi span{display:block;font-size:9px;letter-spacing:.6px;font-weight:800;color:var(--tx2);margin-bottom:6px}
+.monthly-kpi strong{display:block;font:700 21px var(--f-num);color:var(--tx);font-variant-numeric:tabular-nums;white-space:nowrap}
+.monthly-kpi strong small{font:500 10px var(--f-ui);color:var(--tx2)}
+.monthly-kpi em{display:block;font-size:9px;font-style:normal;color:var(--tx2);margin-top:4px}
+.monthly-history{font-size:10px;color:var(--tx2);padding-top:11px}
+.monthly-history b{color:var(--tx)}
+.monthly-weeks-title{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:4px 2px 11px;color:var(--tx)}
+.monthly-weeks-title span{font-size:10px;color:var(--tx2)}
+.monthly-weeks-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.drill-week-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;height:76px;margin:3px 0 12px;padding:7px 8px 5px;background:var(--surface2);border:1px solid var(--line);border-radius:9px}
+.drill-week-day{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;min-width:0}
+.drill-week-day.fora-mes{opacity:.28}
+.drill-week-track{height:48px;width:100%;display:flex;align-items:flex-end;justify-content:center;background:rgba(130,130,130,.08);border-radius:4px 4px 2px 2px;overflow:hidden}
+.drill-week-bar{display:block;width:70%;min-height:0;border-radius:3px 3px 0 0;background:#64b5f6}
+.drill-week-bar.ok{background:#38a169}
+.drill-week-bar.crit{background:#e05252}
+.drill-week-bar.sem-dado{height:0}
+.drill-week-name{font:700 8px var(--f-ui);color:var(--tx2)}
+@media(max-width:650px){.monthly-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.monthly-weeks-grid{grid-template-columns:1fr}.monthly-weeks-title{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
@@ -2133,7 +2162,8 @@ function drillVoltar() {
     state.drillNivel = 4;
     state.drillDiaKey = null;
   } else if (state.drillNivel === 4) {
-    state.drillNivel = 3;
+    state.drillNivel = 2;
+    state.drillSemanaKey = null;
     state.drillDiaKey = null;
   } else if (state.drillNivel === 3) {
     state.drillNivel = 2;
@@ -2149,14 +2179,15 @@ function drillVoltar() {
 function drillAbrirVeiculo(p) {
   state.drillNivel = 2;
   state.drillPrefixo = p;
-  state.drillMesKey = null;
+  const meses = agruparPorMes(fillsAteReferencia(p));
+  state.drillMesKey = meses.length ? meses[meses.length - 1].key : null;
   state.drillSemanaKey = null;
   state.drillDiaKey = null;
   renderDrill();
 }
 
 function drillAbrirMes(k) {
-  state.drillNivel = 3;
+  state.drillNivel = 2;
   state.drillMesKey = k;
   state.drillSemanaKey = null;
   state.drillDiaKey = null;
@@ -2199,6 +2230,7 @@ function renderDrill() {
     titulo.textContent = 'Análise mensal — ' + state.drillPrefixo;
     sub.textContent = contexto + ' · cada mês tem cálculo próprio';
     body.innerHTML = renderNivel2(state.drillPrefixo);
+    body.querySelector('#selMesAnalise')?.addEventListener('change', e => { state.drillMesKey=e.target.value; renderDrill(); });
   } else if (state.drillNivel === 3) {
     titulo.textContent = 'Análise semanal — ' + state.drillPrefixo;
     sub.textContent = contexto + ' · ' + state.drillMesKey;
@@ -2333,32 +2365,78 @@ function renderResumoPeriodo(g,ref,rotulo,parcial=false,onclick='') {
   </div>`;
 }
 
+function chaveDiaDrill(dt) {
+  return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');
+}
+function renderMiniDiasSemana(semana, ref, mesKey) {
+  const dias=agruparPorDia(semana.fills), porDia={};
+  dias.forEach(d=>{ porDia[chaveDiaDrill(d.dt)]=d; });
+  const nomes=['SEG','TER','QUA','QUI','SEX','SÁB','DOM'];
+  let html='<div class="drill-week-days" aria-label="Consumo por dia da semana">';
+  for(let i=0;i<7;i++){
+    const dt=new Date(semana.inicio); dt.setDate(dt.getDate()+i);
+    const key=chaveDiaDrill(dt), d=porDia[key];
+    const dentroMes=key.slice(0,7)===mesKey;
+    const r=d?agregarPeriodo(d.fills):null;
+    const h=r&&r.kmL!=null?Math.max(5,Math.min(100,(r.kmL/Math.max(ref*1.8,r.kmL,1))*100)):0;
+    const cls=r&&r.kmL!=null?classeBarra(r.kmL,ref):'sem-dado';
+    const title=d?(r.kmL!=null?fmt3safe(r.kmL)+' km/L':'Dados insuficientes')+' · '+r.abast+' abastecimento(s)':(dentroMes?'Sem abastecimento registrado':'Fora do mês selecionado');
+    html+=`<div class="drill-week-day ${dentroMes?'':'fora-mes'}" title="${nomes[i]} ${dataLabel(dt)}: ${title}"><div class="drill-week-track"><span class="drill-week-bar ${cls}" style="height:${h}%"></span></div><span class="drill-week-name">${nomes[i]}</span></div>`;
+  }
+  return html+'</div>';
+}
+function renderCardSemanaMes(semana, ref, mesKey, parcial=false) {
+  const r=agregarPeriodo(semana.fills), st=statusPorKmL(r.kmL,ref);
+  const inicio=semana.inicio, fim=semana.fim;
+  const key=chaveDiaDrill(inicio);
+  const rotulo=dataLabel(inicio)+' – '+dataLabel(fim);
+  return `<div class="drill-semana" onclick="drillAbrirSemana('${key}')">
+    <div class="drill-semana-head"><span class="drill-semana-data">${rotulo}${parcial?' · PARCIAL':''}</span><span class="drill-semana-fills">${r.abast} abastecimento(s)</span></div>
+    <div class="drill-semana-km" style="color:${r.kmL==null?'var(--tx2)':st.cls==='ps-acima'?'#64b5f6':st.cls==='ps-abaixo'?'#e05252':'#38a169'}">${r.kmL!=null?fmt3safe(r.kmL):'Dados insuficientes'}<span class="un">km/L na semana</span></div>
+    ${renderMiniDiasSemana(semana,ref,mesKey)}
+    <div class="drill-semana-meta">
+      <div class="linha"><span>KM considerados</span><b>${r.km!=null?fmtKmNum(r.km):'—'}</b></div>
+      <div class="linha"><span>Litros considerados</span><b>${r.litros!=null?fmtL(r.litros):'—'}</b></div>
+      <div class="linha"><span>Referência do modelo</span><b>${fmt2(ref)} km/L</b></div>
+    </div>
+    <div style="margin-top:8px;text-align:center"><span class="pill-status ${st.cls}" style="font-size:9px">${st.label}</span></div>
+  </div>`;
+}
 function renderNivel2(p) {
   const v=FROTA.find(x=>x.p===p), fills=fillsAteReferencia(p);
   if(!fills.length) return '<div class="sem-dados" style="padding:40px">Sem dados de abastecimento para este veículo.</div>';
-  const meses=agruparPorMes(fills), total=agregarPeriodo(fills);
-  const max=Math.max(1,...meses.map(m=>agregarPeriodo(m.fills).kmL||0));
-  let html=`<div class="rast-resumo">
-    <span><b>${meses.length}</b> mês(es) com registros</span><span class="divisor">·</span>
-    <span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span>
-    <span><b>${total.km!=null?fmtKmNum(total.km):'—'}</b> km</span><span class="divisor">·</span>
-    <span><b>${total.litros!=null?fmtL(total.litros):'—'}</b> litros</span><span class="divisor">·</span>
-    <span>Média do histórico disponível: <b>${total.kmL!=null?fmt3safe(total.kmL):'Dados insuficientes'} km/L</b></span>
-  </div>`;
+  const meses=agruparPorMes(fills);
+  if(!meses.length) return '<div class="sem-dados">Não há períodos mensais válidos.</div>';
+  const mes=meses.find(m=>m.key===state.drillMesKey)||meses[meses.length-1];
+  state.drillMesKey=mes.key;
+  const total=agregarPeriodo(mes.fills), semanas=agruparPorSemana(mes.fills);
+  const totalHistorico=agregarPeriodo(fills);
+  const parcial=mes.ano===DATA_REF.getFullYear()&&mes.mes===DATA_REF.getMonth();
+  const opcoes=meses.map(m=>`<option value="${m.key}" ${m.key===mes.key?'selected':''}>${rotuloMes(m)}</option>`).join('');
+  let html=`<section class="monthly-overview">
+    <div class="monthly-topline">
+      <div><div class="monthly-eyebrow">VEÍCULO EM ANÁLISE</div><div class="monthly-vehicle">${v.modelo} · ${v.ano} · ${CONTRATO_LABEL[v.contrato]}</div></div>
+      <label class="monthly-month-select">MÊS ANALISADO <select id="selMesAnalise">${opcoes}</select></label>
+    </div>
+    <div class="monthly-kpis">
+      <div class="monthly-kpi"><span>MÉDIA DO MÊS</span><strong>${total.kmL!=null?fmt3safe(total.kmL):'—'} <small>km/L</small></strong><em>Referência: ${fmt2(v.exp)} km/L</em></div>
+      <div class="monthly-kpi"><span>ABASTECIMENTOS</span><strong>${total.abast}</strong><em>${semanas.length} semana(s) com registros</em></div>
+      <div class="monthly-kpi"><span>QUILÔMETROS</span><strong>${total.km!=null?fmtKmNum(total.km):'—'}</strong><em>KM considerados no mês</em></div>
+      <div class="monthly-kpi"><span>LITROS</span><strong>${total.litros!=null?fmtL(total.litros):'—'}</strong><em>Total abastecido no mês</em></div>
+    </div>
+    <div class="monthly-history">Histórico disponível: <b>${totalHistorico.kmL!=null?fmt3safe(totalHistorico.kmL)+' km/L':'Dados insuficientes'}</b> · ${meses.length} mês(es) com registros${parcial?' · mês em andamento':''}</div>
+  </section>
+  <div class="monthly-weeks-title"><b>Semanas do mês</b><span>Selecione um card para investigar os dias</span></div>
+  <div class="drill-grid monthly-weeks-grid">`;
+  semanas.forEach(s=>{
+    const fim=s.fim>mes.fim?mes.fim:s.fim;
+    const semanaParcial=fim>DATA_REF;
+    html+=renderCardSemanaMes({...s,fim},v.exp,mes.key,semanaParcial);
+  });
   const audit=calcularAuditoria(p,'acumulado');
-  if(audit) html+=`<div class="audit-nota" style="margin:10px 0 14px"><b>Conferência complementar — Rastreador × Globus</b><br>Rastreador: ${fmtKmNum(audit.kmRast)} km · Globus: ${fmtKmNum(audit.kmGlobus)} km · diferença: ${fmtKmNum(audit.deltaKm)} km (${fmt1(audit.deltaKmPct)}%) · ${audit.rastDiasComDados}/${audit.rastDiasEsperados} dias com dados · ${audit.rastFalhas} falhas. Esta conferência permanece separada da média de consumo mensal.</div>`;
-  html+=`<div class="audit-nota" style="margin:10px 0 14px">A média de cada mês é calculada separadamente: total de KM do mês ÷ total de litros do mês. A referência de comparação é a expectativa cadastrada para o modelo (${fmt2(v.exp)} km/L), não a média de outro mês. Selecione um mês para abrir suas semanas.</div>
-  <div class="drill-spark" style="height:100px;align-items:flex-end;padding:10px 8px">`;
-  meses.forEach(m=>{
-    const r=agregarPeriodo(m.fills), h=r.kmL!=null?Math.max(3,r.kmL/max*100):3;
-    html+=`<div class="drill-spark-bar ${classeBarra(r.kmL,v.exp)}" title="${rotuloMes(m)}: ${r.kmL!=null?fmt3safe(r.kmL):'sem dados'} km/L · ${r.abast} abastecimento(s)" style="height:${h}%;cursor:pointer" onclick="drillAbrirMes('${m.key}')"></div>`;
-  });
-  html+='</div><div class="drill-grid">';
-  meses.forEach(m=>{
-    const label=rotuloMes(m), parcial=m.ano===DATA_REF.getFullYear()&&m.mes===DATA_REF.getMonth();
-    html+=renderResumoPeriodo(m,v.exp,label,parcial,`onclick="drillAbrirMes('${m.key}')"`);
-  });
-  return html+'</div>';
+  if(audit) html+=`</div><div class="audit-nota" style="margin-top:14px"><b>Conferência complementar — Rastreador × Globus</b><br>Rastreador: ${fmtKmNum(audit.kmRast)} km · Globus: ${fmtKmNum(audit.kmGlobus)} km · diferença: ${fmtKmNum(audit.deltaKm)} km (${fmt1(audit.deltaKmPct)}%) · ${audit.rastDiasComDados}/${audit.rastDiasEsperados} dias com dados · ${audit.rastFalhas} falhas.</div>`;
+  else html+='</div>';
+  return html;
 }
 
 function renderNivel3(p, mesKey) {
