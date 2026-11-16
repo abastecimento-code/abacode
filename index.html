@@ -389,6 +389,10 @@ header .chips,
 #totalAbastecimentosGlobus {
   display: none !important;
 }
+
+/* Status compactos por emoji */
+.pill-status::before{display:none!important}
+.pill-status{min-width:30px;justify-content:center;padding:3px 7px;font-size:15px;letter-spacing:0;text-transform:none}
 </style>
 </head>
 <body>
@@ -475,9 +479,9 @@ header .chips,
     <div class="info-nota" id="totalAbastecimentosGlobus">2.841 abastecimentos ativos · período efetivo varia por veículo; uma semana sem lançamento, por si só, não indica falha.</div>
     <div class="info-nota" id="globusPendenciasBanner" hidden></div>
     <div class="legenda">
-  <span><span class="pill-status ps-ok">Na faixa</span> ±0,25</span>
-  <span><span class="pill-status ps-acima">Acima da referência</span> &gt; +0,25</span>
-  <span><span class="pill-status ps-abaixo">Abaixo da referência</span> &lt; −0,25</span>
+  <span><span class="pill-status ps-ok" title="Dentro da referência">🟢</span></span>
+  <span><span class="pill-status ps-acima" title="Acima da referência">🔺</span></span>
+  <span><span class="pill-status ps-abaixo" title="Abaixo da referência">🔻</span></span>
       <span style="margin-left:auto;color:#6b3fc4;font-weight:700;">💡 Clique numa linha para ver a evolução semanal</span>
     </div>
 
@@ -1123,9 +1127,9 @@ const fmtKmNum = v => nf0.format(Math.round(v ?? 0));
    ═══════════════════════════════════════════════════════ */
 function statusPorKmL(kmL, exp) {
   if (kmL == null) return { cls: '', label: '—' };
-  if (kmL > exp + TOLERANCIA_KM) return { cls: 'ps-acima',   label: 'Acima da referência' };
-  if (kmL < exp - TOLERANCIA_KM) return { cls: 'ps-abaixo',  label: 'Abaixo da referência' };
-  return { cls: 'ps-ok', label: 'Na faixa de referência' };
+  if (kmL > exp + TOLERANCIA_KM) return { cls: 'ps-acima',   label: '🔺' };
+  if (kmL < exp - TOLERANCIA_KM) return { cls: 'ps-abaixo',  label: '🔻' };
+  return { cls: 'ps-ok', label: '🟢' };
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1135,9 +1139,9 @@ function statusDe(v, real) {
   if (real == null)  return { cls: '', label: '—', row: '', prio: 9 };
   const min = v.exp - TOLERANCIA_KM;
   const max = v.exp + TOLERANCIA_KM;
-  if (real > max) return { cls: 'ps-acima',  label: 'Acima da referência', row: 'linha-acima',  prio: 2 };
-  if (real < min) return { cls: 'ps-abaixo', label: 'Abaixo da referência', row: 'linha-abaixo', prio: 0 };
-  return { cls: 'ps-ok', label: 'Na faixa de referência', row: '', prio: 1 };
+  if (real > max) return { cls: 'ps-acima',  label: '🔺', row: 'linha-acima',  prio: 2 };
+  if (real < min) return { cls: 'ps-abaixo', label: '🔻', row: 'linha-abaixo', prio: 0 };
+  return { cls: 'ps-ok', label: '🟢', row: '', prio: 1 };
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1925,9 +1929,9 @@ function abrirModalGeral() {
   </div>`;
 
     html += `<div class="geral-sec"><div class="geral-sec-title">Posição em relação à referência (tolerância ±0,25 km/L)</div><div class="geral-dist">
-      <div class="geral-dist-item"><span class="cnt" style="color:#2e7d32;">${stCount.ok}</span><span class="lbl">Na faixa</span></div>
-      <div class="geral-dist-item"><span class="cnt" style="color:#1565c0;">${stCount.acima}</span><span class="lbl">Acima da referência</span></div>
-      <div class="geral-dist-item"><span class="cnt" style="color:#c62828;">${stCount.abaixo}</span><span class="lbl">Abaixo da referência</span></div>
+      <div class="geral-dist-item"><span class="cnt" style="color:#2e7d32;">${stCount.ok}</span><span class="lbl" title="Dentro da referência">🟢</span></div>
+      <div class="geral-dist-item"><span class="cnt" style="color:#1565c0;">${stCount.acima}</span><span class="lbl" title="Acima da referência">🔺</span></div>
+      <div class="geral-dist-item"><span class="cnt" style="color:#c62828;">${stCount.abaixo}</span><span class="lbl" title="Abaixo da referência">🔻</span></div>
   </div></div>`;
 
   const contratos = Object.entries(contratoCount).sort((a, b) => b[1] - a[1]);
