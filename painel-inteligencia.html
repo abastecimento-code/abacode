@@ -166,6 +166,8 @@ function render(){
  $('pageSub').textContent=state.selected?'Histórico, indicadores e registros rastreáveis.':titles[page][1];
  let html=state.selected?renderVehicleDetail(state.selected,ev):({overview:renderOverview,vehicles:renderVehicles,transactions:renderTransactions,consumption:renderConsumption,investigation:renderInvestigation,flow:renderFlow,reports:renderReports}[page])(ev);
  $('content').innerHTML=html;
+ if(!state.selected&&page==='overview'){const m=monthly(ev).slice(-6);chartLine('monthChart',[{labels:m.map(x=>x.label),values:m.map(x=>x.liters),color:'#39d98a'}]);}
+ if(!state.selected&&page==='consumption'){const m=monthly(ev).slice(-8);bars('consChart',m.map(x=>({label:x.label,value:x.liters,display:number(x.liters,0)+' L'})));}
  document.querySelectorAll('[data-vehicle]').forEach(el=>el.addEventListener('click',()=>{state.selected=el.dataset.vehicle;render();}));
  const back=$('backVehicles');if(back)back.onclick=()=>{state.selected=null;state.page='vehicles';setActive();render();};
 }
