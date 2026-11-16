@@ -488,6 +488,54 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .drill-week-bar.sem-dado{height:0}
 .drill-week-name{font:700 8px var(--f-ui);color:var(--tx2)}
 @media(max-width:650px){.monthly-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.monthly-weeks-grid{grid-template-columns:1fr}.monthly-weeks-title{align-items:flex-start;flex-direction:column}}
+
+/* Rastreador R200 — análise mensal/semanal/diária */
+.r200-section{margin:0 0 22px;padding:18px;background:#111820;border:1px solid #34404d;border-radius:14px;color:#edf2f7}
+.r200-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
+.r200-kicker{font:800 9px var(--f-ui);letter-spacing:1.4px;color:#65a9e8;margin-bottom:5px}
+.r200-title{font:800 19px var(--f-ui);color:#fff}
+.r200-sub{font:11px var(--f-ui);color:#9eacba;margin-top:4px}
+.r200-back{border:1px solid #536273;background:#202b36;color:#e7edf4;border-radius:8px;padding:8px 12px;font:700 11px var(--f-ui);cursor:pointer}
+.r200-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:15px}
+.r200-kpis>div{padding:11px;background:#1a2530;border:1px solid #2c3946;border-radius:9px;min-width:0}
+.r200-kpis small{display:block;color:#9eacba;font:600 10px var(--f-ui);margin-bottom:5px}
+.r200-kpis b{font:800 18px var(--f-ui);color:#fff}
+.r200-month-grid,.r200-week-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.r200-month,.r200-week{display:block;text-align:left;width:100%;padding:13px;background:#1a2530;border:1px solid #344454;border-radius:10px;color:#edf2f7;cursor:pointer}
+.r200-month:hover,.r200-week:hover,.r200-day:hover{border-color:#4b91d0;background:#202e3b}
+.r200-month-name{display:block;font:800 13px var(--f-ui);color:#fff;margin-bottom:8px}
+.r200-month>b{font:800 21px var(--f-ui);color:#8fc5f5}
+.r200-month-meta,.r200-week small{display:block;color:#aab6c2;font:10px var(--f-ui);margin-top:5px}
+.r200-track{height:5px;background:#2a3744;border-radius:8px;overflow:hidden;display:block;margin:10px 0 7px}
+.r200-track i{display:block;height:100%;background:#428dcc;border-radius:8px}
+.r200-open{display:block;text-align:right;color:#8fc5f5;font:700 10px var(--f-ui);margin-top:8px}
+.r200-note{margin-top:13px;padding:10px 12px;border-left:3px solid #4b91d0;background:#19232d;color:#b8c4cf;font:10px/1.55 var(--f-ui);border-radius:4px}
+.r200-week-head{display:flex;justify-content:space-between;gap:8px;color:#fff;font:700 11px var(--f-ui)}
+.r200-week-head span{color:#aab6c2;font-weight:500}
+.r200-week>strong{display:block;color:#8fc5f5;font:800 20px var(--f-ui);margin-top:10px}
+.r200-mini{display:flex;align-items:flex-end;gap:5px;height:53px;padding:3px 0}
+.r200-mini span{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:3px}
+.r200-mini i{display:block;width:70%;max-width:17px;background:#438fce;border-radius:3px 3px 0 0;min-height:2px}
+.r200-mini em{font:9px var(--f-ui);font-style:normal;color:#9eacba}
+.r200-day-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.r200-day{display:grid;grid-template-columns:1fr auto;gap:3px 10px;text-align:left;padding:11px;background:#1a2530;border:1px solid #344454;border-radius:9px;color:#edf2f7;cursor:pointer}
+.r200-day-date{font:800 12px var(--f-ui)}
+.r200-day-week{font:10px var(--f-ui);color:#9eacba;text-align:right}
+.r200-day>b{font:800 14px var(--f-ui);color:#8fc5f5}
+.r200-day small{font:10px var(--f-ui);color:#aab6c2}
+.r200-day .r200-open{grid-column:1/-1}
+.r200-day.sem-registro{opacity:.62;cursor:default}
+.r200-table-wrap{overflow:auto;border:1px solid #344454;border-radius:9px}
+.r200-table{border-collapse:collapse;width:100%;min-width:900px;font:10px var(--f-ui);color:#dce4eb}
+.r200-table th{position:sticky;top:0;background:#202d39;color:#9fcdf2;text-align:left;padding:9px;border-bottom:1px solid #425161}
+.r200-table td{padding:9px;border-bottom:1px solid #293642;vertical-align:top}
+.r200-table tr:last-child td{border-bottom:0}
+.r200-table .r200-distance{font-weight:800;color:#8fc5f5;white-space:nowrap}
+.r200-address{min-width:230px;max-width:320px;line-height:1.45}
+.r200-address span{display:block;color:#6daee5;text-align:center}
+.r200-loading,.r200-error{padding:18px;text-align:center;color:#aab6c2;font:12px var(--f-ui)}
+.r200-error{color:#ffb3b3}
+@media(max-width:650px){.r200-section{padding:12px}.r200-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.r200-month-grid,.r200-week-grid,.r200-day-list{grid-template-columns:1fr}.r200-top{align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -632,7 +680,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
     <div class="modal-head">
       <div>
         <div class="modal-title">Rastreador — km por dia</div>
-        <div class="modal-sub">Registro diário do rastreador · 31/08/2026 a 11/10/2026 · congelado até novo relatório</div>
+        <div class="modal-sub">Histórico por camadas · mês → semana → dia → registros de origem</div>
       </div>
       <button class="modal-x" onclick="fecharModalRast()">×</button>
     </div>
@@ -1874,7 +1922,7 @@ function valorDiaCls(v) {
   return '';
 }
 
-function abrirModalRast() {
+function abrirModalRastLegado() {
   const body = document.getElementById('modalRastBody');
   const rasts = getRastreadorFiltrado();
 
@@ -1955,6 +2003,149 @@ function abrirModalRast() {
 
   document.getElementById('modalRast').hidden = false;
   document.body.style.overflow = 'hidden';
+}
+
+/* ═══════════════════════════════════════════════════════
+   RASTREADOR R200 — base original mensal (jul → 16 nov/2026)
+   Os eventos são preservados individualmente; dia ausente não
+   equivale a zero e distância zero permanece como registro válido.
+   ═══════════════════════════════════════════════════════ */
+let R200_RAST_DATA = null;
+let R200_VIEW = { level: 'mes', month: null, week: null, day: null };
+
+function r200Esc(v) {
+  return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function r200Num(v) { return Number(v || 0); }
+function r200Km(v) { return fmt1(r200Num(v)) + ' km'; }
+function r200DateObj(iso) {
+  const [y,m,d] = iso.split('-').map(Number);
+  return new Date(y, m-1, d);
+}
+function r200Iso(d) {
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function r200Br(iso) {
+  const [y,m,d] = iso.split('-'); return d + '/' + m + '/' + y;
+}
+function r200AddDays(iso, n) {
+  const d=r200DateObj(iso); d.setDate(d.getDate()+n); return r200Iso(d);
+}
+function r200Monday(iso) {
+  const d=r200DateObj(iso), day=(d.getDay()+6)%7; d.setDate(d.getDate()-day); return r200Iso(d);
+}
+function r200Records(date) { return R200_RAST_DATA.records.filter(r => r.date === date); }
+function r200DaySummary(date) {
+  const rows=r200Records(date);
+  return {date, rows, count:rows.length, km:rows.reduce((s,r)=>s+r200Num(r.distance_km),0),
+    zeros:rows.filter(r=>r200Num(r.distance_km)===0).length};
+}
+function r200MonthWeeks(monthKey) {
+  const monthRecords=R200_RAST_DATA.records.filter(r=>r.date.startsWith(monthKey));
+  const grouped={};
+  monthRecords.forEach(r=>{
+    const mon=r200Monday(r.date);
+    if(!grouped[mon]) grouped[mon]=[];
+    grouped[mon].push(r);
+  });
+  return Object.keys(grouped).sort().map(mon=>{
+    const monthStart=monthKey+'-01';
+    const [yy,mm]=monthKey.split('-').map(Number);
+    const last=r200Iso(new Date(yy,mm,0));
+    const start=mon<monthStart?monthStart:mon;
+    const sunday=r200AddDays(mon,6);
+    const end=sunday>last?last:sunday;
+    const dates=[]; for(let d=start;d<=end;d=r200AddDays(d,1)) dates.push(d);
+    const rows=grouped[mon];
+    return {key:mon,start,end,dates,rows,km:rows.reduce((s,r)=>s+r200Num(r.distance_km),0),
+      days:dates.filter(d=>r200Records(d).length>0).length};
+  });
+}
+function r200BaseVisible() {
+  const q=state.busca.trim().toLowerCase();
+  const contratoOk=state.contrato==='todos'||state.contrato==='res';
+  const buscaOk=!q||'200'.includes(q)||'lmr3j62'.includes(q)||'m.benz/marcopolo senior on'.includes(q);
+  return contratoOk&&buscaOk;
+}
+function r200Header(title,sub,back) {
+  return '<div class="r200-top"><div><div class="r200-kicker">RASTREADOR · NOVA BASE</div><div class="r200-title">'+title+'</div><div class="r200-sub">'+sub+'</div></div>'+
+    (back?'<button class="r200-back" onclick="r200Voltar()">← Voltar</button>':'')+'</div>';
+}
+function r200Render() {
+  if(!R200_RAST_DATA||!r200BaseVisible()) return '';
+  const data=R200_RAST_DATA, months=data.months;
+  const total=data.records.reduce((s,r)=>s+r200Num(r.distance_km),0);
+  const days=data.days.length;
+  let html='<section class="r200-section" id="r200RastSection">';
+  if(R200_VIEW.level==='mes') {
+    html+=r200Header('Prefixo 200 · '+data.vehicle.plate,'Base documental de 01/07/2026 a 16/11/2026 · selecione um mês',false);
+    html+='<div class="r200-kpis"><div><small>Distância somada</small><b>'+r200Km(total)+'</b></div><div><small>Registros de origem</small><b>'+data.records.length+'</b></div><div><small>Dias com registros</small><b>'+days+'</b></div><div><small>Relatórios</small><b>'+months.length+'</b></div></div>';
+    html+='<div class="r200-month-grid">';
+    months.forEach(m=>{const pct=total?m.total_km/total*100:0;
+      html+='<button class="r200-month" onclick="r200AbrirMes(\''+m.key+'\')"><span class="r200-month-name">'+m.label+' 2026</span><b>'+r200Km(m.total_km)+'</b><span class="r200-month-meta">'+m.records+' registros · '+m.source+'</span><span class="r200-track"><i style="width:'+pct.toFixed(1)+'%"></i></span><span class="r200-open">Abrir análise →</span></button>';
+    });
+    html+='</div><div class="r200-note"><b>Critério:</b> quilometragem = soma da coluna “Distância” de cada linha do relatório. Os registros são eventos do rastreador; dias sem linhas não são tratados como 0 km. Linhas com distância 0,0 km são mantidas como registros válidos.</div>';
+  } else if(R200_VIEW.level==='semana') {
+    const m=months.find(x=>x.key===R200_VIEW.month), weeks=r200MonthWeeks(R200_VIEW.month);
+    html+=r200Header('Prefixo 200 · '+m.label+' de 2026','Resumo mensal: '+r200Km(m.total_km)+' · '+m.records+' registros · escolha uma semana',true);
+    html+='<div class="r200-week-grid">';
+    weeks.forEach((w,i)=>{const pct=m.total_km?w.km/m.total_km*100:0;
+      html+='<button class="r200-week" onclick="r200AbrirSemana(\''+w.key+'\')"><div class="r200-week-head"><b>Semana '+(i+1)+'</b><span>'+r200Br(w.start)+' – '+r200Br(w.end)+'</span></div><strong>'+r200Km(w.km)+'</strong><small>'+w.rows.length+' registros · '+w.days+' dias com registros</small><div class="r200-track"><i style="width:'+pct.toFixed(1)+'%"></i></div><div class="r200-mini">';
+      w.dates.forEach(d=>{const x=r200DaySummary(d);const max=Math.max(1,...w.dates.map(z=>r200DaySummary(z).km));html+='<span title="'+r200Br(d)+': '+(x.count?r200Km(x.km):'Sem registros')+'"><i style="height:'+Math.max(2,x.km/max*34)+'px"></i><em>'+['D','S','T','Q','Q','S','S'][r200DateObj(d).getDay()]+'</em></span>';});
+      html+='</div><span class="r200-open">Ver dias →</span></button>';
+    });
+    html+='</div>';
+  } else if(R200_VIEW.level==='dia') {
+    const m=months.find(x=>x.key===R200_VIEW.month), w=r200MonthWeeks(R200_VIEW.month).find(x=>x.key===R200_VIEW.week);
+    html+=r200Header('Prefixo 200 · '+m.label+' · semana','Período '+r200Br(w.start)+' a '+r200Br(w.end)+' · '+r200Km(w.km),true);
+    html+='<div class="r200-day-list">';
+    w.dates.forEach(d=>{const x=r200DaySummary(d);html+='<button class="r200-day '+(!x.count?'sem-registro':'')+'" onclick="r200AbrirDia(\''+d+'\')"><span class="r200-day-date">'+r200Br(d)+'</span><span class="r200-day-week">'+['domingo','segunda','terça','quarta','quinta','sexta','sábado'][r200DateObj(d).getDay()]+'</span><b>'+(x.count?r200Km(x.km):'Sem registros')+'</b><small>'+(x.count?x.count+' eventos · '+x.zeros+' com 0 km':'Ausência de linhas no relatório')+'</small><span class="r200-open">'+(x.count?'Detalhar →':'')+'</span></button>';});
+    html+='</div>';
+  } else {
+    const rows=r200Records(R200_VIEW.day), x=r200DaySummary(R200_VIEW.day);
+    const m=months.find(z=>z.key===R200_VIEW.month);
+    html+=r200Header('Prefixo 200 · '+r200Br(R200_VIEW.day),m.label+' de 2026 · '+x.count+' eventos · '+r200Km(x.km),true);
+    html+='<div class="r200-note">Cada linha abaixo corresponde a um evento do relatório original. Endereços, horários, horímetro, distância, tempo em movimento, tempo parado e velocidade máxima foram preservados.</div>';
+    html+='<div class="r200-table-wrap"><table class="r200-table"><thead><tr><th>Ignição</th><th>Distância</th><th>Horímetro</th><th>Em movimento</th><th>Parado</th><th>Vel. máx.</th><th>Origem → destino</th><th>Arquivo-fonte</th></tr></thead><tbody>';
+    rows.forEach(r=>{html+='<tr><td>'+r200Esc(r.time)+'</td><td class="r200-distance">'+r200Esc(r.distance_raw)+' km</td><td>'+r200Esc(r.horimeter)+'</td><td>'+r200Esc(r.moving_time)+'</td><td>'+r200Esc(r.idle_time)+'</td><td>'+r200Esc(r.max_speed_kmh)+' km/h</td><td class="r200-address">'+r200Esc(r.start_address)+'<span>↓</span>'+r200Esc(r.end_address)+'</td><td>'+r200Esc(r.source)+'</td></tr>';});
+    html+='</tbody></table></div>';
+  }
+  html+='</section>';
+  return html;
+}
+function r200Atualizar() {
+  const old=document.getElementById('r200RastSection');
+  if(old) old.outerHTML=r200Render();
+}
+function r200AbrirMes(key) { R200_VIEW={level:'semana',month:key,week:null,day:null}; r200Atualizar(); }
+function r200AbrirSemana(key) { R200_VIEW={...R200_VIEW,level:'dia',week:key,day:null}; r200Atualizar(); }
+function r200AbrirDia(key) { R200_VIEW={...R200_VIEW,level:'detalhe',day:key}; r200Atualizar(); }
+function r200Voltar() {
+  if(R200_VIEW.level==='detalhe') R200_VIEW={...R200_VIEW,level:'dia',day:null};
+  else if(R200_VIEW.level==='dia') R200_VIEW={...R200_VIEW,level:'semana',week:null};
+  else R200_VIEW={level:'mes',month:null,week:null,day:null};
+  r200Atualizar();
+}
+async function abrirModalRast() {
+  abrirModalRastLegado();
+  R200_VIEW={level:'mes',month:null,week:null,day:null};
+  if(!r200BaseVisible()) return;
+  const body=document.getElementById('modalRastBody');
+  if(!R200_RAST_DATA) {
+    body.insertAdjacentHTML('afterbegin','<section class="r200-section" id="r200RastSection"><div class="r200-loading">Carregando os relatórios originais do prefixo 200…</div></section>');
+    try {
+      const resp=await fetch('dados/rastreador-r200.json',{cache:'no-cache'});
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      R200_RAST_DATA=await resp.json();
+    } catch(err) {
+      const el=document.getElementById('r200RastSection');
+      if(el) el.innerHTML='<div class="r200-error">Não foi possível carregar a base do prefixo 200. Verifique a publicação do arquivo dados/rastreador-r200.json.</div>';
+      return;
+    }
+  }
+  const old=document.getElementById('r200RastSection');
+  if(old) old.outerHTML=r200Render();
+  else body.insertAdjacentHTML('afterbegin',r200Render());
 }
 
 function fecharModalRast() {
