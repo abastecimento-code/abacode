@@ -1,0 +1,145 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Placa</th><th scope="col">Motorista</th><th scope="col">Reinicio</th><th scope="col">End. Inicio</th><th scope="col">Ign. Ligada</th><th scope="col">Hor&#237;metro</th><th scope="col">Distancia</th><th scope="col">Dist. FHT</th><th scope="col">Tempo Mov.</th><th scope="col">Ligado sem Mov.</th><th scope="col">Vel. Max</th><th scope="col">Consumo</th><th scope="col">Gasto</th><th scope="col">Ign. Desligada</th><th scope="col">End. Final</th>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:00:00</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 04:35</td><td>05:12:00</td><td>178,7</td><td>0</td><td>04:15:49</td><td>00:56:11</td><td>92</td><td>0,00</td><td>0,00</td><td>01/09/2026 09:49</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:14:42</td><td>Rodovia Governador M&#225;rio Covas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>01/09/2026 16:04</td><td>05:01:00</td><td>177,9</td><td>0</td><td>04:23:56</td><td>00:37:04</td><td>93</td><td>0,00</td><td>0,00</td><td>01/09/2026 21:08</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:27:01</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>02/09/2026 04:35</td><td>04:38:00</td><td>176,7</td><td>0</td><td>04:01:24</td><td>00:36:36</td><td>92</td><td>0,00</td><td>0,00</td><td>02/09/2026 09:15</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>05:54:14</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>02/09/2026 15:09</td><td>06:28:00</td><td>219,1</td><td>0</td><td>05:24:20</td><td>01:03:40</td><td>89</td><td>0,00</td><td>0,00</td><td>02/09/2026 21:39</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:22:41</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>03/09/2026 04:02</td><td>06:24:00</td><td>192,1</td><td>0</td><td>05:00:38</td><td>01:23:22</td><td>86</td><td>0,00</td><td>0,00</td><td>03/09/2026 10:29</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>05:33:28</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>03/09/2026 16:02</td><td>05:14:00</td><td>169,6</td><td>0</td><td>04:36:11</td><td>00:37:49</td><td>85</td><td>0,00</td><td>0,00</td><td>03/09/2026 21:18</td><td>Rua Capit&#227;o Naz&#225;rio Pereira Gomes, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:05:31</td><td>Rua Capit&#227;o Naz&#225;rio Pereira Gomes, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>03/09/2026 21:24</td><td>00:20:00</td><td>1,5</td><td>0</td><td>00:06:47</td><td>00:13:13</td><td>31</td><td>0,00</td><td>0,00</td><td>03/09/2026 21:44</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:16:46</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>04/09/2026 04:01</td><td>02:49:00</td><td>98,6</td><td>0</td><td>02:23:20</td><td>00:25:40</td><td>86</td><td>0,00</td><td>0,00</td><td>04/09/2026 06:52</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:02:00</td><td>Via Projetada 5, S&#227;o Jo&#227;o da Barra, Rio de Janeiro, Brasil</td><td>04/09/2026 06:54</td><td>02:52:00</td><td>81,3</td><td>0</td><td>02:17:43</td><td>00:34:17</td><td>89</td><td>0,00</td><td>0,00</td><td>04/09/2026 09:46</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:19:00</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>04/09/2026 16:05</td><td>05:37:00</td><td>191,1</td><td>0</td><td>04:56:02</td><td>00:40:58</td><td>88</td><td>0,00</td><td>0,00</td><td>04/09/2026 21:45</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:28:41</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>05/09/2026 04:13</td><td>05:58:00</td><td>185,4</td><td>0</td><td>04:40:32</td><td>01:17:28</td><td>90</td><td>0,00</td><td>0,00</td><td>05/09/2026 10:15</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>05:46:19</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>05/09/2026 16:01</td><td>05:05:00</td><td>149,6</td><td>0</td><td>04:08:28</td><td>00:56:32</td><td>87</td><td>0,00</td><td>0,00</td><td>05/09/2026 21:13</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:15:19</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>06/09/2026 04:28</td><td>04:13:00</td><td>143,6</td><td>0</td><td>03:12:33</td><td>01:00:27</td><td>96</td><td>0,00</td><td>0,00</td><td>06/09/2026 08:45</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>19:48:50</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>07/09/2026 04:34</td><td>04:09:00</td><td>168,8</td><td>0</td><td>03:49:40</td><td>00:19:20</td><td>92</td><td>0,00</td><td>0,00</td><td>07/09/2026 08:45</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:54:39</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>07/09/2026 16:40</td><td>04:29:00</td><td>168,6</td><td>0</td><td>03:49:17</td><td>00:39:43</td><td>89</td><td>0,00</td><td>0,00</td><td>07/09/2026 21:12</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:23:22</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 04:35</td><td>05:05:00</td><td>174,5</td><td>0</td><td>04:10:35</td><td>00:54:25</td><td>94</td><td>0,00</td><td>0,00</td><td>08/09/2026 09:43</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:49:57</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>08/09/2026 16:33</td><td>05:05:00</td><td>191,8</td><td>0</td><td>04:28:09</td><td>00:36:51</td><td>95</td><td>0,00</td><td>0,00</td><td>08/09/2026 21:42</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:27:22</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>09/09/2026 04:09</td><td>04:22:00</td><td>160,4</td><td>0</td><td>03:45:04</td><td>00:36:56</td><td>92</td><td>0,00</td><td>0,00</td><td>09/09/2026 08:33</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:11:41</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>09/09/2026 08:45</td><td>01:11:00</td><td>3,2</td><td>0</td><td>00:20:22</td><td>00:50:38</td><td>36</td><td>0,00</td><td>0,00</td><td>09/09/2026 09:56</td><td>Rua Guaran&#225; de Barros, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:09:13</td><td>Rua Guaran&#225; de Barros, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>09/09/2026 16:05</td><td>05:28:00</td><td>169,9</td><td>0</td><td>04:27:47</td><td>01:00:13</td><td>88</td><td>0,00</td><td>0,00</td><td>09/09/2026 21:35</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:34:22</td><td>Rua S&#227;o Paulo, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>10/09/2026 04:09</td><td>05:21:00</td><td>171,8</td><td>0</td><td>04:17:56</td><td>01:03:04</td><td>88</td><td>0,00</td><td>0,00</td><td>10/09/2026 09:34</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:31:32</td><td>Avenida Wilson Batista, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>10/09/2026 16:06</td><td>06:05:00</td><td>221,9</td><td>0</td><td>05:11:48</td><td>00:53:12</td><td>96</td><td>0,00</td><td>0,00</td><td>10/09/2026 22:14</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:17:34</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>11/09/2026 04:31</td><td>04:09:00</td><td>170,8</td><td>0</td><td>03:35:34</td><td>00:33:26</td><td>101</td><td>0,00</td><td>0,00</td><td>11/09/2026 08:43</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:54:57</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>11/09/2026 15:38</td><td>05:29:00</td><td>192,0</td><td>0</td><td>04:40:27</td><td>00:48:33</td><td>110</td><td>0,00</td><td>0,00</td><td>11/09/2026 21:10</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>04:08:14</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>12/09/2026 01:18</td><td>00:18:00</td><td>21,8</td><td>0</td><td>00:18:00</td><td>00:00:00</td><td>113</td><td>0,00</td><td>0,00</td><td>12/09/2026 01:38</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>02:51:25</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>12/09/2026 04:30</td><td>05:02:00</td><td>184,3</td><td>0</td><td>04:02:52</td><td>00:59:08</td><td>113</td><td>0,00</td><td>0,00</td><td>12/09/2026 09:35</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:52:24</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>12/09/2026 16:27</td><td>04:47:00</td><td>177,4</td><td>0</td><td>04:13:53</td><td>00:33:07</td><td>113</td><td>0,00</td><td>0,00</td><td>12/09/2026 21:16</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>39:19:01</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>14/09/2026 12:35</td><td>00:11:00</td><td>2,4</td><td>0</td><td>00:09:36</td><td>00:01:24</td><td>31</td><td>0,00</td><td>0,00</td><td>14/09/2026 12:48</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>15:42:22</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>15/09/2026 04:31</td><td>08:08:00</td><td>198,3</td><td>0</td><td>04:28:03</td><td>03:39:57</td><td>92</td><td>0,00</td><td>0,00</td><td>15/09/2026 12:50</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>03:39:49</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>15/09/2026 16:29</td><td>04:59:00</td><td>173,8</td><td>0</td><td>03:58:05</td><td>01:00:55</td><td>102</td><td>0,00</td><td>0,00</td><td>15/09/2026 21:36</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:56:29</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>16/09/2026 04:32</td><td>05:15:00</td><td>182,0</td><td>0</td><td>04:09:16</td><td>01:05:44</td><td>94</td><td>0,00</td><td>0,00</td><td>16/09/2026 09:50</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>05:52:53</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>16/09/2026 15:43</td><td>05:44:00</td><td>200,5</td><td>0</td><td>04:47:22</td><td>00:56:38</td><td>97</td><td>0,00</td><td>0,00</td><td>16/09/2026 21:30</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:00:21</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>17/09/2026 04:31</td><td>05:24:00</td><td>180,7</td><td>0</td><td>04:12:53</td><td>01:11:07</td><td>95</td><td>0,00</td><td>0,00</td><td>17/09/2026 09:58</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:36:38</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>17/09/2026 10:35</td><td>00:03:00</td><td>0</td><td>0</td><td>00:02:07</td><td>00:00:53</td><td>5</td><td>0,00</td><td>0,00</td><td>17/09/2026 10:46</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:39:54</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>17/09/2026 11:25</td><td>00:03:05</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:05</td><td>0</td><td>0,00</td><td>0,00</td><td>17/09/2026 11:28</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>02:49:44</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>17/09/2026 14:18</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>17/09/2026 14:30</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>01:32:08</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>17/09/2026 16:03</td><td>07:23:00</td><td>163,0</td><td>0</td><td>04:08:13</td><td>03:14:47</td><td>85</td><td>0,00</td><td>0,00</td><td>17/09/2026 23:35</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>04:56:44</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>18/09/2026 04:32</td><td>04:54:00</td><td>161,2</td><td>0</td><td>03:49:04</td><td>01:04:56</td><td>84</td><td>0,00</td><td>0,00</td><td>18/09/2026 09:27</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>01:33:19</td><td>Rua Maca&#233;, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>18/09/2026 11:00</td><td>00:24:00</td><td>20,5</td><td>0</td><td>00:23:25</td><td>00:00:35</td><td>84</td><td>0,00</td><td>0,00</td><td>18/09/2026 11:30</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>01:09:47</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>18/09/2026 12:40</td><td>00:08:00</td><td>2,3</td><td>0</td><td>00:07:05</td><td>00:00:55</td><td>31</td><td>0,00</td><td>0,00</td><td>18/09/2026 12:49</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>03:38:16</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>18/09/2026 16:28</td><td>04:49:00</td><td>171,0</td><td>0</td><td>04:13:45</td><td>00:35:15</td><td>84</td><td>0,00</td><td>0,00</td><td>18/09/2026 21:20</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:13:48</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>19/09/2026 04:34</td><td>05:07:00</td><td>192,8</td><td>0</td><td>04:01:27</td><td>01:05:33</td><td>85</td><td>0,00</td><td>0,00</td><td>19/09/2026 09:44</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:42:46</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>19/09/2026 16:26</td><td>04:35:00</td><td>167,2</td><td>0</td><td>03:47:24</td><td>00:47:36</td><td>83</td><td>0,00</td><td>0,00</td><td>19/09/2026 21:04</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>08:08:45</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>20/09/2026 05:13</td><td>03:32:00</td><td>158,8</td><td>0</td><td>03:03:00</td><td>00:29:00</td><td>85</td><td>0,00</td><td>0,00</td><td>20/09/2026 08:47</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>19:44:32</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>21/09/2026 04:32</td><td>04:04:00</td><td>150,7</td><td>0</td><td>03:18:06</td><td>00:45:54</td><td>84</td><td>0,00</td><td>0,00</td><td>21/09/2026 08:38</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:32:10</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>21/09/2026 09:10</td><td>00:23:00</td><td>20,5</td><td>0</td><td>00:23:00</td><td>00:00:00</td><td>83</td><td>0,00</td><td>0,00</td><td>21/09/2026 09:33</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:05:34</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>21/09/2026 15:39</td><td>05:23:00</td><td>180,8</td><td>0</td><td>04:23:02</td><td>00:59:58</td><td>85</td><td>0,00</td><td>0,00</td><td>21/09/2026 21:04</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:29:07</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>22/09/2026 04:34</td><td>05:13:00</td><td>184,2</td><td>0</td><td>04:20:23</td><td>00:52:37</td><td>84</td><td>0,00</td><td>0,00</td><td>22/09/2026 09:50</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:25:04</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>22/09/2026 16:15</td><td>04:49:00</td><td>177,3</td><td>0</td><td>04:13:04</td><td>00:35:56</td><td>85</td><td>0,00</td><td>0,00</td><td>22/09/2026 21:07</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:27:42</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>23/09/2026 04:34</td><td>04:48:00</td><td>177,9</td><td>0</td><td>04:01:51</td><td>00:46:09</td><td>84</td><td>0,00</td><td>0,00</td><td>23/09/2026 09:25</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:21:21</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>23/09/2026 15:46</td><td>05:20:00</td><td>182,4</td><td>0</td><td>04:48:56</td><td>00:31:04</td><td>83</td><td>0,00</td><td>0,00</td><td>23/09/2026 21:10</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>31:24:24</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>25/09/2026 04:34</td><td>04:48:00</td><td>175,8</td><td>0</td><td>04:01:27</td><td>00:46:33</td><td>85</td><td>0,00</td><td>0,00</td><td>25/09/2026 09:24</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:01:55</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>25/09/2026 15:26</td><td>05:41:00</td><td>181,1</td><td>0</td><td>04:38:48</td><td>01:02:12</td><td>84</td><td>0,00</td><td>0,00</td><td>25/09/2026 21:10</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:39:37</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>26/09/2026 04:50</td><td>04:40:00</td><td>178,1</td><td>0</td><td>03:57:48</td><td>00:42:12</td><td>85</td><td>0,00</td><td>0,00</td><td>26/09/2026 09:32</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:05:38</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>26/09/2026 16:38</td><td>03:44:00</td><td>148,1</td><td>0</td><td>03:25:14</td><td>00:18:46</td><td>84</td><td>0,00</td><td>0,00</td><td>26/09/2026 20:24</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>08:49:07</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>27/09/2026 05:13</td><td>03:46:00</td><td>145,5</td><td>0</td><td>03:00:13</td><td>00:45:47</td><td>84</td><td>0,00</td><td>0,00</td><td>27/09/2026 09:02</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>19:29:49</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>28/09/2026 04:31</td><td>04:04:00</td><td>151,3</td><td>0</td><td>03:20:17</td><td>00:43:43</td><td>85</td><td>0,00</td><td>0,00</td><td>28/09/2026 08:37</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:15:44</td><td>Rua Dirceu Dias, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>28/09/2026 08:53</td><td>00:53:00</td><td>20,5</td><td>0</td><td>00:37:34</td><td>00:15:26</td><td>81</td><td>0,00</td><td>0,00</td><td>28/09/2026 09:47</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:56:37</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>28/09/2026 16:43</td><td>04:33:00</td><td>172,3</td><td>0</td><td>04:07:46</td><td>00:25:14</td><td>83</td><td>0,00</td><td>0,00</td><td>28/09/2026 21:20</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:14:03</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 04:34</td><td>04:45:00</td><td>164,6</td><td>0</td><td>03:52:56</td><td>00:52:04</td><td>84</td><td>0,00</td><td>0,00</td><td>29/09/2026 09:21</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>01:46:24</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 11:08</td><td>00:06:00</td><td>0,1</td><td>0</td><td>00:03:13</td><td>00:02:47</td><td>5</td><td>0,00</td><td>0,00</td><td>29/09/2026 11:13</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:48:59</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 12:02</td><td>00:07:00</td><td>0,2</td><td>0</td><td>00:05:53</td><td>00:01:07</td><td>7</td><td>0,00</td><td>0,00</td><td>29/09/2026 12:11</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>01:53:28</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 14:04</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>29/09/2026 14:10</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:00:23</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 14:10</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>29/09/2026 14:14</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:00:57</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 14:15</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>29/09/2026 14:19</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:07:58</td><td>Rua Alagoas, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 14:27</td><td>00:05:00</td><td>0</td><td>0</td><td>00:02:25</td><td>00:02:35</td><td>5</td><td>0,00</td><td>0,00</td><td>29/09/2026 14:33</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>00:40:19</td><td>Avenida Carlos Alberto Chebabe, Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>29/09/2026 15:13</td><td>06:05:00</td><td>162,4</td><td>0</td><td>04:14:15</td><td>01:50:45</td><td>84</td><td>0,00</td><td>0,00</td><td>29/09/2026 21:20</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>07:15:18</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>30/09/2026 04:35</td><td>04:21:00</td><td>178,8</td><td>0</td><td>04:02:31</td><td>00:18:29</td><td>84</td><td>0,00</td><td>0,00</td><td>30/09/2026 08:59</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 - PASSAGEIROS (TTS8G00)</td><td>&nbsp;</td><td>06:31:43</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td><td>30/09/2026 15:30</td><td>05:38:00</td><td>178,8</td><td>0</td><td>04:21:06</td><td>01:16:54</td><td>91</td><td>0,00</td><td>0,00</td><td>30/09/2026 21:12</td><td>Campos dos Goytacazes, Rio de Janeiro, Brasil</td>
+		</tr>
+	</table>
+</div>

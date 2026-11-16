@@ -1,0 +1,579 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr>
+			<th scope="col">Placa</th><th scope="col">Motorista</th><th scope="col">Reinicio</th><th scope="col">End. Inicio</th><th scope="col">Ign. Ligada</th><th scope="col">Hor&#237;metro</th><th scope="col">Distancia</th><th scope="col">Dist. FHT</th><th scope="col">Tempo Mov.</th><th scope="col">Ligado sem Mov.</th><th scope="col">Vel. Max</th><th scope="col">Consumo</th><th scope="col">Gasto</th><th scope="col">Ign. Desligada</th><th scope="col">End. Final</th>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:00</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 07:13</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>01/07/2026 07:15</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:10:22</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 07:25</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>01/07/2026 07:26</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:08:37</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 07:35</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>01/07/2026 07:37</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:06</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 07:39</td><td>00:32:00</td><td>3,8</td><td>0</td><td>00:18:00</td><td>00:14:00</td><td>18</td><td>0,00</td><td>0,00</td><td>01/07/2026 08:10</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:44</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 08:11</td><td>00:55:00</td><td>11,8</td><td>0</td><td>00:46:00</td><td>00:09:00</td><td>29</td><td>0,00</td><td>0,00</td><td>01/07/2026 09:06</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:38</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 09:07</td><td>00:03:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:01:00</td><td>6</td><td>0,00</td><td>0,00</td><td>01/07/2026 09:10</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:11:56</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 09:22</td><td>00:38:00</td><td>0,8</td><td>0</td><td>00:12:00</td><td>00:26:00</td><td>6</td><td>0,00</td><td>0,00</td><td>01/07/2026 10:00</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:56</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 10:03</td><td>00:11:00</td><td>0,2</td><td>0</td><td>00:03:59</td><td>00:07:01</td><td>3</td><td>0,00</td><td>0,00</td><td>01/07/2026 10:13</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:41</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 10:15</td><td>00:11:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:11:00</td><td>1</td><td>0,00</td><td>0,00</td><td>01/07/2026 10:26</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:16:40</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 10:42</td><td>00:34:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:34:00</td><td>3</td><td>0,00</td><td>0,00</td><td>01/07/2026 11:16</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:17:53</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 11:34</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>3</td><td>0,00</td><td>0,00</td><td>01/07/2026 11:41</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:35:52</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>01/07/2026 13:17</td><td>00:20:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:20:00</td><td>2</td><td>0,00</td><td>0,00</td><td>01/07/2026 13:36</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>18:32:00</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>02/07/2026 08:08</td><td>00:19:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:19:00</td><td>4</td><td>0,00</td><td>0,00</td><td>02/07/2026 08:27</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:12:40</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>02/07/2026 08:40</td><td>00:21:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:21:00</td><td>3</td><td>0,00</td><td>0,00</td><td>02/07/2026 09:00</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:13</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>02/07/2026 09:06</td><td>02:50:00</td><td>1,5</td><td>0</td><td>00:21:59</td><td>02:28:01</td><td>7</td><td>0,00</td><td>0,00</td><td>02/07/2026 11:56</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:13:10</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>02/07/2026 13:09</td><td>01:26:00</td><td>0</td><td>0</td><td>00:02:00</td><td>01:24:00</td><td>4</td><td>0,00</td><td>0,00</td><td>02/07/2026 14:35</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:10:58</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>02/07/2026 14:46</td><td>00:48:00</td><td>0,7</td><td>0</td><td>00:10:00</td><td>00:38:00</td><td>7</td><td>0,00</td><td>0,00</td><td>02/07/2026 15:34</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:44:47</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>02/07/2026 16:19</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>02/07/2026 16:20</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>16:28:02</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 08:48</td><td>00:06:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>03/07/2026 08:54</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:06</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 08:57</td><td>00:33:00</td><td>0,1</td><td>0</td><td>00:05:59</td><td>00:27:01</td><td>3</td><td>0,00</td><td>0,00</td><td>03/07/2026 09:30</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:15:50</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 09:46</td><td>00:37:00</td><td>0</td><td>0</td><td>00:04:00</td><td>00:33:00</td><td>4</td><td>0,00</td><td>0,00</td><td>03/07/2026 10:22</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:16:01</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 10:38</td><td>01:00:00</td><td>0,2</td><td>0</td><td>00:08:00</td><td>00:52:00</td><td>5</td><td>0,00</td><td>0,00</td><td>03/07/2026 11:38</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:46:33</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 13:25</td><td>00:18:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:18:00</td><td>4</td><td>0,00</td><td>0,00</td><td>03/07/2026 13:42</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:03</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 13:48</td><td>00:10:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:10:00</td><td>3</td><td>0,00</td><td>0,00</td><td>03/07/2026 13:58</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:13:43</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 14:12</td><td>00:23:00</td><td>0</td><td>0</td><td>00:04:00</td><td>00:19:00</td><td>3</td><td>0,00</td><td>0,00</td><td>03/07/2026 14:33</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:29</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 14:37</td><td>00:10:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:10:00</td><td>3</td><td>0,00</td><td>0,00</td><td>03/07/2026 14:47</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:26</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 14:49</td><td>00:13:00</td><td>0,6</td><td>0</td><td>00:06:00</td><td>00:07:00</td><td>5</td><td>0,00</td><td>0,00</td><td>03/07/2026 15:01</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:33</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 15:09</td><td>00:38:00</td><td>11,2</td><td>0</td><td>00:36:00</td><td>00:02:00</td><td>32</td><td>0,00</td><td>0,00</td><td>03/07/2026 15:46</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:39</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>03/07/2026 15:50</td><td>00:31:00</td><td>8,8</td><td>0</td><td>00:27:59</td><td>00:03:01</td><td>32</td><td>0,00</td><td>0,00</td><td>03/07/2026 16:20</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>13:30:41</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>04/07/2026 05:51</td><td>02:02:00</td><td>5,3</td><td>0</td><td>00:41:59</td><td>01:20:01</td><td>28</td><td>0,00</td><td>0,00</td><td>04/07/2026 07:52</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:34</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>04/07/2026 08:01</td><td>02:21:00</td><td>0,8</td><td>0</td><td>00:21:59</td><td>01:59:01</td><td>3</td><td>0,00</td><td>0,00</td><td>04/07/2026 10:21</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:44</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>04/07/2026 10:24</td><td>01:45:00</td><td>0,6</td><td>0</td><td>00:16:00</td><td>01:29:00</td><td>3</td><td>0,00</td><td>0,00</td><td>04/07/2026 12:09</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:55:24</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>04/07/2026 13:04</td><td>00:58:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:56:00</td><td>2</td><td>0,00</td><td>0,00</td><td>04/07/2026 14:02</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:14</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>04/07/2026 14:05</td><td>01:45:00</td><td>6,7</td><td>0</td><td>00:41:59</td><td>01:03:01</td><td>26</td><td>0,00</td><td>0,00</td><td>04/07/2026 15:50</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:30:42</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>04/07/2026 16:21</td><td>00:05:00</td><td>0,5</td><td>0</td><td>00:04:00</td><td>00:01:00</td><td>2</td><td>0,00</td><td>0,00</td><td>04/07/2026 16:25</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>14:10:13</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 06:35</td><td>00:12:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:10:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/07/2026 06:47</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:43:58</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 07:31</td><td>00:13:00</td><td>1,7</td><td>0</td><td>00:10:00</td><td>00:03:00</td><td>17</td><td>0,00</td><td>0,00</td><td>05/07/2026 07:44</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:22:15</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 08:07</td><td>00:05:00</td><td>0,3</td><td>0</td><td>00:02:00</td><td>00:03:00</td><td>10</td><td>0,00</td><td>0,00</td><td>05/07/2026 08:11</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:07</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 08:15</td><td>00:41:00</td><td>0,5</td><td>0</td><td>00:10:00</td><td>00:31:00</td><td>12</td><td>0,00</td><td>0,00</td><td>05/07/2026 08:54</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:14</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 08:59</td><td>00:03:00</td><td>0,3</td><td>0</td><td>00:02:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/07/2026 09:02</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:25</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 09:04</td><td>00:58:00</td><td>0,7</td><td>0</td><td>00:20:00</td><td>00:38:00</td><td>5</td><td>0,00</td><td>0,00</td><td>05/07/2026 10:01</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:40</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 10:07</td><td>00:19:00</td><td>1,0</td><td>0</td><td>00:14:00</td><td>00:05:00</td><td>4</td><td>0,00</td><td>0,00</td><td>05/07/2026 10:24</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:48</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 10:34</td><td>00:25:00</td><td>2,0</td><td>0</td><td>00:22:00</td><td>00:03:00</td><td>15</td><td>0,00</td><td>0,00</td><td>05/07/2026 10:58</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:53</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 11:08</td><td>00:27:00</td><td>2,7</td><td>0</td><td>00:26:00</td><td>00:01:00</td><td>17</td><td>0,00</td><td>0,00</td><td>05/07/2026 11:34</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:26</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 11:37</td><td>00:06:00</td><td>0,4</td><td>0</td><td>00:04:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/07/2026 11:43</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:47</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 11:49</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/07/2026 11:53</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:12:14</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 12:05</td><td>00:03:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/07/2026 12:08</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>04:09:30</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 16:18</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/07/2026 16:20</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:15</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 16:27</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/07/2026 16:29</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:26</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>05/07/2026 16:36</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>05/07/2026 16:38</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>13:33:59</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 06:12</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>06/07/2026 06:13</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:12</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 06:22</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>06/07/2026 06:23</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:33:26</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 06:56</td><td>00:05:00</td><td>0,6</td><td>0</td><td>00:04:00</td><td>00:01:00</td><td>12</td><td>0,00</td><td>0,00</td><td>06/07/2026 07:00</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:20:06</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 07:21</td><td>01:10:00</td><td>8,5</td><td>0</td><td>00:47:59</td><td>00:22:01</td><td>23</td><td>0,00</td><td>0,00</td><td>06/07/2026 08:30</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:07</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 08:38</td><td>01:16:00</td><td>1,1</td><td>0</td><td>00:30:00</td><td>00:46:00</td><td>7</td><td>0,00</td><td>0,00</td><td>06/07/2026 09:53</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:50</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 09:59</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>06/07/2026 10:00</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:08:22</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 10:09</td><td>00:09:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:09:00</td><td>4</td><td>0,00</td><td>0,00</td><td>06/07/2026 10:17</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:14:47</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 10:32</td><td>00:50:00</td><td>0,9</td><td>0</td><td>00:18:00</td><td>00:32:00</td><td>7</td><td>0,00</td><td>0,00</td><td>06/07/2026 11:21</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:43</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 11:31</td><td>00:50:00</td><td>0,2</td><td>0</td><td>00:02:00</td><td>00:48:00</td><td>5</td><td>0,00</td><td>0,00</td><td>06/07/2026 12:20</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:24:06</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 12:44</td><td>00:11:00</td><td>0,7</td><td>0</td><td>00:06:00</td><td>00:05:00</td><td>14</td><td>0,00</td><td>0,00</td><td>06/07/2026 12:55</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:13:43</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 13:08</td><td>02:15:00</td><td>0,2</td><td>0</td><td>00:13:59</td><td>02:01:01</td><td>5</td><td>0,00</td><td>0,00</td><td>06/07/2026 15:23</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:46</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 15:24</td><td>00:13:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:13:00</td><td>1</td><td>0,00</td><td>0,00</td><td>06/07/2026 15:38</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:18:05</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 15:56</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>1</td><td>0,00</td><td>0,00</td><td>06/07/2026 16:03</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:12:34</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 16:15</td><td>00:18:00</td><td>0,1</td><td>0</td><td>00:04:00</td><td>00:14:00</td><td>4</td><td>0,00</td><td>0,00</td><td>06/07/2026 16:33</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:01</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>06/07/2026 16:36</td><td>00:38:00</td><td>7,3</td><td>0</td><td>00:29:59</td><td>00:08:01</td><td>24</td><td>0,00</td><td>0,00</td><td>06/07/2026 17:14</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>13:02:00</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 06:16</td><td>00:35:00</td><td>7,9</td><td>0</td><td>00:32:00</td><td>00:03:00</td><td>24</td><td>0,00</td><td>0,00</td><td>07/07/2026 06:51</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:40:16</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 07:31</td><td>00:14:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:12:00</td><td>3</td><td>0,00</td><td>0,00</td><td>07/07/2026 07:45</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:45</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 07:47</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>07/07/2026 07:48</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:00</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 07:49</td><td>00:26:00</td><td>3,8</td><td>0</td><td>00:24:00</td><td>00:02:00</td><td>18</td><td>0,00</td><td>0,00</td><td>07/07/2026 08:15</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:10:13</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 08:25</td><td>00:45:00</td><td>11,1</td><td>0</td><td>00:42:00</td><td>00:03:00</td><td>27</td><td>0,00</td><td>0,00</td><td>07/07/2026 09:10</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:19:45</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 09:29</td><td>00:08:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:06:00</td><td>1</td><td>0,00</td><td>0,00</td><td>07/07/2026 09:37</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:33</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 09:38</td><td>02:05:00</td><td>1,7</td><td>0</td><td>00:32:00</td><td>01:33:00</td><td>10</td><td>0,00</td><td>0,00</td><td>07/07/2026 11:43</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:18</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 11:47</td><td>00:29:00</td><td>0,7</td><td>0</td><td>00:14:00</td><td>00:15:00</td><td>8</td><td>0,00</td><td>0,00</td><td>07/07/2026 12:16</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:48:20</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 13:04</td><td>01:54:00</td><td>0,9</td><td>0</td><td>00:24:00</td><td>01:30:00</td><td>5</td><td>0,00</td><td>0,00</td><td>07/07/2026 14:58</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:46</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 15:07</td><td>00:39:00</td><td>1,1</td><td>0</td><td>00:20:05</td><td>00:18:55</td><td>8</td><td>0,00</td><td>0,00</td><td>07/07/2026 15:46</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:44</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 15:50</td><td>00:06:00</td><td>0,4</td><td>0</td><td>00:04:00</td><td>00:02:00</td><td>6</td><td>0,00</td><td>0,00</td><td>07/07/2026 15:55</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:13</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 15:56</td><td>00:56:00</td><td>9,6</td><td>0</td><td>00:37:59</td><td>00:18:01</td><td>34</td><td>0,00</td><td>0,00</td><td>07/07/2026 16:52</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:38</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 16:57</td><td>00:22:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:22:00</td><td>4</td><td>0,00</td><td>0,00</td><td>07/07/2026 17:19</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:30:21</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>07/07/2026 18:50</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>07/07/2026 18:51</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>10:57:42</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 05:48</td><td>01:07:00</td><td>7,5</td><td>0</td><td>00:32:00</td><td>00:35:00</td><td>24</td><td>0,00</td><td>0,00</td><td>08/07/2026 06:55</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:21:56</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 07:17</td><td>00:07:00</td><td>0,2</td><td>0</td><td>00:04:00</td><td>00:03:00</td><td>9</td><td>0,00</td><td>0,00</td><td>08/07/2026 07:24</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:41</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 07:25</td><td>00:09:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:09:00</td><td>3</td><td>0,00</td><td>0,00</td><td>08/07/2026 07:34</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:18</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 07:40</td><td>00:03:00</td><td>0,1</td><td>0</td><td>00:02:00</td><td>00:01:00</td><td>2</td><td>0,00</td><td>0,00</td><td>08/07/2026 07:43</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:37:02</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 08:20</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>08/07/2026 08:21</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:13:36</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 08:35</td><td>01:10:00</td><td>14,6</td><td>0</td><td>01:05:59</td><td>00:04:01</td><td>22</td><td>0,00</td><td>0,00</td><td>08/07/2026 09:44</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:04</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 09:45</td><td>01:32:00</td><td>0,2</td><td>0</td><td>00:08:00</td><td>01:24:00</td><td>3</td><td>0,00</td><td>0,00</td><td>08/07/2026 11:17</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:38</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 11:26</td><td>00:26:00</td><td>0,2</td><td>0</td><td>00:02:00</td><td>00:24:00</td><td>4</td><td>0,00</td><td>0,00</td><td>08/07/2026 11:52</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:23</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 11:57</td><td>00:15:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:15:00</td><td>0</td><td>0,00</td><td>0,00</td><td>08/07/2026 12:11</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:33:36</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>08/07/2026 12:44</td><td>02:43:00</td><td>9,2</td><td>0</td><td>01:21:59</td><td>01:21:01</td><td>15</td><td>0,00</td><td>0,00</td><td>08/07/2026 15:27</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>15:50:40</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>09/07/2026 07:18</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>09/07/2026 07:18</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:58</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>09/07/2026 07:26</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>09/07/2026 07:27</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:10:15</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>09/07/2026 07:37</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>09/07/2026 07:38</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:50:10</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>09/07/2026 08:28</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>09/07/2026 08:29</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:40</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>09/07/2026 08:37</td><td>00:05:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>09/07/2026 08:41</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:12:27</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>09/07/2026 08:54</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>09/07/2026 08:55</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>23:26:15</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 08:21</td><td>00:00:15</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:15</td><td>0</td><td>0,00</td><td>0,00</td><td>10/07/2026 08:21</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:45</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 08:23</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>10/07/2026 08:26</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:29:50</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 08:56</td><td>00:19:00</td><td>2,8</td><td>0</td><td>00:16:00</td><td>00:03:00</td><td>17</td><td>0,00</td><td>0,00</td><td>10/07/2026 09:14</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:49</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 09:20</td><td>00:19:00</td><td>3,6</td><td>0</td><td>00:18:00</td><td>00:01:00</td><td>19</td><td>0,00</td><td>0,00</td><td>10/07/2026 09:38</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:56</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 09:40</td><td>00:04:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>10/07/2026 09:44</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:30</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 09:46</td><td>00:37:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:35:00</td><td>1</td><td>0,00</td><td>0,00</td><td>10/07/2026 10:23</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:25</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 10:24</td><td>00:29:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:29:00</td><td>4</td><td>0,00</td><td>0,00</td><td>10/07/2026 10:52</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:15:58</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 11:08</td><td>00:17:00</td><td>0,2</td><td>0</td><td>00:02:00</td><td>00:15:00</td><td>3</td><td>0,00</td><td>0,00</td><td>10/07/2026 11:25</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:51:34</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 12:17</td><td>00:05:00</td><td>0,1</td><td>0</td><td>00:02:00</td><td>00:03:00</td><td>2</td><td>0,00</td><td>0,00</td><td>10/07/2026 12:22</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:55</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 12:23</td><td>01:13:00</td><td>21,4</td><td>0</td><td>01:12:00</td><td>00:01:00</td><td>33</td><td>0,00</td><td>0,00</td><td>10/07/2026 13:36</td><td>Rodovia Eduardo Carneiro da Silva, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:39</td><td>Rodovia Eduardo Carneiro da Silva, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 13:38</td><td>00:07:00</td><td>0,6</td><td>0</td><td>00:05:59</td><td>00:01:01</td><td>6</td><td>0,00</td><td>0,00</td><td>10/07/2026 13:45</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:48</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 13:55</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>1</td><td>0,00</td><td>0,00</td><td>10/07/2026 13:57</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:42</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 13:58</td><td>00:13:00</td><td>0,1</td><td>0</td><td>00:04:00</td><td>00:09:00</td><td>3</td><td>0,00</td><td>0,00</td><td>10/07/2026 14:11</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:03</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 14:16</td><td>00:42:00</td><td>10,2</td><td>0</td><td>00:40:00</td><td>00:02:00</td><td>30</td><td>0,00</td><td>0,00</td><td>10/07/2026 14:58</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:43</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 15:03</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>10/07/2026 15:03</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:58</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 15:10</td><td>00:07:00</td><td>0,7</td><td>0</td><td>00:05:59</td><td>00:01:01</td><td>11</td><td>0,00</td><td>0,00</td><td>10/07/2026 15:17</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:39:07</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 15:56</td><td>00:18:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:16:00</td><td>1</td><td>0,00</td><td>0,00</td><td>10/07/2026 16:14</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:42</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 16:19</td><td>00:10:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:10:00</td><td>3</td><td>0,00</td><td>0,00</td><td>10/07/2026 16:28</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:56</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>10/07/2026 16:32</td><td>00:16:00</td><td>0,2</td><td>0</td><td>00:02:00</td><td>00:14:00</td><td>2</td><td>0,00</td><td>0,00</td><td>10/07/2026 16:47</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>13:47:07</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>11/07/2026 06:35</td><td>00:31:00</td><td>4,8</td><td>0</td><td>00:28:00</td><td>00:03:00</td><td>28</td><td>0,00</td><td>0,00</td><td>11/07/2026 07:06</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:27</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>11/07/2026 07:08</td><td>03:58:00</td><td>0,1</td><td>0</td><td>00:08:00</td><td>03:50:00</td><td>3</td><td>0,00</td><td>0,00</td><td>11/07/2026 11:06</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:11</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>11/07/2026 11:08</td><td>00:42:00</td><td>0,3</td><td>0</td><td>00:10:00</td><td>00:32:00</td><td>2</td><td>0,00</td><td>0,00</td><td>11/07/2026 11:50</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:30</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>11/07/2026 11:56</td><td>00:18:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:18:00</td><td>1</td><td>0,00</td><td>0,00</td><td>11/07/2026 12:14</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:25:29</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>11/07/2026 12:40</td><td>01:59:00</td><td>6,4</td><td>0</td><td>00:46:00</td><td>01:13:00</td><td>26</td><td>0,00</td><td>0,00</td><td>11/07/2026 14:38</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:29:15</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>11/07/2026 15:07</td><td>00:58:00</td><td>0,4</td><td>0</td><td>00:05:59</td><td>00:52:01</td><td>4</td><td>0,00</td><td>0,00</td><td>11/07/2026 16:05</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:05</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>11/07/2026 16:12</td><td>00:05:00</td><td>0,7</td><td>0</td><td>00:03:59</td><td>00:01:01</td><td>20</td><td>0,00</td><td>0,00</td><td>11/07/2026 16:17</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>04:38:59</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>11/07/2026 20:56</td><td>00:00:05</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:05</td><td>0</td><td>0,00</td><td>0,00</td><td>11/07/2026 20:56</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>18:17:57</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>12/07/2026 15:14</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>12/07/2026 15:15</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:21:18</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>12/07/2026 15:36</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>1</td><td>0,00</td><td>0,00</td><td>12/07/2026 15:40</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:42</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>12/07/2026 15:47</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>12/07/2026 15:49</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:16</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>12/07/2026 15:55</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>12/07/2026 15:56</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>14:22:00</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>13/07/2026 06:18</td><td>00:25:00</td><td>7,8</td><td>0</td><td>00:24:00</td><td>00:01:00</td><td>31</td><td>0,00</td><td>0,00</td><td>13/07/2026 06:44</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:00:44</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>13/07/2026 07:45</td><td>00:31:00</td><td>6,0</td><td>0</td><td>00:30:00</td><td>00:01:00</td><td>17</td><td>0,00</td><td>0,00</td><td>13/07/2026 08:15</td><td>RJ 182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:59</td><td>RJ 182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>13/07/2026 08:16</td><td>00:05:00</td><td>0,4</td><td>0</td><td>00:04:00</td><td>00:01:00</td><td>11</td><td>0,00</td><td>0,00</td><td>13/07/2026 08:21</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:17:45</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>13/07/2026 08:38</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>13/07/2026 08:44</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:34:44</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>13/07/2026 09:19</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>3</td><td>0,00</td><td>0,00</td><td>13/07/2026 09:23</td><td>RJ 182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:28:25</td><td>RJ 182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>13/07/2026 09:51</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>13/07/2026 09:53</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>04:24:31</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>13/07/2026 14:17</td><td>00:25:00</td><td>5,9</td><td>0</td><td>00:24:00</td><td>00:01:00</td><td>18</td><td>0,00</td><td>0,00</td><td>13/07/2026 14:42</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:31</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>13/07/2026 14:49</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>13/07/2026 14:49</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>16:29:38</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 07:18</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>14/07/2026 07:20</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:13:47</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 07:34</td><td>00:17:00</td><td>2,8</td><td>0</td><td>00:14:00</td><td>00:03:00</td><td>17</td><td>0,00</td><td>0,00</td><td>14/07/2026 07:50</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:20</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 07:51</td><td>01:24:00</td><td>15,6</td><td>0</td><td>01:21:58</td><td>00:02:02</td><td>24</td><td>0,00</td><td>0,00</td><td>14/07/2026 09:15</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:38</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 09:17</td><td>00:38:00</td><td>0,2</td><td>0</td><td>00:08:00</td><td>00:30:00</td><td>3</td><td>0,00</td><td>0,00</td><td>14/07/2026 09:55</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:45</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 09:56</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>3</td><td>0,00</td><td>0,00</td><td>14/07/2026 10:00</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:12:02</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 10:12</td><td>00:54:00</td><td>0,2</td><td>0</td><td>00:07:59</td><td>00:46:01</td><td>3</td><td>0,00</td><td>0,00</td><td>14/07/2026 11:05</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:16:43</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 11:22</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>2</td><td>0,00</td><td>0,00</td><td>14/07/2026 11:28</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:16:03</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 11:44</td><td>00:18:00</td><td>0,5</td><td>0</td><td>00:08:00</td><td>00:10:00</td><td>6</td><td>0,00</td><td>0,00</td><td>14/07/2026 12:02</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:53</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 12:05</td><td>00:32:00</td><td>0,3</td><td>0</td><td>00:06:00</td><td>00:26:00</td><td>3</td><td>0,00</td><td>0,00</td><td>14/07/2026 12:37</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:19:02</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 13:56</td><td>00:14:00</td><td>0,4</td><td>0</td><td>00:08:00</td><td>00:06:00</td><td>4</td><td>0,00</td><td>0,00</td><td>14/07/2026 14:10</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:09</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 14:12</td><td>00:07:00</td><td>0</td><td>0</td><td>00:01:59</td><td>00:05:01</td><td>1</td><td>0,00</td><td>0,00</td><td>14/07/2026 14:19</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:15:09</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 14:34</td><td>01:15:00</td><td>10,5</td><td>0</td><td>00:47:59</td><td>00:27:01</td><td>19</td><td>0,00</td><td>0,00</td><td>14/07/2026 15:49</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:49</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 15:56</td><td>00:23:00</td><td>7,6</td><td>0</td><td>00:21:59</td><td>00:01:01</td><td>34</td><td>0,00</td><td>0,00</td><td>14/07/2026 16:18</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:59:29</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 17:17</td><td>00:15:00</td><td>1,1</td><td>0</td><td>00:12:00</td><td>00:03:00</td><td>20</td><td>0,00</td><td>0,00</td><td>14/07/2026 17:32</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>02:39:47</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>14/07/2026 20:11</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>14/07/2026 20:12</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>10:42:42</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 06:54</td><td>00:08:00</td><td>0,5</td><td>0</td><td>00:04:00</td><td>00:04:00</td><td>13</td><td>0,00</td><td>0,00</td><td>15/07/2026 07:02</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:27:18</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 07:29</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 07:31</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:00</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 07:33</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 07:35</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:13</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 07:35</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 07:39</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:00</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 07:41</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>2</td><td>0,00</td><td>0,00</td><td>15/07/2026 07:47</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:09:14</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 07:56</td><td>00:08:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:08:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 08:04</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:57</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 08:12</td><td>00:14:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:14:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 08:26</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:27</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 08:26</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 08:32</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:38</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 08:39</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 08:43</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:03</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 08:49</td><td>00:16:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:16:00</td><td>2</td><td>0,00</td><td>0,00</td><td>15/07/2026 09:05</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:24</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 09:09</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 09:15</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:14:22</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 09:29</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>1</td><td>0,00</td><td>0,00</td><td>15/07/2026 09:33</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:17</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 09:34</td><td>00:17:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:17:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 09:50</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:35</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 09:55</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 09:57</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:56</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 10:04</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 10:05</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:28</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 10:10</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 10:14</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:36</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 10:18</td><td>00:19:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:19:00</td><td>1</td><td>0,00</td><td>0,00</td><td>15/07/2026 10:36</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:23</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 10:42</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 10:46</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:11</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 10:47</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 10:49</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:39</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 10:57</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 11:03</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:36</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 11:05</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 11:11</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:17</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 11:15</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 11:21</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:55</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 11:25</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 11:27</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:04</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 11:30</td><td>00:41:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:41:00</td><td>3</td><td>0,00</td><td>0,00</td><td>15/07/2026 12:11</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:46</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 12:14</td><td>00:07:00</td><td>0,5</td><td>0</td><td>00:04:00</td><td>00:03:00</td><td>11</td><td>0,00</td><td>0,00</td><td>15/07/2026 12:20</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:37:07</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 12:57</td><td>00:06:00</td><td>0,8</td><td>0</td><td>00:03:59</td><td>00:02:01</td><td>18</td><td>0,00</td><td>0,00</td><td>15/07/2026 13:03</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:15:57</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 13:19</td><td>00:27:00</td><td>8,6</td><td>0</td><td>00:25:59</td><td>00:01:01</td><td>27</td><td>0,00</td><td>0,00</td><td>15/07/2026 13:45</td><td>Avenida Victor Sence, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:20:43</td><td>Avenida Victor Sence, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 14:06</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 14:06</td><td>Avenida Victor Sence, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:16:04</td><td>Avenida Victor Sence, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 14:22</td><td>00:11:00</td><td>2,5</td><td>0</td><td>00:10:00</td><td>00:01:00</td><td>19</td><td>0,00</td><td>0,00</td><td>15/07/2026 14:33</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:13</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 14:34</td><td>00:13:00</td><td>1,9</td><td>0</td><td>00:07:59</td><td>00:05:01</td><td>18</td><td>0,00</td><td>0,00</td><td>15/07/2026 14:47</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:07</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>15/07/2026 14:48</td><td>00:00:04</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:04</td><td>0</td><td>0,00</td><td>0,00</td><td>15/07/2026 14:48</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>16:58:33</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>16/07/2026 07:47</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>0</td><td>0,00</td><td>0,00</td><td>16/07/2026 07:54</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:17</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>16/07/2026 07:56</td><td>00:12:00</td><td>0,2</td><td>0</td><td>00:02:00</td><td>00:10:00</td><td>4</td><td>0,00</td><td>0,00</td><td>16/07/2026 08:08</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>23:51:39</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>17/07/2026 07:59</td><td>00:52:00</td><td>12,8</td><td>0</td><td>00:48:00</td><td>00:04:00</td><td>25</td><td>0,00</td><td>0,00</td><td>17/07/2026 08:51</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:00</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>17/07/2026 08:52</td><td>00:22:00</td><td>4,5</td><td>0</td><td>00:19:59</td><td>00:02:01</td><td>18</td><td>0,00</td><td>0,00</td><td>17/07/2026 09:14</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:13:31</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>17/07/2026 09:27</td><td>00:33:00</td><td>1,1</td><td>0</td><td>00:14:00</td><td>00:19:00</td><td>8</td><td>0,00</td><td>0,00</td><td>17/07/2026 10:00</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:28</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>17/07/2026 10:02</td><td>01:23:00</td><td>17,4</td><td>0</td><td>01:13:59</td><td>00:09:01</td><td>32</td><td>0,00</td><td>0,00</td><td>17/07/2026 11:25</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:39:20</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>17/07/2026 12:04</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>17/07/2026 12:05</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:11:09</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>17/07/2026 12:16</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>17/07/2026 12:17</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:42:07</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>17/07/2026 12:59</td><td>00:00:04</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:04</td><td>0</td><td>0,00</td><td>0,00</td><td>17/07/2026 12:59</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>04:40:49</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>17/07/2026 17:40</td><td>00:26:00</td><td>6,5</td><td>0</td><td>00:24:00</td><td>00:02:00</td><td>29</td><td>0,00</td><td>0,00</td><td>17/07/2026 18:05</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>11:45:15</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>18/07/2026 05:50</td><td>04:05:00</td><td>5,7</td><td>0</td><td>01:00:00</td><td>03:05:00</td><td>25</td><td>0,00</td><td>0,00</td><td>18/07/2026 09:55</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:23</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>18/07/2026 09:56</td><td>01:49:00</td><td>0,5</td><td>0</td><td>00:18:00</td><td>01:31:00</td><td>4</td><td>0,00</td><td>0,00</td><td>18/07/2026 11:44</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:19:00</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>18/07/2026 12:03</td><td>02:13:00</td><td>5,3</td><td>0</td><td>00:50:00</td><td>01:23:00</td><td>16</td><td>0,00</td><td>0,00</td><td>18/07/2026 14:17</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:04</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>18/07/2026 14:19</td><td>00:31:00</td><td>7,5</td><td>0</td><td>00:24:00</td><td>00:07:00</td><td>30</td><td>0,00</td><td>0,00</td><td>18/07/2026 14:51</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:23:55</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>18/07/2026 15:15</td><td>00:04:00</td><td>0,4</td><td>0</td><td>00:02:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>18/07/2026 15:18</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:15:55</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>18/07/2026 16:34</td><td>00:41:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:39:00</td><td>2</td><td>0,00</td><td>0,00</td><td>18/07/2026 17:14</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>14:06:08</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>19/07/2026 07:20</td><td>00:21:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:19:00</td><td>3</td><td>0,00</td><td>0,00</td><td>19/07/2026 07:40</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>07:05:41</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>19/07/2026 14:46</td><td>00:07:00</td><td>0,1</td><td>0</td><td>00:02:00</td><td>00:05:00</td><td>4</td><td>0,00</td><td>0,00</td><td>19/07/2026 14:52</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>02:07:33</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>19/07/2026 17:00</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>19/07/2026 17:02</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>12:50:51</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 05:52</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>0</td><td>0,00</td><td>0,00</td><td>20/07/2026 06:00</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:57</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 06:04</td><td>00:34:00</td><td>7,9</td><td>0</td><td>00:26:00</td><td>00:08:00</td><td>27</td><td>0,00</td><td>0,00</td><td>20/07/2026 06:36</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:44:31</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 07:21</td><td>00:07:00</td><td>1,0</td><td>0</td><td>00:06:00</td><td>00:01:00</td><td>14</td><td>0,00</td><td>0,00</td><td>20/07/2026 07:28</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:01</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 07:29</td><td>01:06:00</td><td>5,9</td><td>0</td><td>00:28:00</td><td>00:38:00</td><td>16</td><td>0,00</td><td>0,00</td><td>20/07/2026 08:35</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:06</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 08:38</td><td>00:43:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:41:00</td><td>1</td><td>0,00</td><td>0,00</td><td>20/07/2026 09:21</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:23:06</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 09:44</td><td>00:57:00</td><td>0</td><td>0</td><td>00:06:00</td><td>00:51:00</td><td>3</td><td>0,00</td><td>0,00</td><td>20/07/2026 10:41</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:10:41</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 10:52</td><td>00:33:00</td><td>5,4</td><td>0</td><td>00:25:59</td><td>00:07:01</td><td>18</td><td>0,00</td><td>0,00</td><td>20/07/2026 11:23</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:11:11</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 12:35</td><td>00:15:00</td><td>2,8</td><td>0</td><td>00:14:00</td><td>00:01:00</td><td>15</td><td>0,00</td><td>0,00</td><td>20/07/2026 12:50</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:38</td><td>Rua Coronel Castro, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 12:55</td><td>00:19:00</td><td>3,5</td><td>0</td><td>00:16:00</td><td>00:03:00</td><td>18</td><td>0,00</td><td>0,00</td><td>20/07/2026 13:13</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:35:06</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 13:48</td><td>00:02:00</td><td>0,2</td><td>0</td><td>00:02:00</td><td>00:00:00</td><td>3</td><td>0,00</td><td>0,00</td><td>20/07/2026 13:50</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:49</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 13:54</td><td>00:03:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:01:00</td><td>4</td><td>0,00</td><td>0,00</td><td>20/07/2026 13:56</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:10</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 13:57</td><td>01:32:00</td><td>0,7</td><td>0</td><td>00:16:00</td><td>01:16:00</td><td>5</td><td>0,00</td><td>0,00</td><td>20/07/2026 15:29</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:26</td><td>Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>20/07/2026 15:30</td><td>00:28:00</td><td>6,1</td><td>0</td><td>00:28:00</td><td>00:00:00</td><td>18</td><td>0,00</td><td>0,00</td><td>20/07/2026 15:58</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>15:31:12</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>21/07/2026 07:30</td><td>00:26:00</td><td>1,1</td><td>0</td><td>00:06:00</td><td>00:20:00</td><td>14</td><td>0,00</td><td>0,00</td><td>21/07/2026 07:55</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:57</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>21/07/2026 07:56</td><td>00:27:00</td><td>4,7</td><td>0</td><td>00:24:00</td><td>00:03:00</td><td>16</td><td>0,00</td><td>0,00</td><td>21/07/2026 08:23</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:18</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>21/07/2026 08:30</td><td>00:57:00</td><td>0,6</td><td>0</td><td>00:10:00</td><td>00:47:00</td><td>6</td><td>0,00</td><td>0,00</td><td>21/07/2026 09:27</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:21:10</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>21/07/2026 09:49</td><td>01:39:00</td><td>1,4</td><td>0</td><td>00:19:59</td><td>01:19:01</td><td>7</td><td>0,00</td><td>0,00</td><td>21/07/2026 11:27</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:47:56</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>21/07/2026 13:15</td><td>01:46:00</td><td>0,5</td><td>0</td><td>00:16:00</td><td>01:30:00</td><td>7</td><td>0,00</td><td>0,00</td><td>21/07/2026 14:59</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:55</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>21/07/2026 15:02</td><td>00:29:00</td><td>6,3</td><td>0</td><td>00:26:00</td><td>00:03:00</td><td>18</td><td>0,00</td><td>0,00</td><td>21/07/2026 15:30</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:00</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>21/07/2026 15:32</td><td>00:27:00</td><td>0,4</td><td>0</td><td>00:12:00</td><td>00:15:00</td><td>6</td><td>0,00</td><td>0,00</td><td>21/07/2026 15:59</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>14:28:10</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>22/07/2026 06:27</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/07/2026 06:30</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:35:22</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>22/07/2026 07:06</td><td>00:23:00</td><td>2,3</td><td>0</td><td>00:14:00</td><td>00:09:00</td><td>18</td><td>0,00</td><td>0,00</td><td>22/07/2026 07:28</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:53:28</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 08:22</td><td>00:09:00</td><td>0,4</td><td>0</td><td>00:04:00</td><td>00:05:00</td><td>2</td><td>0,00</td><td>0,00</td><td>22/07/2026 08:30</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:29:33</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 09:00</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/07/2026 09:01</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:04</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 09:05</td><td>00:07:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/07/2026 09:12</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:57</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 09:18</td><td>00:02:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:00:00</td><td>1</td><td>0,00</td><td>0,00</td><td>22/07/2026 09:20</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:14</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 09:27</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>1</td><td>0,00</td><td>0,00</td><td>22/07/2026 09:30</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:36</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 09:34</td><td>00:43:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:43:00</td><td>3</td><td>0,00</td><td>0,00</td><td>22/07/2026 10:15</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:30:25</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 10:46</td><td>00:45:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:45:00</td><td>2</td><td>0,00</td><td>0,00</td><td>22/07/2026 11:31</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:13</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 11:34</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/07/2026 11:40</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:18:35</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 11:59</td><td>00:22:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:22:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/07/2026 12:20</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:54:05</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 13:14</td><td>00:10:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:10:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/07/2026 13:24</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:21:10</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 13:45</td><td>00:30:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:30:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/07/2026 14:15</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:29:52</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 14:45</td><td>00:28:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:28:00</td><td>2</td><td>0,00</td><td>0,00</td><td>22/07/2026 15:12</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:17</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 15:14</td><td>00:47:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:47:00</td><td>1</td><td>0,00</td><td>0,00</td><td>22/07/2026 16:00</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:13:15</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 16:13</td><td>00:08:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:08:00</td><td>1</td><td>0,00</td><td>0,00</td><td>22/07/2026 16:21</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:25</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>22/07/2026 16:22</td><td>00:12:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:12:00</td><td>0</td><td>0,00</td><td>0,00</td><td>22/07/2026 16:33</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>15:51:38</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 08:25</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 08:29</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:04:07</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 08:33</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 08:34</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:20</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 08:35</td><td>00:03:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 08:38</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:13:01</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 08:51</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 08:53</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:26:51</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 09:19</td><td>00:40:00</td><td>0</td><td>0</td><td>00:02:00</td><td>00:38:00</td><td>3</td><td>0,00</td><td>0,00</td><td>23/07/2026 09:58</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:15</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 10:05</td><td>00:00:24</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:24</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 10:05</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:10:27</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 10:16</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 10:19</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:12:43</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 10:32</td><td>00:37:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:37:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 11:08</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:11:05</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 11:19</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 11:23</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:24</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 11:24</td><td>00:26:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:26:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 11:50</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:39</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 11:53</td><td>00:09:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:09:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 12:01</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:57:03</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 12:58</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>1</td><td>0,00</td><td>0,00</td><td>23/07/2026 13:03</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:18:23</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 13:22</td><td>00:09:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:09:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 13:30</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:18</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 13:33</td><td>01:32:00</td><td>0,5</td><td>0</td><td>00:18:00</td><td>01:14:00</td><td>4</td><td>0,00</td><td>0,00</td><td>23/07/2026 15:04</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:14</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 15:09</td><td>00:10:00</td><td>0,2</td><td>0</td><td>00:08:00</td><td>00:02:00</td><td>4</td><td>0,00</td><td>0,00</td><td>23/07/2026 15:19</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:11:28</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 15:31</td><td>00:06:00</td><td>0,2</td><td>0</td><td>00:04:00</td><td>00:02:00</td><td>3</td><td>0,00</td><td>0,00</td><td>23/07/2026 15:36</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:03</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 15:37</td><td>00:00:09</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:09</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 15:37</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:51</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 15:39</td><td>00:08:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:08:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 15:47</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:00</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 15:49</td><td>00:07:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:07:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 15:56</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:50</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 15:57</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 16:01</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:38</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 16:05</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 16:06</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:00</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 16:12</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 16:16</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:58</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 16:18</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 16:19</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:24</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 16:19</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 16:21</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:46</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 16:24</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>23/07/2026 16:26</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:17</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>23/07/2026 16:28</td><td>00:17:00</td><td>0,2</td><td>0</td><td>00:06:00</td><td>00:11:00</td><td>5</td><td>0,00</td><td>0,00</td><td>23/07/2026 16:44</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>17:53:20</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>24/07/2026 10:38</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>24/07/2026 10:39</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>03:50:55</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>24/07/2026 14:29</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>24/07/2026 14:33</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:02:08</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>24/07/2026 14:35</td><td>00:04:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:04:00</td><td>0</td><td>0,00</td><td>0,00</td><td>24/07/2026 14:40</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:24:05</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>24/07/2026 15:04</td><td>00:55:00</td><td>1,0</td><td>0</td><td>00:22:00</td><td>00:33:00</td><td>4</td><td>0,00</td><td>0,00</td><td>24/07/2026 15:58</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>21:40:45</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>25/07/2026 13:39</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>1</td><td>0,00</td><td>0,00</td><td>25/07/2026 13:43</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>50:26:12</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>27/07/2026 16:10</td><td>00:00:13</td><td>0</td><td>0</td><td>00:00:00</td><td>00:00:13</td><td>0</td><td>0,00</td><td>0,00</td><td>27/07/2026 16:10</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:03:27</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>27/07/2026 16:13</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>27/07/2026 16:13</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:00:16</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>27/07/2026 16:14</td><td>01:48:00</td><td>0</td><td>0</td><td>00:02:00</td><td>01:46:00</td><td>0</td><td>0,00</td><td>0,00</td><td>27/07/2026 18:02</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>15:49:24</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>28/07/2026 09:52</td><td>00:05:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:05:00</td><td>0</td><td>0,00</td><td>0,00</td><td>28/07/2026 09:56</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>01:01:02</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>28/07/2026 10:57</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>28/07/2026 10:58</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:28</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>28/07/2026 11:05</td><td>00:02:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:02:00</td><td>0</td><td>0,00</td><td>0,00</td><td>28/07/2026 11:07</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:05:27</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>28/07/2026 11:13</td><td>00:27:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:27:00</td><td>0</td><td>0,00</td><td>0,00</td><td>28/07/2026 11:39</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>03:07:54</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>28/07/2026 14:47</td><td>00:14:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:14:00</td><td>0</td><td>0,00</td><td>0,00</td><td>28/07/2026 15:00</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:21:35</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>28/07/2026 15:22</td><td>00:22:00</td><td>0,5</td><td>0</td><td>00:12:00</td><td>00:10:00</td><td>5</td><td>0,00</td><td>0,00</td><td>28/07/2026 15:43</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:06:25</td><td>Avenida Eduardo Peruzi Martins, Maca&#233;, Rio de Janeiro, Brasil</td><td>28/07/2026 15:49</td><td>00:27:00</td><td>6,2</td><td>0</td><td>00:22:00</td><td>00:05:00</td><td>32</td><td>0,00</td><td>0,00</td><td>28/07/2026 16:15</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>43:12:13</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>30/07/2026 11:28</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>30/07/2026 11:29</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>03:19:48</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>30/07/2026 14:49</td><td>00:03:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:03:00</td><td>0</td><td>0,00</td><td>0,00</td><td>30/07/2026 14:51</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:44:51</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td><td>30/07/2026 15:35</td><td>00:06:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:06:00</td><td>0</td><td>0,00</td><td>0,00</td><td>30/07/2026 15:41</td><td>Avenida Lacerda Agostinho, Maca&#233;, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>15:35:15</td><td>RJ 182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>31/07/2026 07:17</td><td>01:38:00</td><td>13,3</td><td>0</td><td>00:52:00</td><td>00:46:00</td><td>32</td><td>0,00</td><td>0,00</td><td>31/07/2026 08:54</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:07:27</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>31/07/2026 09:01</td><td>00:01:00</td><td>0</td><td>0</td><td>00:00:00</td><td>00:01:00</td><td>0</td><td>0,00</td><td>0,00</td><td>31/07/2026 09:02</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:33</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>31/07/2026 09:03</td><td>00:20:00</td><td>5,8</td><td>0</td><td>00:17:59</td><td>00:02:01</td><td>33</td><td>0,00</td><td>0,00</td><td>31/07/2026 09:24</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:01:23</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>31/07/2026 09:25</td><td>00:46:00</td><td>6,5</td><td>0</td><td>00:28:00</td><td>00:18:00</td><td>34</td><td>0,00</td><td>0,00</td><td>31/07/2026 10:12</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>00:08:33</td><td>RJ-182, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>31/07/2026 10:21</td><td>00:42:00</td><td>10,2</td><td>0</td><td>00:33:40</td><td>00:08:20</td><td>31</td><td>0,00</td><td>0,00</td><td>31/07/2026 11:02</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr><tr>
+			<td>211 - SPOOLBASE - L08 (TTS8G00)</td><td>&nbsp;</td><td>03:25:12</td><td>Estrada Tribo-Piteiras, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td><td>31/07/2026 14:27</td><td>00:41:00</td><td>8,2</td><td>0</td><td>00:38:00</td><td>00:03:00</td><td>19</td><td>0,00</td><td>0,00</td><td>31/07/2026 15:09</td><td>Rua Pastor Manoel de Brito, Concei&#231;&#227;o de Macabu, Rio de Janeiro, Brasil</td>
+		</tr>
+	</table>
+</div>
