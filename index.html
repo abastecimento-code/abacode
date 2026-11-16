@@ -407,6 +407,33 @@ header .chips,
   display:inline-flex;align-items:center;justify-content:center;
   border-radius:50%;font-size:16px;line-height:1;padding:0;
 }
+
+/* AJUSTE FINO DOS STATUS: menor, sem halo forte e sem colorir linhas */
+.pill-status{
+  width:24px!important;height:24px!important;min-width:24px!important;
+  flex:0 0 24px!important;padding:0!important;
+  font-size:13px!important;line-height:1!important;
+  background:transparent!important;box-shadow:none!important;
+}
+.pill-status.ps-ok,.pill-status.ps-acima,.pill-status.ps-abaixo{
+  background:transparent!important;box-shadow:none!important;
+}
+.geral-dist-item .lbl{
+  width:24px!important;height:24px!important;min-width:24px!important;
+  font-size:13px!important;padding:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+tbody tr.linha-abaixo,
+tbody tr.linha-abaixo:hover,
+tbody tr.linha-acima,
+tbody tr.linha-acima:hover{
+  background:transparent!important;
+}
+tbody tr.linha-abaixo td:first-child,
+tbody tr.linha-acima td:first-child{
+  box-shadow:none!important;
+}
+tbody tr.clicavel-linha:hover{background:#302529!important;}
 </style>
 </head>
 <body>
