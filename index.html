@@ -1939,9 +1939,9 @@ function abrirModalRastLegado() {
       <span><b>${comDados}</b> com dados</span>
       ${semDados > 0 ? `<span class="divisor">·</span><span class="sem-info"><b>${semDados}</b> sem dados</span>` : ''}
       <span class="divisor">·</span><span><b>${PERIODOS_RAST.length}</b> semanas</span><span class="divisor">·</span>
-      <span>Período <b>31/08/2026 a 11/10/2026</b></span>
+      <span>Base legada · período <b>31/08/2026 a 11/10/2026</b></span>
       ${totalFalhas > 0 ? `<span class="divisor">·</span><span class="falhas"><b>${totalFalhas}</b> falha${totalFalhas > 1 ? 's' : ''} no rastreador</span>` : ''}
-      <div class="obs">ⓘ Valores em km · <b style="color:#c62828;font-style:italic;">falha</b> = dia sem dados · totais com <b style="color:#a15c00;">PARCIAL</b> indicam semana incompleta · dados congelados até novo relatório.</div>
+      <div class="obs">ⓘ Valores em km · <b style="color:#c62828;font-style:italic;">falha</b> = dia sem dados · totais com <b style="color:#a15c00;">PARCIAL</b> indicam semana incompleta · histórico legado separado da nova base mensal do prefixo 200.</div>
     </div>`;
 
     rasts.forEach(veic => {
