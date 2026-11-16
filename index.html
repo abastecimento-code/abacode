@@ -2344,10 +2344,10 @@ function renderNivel2(p) {
     <span><b>${total.km!=null?fmtKmNum(total.km):'—'}</b> km</span><span class="divisor">·</span>
     <span><b>${total.litros!=null?fmtL(total.litros):'—'}</b> litros</span><span class="divisor">·</span>
     <span>Média do histórico disponível: <b>${total.kmL!=null?fmt3safe(total.kmL):'Dados insuficientes'} km/L</b></span>
-  </div>
+  </div>`;
   const audit=calcularAuditoria(p,'acumulado');
   if(audit) html+=`<div class="audit-nota" style="margin:10px 0 14px"><b>Conferência complementar — Rastreador × Globus</b><br>Rastreador: ${fmtKmNum(audit.kmRast)} km · Globus: ${fmtKmNum(audit.kmGlobus)} km · diferença: ${fmtKmNum(audit.deltaKm)} km (${fmt1(audit.deltaKmPct)}%) · ${audit.rastDiasComDados}/${audit.rastDiasEsperados} dias com dados · ${audit.rastFalhas} falhas. Esta conferência permanece separada da média de consumo mensal.</div>`;
-  <div class="audit-nota" style="margin:10px 0 14px">A média de cada mês é calculada separadamente: total de KM do mês ÷ total de litros do mês. A referência de comparação é a expectativa cadastrada para o modelo (${fmt2(v.exp)} km/L), não a média de outro mês. Selecione um mês para abrir suas semanas.</div>
+  html+=`<div class="audit-nota" style="margin:10px 0 14px">A média de cada mês é calculada separadamente: total de KM do mês ÷ total de litros do mês. A referência de comparação é a expectativa cadastrada para o modelo (${fmt2(v.exp)} km/L), não a média de outro mês. Selecione um mês para abrir suas semanas.</div>
   <div class="drill-spark" style="height:100px;align-items:flex-end;padding:10px 8px">`;
   meses.forEach(m=>{
     const r=agregarPeriodo(m.fills), h=r.kmL!=null?Math.max(3,r.kmL/max*100):3;
