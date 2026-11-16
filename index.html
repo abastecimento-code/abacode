@@ -490,6 +490,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
 @media(max-width:650px){.monthly-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.monthly-weeks-grid{grid-template-columns:1fr}.monthly-weeks-title{align-items:flex-start;flex-direction:column}}
 
 /* O Rastreador R200 reutiliza os componentes visuais da análise Evolução. */
+.rast-slot-vazio{opacity:.58;cursor:default!important;border-style:dashed!important}.rast-slot-pronto{cursor:pointer}.rast-slot-pronto:focus{outline:2px solid var(--accent);outline-offset:2px}.rast-slot-vazio .drill-semana-fills{color:var(--tx2)}
 .r200-section{margin:0;padding:0;background:transparent;border:0;color:var(--tx)}
 .r200-top{display:none}.r200-kpis,.r200-month-grid,.r200-week-grid,.r200-day-list{display:none}
 .r200-note{margin:12px 0;padding:14px 18px;background:var(--surface2);border-radius:12px;border:0;color:var(--tx2);font:11px/1.7 var(--f-ui)}
@@ -640,7 +641,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
 <div class="modal-overlay" id="modalRast" hidden>
   <div class="modal modal--largo" role="dialog" aria-modal="true">
     <div class="modal-head modal-head--drill">
-      <div><div class="modal-title">Rastreador — análise por veículo</div><div class="modal-sub">Histórico mensal · semanas · dias · eventos originais</div></div>
+      <div><div class="modal-title">Rastreador — análise por contrato</div><div class="modal-sub">Veículos do contrato · mês · semana · dia · eventos originais</div></div>
       <div class="modal-head-actions"><button class="drill-back" id="drillBack" onclick="r200Voltar()" style="display:none;">← Voltar</button><button class="modal-x" onclick="fecharModalRast()">×</button></div>
     </div>
     <div class="modal-body" id="modalRastBody"></div>
@@ -1971,6 +1972,8 @@ function abrirModalRastLegado() {
    ═══════════════════════════════════════════════════════ */
 let R200_RAST_DATA = null;
 let RAST_DADOS = {};
+let RAST_CADASTRO = null;
+let RAST_CONTRATO_ATUAL = 'todos';
 let RAST_PREFIXO_ATUAL = '200';
 let R200_VIEW = { level: 'mes', month: null, week: null, day: null };
 
@@ -2027,19 +2030,41 @@ function r200Header(title,sub,back) {
   return '<div class="r200-top"><div><div class="r200-kicker">RASTREADOR · NOVA BASE</div><div class="r200-title">'+title+'</div><div class="r200-sub">'+sub+'</div></div>'+
     (back?'<button class="r200-back" onclick="r200Voltar()">← Voltar</button>':'')+'</div>';
 }
+function r200RenderContratos() {
+  const contracts=RAST_CADASTRO?.contracts||[];
+  const options=[['todos','Todos os contratos'],...contracts.map(c=>[c.id,c.name])];
+  const select=options.map(([id,name])=>'<option value="'+r200Esc(id)+'" '+(id===RAST_CONTRATO_ATUAL?'selected':'')+'>'+r200Esc(name)+'</option>').join('');
+  const shown=contracts.filter(c=>RAST_CONTRATO_ATUAL==='todos'||c.id===RAST_CONTRATO_ATUAL);
+  const total=shown.reduce((n,c)=>n+c.vehicles.length,0);
+  const ready=shown.reduce((n,c)=>n+c.vehicles.filter(v=>v.status==='integrated').length,0);
+  let html='<div class="r200-section" id="r200RastSection"><section class="monthly-overview"><div class="monthly-topline"><div><div class="monthly-eyebrow">RASTREADOR · FROTA POR CONTRATO</div><div class="monthly-vehicle">Selecione um contrato para consultar os veículos vinculados</div></div><label class="monthly-month-select">CONTRATO <select id="r200ContractSelect">'+select+'</select></label></div><div class="monthly-kpis"><div class="monthly-kpi"><span>VEÍCULOS NO RECORTE</span><strong>'+total+'</strong><em>Cadastro da frota</em></div><div class="monthly-kpi"><span>COM RASTREADOR</span><strong>'+ready+'</strong><em>Relatórios já recebidos</em></div><div class="monthly-kpi"><span>AGUARDANDO DADOS</span><strong>'+(total-ready)+'</strong><em>Estrutura pronta para inclusão</em></div></div></section>';
+  shown.forEach(c=>{
+    html+='<div class="monthly-weeks-title"><b>'+r200Esc(c.name)+'</b><span>'+c.vehicles.length+' veículos · '+c.vehicles.filter(v=>v.status==='integrated').length+' com dados</span></div><div class="drill-grid">';
+    c.vehicles.forEach(v=>{
+      const active=v.status==='integrated';
+      const d=active?RAST_DADOS[v.prefix]:null;
+      html+='<div class="drill-semana '+(active?'rast-slot-pronto':'rast-slot-vazio')+'" '+(active?'role="button" tabindex="0" onclick="r200AbrirVeiculo(\''+r200Esc(v.prefix)+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \')r200AbrirVeiculo(\''+r200Esc(v.prefix)+'\')"':'aria-disabled="true"')+'><div class="drill-semana-head"><span class="drill-semana-data">Prefixo '+r200Esc(v.prefix)+'</span><span class="drill-semana-fills">'+(active?'Dados disponíveis':'Aguardando dados')+'</span></div><div class="drill-semana-km" style="font-size:16px">'+r200Esc(v.model)+'</div><div class="drill-semana-meta"><div class="linha"><span>Placa / identificação</span><b>'+(d?r200Esc((d.vehicle.plate.match(/\(([^)]+)\)/)||[])[1]||d.vehicle.plate):'—')+'</b></div><div class="linha"><span>Histórico</span><b>'+(d?d.records.length+' eventos':'Ainda não recebido')+'</b></div></div></div>';
+    });
+    html+='</div>';
+  });
+  return html+'</div>';
+}
+
 function r200Render() {
-  if(!R200_RAST_DATA||!r200BaseVisible()) return '';
+  if(R200_VIEW.level==='contratos') return r200RenderContratos();
+  if(!R200_RAST_DATA) return '';
   const data=R200_RAST_DATA, months=data.months;
   const monthKey=R200_VIEW.month||months[months.length-1].key;
   R200_VIEW.month=monthKey;
   const m=months.find(x=>x.key===monthKey)||months[months.length-1];
   const weeks=r200MonthWeeks(monthKey);
   const monthSelect=months.map(x=>'<option value="'+x.key+'" '+(x.key===monthKey?'selected':'')+'>'+x.label+' '+x.key.slice(0,4)+'</option>').join('');
-  const vehicleSelect=['200','202','208'].map(p=>{const d=RAST_DADOS[p];return d?'<option value="'+p+'" '+(p===RAST_PREFIXO_ATUAL?'selected':'')+'>Prefixo '+p+' · '+r200Esc(d.vehicle.plate.match(/\(([^)]+)\)/)?.[1]||d.vehicle.plate)+'</option>':'';}).join('');
   let html='<div class="r200-section" id="r200RastSection">';
   if(R200_VIEW.level==='mes') {
-    html+='<section class="monthly-overview"><div class="monthly-topline"><div><div class="monthly-eyebrow">VEÍCULO EM ANÁLISE</div><div class="monthly-vehicle">Prefixo '+r200Esc(data.vehicle.prefix)+' · '+r200Esc(data.vehicle.plate)+' · Rastreador</div><label class="monthly-month-select" style="display:block;margin-top:12px">VEÍCULO <select id="r200VehicleSelect">'+vehicleSelect+'</select></label></div><label class="monthly-month-select">MÊS ANALISADO <select id="r200MonthSelect">'+monthSelect+'</select></label></div>';
-    html+='<div class="monthly-kpis"><div class="monthly-kpi"><span>QUILOMETRAGEM DO MÊS</span><strong>'+r200Km(m.total_km)+'</strong><em>Soma da coluna Distância</em></div><div class="monthly-kpi"><span>REGISTROS</span><strong>'+m.records+'</strong><em>Eventos no relatório original</em></div><div class="monthly-kpi"><span>DIAS COM REGISTROS</span><strong>'+data.days.filter(d=>d.date.startsWith(monthKey)).length+'</strong><em>Dias com eventos registrados</em></div><div class="monthly-kpi"><span>ARQUIVO-FONTE</span><strong style="font-size:13px;white-space:normal">'+r200Esc(m.source)+'</strong><em>Relatório original</em></div></div><div class="monthly-history">Período total disponível: <b>'+r200Br(data.period.start)+' a '+r200Br(data.period.end)+'</b> · '+data.records.length+' eventos em '+months.length+' relatórios.</div></section>';
+    const v=RAST_CADASTRO.contracts.flatMap(c=>c.vehicles).find(x=>x.prefix===RAST_PREFIXO_ATUAL);
+    const contractName=CONTRATO_LABEL[v?.contract]||'Contrato não identificado';
+    html+='<section class="monthly-overview"><div class="monthly-topline"><div><div class="monthly-eyebrow">'+r200Esc(contractName)+'</div><div class="monthly-vehicle">Prefixo '+r200Esc(data.vehicle.prefix)+' · '+r200Esc(data.vehicle.plate)+' · Rastreador</div></div><label class="monthly-month-select">MÊS ANALISADO <select id="r200MonthSelect">'+monthSelect+'</select></label></div>';
+    html+='<div class="monthly-kpis"><div class="monthly-kpi"><span>QUILOMETRAGEM DO MÊS</span><strong>'+r200Km(m.total_km)+'</strong><em>Soma da coluna Distância</em></div><div class="monthly-kpi"><span>REGISTROS</span><strong>'+m.records+'</strong><em>Eventos no relatório original</em></div><div class="monthly-kpi"><span>DIAS COM REGISTROS</span><strong>'+data.days.filter(d=>d.date.startsWith(monthKey)).length+'</strong><em>Dias com eventos registrados</em></div><div class="monthly-kpi"><span>ARQUIVO-FONTE</span><strong style="font-size:13px;white-space:normal">'+r200Esc(m.source.split('/').pop())+'</strong><em>Relatório original</em></div></div><div class="monthly-history">Período total disponível: <b>'+r200Br(data.period.start)+' a '+r200Br(data.period.end)+'</b> · '+data.records.length+' eventos em '+months.length+' relatórios.</div></section>';
     html+='<div class="monthly-weeks-title"><b>Semanas do mês</b><span>Selecione um card para investigar os dias</span></div><div class="drill-grid monthly-weeks-grid">';
     weeks.forEach((w,i)=>{const max=Math.max(1,...w.dates.map(d=>r200DaySummary(d).km));html+='<div class="drill-semana" onclick="r200AbrirSemana(\''+w.key+'\')"><div class="drill-semana-head"><span class="drill-semana-data">Semana '+(i+1)+' · '+r200Br(w.start)+' – '+r200Br(w.end)+'</span><span class="drill-semana-fills">'+w.rows.length+' registros</span></div><div class="drill-semana-km">'+r200Km(w.km)+'<span class="un">no período</span></div><div class="drill-week-days">';w.dates.forEach(d=>{const x=r200DaySummary(d),h=x.km?Math.max(3,x.km/max*100):0;html+='<div class="drill-week-day"><div class="drill-week-track"><span class="drill-week-bar '+(x.count?'':'sem-dado')+'" style="height:'+h+'%"></span></div><span class="drill-week-name">'+['DOM','SEG','TER','QUA','QUI','SEX','SÁB'][r200DateObj(d).getDay()]+'</span></div>';});html+='</div><div class="drill-semana-meta"><div class="linha"><span>Dias com registros</span><b>'+w.days+'</b></div><div class="linha"><span>Participação no mês</span><b>'+(m.total_km?w.km/m.total_km*100:0).toFixed(1).replace('.',',')+'%</b></div></div></div>';});
     html+='</div><div class="audit-nota">Os totais representam a soma da coluna “Distância” do rastreador. Dias sem eventos não são considerados como 0 km; eventos com 0 km permanecem identificados na análise diária.</div>';
@@ -2051,7 +2076,7 @@ function r200Render() {
   } else {
     const rows=r200Records(R200_VIEW.day),x=r200DaySummary(R200_VIEW.day);
     html+='<div class="rast-resumo"><span><b>'+r200Br(R200_VIEW.day)+'</b></span><span class="divisor">·</span><span><b>'+x.count+'</b> eventos</span><span class="divisor">·</span><span><b>'+r200Km(x.km)+'</b> registrados</span><span class="divisor">·</span><span><b>'+x.zeros+'</b> eventos com 0 km</span></div><div class="audit-nota" style="margin:10px 0">Cada linha corresponde a um evento do relatório original. Arquivo e número da linha de origem estão identificados na última coluna.</div><div style="overflow-x:auto"><table class="drill-tabela"><thead><tr><th>Horário</th><th>Distância</th><th>Horímetro</th><th>Em movimento</th><th>Parado</th><th>Vel. máx.</th><th>Origem → destino</th><th>Arquivo / linha</th></tr></thead><tbody>';
-    rows.forEach(r=>{html+='<tr><td class="dt">'+r200Esc(r.time)+'</td><td class="num">'+r200Esc(r.distance_raw)+' km</td><td>'+r200Esc(r.horimeter)+'</td><td>'+r200Esc(r.moving_time)+'</td><td>'+r200Esc(r.idle_time)+'</td><td class="num">'+r200Esc(r.max_speed_kmh)+' km/h</td><td style="white-space:normal;text-align:left;min-width:220px">'+r200Esc(r.start_address)+'<br>↓<br>'+r200Esc(r.end_address)+'</td><td>'+r200Esc(r.source)+' · linha '+r200Esc(r.source_row)+'</td></tr>';});
+    rows.forEach(r=>{html+='<tr><td class="dt">'+r200Esc(r.time)+'</td><td class="num">'+r200Esc(r.distance_raw)+' km</td><td>'+r200Esc(r.horimeter)+'</td><td>'+r200Esc(r.moving_time)+'</td><td>'+r200Esc(r.idle_time)+'</td><td class="num">'+r200Esc(r.max_speed_kmh)+' km/h</td><td style="white-space:normal;text-align:left;min-width:220px">'+r200Esc(r.start_address)+'<br>↓<br>'+r200Esc(r.end_address)+'</td><td>'+r200Esc(r.source.split('/').pop())+' · linha '+r200Esc(r.source_row)+'</td></tr>';});
     html+='</tbody><tfoot><tr><td>TOTAL DO DIA</td><td class="num">'+r200Km(x.km)+'</td><td colspan="6">'+x.count+' eventos no arquivo original</td></tr></tfoot></table></div>';
   }
   return html+'</div>';
@@ -2060,11 +2085,11 @@ function r200Atualizar() {
   const old=document.getElementById('r200RastSection');
   if(old) old.outerHTML=r200Render();
   const back=document.getElementById('drillBack');
-  if(back){back.onclick=r200Voltar;back.style.display=R200_VIEW.level==='mes'?'none':'inline-block';}
+  if(back){back.onclick=r200Voltar;back.style.display=R200_VIEW.level==='contratos'?'none':'inline-block';}
   const sel=document.getElementById('r200MonthSelect');
   if(sel)sel.addEventListener('change',e=>r200AbrirMes(e.target.value));
-  const vs=document.getElementById('r200VehicleSelect');
-  if(vs)vs.addEventListener('change',e=>r200AbrirVeiculo(e.target.value));
+  const cs=document.getElementById('r200ContractSelect');
+  if(cs)cs.addEventListener('change',e=>{RAST_CONTRATO_ATUAL=e.target.value;r200Atualizar();});
 }
 
 function r200AbrirVeiculo(prefix) {
@@ -2072,32 +2097,34 @@ function r200AbrirVeiculo(prefix) {
   RAST_PREFIXO_ATUAL=prefix; R200_RAST_DATA=RAST_DADOS[prefix];
   R200_VIEW={level:'mes',month:null,week:null,day:null}; r200Atualizar();
 }
-
 function r200AbrirMes(key) { R200_VIEW={level:'mes',month:key,week:null,day:null}; r200Atualizar(); }
 function r200AbrirSemana(key) { R200_VIEW={...R200_VIEW,level:'dia',week:key,day:null}; r200Atualizar(); }
 function r200AbrirDia(key) { R200_VIEW={...R200_VIEW,level:'detalhe',day:key}; r200Atualizar(); }
 function r200Voltar() {
   if(R200_VIEW.level==='detalhe') R200_VIEW={...R200_VIEW,level:'dia',day:null};
-  else R200_VIEW={...R200_VIEW,level:'mes',week:null,day:null};
+  else if(R200_VIEW.level==='dia') R200_VIEW={...R200_VIEW,level:'mes',week:null,day:null};
+  else { R200_RAST_DATA=null; R200_VIEW={level:'contratos',month:null,week:null,day:null}; }
   r200Atualizar();
 }
 
 async function abrirModalRast() {
-  R200_VIEW={level:'mes',month:null,week:null,day:null};
+  R200_VIEW={level:'contratos',month:null,week:null,day:null}; R200_RAST_DATA=null;
   const body=document.getElementById('modalRastBody');
   document.getElementById('modalRast').hidden=false; document.body.style.overflow='hidden';
-  if(!RAST_DADOS['200']) {
-    body.innerHTML='<div class="sem-dados">Carregando os relatórios dos rastreadores…</div>';
+  if(!RAST_CADASTRO) {
+    body.innerHTML='<div class="sem-dados">Carregando cadastro dos veículos e relatórios…</div>';
     try {
-      const prefixes=['200','202','208'];
-      const loaded=await Promise.all(prefixes.map(async p=>{const resp=await fetch('dados/rastreador-r'+p+'.json',{cache:'no-cache'});if(!resp.ok)throw new Error('Prefixo '+p+': HTTP '+resp.status);return [p,await resp.json()];}));
-      RAST_DADOS=Object.fromEntries(loaded);
-    } catch(err) { body.innerHTML='<div class="sem-dados">Não foi possível carregar todos os relatórios dos rastreadores. '+r200Esc(err.message)+'</div>'; return; }
+      const [cad, ...loaded]=await Promise.all([
+        fetch('dados/rastreador-cadastro.json',{cache:'no-cache'}),
+        ...['200','202','208'].map(p=>fetch('dados/rastreador-r'+p+'.json',{cache:'no-cache'}))
+      ]);
+      if(!cad.ok)throw new Error('Cadastro: HTTP '+cad.status);
+      RAST_CADASTRO=await cad.json();
+      RAST_DADOS=Object.fromEntries(await Promise.all(loaded.map(async(resp,i)=>{if(!resp.ok)throw new Error('Prefixo '+['200','202','208'][i]+': HTTP '+resp.status);return [['200','202','208'][i],await resp.json()];})));
+    } catch(err) { body.innerHTML='<div class="sem-dados">Não foi possível carregar o cadastro do Rastreador. '+r200Esc(err.message)+'</div>'; return; }
   }
-  RAST_PREFIXO_ATUAL='200'; R200_RAST_DATA=RAST_DADOS[RAST_PREFIXO_ATUAL];
   body.innerHTML=r200Render();
-  const sel=document.getElementById('r200MonthSelect');if(sel)sel.addEventListener('change',e=>r200AbrirMes(e.target.value));
-  const vs=document.getElementById('r200VehicleSelect');if(vs)vs.addEventListener('change',e=>r200AbrirVeiculo(e.target.value));
+  const cs=document.getElementById('r200ContractSelect');if(cs)cs.addEventListener('change',e=>{RAST_CONTRATO_ATUAL=e.target.value;r200Atualizar();});
   const back=document.getElementById('drillBack');if(back){back.onclick=r200Voltar;back.style.display='none';}
 }
 
