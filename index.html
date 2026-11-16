@@ -489,53 +489,15 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .drill-week-name{font:700 8px var(--f-ui);color:var(--tx2)}
 @media(max-width:650px){.monthly-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.monthly-weeks-grid{grid-template-columns:1fr}.monthly-weeks-title{align-items:flex-start;flex-direction:column}}
 
-/* Rastreador R200 — análise mensal/semanal/diária */
-.r200-section{margin:0 0 22px;padding:18px;background:#111820;border:1px solid #34404d;border-radius:14px;color:#edf2f7}
-.r200-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
-.r200-kicker{font:800 9px var(--f-ui);letter-spacing:1.4px;color:#65a9e8;margin-bottom:5px}
-.r200-title{font:800 19px var(--f-ui);color:#fff}
-.r200-sub{font:11px var(--f-ui);color:#9eacba;margin-top:4px}
-.r200-back{border:1px solid #536273;background:#202b36;color:#e7edf4;border-radius:8px;padding:8px 12px;font:700 11px var(--f-ui);cursor:pointer}
-.r200-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:15px}
-.r200-kpis>div{padding:11px;background:#1a2530;border:1px solid #2c3946;border-radius:9px;min-width:0}
-.r200-kpis small{display:block;color:#9eacba;font:600 10px var(--f-ui);margin-bottom:5px}
-.r200-kpis b{font:800 18px var(--f-ui);color:#fff}
-.r200-month-grid,.r200-week-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.r200-month,.r200-week{display:block;text-align:left;width:100%;padding:13px;background:#1a2530;border:1px solid #344454;border-radius:10px;color:#edf2f7;cursor:pointer}
-.r200-month:hover,.r200-week:hover,.r200-day:hover{border-color:#4b91d0;background:#202e3b}
-.r200-month-name{display:block;font:800 13px var(--f-ui);color:#fff;margin-bottom:8px}
-.r200-month>b{font:800 21px var(--f-ui);color:#8fc5f5}
-.r200-month-meta,.r200-week small{display:block;color:#aab6c2;font:10px var(--f-ui);margin-top:5px}
-.r200-track{height:5px;background:#2a3744;border-radius:8px;overflow:hidden;display:block;margin:10px 0 7px}
-.r200-track i{display:block;height:100%;background:#428dcc;border-radius:8px}
-.r200-open{display:block;text-align:right;color:#8fc5f5;font:700 10px var(--f-ui);margin-top:8px}
-.r200-note{margin-top:13px;padding:10px 12px;border-left:3px solid #4b91d0;background:#19232d;color:#b8c4cf;font:10px/1.55 var(--f-ui);border-radius:4px}
-.r200-week-head{display:flex;justify-content:space-between;gap:8px;color:#fff;font:700 11px var(--f-ui)}
-.r200-week-head span{color:#aab6c2;font-weight:500}
-.r200-week>strong{display:block;color:#8fc5f5;font:800 20px var(--f-ui);margin-top:10px}
-.r200-mini{display:flex;align-items:flex-end;gap:5px;height:53px;padding:3px 0}
-.r200-mini span{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:3px}
-.r200-mini i{display:block;width:70%;max-width:17px;background:#438fce;border-radius:3px 3px 0 0;min-height:2px}
-.r200-mini em{font:9px var(--f-ui);font-style:normal;color:#9eacba}
-.r200-day-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.r200-day{display:grid;grid-template-columns:1fr auto;gap:3px 10px;text-align:left;padding:11px;background:#1a2530;border:1px solid #344454;border-radius:9px;color:#edf2f7;cursor:pointer}
-.r200-day-date{font:800 12px var(--f-ui)}
-.r200-day-week{font:10px var(--f-ui);color:#9eacba;text-align:right}
-.r200-day>b{font:800 14px var(--f-ui);color:#8fc5f5}
-.r200-day small{font:10px var(--f-ui);color:#aab6c2}
-.r200-day .r200-open{grid-column:1/-1}
-.r200-day.sem-registro{opacity:.62;cursor:default}
-.r200-table-wrap{overflow:auto;border:1px solid #344454;border-radius:9px}
-.r200-table{border-collapse:collapse;width:100%;min-width:900px;font:10px var(--f-ui);color:#dce4eb}
-.r200-table th{position:sticky;top:0;background:#202d39;color:#9fcdf2;text-align:left;padding:9px;border-bottom:1px solid #425161}
-.r200-table td{padding:9px;border-bottom:1px solid #293642;vertical-align:top}
-.r200-table tr:last-child td{border-bottom:0}
-.r200-table .r200-distance{font-weight:800;color:#8fc5f5;white-space:nowrap}
-.r200-address{min-width:230px;max-width:320px;line-height:1.45}
-.r200-address span{display:block;color:#6daee5;text-align:center}
-.r200-loading,.r200-error{padding:18px;text-align:center;color:#aab6c2;font:12px var(--f-ui)}
-.r200-error{color:#ffb3b3}
-@media(max-width:650px){.r200-section{padding:12px}.r200-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.r200-month-grid,.r200-week-grid,.r200-day-list{grid-template-columns:1fr}.r200-top{align-items:flex-start}}
+/* O Rastreador R200 reutiliza os componentes visuais da análise Evolução. */
+.r200-section{margin:0;padding:0;background:transparent;border:0;color:var(--tx)}
+.r200-top{display:none}.r200-kpis,.r200-month-grid,.r200-week-grid,.r200-day-list{display:none}
+.r200-note{margin:12px 0;padding:14px 18px;background:var(--surface2);border-radius:12px;border:0;color:var(--tx2);font:11px/1.7 var(--f-ui)}
+.r200-table-wrap{overflow-x:auto}.r200-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;font-size:12px;color:var(--tx)}
+.r200-table th{background:var(--ink);color:#d8dce5;padding:10px 8px;font-size:9px;text-transform:uppercase}
+.r200-table td{padding:10px 8px;border-bottom:1px solid var(--line2);text-align:center}
+.r200-table .r200-address{text-align:left;white-space:normal;min-width:220px}
+.r200-back{display:none}
 </style>
 </head>
 <body>
@@ -676,13 +638,10 @@ tfoot td.num.azul { color:#64b5f6!important; }
 
 <!-- Modal Rastreador -->
 <div class="modal-overlay" id="modalRast" hidden>
-  <div class="modal" role="dialog" aria-modal="true">
-    <div class="modal-head">
-      <div>
-        <div class="modal-title">Rastreador — km por dia</div>
-        <div class="modal-sub">Histórico por camadas · mês → semana → dia → registros de origem</div>
-      </div>
-      <button class="modal-x" onclick="fecharModalRast()">×</button>
+  <div class="modal modal--largo" role="dialog" aria-modal="true">
+    <div class="modal-head modal-head--drill">
+      <div><div class="modal-title">Rastreador — análise do prefixo 200</div><div class="modal-sub">Histórico mensal · semanas · dias · eventos originais</div></div>
+      <div class="modal-head-actions"><button class="drill-back" id="drillBack" onclick="r200Voltar()" style="display:none;">← Voltar</button><button class="modal-x" onclick="fecharModalRast()">×</button></div>
     </div>
     <div class="modal-body" id="modalRastBody"></div>
   </div>
@@ -2074,78 +2033,62 @@ function r200Header(title,sub,back) {
 function r200Render() {
   if(!R200_RAST_DATA||!r200BaseVisible()) return '';
   const data=R200_RAST_DATA, months=data.months;
-  const total=data.records.reduce((s,r)=>s+r200Num(r.distance_km),0);
-  const days=data.days.length;
-  let html='<section class="r200-section" id="r200RastSection">';
+  const monthKey=R200_VIEW.month||months[months.length-1].key;
+  R200_VIEW.month=monthKey;
+  const m=months.find(x=>x.key===monthKey)||months[months.length-1];
+  const weeks=r200MonthWeeks(monthKey);
+  const monthSelect=months.map(x=>'<option value="'+x.key+'" '+(x.key===monthKey?'selected':'')+'>'+x.label+' 2026</option>').join('');
+  let html='<div class="r200-section" id="r200RastSection">';
   if(R200_VIEW.level==='mes') {
-    html+=r200Header('Prefixo 200 · '+data.vehicle.plate,'Base documental de 01/07/2026 a 16/11/2026 · selecione um mês',false);
-    html+='<div class="r200-kpis"><div><small>Distância somada</small><b>'+r200Km(total)+'</b></div><div><small>Registros de origem</small><b>'+data.records.length+'</b></div><div><small>Dias com registros</small><b>'+days+'</b></div><div><small>Relatórios</small><b>'+months.length+'</b></div></div>';
-    html+='<div class="r200-month-grid">';
-    months.forEach(m=>{const pct=total?m.total_km/total*100:0;
-      html+='<button class="r200-month" onclick="r200AbrirMes(\''+m.key+'\')"><span class="r200-month-name">'+m.label+' 2026</span><b>'+r200Km(m.total_km)+'</b><span class="r200-month-meta">'+m.records+' registros · '+m.source+'</span><span class="r200-track"><i style="width:'+pct.toFixed(1)+'%"></i></span><span class="r200-open">Abrir análise →</span></button>';
-    });
-    html+='</div><div class="r200-note"><b>Critério:</b> quilometragem = soma da coluna “Distância” de cada linha do relatório. Os registros são eventos do rastreador; dias sem linhas não são tratados como 0 km. Linhas com distância 0,0 km são mantidas como registros válidos.</div>';
-  } else if(R200_VIEW.level==='semana') {
-    const m=months.find(x=>x.key===R200_VIEW.month), weeks=r200MonthWeeks(R200_VIEW.month);
-    html+=r200Header('Prefixo 200 · '+m.label+' de 2026','Resumo mensal: '+r200Km(m.total_km)+' · '+m.records+' registros · escolha uma semana',true);
-    html+='<div class="r200-week-grid">';
-    weeks.forEach((w,i)=>{const pct=m.total_km?w.km/m.total_km*100:0;
-      html+='<button class="r200-week" onclick="r200AbrirSemana(\''+w.key+'\')"><div class="r200-week-head"><b>Semana '+(i+1)+'</b><span>'+r200Br(w.start)+' – '+r200Br(w.end)+'</span></div><strong>'+r200Km(w.km)+'</strong><small>'+w.rows.length+' registros · '+w.days+' dias com registros</small><div class="r200-track"><i style="width:'+pct.toFixed(1)+'%"></i></div><div class="r200-mini">';
-      w.dates.forEach(d=>{const x=r200DaySummary(d);const max=Math.max(1,...w.dates.map(z=>r200DaySummary(z).km));html+='<span title="'+r200Br(d)+': '+(x.count?r200Km(x.km):'Sem registros')+'"><i style="height:'+Math.max(2,x.km/max*34)+'px"></i><em>'+['D','S','T','Q','Q','S','S'][r200DateObj(d).getDay()]+'</em></span>';});
-      html+='</div><span class="r200-open">Ver dias →</span></button>';
-    });
-    html+='</div>';
+    html+='<section class="monthly-overview"><div class="monthly-topline"><div><div class="monthly-eyebrow">VEÍCULO EM ANÁLISE</div><div class="monthly-vehicle">Prefixo 200 · '+r200Esc(data.vehicle.plate)+' · Rastreador</div></div><label class="monthly-month-select">MÊS ANALISADO <select id="r200MonthSelect">'+monthSelect+'</select></label></div>';
+    html+='<div class="monthly-kpis"><div class="monthly-kpi"><span>QUILOMETRAGEM DO MÊS</span><strong>'+r200Km(m.total_km)+'</strong><em>Soma da coluna Distância</em></div><div class="monthly-kpi"><span>REGISTROS</span><strong>'+m.records+'</strong><em>Eventos no relatório original</em></div><div class="monthly-kpi"><span>DIAS COM REGISTROS</span><strong>'+data.days.filter(d=>d.date.startsWith(monthKey)).length+'</strong><em>Dias com eventos registrados</em></div><div class="monthly-kpi"><span>ARQUIVO-FONTE</span><strong style="font-size:13px;white-space:normal">'+r200Esc(m.source)+'</strong><em>Relatório original</em></div></div><div class="monthly-history">Período total disponível: <b>'+r200Br(data.period.start)+' a '+r200Br(data.period.end)+'</b> · '+data.records.length+' eventos em '+months.length+' relatórios.</div></section>';
+    html+='<div class="monthly-weeks-title"><b>Semanas do mês</b><span>Selecione um card para investigar os dias</span></div><div class="drill-grid monthly-weeks-grid">';
+    weeks.forEach((w,i)=>{const max=Math.max(1,...w.dates.map(d=>r200DaySummary(d).km));html+='<div class="drill-semana" onclick="r200AbrirSemana(\''+w.key+'\')"><div class="drill-semana-head"><span class="drill-semana-data">Semana '+(i+1)+' · '+r200Br(w.start)+' – '+r200Br(w.end)+'</span><span class="drill-semana-fills">'+w.rows.length+' registros</span></div><div class="drill-semana-km">'+r200Km(w.km)+'<span class="un">no período</span></div><div class="drill-week-days">';w.dates.forEach(d=>{const x=r200DaySummary(d),h=x.km?Math.max(3,x.km/max*100):0;html+='<div class="drill-week-day"><div class="drill-week-track"><span class="drill-week-bar '+(x.count?'':'sem-dado')+'" style="height:'+h+'%"></span></div><span class="drill-week-name">'+['DOM','SEG','TER','QUA','QUI','SEX','SÁB'][r200DateObj(d).getDay()]+'</span></div>';});html+='</div><div class="drill-semana-meta"><div class="linha"><span>Dias com registros</span><b>'+w.days+'</b></div><div class="linha"><span>Participação no mês</span><b>'+(m.total_km?w.km/m.total_km*100:0).toFixed(1).replace('.',',')+'%</b></div></div></div>';});
+    html+='</div><div class="audit-nota">Os totais representam a soma da coluna “Distância” do rastreador. Dias sem eventos não são considerados como 0 km; eventos com 0 km permanecem identificados na análise diária.</div>';
   } else if(R200_VIEW.level==='dia') {
-    const m=months.find(x=>x.key===R200_VIEW.month), w=r200MonthWeeks(R200_VIEW.month).find(x=>x.key===R200_VIEW.week);
-    html+=r200Header('Prefixo 200 · '+m.label+' · semana','Período '+r200Br(w.start)+' a '+r200Br(w.end)+' · '+r200Km(w.km),true);
-    html+='<div class="r200-day-list">';
-    w.dates.forEach(d=>{const x=r200DaySummary(d);html+='<button class="r200-day '+(!x.count?'sem-registro':'')+'" onclick="r200AbrirDia(\''+d+'\')"><span class="r200-day-date">'+r200Br(d)+'</span><span class="r200-day-week">'+['domingo','segunda','terça','quarta','quinta','sexta','sábado'][r200DateObj(d).getDay()]+'</span><b>'+(x.count?r200Km(x.km):'Sem registros')+'</b><small>'+(x.count?x.count+' eventos · '+x.zeros+' com 0 km':'Ausência de linhas no relatório')+'</small><span class="r200-open">'+(x.count?'Detalhar →':'')+'</span></button>';});
+    const w=weeks.find(x=>x.key===R200_VIEW.week);if(!w)return html+'<div class="sem-dados">Semana não encontrada.</div></div>';
+    html+='<div class="rast-resumo"><span><b>'+m.label+' · '+r200Br(w.start)+' a '+r200Br(w.end)+'</b></span><span class="divisor">·</span><span><b>'+w.rows.length+'</b> registros</span><span class="divisor">·</span><span><b>'+r200Km(w.km)+'</b> no rastreador</span></div><div class="audit-nota" style="margin:10px 0 14px">Selecione um dia para consultar os eventos originais. Dia sem registros significa ausência de linhas no arquivo, não quilometragem zero.</div><div class="drill-grid">';
+    w.dates.forEach(d=>{const x=r200DaySummary(d);html+='<div class="drill-semana" '+(x.count?'onclick="r200AbrirDia(\''+d+'\')"':'')+'><div class="drill-semana-head"><span class="drill-semana-data">'+r200Br(d)+'</span><span class="drill-semana-fills">'+['domingo','segunda','terça','quarta','quinta','sexta','sábado'][r200DateObj(d).getDay()]+'</span></div><div class="drill-semana-km" style="font-size:21px">'+(x.count?r200Km(x.km):'Sem registros')+'</div><div class="drill-semana-meta"><div class="linha"><span>Eventos</span><b>'+x.count+'</b></div><div class="linha"><span>Eventos com 0 km</span><b>'+x.zeros+'</b></div></div></div>';});
     html+='</div>';
   } else {
-    const rows=r200Records(R200_VIEW.day), x=r200DaySummary(R200_VIEW.day);
-    const m=months.find(z=>z.key===R200_VIEW.month);
-    html+=r200Header('Prefixo 200 · '+r200Br(R200_VIEW.day),m.label+' de 2026 · '+x.count+' eventos · '+r200Km(x.km),true);
-    html+='<div class="r200-note">Cada linha abaixo corresponde a um evento do relatório original. Endereços, horários, horímetro, distância, tempo em movimento, tempo parado e velocidade máxima foram preservados.</div>';
-    html+='<div class="r200-table-wrap"><table class="r200-table"><thead><tr><th>Ignição</th><th>Distância</th><th>Horímetro</th><th>Em movimento</th><th>Parado</th><th>Vel. máx.</th><th>Origem → destino</th><th>Arquivo-fonte</th></tr></thead><tbody>';
-    rows.forEach(r=>{html+='<tr><td>'+r200Esc(r.time)+'</td><td class="r200-distance">'+r200Esc(r.distance_raw)+' km</td><td>'+r200Esc(r.horimeter)+'</td><td>'+r200Esc(r.moving_time)+'</td><td>'+r200Esc(r.idle_time)+'</td><td>'+r200Esc(r.max_speed_kmh)+' km/h</td><td class="r200-address">'+r200Esc(r.start_address)+'<span>↓</span>'+r200Esc(r.end_address)+'</td><td>'+r200Esc(r.source)+' · linha '+r200Esc(r.source_row)+'</td></tr>';});
-    html+='</tbody></table></div>';
+    const rows=r200Records(R200_VIEW.day),x=r200DaySummary(R200_VIEW.day);
+    html+='<div class="rast-resumo"><span><b>'+r200Br(R200_VIEW.day)+'</b></span><span class="divisor">·</span><span><b>'+x.count+'</b> eventos</span><span class="divisor">·</span><span><b>'+r200Km(x.km)+'</b> registrados</span><span class="divisor">·</span><span><b>'+x.zeros+'</b> eventos com 0 km</span></div><div class="audit-nota" style="margin:10px 0">Cada linha corresponde a um evento do relatório original. Arquivo e número da linha de origem estão identificados na última coluna.</div><div style="overflow-x:auto"><table class="drill-tabela"><thead><tr><th>Horário</th><th>Distância</th><th>Horímetro</th><th>Em movimento</th><th>Parado</th><th>Vel. máx.</th><th>Origem → destino</th><th>Arquivo / linha</th></tr></thead><tbody>';
+    rows.forEach(r=>{html+='<tr><td class="dt">'+r200Esc(r.time)+'</td><td class="num">'+r200Esc(r.distance_raw)+' km</td><td>'+r200Esc(r.horimeter)+'</td><td>'+r200Esc(r.moving_time)+'</td><td>'+r200Esc(r.idle_time)+'</td><td class="num">'+r200Esc(r.max_speed_kmh)+' km/h</td><td style="white-space:normal;text-align:left;min-width:220px">'+r200Esc(r.start_address)+'<br>↓<br>'+r200Esc(r.end_address)+'</td><td>'+r200Esc(r.source)+' · linha '+r200Esc(r.source_row)+'</td></tr>';});
+    html+='</tbody><tfoot><tr><td>TOTAL DO DIA</td><td class="num">'+r200Km(x.km)+'</td><td colspan="6">'+x.count+' eventos no arquivo original</td></tr></tfoot></table></div>';
   }
-  html+='</section>';
-  return html;
+  return html+'</div>';
 }
 function r200Atualizar() {
   const old=document.getElementById('r200RastSection');
   if(old) old.outerHTML=r200Render();
+  const back=document.getElementById('drillBack');
+  if(back){back.onclick=r200Voltar;back.style.display=R200_VIEW.level==='mes'?'none':'inline-block';}
+  const sel=document.getElementById('r200MonthSelect');
+  if(sel)sel.addEventListener('change',e=>r200AbrirMes(e.target.value));
 }
-function r200AbrirMes(key) { R200_VIEW={level:'semana',month:key,week:null,day:null}; r200Atualizar(); }
+
+function r200AbrirMes(key) { R200_VIEW={level:'mes',month:key,week:null,day:null}; r200Atualizar(); }
 function r200AbrirSemana(key) { R200_VIEW={...R200_VIEW,level:'dia',week:key,day:null}; r200Atualizar(); }
 function r200AbrirDia(key) { R200_VIEW={...R200_VIEW,level:'detalhe',day:key}; r200Atualizar(); }
 function r200Voltar() {
   if(R200_VIEW.level==='detalhe') R200_VIEW={...R200_VIEW,level:'dia',day:null};
-  else if(R200_VIEW.level==='dia') R200_VIEW={...R200_VIEW,level:'semana',week:null};
-  else R200_VIEW={level:'mes',month:null,week:null,day:null};
+  else R200_VIEW={...R200_VIEW,level:'mes',week:null,day:null};
   r200Atualizar();
 }
+
 async function abrirModalRast() {
   abrirModalRastLegado();
   R200_VIEW={level:'mes',month:null,week:null,day:null};
-  if(!r200BaseVisible()) return;
   const body=document.getElementById('modalRastBody');
-  if(!R200_RAST_DATA) {
-    body.insertAdjacentHTML('afterbegin','<section class="r200-section" id="r200RastSection"><div class="r200-loading">Carregando os relatórios originais do prefixo 200…</div></section>');
-    try {
-      const resp=await fetch('dados/rastreador-r200.json',{cache:'no-cache'});
-      if(!resp.ok) throw new Error('HTTP '+resp.status);
-      R200_RAST_DATA=await resp.json();
-    } catch(err) {
-      const el=document.getElementById('r200RastSection');
-      if(el) el.innerHTML='<div class="r200-error">Não foi possível carregar a base do prefixo 200. Verifique a publicação do arquivo dados/rastreador-r200.json.</div>';
-      return;
-    }
+  if(!r200BaseVisible()) return;
+  if(!R200_RAST_DATA){
+    body.innerHTML='<div class="sem-dados" id="r200RastSection">Carregando os relatórios originais do prefixo 200…</div>';
+    try{const resp=await fetch('dados/rastreador-r200.json',{cache:'no-cache'});if(!resp.ok)throw new Error('HTTP '+resp.status);R200_RAST_DATA=await resp.json();}
+    catch(err){const el=document.getElementById('r200RastSection');if(el)el.textContent='Não foi possível carregar a base original do prefixo 200.';return;}
   }
-  const old=document.getElementById('r200RastSection');
-  if(old) old.outerHTML=r200Render();
-  else body.insertAdjacentHTML('afterbegin',r200Render());
+  body.innerHTML=r200Render();
+  const sel=document.getElementById('r200MonthSelect');if(sel)sel.addEventListener('change',e=>r200AbrirMes(e.target.value));
+  const back=document.getElementById('drillBack');if(back){back.onclick=r200Voltar;back.style.display='none';}
 }
 
 function fecharModalRast() {
