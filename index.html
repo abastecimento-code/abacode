@@ -578,7 +578,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .monthly-flow-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:7px;}
 .monthly-flow-head strong{font-size:11px;color:var(--tx);font-weight:750;}
 .monthly-flow-head span{font-size:9px;color:var(--tx3);}
-.monthly-flow svg{display:block;width:100%;height:auto;overflow:visible;}
+.monthly-flow svg{display:block;width:100%;height:auto;overflow:visible;} .monthly-flow-chart{max-width:100%;overflow-x:auto;overflow-y:hidden;padding-bottom:3px;} .monthly-flow .flow-grid{stroke:var(--line2);stroke-width:1;stroke-dasharray:3 4;}
 .monthly-flow .flow-axis{fill:var(--tx3);font:9px var(--f-ui);}
 .monthly-flow .flow-count{fill:var(--tx2);font:600 9px var(--f-num);}
 .monthly-flow .flow-line{fill:none;stroke:#ed4545;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#flowGlow);stroke-dasharray:1000;stroke-dashoffset:1000;animation:flowDraw 1.1s ease forwards;}
@@ -2536,8 +2536,8 @@ function renderDrill() {
   const contexto = v.modelo + ' · ' + v.ano + ' · ' + CONTRATO_LABEL[v.contrato];
 
   if (state.drillNivel === 2) {
-    titulo.textContent = 'Análise mensal — ' + state.drillPrefixo;
-    sub.textContent = contexto + ' · cada mês tem cálculo próprio';
+    titulo.textContent = (state.drillMesKey==='todos'?'Análise de todo o período — ':'Análise mensal — ') + state.drillPrefixo;
+    sub.textContent = contexto + (state.drillMesKey==='todos'?' · histórico completo disponível':' · cada mês tem cálculo próprio');
     body.innerHTML = renderNivel2(state.drillPrefixo);
     body.querySelector('#selMesAnalise')?.addEventListener('change', e => { state.drillMesKey=e.target.value; renderDrill(); });
   } else if (state.drillNivel === 3) {
@@ -2577,7 +2577,7 @@ function renderEvolucaoVerso() {
   } else {
     const v=FROTA.find(x=>x.p===state.drillPrefixo);
     const contexto=v?v.modelo+' · '+v.ano+' · '+CONTRATO_LABEL[v.contrato]:'';
-    if(state.drillNivel===2){titulo='Análise mensal — '+state.drillPrefixo;subtitulo=contexto+' · cada mês tem cálculo próprio';conteudo=renderNivel2(state.drillPrefixo);}
+    if(state.drillNivel===2){titulo=(state.drillMesKey==='todos'?'Análise de todo o período — ':'Análise mensal — ')+state.drillPrefixo;subtitulo=contexto+(state.drillMesKey==='todos'?' · histórico completo disponível':' · cada mês tem cálculo próprio');conteudo=renderNivel2(state.drillPrefixo);}
     else if(state.drillNivel===3){titulo='Análise semanal — '+state.drillPrefixo;subtitulo=contexto+' · '+state.drillMesKey;conteudo=renderNivel3(state.drillPrefixo,state.drillMesKey);}
     else if(state.drillNivel===4){titulo='Análise diária — '+state.drillPrefixo;subtitulo=contexto+' · '+state.drillSemanaKey;conteudo=renderNivel4(state.drillPrefixo,state.drillSemanaKey);}
     else {titulo='Abastecimentos — '+state.drillPrefixo;subtitulo='Lançamentos registrados em '+state.drillDiaKey;conteudo=renderNivel5(state.drillPrefixo,state.drillDiaKey);}
@@ -2692,7 +2692,7 @@ function renderMiniDiasSemana(semana, ref, mesKey) {
   for(let i=0;i<7;i++){
     const dt=new Date(semana.inicio); dt.setDate(dt.getDate()+i);
     const key=chaveDiaDrill(dt), d=porDia[key];
-    const dentroMes=key.slice(0,7)===mesKey;
+    const dentroMes=mesKey==='todos'||key.slice(0,7)===mesKey;
     const r=d?agregarPeriodo(d.fills):null;
     const h=r&&r.kmL!=null?Math.max(5,Math.min(100,(r.kmL/Math.max(ref*1.8,r.kmL,1))*100)):0;
     const cls=r&&r.kmL!=null?classeBarra(r.kmL,ref):'sem-dado';
@@ -2718,16 +2718,22 @@ function renderCardSemanaMes(semana, ref, mesKey, parcial=false) {
     <div style="margin-top:8px;text-align:center"><span class="pill-status ${st.cls}" style="font-size:9px">${st.label}</span></div>
   </div>`;
 }
-function renderGraficoAbastecimentosSemanais(semanas) {
+function renderGraficoAbastecimentosSemanais(semanas, opcoes={}) {
   if(!semanas || !semanas.length) return '';
-  const largura=620, altura=154, esquerda=30, direita=14, topo=18, base=112;
-  const valores=semanas.map(s=>s.fills.length), max=Math.max(1,...valores);
-  const passo=semanas.length>1?(largura-esquerda-direita)/(semanas.length-1):0;
-  const pontos=valores.map((v,i)=>({x:esquerda+i*passo,y:base-(v/max)*(base-topo),v,label:'S'+(i+1)}));
+  const todoPeriodo=!!opcoes.todoPeriodo, valores=semanas.map(s=>s.fills.length), maxValor=Math.max(1,...valores);
+  const passoY=maxValor<=4?1:(maxValor<=10?2:Math.ceil(maxValor/4)), ticks=[];
+  for(let v=0;v<=maxValor;v+=passoY) ticks.push(v);
+  if(ticks[ticks.length-1]!==maxValor) ticks.push(maxValor);
+  const largura=Math.max(620,Math.min(1800,100+Math.max(0,semanas.length-1)*66));
+  const altura=204, esquerda=62, direita=22, topo=20, base=151, areaAltura=base-topo, areaLargura=largura-esquerda-direita;
+  const passo=semanas.length>1?areaLargura/(semanas.length-1):0;
+  const pontos=valores.map((v,i)=>{const dt=semanas[i].inicio;return{x:semanas.length>1?esquerda+i*passo:esquerda+areaLargura/2,y:base-(v/maxValor)*areaAltura,v,rotulo:todoPeriodo?dt.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}):'Semana '+(i+1),data:dt.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}),fim:semanas[i].fim};});
   const path=pontos.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
-  const labels=pontos.map(p=>'<text class="flow-axis" x="'+p.x.toFixed(1)+'" y="139" text-anchor="middle">'+p.label+'</text><text class="flow-count" x="'+p.x.toFixed(1)+'" y="'+Math.max(11,p.y-9).toFixed(1)+'" text-anchor="middle">'+p.v+'</text>').join('');
-  const dots=pontos.map(p=>'<circle class="flow-dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="3.2"/>').join('');
-  return '<section class="monthly-flow" aria-label="Quantidade de abastecimentos por semana"><div class="monthly-flow-head"><strong>Quantidade de abastecimentos</strong><span>Distribuição por semana no mês</span></div><svg viewBox="0 0 '+largura+' '+altura+'" role="img" aria-label="Linha de abastecimentos por semana"><defs><filter id="flowGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><line x1="'+esquerda+'" y1="'+base+'" x2="'+(largura-direita)+'" y2="'+base+'" stroke="var(--line)" stroke-width="1"/><path class="flow-line" pathLength="1000" d="'+path+'"/>'+dots+labels+'</svg></section>';
+  const grade=ticks.map(v=>{const y=base-(v/maxValor)*areaAltura;return'<line class="flow-grid" x1="'+esquerda+'" y1="'+y.toFixed(1)+'" x2="'+(largura-direita)+'" y2="'+y.toFixed(1)+'"/><text class="flow-axis" x="'+(esquerda-10)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end">'+v+'</text>';}).join('');
+  const labels=pontos.map((p,i)=>{const ocultar=todoPeriodo&&pontos.length>18&&i%Math.ceil(pontos.length/18)!==0;if(ocultar)return'';const fim=p.fim.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}),title=todoPeriodo?'Semana de '+p.data+' a '+fim:'Semana '+(i+1)+' · '+p.data+' a '+fim;return'<text class="flow-axis" x="'+p.x.toFixed(1)+'" y="171" text-anchor="middle"><title>'+title+'</title>'+p.rotulo+'</text><text class="flow-count" x="'+p.x.toFixed(1)+'" y="'+Math.max(12,p.y-9).toFixed(1)+'" text-anchor="middle">'+p.v+'</text>';}).join('');
+  const dots=pontos.map(p=>'<circle class="flow-dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="3.2"><title>'+p.v+' abastecimento(s)</title></circle>').join('');
+  const subtitulo=todoPeriodo?'Histórico completo · '+semanas.length+' semanas com registros':'Distribuição por semana no mês', eixoX=todoPeriodo?'Semanas do histórico · data de início da semana':'Semanas do mês';
+  return'<section class="monthly-flow" aria-label="Quantidade de abastecimentos por semana"><div class="monthly-flow-head"><strong>Quantidade de abastecimentos</strong><span>'+subtitulo+'</span></div><div class="monthly-flow-chart"><svg style="width:'+largura+'px;max-width:none" viewBox="0 0 '+largura+' '+altura+'" role="img" aria-label="Eixo horizontal: '+eixoX+'. Eixo vertical: quantidade de abastecimentos."><defs><filter id="flowGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+grade+'<path class="flow-line" pathLength="1000" d="'+path+'"/>'+dots+labels+'<text class="flow-axis" x="'+(esquerda+areaLargura/2)+'" y="197" text-anchor="middle">'+eixoX+'</text><text class="flow-axis" transform="translate(13 '+((topo+base)/2)+') rotate(-90)" text-anchor="middle">Quantidade de abastecimentos</text></svg></div></section>';
 }
 
 function renderNivel2(p) {
@@ -2735,32 +2741,31 @@ function renderNivel2(p) {
   if(!fills.length) return '<div class="sem-dados" style="padding:40px">Sem dados de abastecimento para este veículo.</div>';
   const meses=agruparPorMes(fills);
   if(!meses.length) return '<div class="sem-dados">Não há períodos mensais válidos.</div>';
-  const mes=meses.find(m=>m.key===state.drillMesKey)||meses[meses.length-1];
-  state.drillMesKey=mes.key;
-  const total=agregarPeriodo(mes.fills), semanas=agruparPorSemana(mes.fills);
-  const totalHistorico=agregarPeriodo(fills);
-  const parcial=mes.ano===DATA_REF.getFullYear()&&mes.mes===DATA_REF.getMonth();
-  const opcoes=meses.map(m=>`<option value="${m.key}" ${m.key===mes.key?'selected':''}>${rotuloMes(m)}</option>`).join('');
+  const todoPeriodo=state.drillMesKey==='todos';
+  const mes=todoPeriodo?null:(meses.find(m=>m.key===state.drillMesKey)||meses[meses.length-1]);
+  state.drillMesKey=todoPeriodo?'todos':mes.key;
+  const fillsPeriodo=todoPeriodo?fills:mes.fills, total=agregarPeriodo(fillsPeriodo), semanas=agruparPorSemana(fillsPeriodo), totalHistorico=agregarPeriodo(fills);
+  const parcial=!todoPeriodo&&mes.ano===DATA_REF.getFullYear()&&mes.mes===DATA_REF.getMonth();
+  const opcoes='<option value="todos" '+(todoPeriodo?'selected':'')+'>Todo o período</option>'+meses.map(m=>`<option value="${m.key}" ${!todoPeriodo&&m.key===mes.key?'selected':''}>${rotuloMes(m)}</option>`).join('');
   let html=`<section class="monthly-overview">
     <div class="monthly-topline">
       <div><div class="monthly-eyebrow">VEÍCULO EM ANÁLISE</div><div class="monthly-vehicle">${v.modelo} · ${v.ano} · ${CONTRATO_LABEL[v.contrato]}</div></div>
-      <label class="monthly-month-select">MÊS ANALISADO <select id="selMesAnalise">${opcoes}</select></label>
+      <label class="monthly-month-select">${todoPeriodo?'TODO O PERÍODO':'MÊS ANALISADO'} <select id="selMesAnalise" aria-label="Selecionar mês ou todo o período">${opcoes}</select></label>
     </div>
     <div class="monthly-kpis">
-      <div class="monthly-kpi"><span>MÉDIA DO MÊS</span><strong>${total.kmL!=null?fmt3safe(total.kmL):'—'} <small>km/L</small></strong><em>Referência: ${fmt2(v.exp)} km/L</em></div>
+      <div class="monthly-kpi"><span>${todoPeriodo?'MÉDIA DO PERÍODO':'MÉDIA DO MÊS'}</span><strong>${total.kmL!=null?fmt3safe(total.kmL):'—'} <small>km/L</small></strong><em>Referência: ${fmt2(v.exp)} km/L</em></div>
       <div class="monthly-kpi"><span>ABASTECIMENTOS</span><strong>${total.abast}</strong><em>${semanas.length} semana(s) com registros</em></div>
-      <div class="monthly-kpi"><span>QUILÔMETROS</span><strong>${total.km!=null?fmtKmNum(total.km):'—'}</strong><em>KM considerados no mês</em></div>
-      <div class="monthly-kpi"><span>LITROS</span><strong>${total.litros!=null?fmtL(total.litros):'—'}</strong><em>Total abastecido no mês</em></div>
+      <div class="monthly-kpi"><span>QUILÔMETROS</span><strong>${total.km!=null?fmtKmNum(total.km):'—'}</strong><em>KM considerados no ${todoPeriodo?'histórico':'mês'}</em></div>
+      <div class="monthly-kpi"><span>LITROS</span><strong>${total.litros!=null?fmtL(total.litros):'—'}</strong><em>Total abastecido no ${todoPeriodo?'histórico':'mês'}</em></div>
     </div>
     <div class="monthly-history">Histórico disponível: <b>${totalHistorico.kmL!=null?fmt3safe(totalHistorico.kmL)+' km/L':'Dados insuficientes'}</b> · ${meses.length} mês(es) com registros${parcial?' · mês em andamento':''}</div>
   </section>
-  ${renderGraficoAbastecimentosSemanais(semanas)}
-  <div class="monthly-weeks-title"><b>Semanas do mês</b><span>Selecione um card para investigar os dias</span></div>
+  ${renderGraficoAbastecimentosSemanais(semanas,{todoPeriodo})}
+  <div class="monthly-weeks-title"><b>${todoPeriodo?'Semanas do histórico':'Semanas do mês'}</b><span>Selecione um card para investigar os dias</span></div>
   <div class="drill-grid monthly-weeks-grid">`;
   semanas.forEach(s=>{
-    const fim=s.fim>mes.fim?mes.fim:s.fim;
-    const semanaParcial=fim>DATA_REF;
-    html+=renderCardSemanaMes({...s,fim},v.exp,mes.key,semanaParcial);
+    const fim=todoPeriodo?s.fim:(s.fim>mes.fim?mes.fim:s.fim), semanaParcial=fim>DATA_REF;
+    html+=renderCardSemanaMes({...s,fim},v.exp,todoPeriodo?'todos':mes.key,semanaParcial);
   });
   const audit=calcularAuditoria(p,'acumulado');
   if(audit) html+=`</div><div class="audit-nota" style="margin-top:14px"><b>Conferência complementar — Rastreador × Globus</b><br>Rastreador: ${fmtKmNum(audit.kmRast)} km · Globus: ${fmtKmNum(audit.kmGlobus)} km · diferença: ${fmtKmNum(audit.deltaKm)} km (${fmt1(audit.deltaKmPct)}%) · ${audit.rastDiasComDados}/${audit.rastDiasEsperados} dias com dados · ${audit.rastFalhas} falhas.</div>`;
@@ -2784,10 +2789,11 @@ function renderNivel3(p, mesKey) {
 }
 
 function renderNivel4(p, semanaKey) {
-  const v=FROTA.find(x=>x.p===p);
-  const mes=agruparPorMes(fillsAteReferencia(p)).find(m=>m.key===state.drillMesKey);
-  if(!mes) return '<div class="sem-dados">Mês não encontrado.</div>';
-  const s=agruparPorSemana(mes.fills).find(x=>x.inicio.toISOString().slice(0,10)===semanaKey);
+  const v=FROTA.find(x=>x.p===p), fills=fillsAteReferencia(p);
+  const mes=state.drillMesKey==='todos'?null:agruparPorMes(fills).find(m=>m.key===state.drillMesKey);
+  if(state.drillMesKey!=='todos'&&!mes) return '<div class="sem-dados">Mês não encontrado.</div>';
+  const semanasBase=state.drillMesKey==='todos'?agruparPorSemana(fills):agruparPorSemana(mes.fills);
+  const s=semanasBase.find(x=>x.inicio.toISOString().slice(0,10)===semanaKey);
   if(!s) return '<div class="sem-dados">Semana não encontrada.</div>';
   const dias=agruparPorDia(s.fills), total=agregarPeriodo(s.fills);
   let html=`<div class="rast-resumo"><span><b>${s.label}</b></span><span class="divisor">·</span><span><b>${total.abast}</b> abastecimentos</span><span class="divisor">·</span><span><b>${total.km!=null?fmtKmNum(total.km):'—'}</b> km</span><span class="divisor">·</span><span><b>${total.litros!=null?fmtL(total.litros):'—'}</b> litros</span><span class="divisor">·</span><span>Média semanal: <b>${total.kmL!=null?fmt3safe(total.kmL):'Dados insuficientes'} km/L</b></span></div>
