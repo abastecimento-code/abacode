@@ -581,8 +581,8 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .monthly-flow svg{display:block;width:100%;height:auto;overflow:visible;}
 .monthly-flow .flow-axis{fill:var(--tx3);font:9px var(--f-ui);}
 .monthly-flow .flow-count{fill:var(--tx2);font:600 9px var(--f-num);}
-.monthly-flow .flow-line{fill:none;stroke:#d84a4a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:url(#flowGlow);stroke-dasharray:1000;stroke-dashoffset:1000;animation:flowDraw 1.1s ease forwards;}
-.monthly-flow .flow-dot{fill:#e45a5a;stroke:#fff;stroke-width:1.5;filter:url(#flowGlow);opacity:0;animation:flowDot .35s ease forwards;animation-delay:.75s;}
+.monthly-flow .flow-line{fill:none;stroke:#ed4545;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;filter:url(#flowGlow);stroke-dasharray:1000;stroke-dashoffset:1000;animation:flowDraw 1.1s ease forwards;}
+.monthly-flow .flow-dot{fill:#e45a5a;stroke:var(--surface);stroke-width:1.5;filter:url(#flowGlow);opacity:0;animation:flowDot .35s ease forwards;animation-delay:.75s;}
 @keyframes flowDraw{to{stroke-dashoffset:0;}}@keyframes flowDot{to{opacity:1;}}
 @media(prefers-reduced-motion:reduce){.monthly-flow .flow-line{animation:none;stroke-dashoffset:0}.monthly-flow .flow-dot{animation:none;opacity:1}.veiculos-face{transition:none!important}}
 
@@ -2723,11 +2723,11 @@ function renderGraficoAbastecimentosSemanais(semanas) {
   const largura=620, altura=154, esquerda=30, direita=14, topo=18, base=112;
   const valores=semanas.map(s=>s.fills.length), max=Math.max(1,...valores);
   const passo=semanas.length>1?(largura-esquerda-direita)/(semanas.length-1):0;
-  const pontos=valores.map((v,i)=>({x:esquerda+i*passo,y:base-(v/max)*(base-topo),v,label:'S'+String(Math.ceil(semanas[i].inicio.getDate()/7)).padStart(2,'0')}));
+  const pontos=valores.map((v,i)=>({x:esquerda+i*passo,y:base-(v/max)*(base-topo),v,label:'S'+(i+1)}));
   const path=pontos.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
   const labels=pontos.map(p=>'<text class="flow-axis" x="'+p.x.toFixed(1)+'" y="139" text-anchor="middle">'+p.label+'</text><text class="flow-count" x="'+p.x.toFixed(1)+'" y="'+Math.max(11,p.y-9).toFixed(1)+'" text-anchor="middle">'+p.v+'</text>').join('');
   const dots=pontos.map(p=>'<circle class="flow-dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="3.2"/>').join('');
-  return '<section class="monthly-flow" aria-label="Quantidade de abastecimentos por semana"><div class="monthly-flow-head"><strong>Frequência de abastecimentos</strong><span>Quantidade por semana</span></div><svg viewBox="0 0 '+largura+' '+altura+'" role="img" aria-label="Linha de abastecimentos por semana"><defs><filter id="flowGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><line x1="'+esquerda+'" y1="'+base+'" x2="'+(largura-direita)+'" y2="'+base+'" stroke="var(--line)" stroke-width="1"/><path class="flow-line" pathLength="1000" d="'+path+'"/>'+dots+labels+'</svg></section>';
+  return '<section class="monthly-flow" aria-label="Quantidade de abastecimentos por semana"><div class="monthly-flow-head"><strong>Quantidade de abastecimentos</strong><span>Distribuição por semana no mês</span></div><svg viewBox="0 0 '+largura+' '+altura+'" role="img" aria-label="Linha de abastecimentos por semana"><defs><filter id="flowGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><line x1="'+esquerda+'" y1="'+base+'" x2="'+(largura-direita)+'" y2="'+base+'" stroke="var(--line)" stroke-width="1"/><path class="flow-line" pathLength="1000" d="'+path+'"/>'+dots+labels+'</svg></section>';
 }
 
 function renderNivel2(p) {
