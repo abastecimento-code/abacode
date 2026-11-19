@@ -105,7 +105,7 @@ td.ano{color:var(--tx2);font-size:11.5px;}
 td.faixa{font-family:var(--f-num);font-variant-numeric:tabular-nums;font-size:12.5px;font-weight:700;color:var(--tx);}
 td.litros{font-family:var(--f-num);font-variant-numeric:tabular-nums;font-weight:500;font-size:12.5px;color:var(--tx);}
 .pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.1px;}
-.pill-escm{background:#fff0d5;color:#895000;}
+ .pill-escm{background:#e2ebf7;color:#315b91;}
 .pill-rj{background:#e8e6df;color:#3a4150;} .pill-esc{background:var(--amber-bg);color:var(--amber-d);}
 .pill-tec{background:var(--teal-bg);color:var(--teal);} .pill-mid{background:var(--pink-bg);color:var(--pink);}
 .pill-crc{background:var(--purple-bg);color:var(--purple);}
@@ -586,6 +586,26 @@ tfoot td.num.azul { color:#64b5f6!important; }
 @keyframes flowDraw{to{stroke-dashoffset:0;}}@keyframes flowDot{to{opacity:1;}}
 @media(prefers-reduced-motion:reduce){.monthly-flow .flow-line{animation:none;stroke-dashoffset:0}.monthly-flow .flow-dot{animation:none;opacity:1}.veiculos-face{transition:none!important}}
 
+
+/* Cards de evolução com hierarquia da análise individual */
+.drill-veic{display:flex;flex-direction:column;align-items:stretch;text-align:left;width:100%;font:inherit;color:var(--tx);border-left:3px solid var(--contrato-cor,var(--line));gap:0;}
+.drill-veic-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 7px;}
+.drill-veic-head .pill-status{margin-left:auto!important;font-size:9px;padding:3px 8px;white-space:nowrap;}
+.drill-veic-modelo{display:block;font-size:11px;font-weight:750;color:var(--tx);line-height:1.35;margin:0 0 2px;}
+.drill-veic-sub{display:block;font-size:9px;color:var(--tx2);line-height:1.4;margin:0 0 9px;}
+.drill-veic-sub .contrato-card-nome{color:var(--contrato-cor,var(--tx2));font-weight:750;}
+.drill-veic-periodo{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;padding:8px 9px;margin:0 0 9px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);}
+.drill-veic-periodo>span{display:flex;flex-direction:column;gap:3px;min-width:0;}
+.drill-veic-periodo>span:last-child{text-align:right;}
+.drill-veic-periodo small{font-size:8px;letter-spacing:.6px;color:var(--tx2);font-weight:800;white-space:nowrap;}
+.drill-veic-periodo b{font-size:11px;font-weight:750;color:var(--tx);font-variant-numeric:tabular-nums;white-space:nowrap;}
+.drill-veic .drill-spark{height:34px;margin:0 0 9px;background:transparent;border-bottom:1px solid var(--line2);border-radius:0;padding:3px 2px;gap:4px;}
+.drill-veic-km{margin:0 0 8px;}
+.drill-veic-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0;padding:8px 0 0;border-top:1px solid var(--line);font-size:9px;color:var(--tx2);}
+.drill-veic-meta b{font-size:10px;color:var(--tx);white-space:nowrap;}
+.drill-veic:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+@media(max-width:520px){.drill-veic-periodo{grid-template-columns:minmax(0,1fr) auto}.drill-veic-periodo b{font-size:10px}}
+
 </style>
 </head>
 <body>
@@ -844,7 +864,7 @@ const CONTRATO_PILL = {
 };
 
 const CONTRATO_COR = {
-  rj:'#65758b', esc:'#b7791f', escm:'#2876a8', tec:'#167d83', mid:'#ad5a86',
+  rj:'#65758b', esc:'#b7791f', escm:'#5878ad', tec:'#167d83', mid:'#ad5a86',
   crc:'#7962a8', spb:'#426b9b', res:'#697386', rip:'#a66b43', fug:'#4f8a68', man:'#b45b54',
 };
 
@@ -2581,72 +2601,39 @@ function getListaEvolucaoFiltrada() {
     .filter(v => !q || v.p.toLowerCase().includes(q) || v.modelo.toLowerCase().includes(q));
 }
 
-function renderNivel1() {
-  const opcoes = [['todos','Todos'], ...Object.entries(CONTRATO_LABEL)];
-  const select = opcoes.map(([id,nome]) => '<option value="' + id + '"' + (state.drillContrato===id?' selected':'') + '>' + nome + '</option>').join('');
-  let html = '<div class="barra" style="margin:0 0 14px;"><div><span class="lbl">Contrato</span><select id="selContratoDrill" aria-label="Filtrar cartões de evolução por contrato">' + select + '</select></div></div><div class="drill-grid">';
-  const frotaOrdenada = getListaEvolucaoFiltrada().slice().sort((a, b) => Number(a.p) - Number(b.p));
-  frotaOrdenada.forEach(v => {
-    const fills = fillsAteReferencia(v.p);
-    const hasData = fills.length > 0;
-
-    if (!hasData) {
-      html += `<div class="drill-veic drill-vazio" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}" onclick="drillAbrirVeiculo('${v.p}')">
-        <div class="drill-veic-head">
-          <span class="drill-veic-prefixo">${v.p}</span>
-          <span class="drill-badge-soon" style="margin-left:auto;">dados em breve</span>
-        </div>
-        <div class="drill-veic-modelo">${v.modelo}</div>
-        <div class="drill-veic-meta"><span>${v.ano}</span><span class="contrato-card-nome">${CONTRATO_LABEL[v.contrato]}</span></div>
-      </div>`;
+function renderNivel1(){
+  const opcoes=[['todos','Todos'],...Object.entries(CONTRATO_LABEL)];
+  const select=opcoes.map(([id,nome])=>'<option value="'+id+'"'+(state.drillContrato===id?' selected':'')+'>'+nome+'</option>').join('');
+  let html='<div class="barra" style="margin:0 0 14px;"><div><span class="lbl">Contrato</span><select id="selContratoDrill" aria-label="Filtrar cartões de evolução por contrato">'+select+'</select></div></div><div class="drill-grid">';
+  getListaEvolucaoFiltrada().slice().sort((a,b)=>Number(a.p)-Number(b.p)).forEach(v=>{
+    const fills=fillsAteReferencia(v.p), cor=CONTRATO_COR[v.contrato]||'#65758b';
+    if(!fills.length){
+      html+=`<button type="button" class="drill-veic drill-vazio" style="--contrato-cor:${cor}" onclick="drillAbrirVeiculo('${v.p}')">
+        <span class="drill-veic-head"><span class="drill-veic-prefixo">${v.p}</span><span class="drill-badge-soon">dados em breve</span></span>
+        <span class="drill-veic-modelo">${v.modelo}</span><span class="drill-veic-sub">${v.ano}</span>
+        <span class="drill-veic-meta"><span class="contrato-card-nome">${CONTRATO_LABEL[v.contrato]}</span><span>Aguardando registros</span></span>
+      </button>`;
       return;
     }
-
-    const semanas = agruparPorSemana(fills);
-    const semanaInicial = semanas[0].inicio;
-    const semanaFinal = semanas[semanas.length - 1].inicio;
-    const intervaloSemanas = Math.max(1, Math.round((Date.UTC(semanaFinal.getFullYear(), semanaFinal.getMonth(), semanaFinal.getDate()) - Date.UTC(semanaInicial.getFullYear(), semanaInicial.getMonth(), semanaInicial.getDate())) / (7 * 86400000)) + 1);
-    const semanasSemLancamento = intervaloSemanas - semanas.length;
-    const u = calcularUltimaSemana(v.p);
-    const kmLAtual = u ? u.kmL : null;
-    const ini = semanas[0];
-    const kmLIni = ini ? calcularKmL(ini.litros, ini.km) : null;
-    const t = tendencia(kmLIni, kmLAtual);
-
-    const ultimas8 = semanas.slice(-8);
-    const maxKmL = Math.max(...ultimas8.map(s => calcularKmL(s.litros, s.km) || 0));
-    let spark = '<div class="drill-spark" role="img" aria-label="Consumo recalculado por semana; cada barra representa uma semana com abastecimento">';
-    ultimas8.forEach(s => {
-      const kml = calcularKmL(s.litros, s.km) || 0;
-      const h = maxKmL > 0 ? Math.max(2, (kml / maxKmL) * 100) : 2;
-      const cls = classeBarra(kml, v.exp);
-      spark += `<div class="drill-spark-bar ${cls}" title="${s.label}: ${fmt2(kml)} km/L recalculado · ${s.fills.length} abastecimento(s)" style="height:${h}%"></div>`;
-    });
-    spark += '</div>';
-
-    const stAtual = statusDe(v, kmLAtual);
-
-    html += `<div class="drill-veic" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}" onclick="drillAbrirVeiculo('${v.p}')">
-      <div class="drill-veic-head">
-        <span class="drill-veic-prefixo">${v.p}</span>
-        <span class="pill-status ${stAtual.cls}" style="margin-left:auto;font-size:9px;padding:2px 8px;">${stAtual.label}${u&&u.parcial?' · parcial':''}</span>
-      </div>
-      <div class="drill-veic-modelo" title="${v.modelo} · ${v.ano}">${v.modelo} · ${v.ano}</div>
+    const semanas=agruparPorSemana(fills),u=calcularUltimaSemana(v.p),kmLAtual=u?u.kmL:null;
+    const ini=semanas[0],fim=semanas[semanas.length-1],kmLIni=ini?calcularKmL(ini.litros,ini.km):null,t=tendencia(kmLIni,kmLAtual);
+    const ultimas8=semanas.slice(-8),maxKmL=Math.max(...ultimas8.map(x=>calcularKmL(x.litros,x.km)||0));
+    let spark='<div class="drill-spark" role="img" aria-label="Consumo recalculado nas últimas semanas com abastecimento">';
+    ultimas8.forEach(x=>{const k=calcularKmL(x.litros,x.km)||0,h=maxKmL>0?Math.max(2,k/maxKmL*100):2;spark+=`<span class="drill-spark-bar ${classeBarra(k,v.exp)}" title="${x.label}: ${fmt2(k)} km/L · ${x.fills.length} abastecimento(s)" style="height:${h}%"></span>`;});
+    spark+='</div>';
+    const status=statusDe(v,kmLAtual),inicio=dataLabel(parseData(fills[0].data,fills[0].ano)),final=dataLabel(parseData(fills[fills.length-1].data,fills[fills.length-1].ano));
+    html+=`<button type="button" class="drill-veic" style="--contrato-cor:${cor}" onclick="drillAbrirVeiculo('${v.p}')">
+      <span class="drill-veic-head"><span class="drill-veic-prefixo">${v.p}</span><span class="pill-status ${status.cls}">${status.label}${u&&u.parcial?' · parcial':''}</span></span>
+      <span class="drill-veic-modelo">${v.modelo}</span>
+      <span class="drill-veic-sub">${v.ano} · <span class="contrato-card-nome">${CONTRATO_LABEL[v.contrato]}</span></span>
+      <span class="drill-veic-periodo"><span><small>INTERVALO ANALISADO</small><b>${inicio} – ${final}</b></span><span><small>ABASTECIMENTOS</small><b>${fills.length}</b></span></span>
       ${spark}
-      <div class="drill-veic-km">
-        <span class="val">${kmLAtual != null ? fmt3safe(kmLAtual) : '—'}<span class="un">km/L recalculado</span></span>
-        <span class="tend ${t.cls}" title="Comparação entre a primeira e a última semana com lançamento: ${ini.label} → ${u ? u.label : '—'}">${t.label}</span>
-      </div>
-      <div class="drill-veic-meta">
-        <span><b>Período:</b> ${dataLabel(semanaInicial)} – ${dataLabel(semanaFinal)}</span>
-        <span><b>${fills.length}</b> abastecimentos · <b>${semanas.length}</b> semanas com registros · EXP ${fmt2(v.exp)} km/L${u&&u.parcial?' · semana parcial':''}</span>
-      </div>
-    </div>`;
+      <span class="drill-veic-km"><span class="val">${kmLAtual!=null?fmt3safe(kmLAtual):'—'}<span class="un">km/L recalculado</span></span><span class="tend ${t.cls}">${t.label}</span></span>
+      <span class="drill-veic-meta"><span>Referência do modelo</span><b>${fmt2(v.exp)} km/L</b></span>
+    </button>`;
   });
-  html += '</div>';
-  return html;
+  return html+'</div>';
 }
-
 function chaveMes(dt) {
   return dt.getFullYear() + '-' + String(dt.getMonth()+1).padStart(2,'0');
 }
