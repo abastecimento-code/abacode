@@ -502,7 +502,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
 /* ===== EVOLUÇÃO NO VERSO DA LISTAGEM ===== */
 .th-modelo{position:relative;padding-right:34px!important;}
 .th-modelo>span:first-child{display:inline-block;vertical-align:middle;}
-.flip-trigger{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:25px;height:25px;margin-left:8px;border:1px solid rgba(255,255,255,.22);border-radius:8px;background:rgba(255,255,255,.08);color:#e7ebf2;font:700 15px/1 inherit;cursor:pointer;vertical-align:middle;transition:background .2s,transform .25s,border-color .2s;}
+.flip-trigger{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:25px;height:25px;margin-left:8px;border:1px solid rgba(255,255,255,.22);border-radius:8px;background:rgba(255,255,255,.08);color:#e7ebf2;font-family:inherit;font-size:15px;font-weight:700;line-height:1;cursor:pointer;vertical-align:middle;transition:background .2s,transform .25s,border-color .2s;}
 .flip-trigger:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.45);transform:rotate(-18deg);}
 .flip-voltar{width:auto;padding:0 10px;font-size:11px;letter-spacing:.2px;}
 .veiculos-stage{display:grid;perspective:1600px;position:relative;align-items:stretch;}
@@ -1753,7 +1753,7 @@ function renderCards(lista) {
   cardEsc.textContent = fmt0(escalas.length);
   cardEsc.parentElement.classList.toggle('vazio', escalas.length === 0);
 
-  if (document.getElementById('veiculosStage')?.classList.contains('mostrar-evolucao')) renderEvolucaoVerso();
+  if (document.getElementById('veiculosStage')?.classList.contains('mostrar-evolucao')) { state.drillContrato=state.contrato; renderEvolucaoVerso(); }
 }
 
 /* ═══════════════════════════════════════════════════════
