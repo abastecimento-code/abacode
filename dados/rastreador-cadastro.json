@@ -1054,6 +1054,20 @@
       "name": "Manutenção",
       "vehicles": [
         {
+          "prefix": "527",
+          "model": "Renault/Master MinibusL3",
+          "year": "2025/2026",
+          "data_file": null,
+          "status": "awaiting_data"
+        },
+        {
+          "prefix": "548",
+          "model": "Renault/Master MinibusL3",
+          "year": "2025/2026",
+          "data_file": null,
+          "status": "awaiting_data"
+        },
+        {
           "prefix": "1013",
           "model": "Mercedes-Benz/Neobus SP",
           "year": "2013/2014",
