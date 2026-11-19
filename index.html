@@ -2724,24 +2724,28 @@ function renderGraficoAbastecimentosSemanais(semanas, opcoes={}) {
   const passoY=maxValor<=4?1:(maxValor<=10?2:Math.ceil(maxValor/4)), ticks=[];
   for(let v=0;v<=maxValor;v+=passoY) ticks.push(v);
   if(ticks[ticks.length-1]!==maxValor) ticks.push(maxValor);
-  const largura=Math.max(620,Math.min(1800,100+Math.max(0,semanas.length-1)*66));
+  const largura=Math.max(620,100+Math.max(0,semanas.length-1)*66);
   const altura=204, esquerda=62, direita=22, topo=20, base=151, areaAltura=base-topo, areaLargura=largura-esquerda-direita;
   const passo=semanas.length>1?areaLargura/(semanas.length-1):0;
   const pontos=valores.map((v,i)=>{const dt=semanas[i].inicio;return{x:semanas.length>1?esquerda+i*passo:esquerda+areaLargura/2,y:base-(v/maxValor)*areaAltura,v,rotulo:todoPeriodo?dt.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}):'Semana '+(i+1),data:dt.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}),fim:semanas[i].fim};});
   const path=pontos.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
   const grade=ticks.map(v=>{const y=base-(v/maxValor)*areaAltura;return'<line class="flow-grid" x1="'+esquerda+'" y1="'+y.toFixed(1)+'" x2="'+(largura-direita)+'" y2="'+y.toFixed(1)+'"/><text class="flow-axis" x="'+(esquerda-10)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end">'+v+'</text>';}).join('');
-  const labels=pontos.map((p,i)=>{const ocultar=todoPeriodo&&pontos.length>18&&i%Math.ceil(pontos.length/18)!==0;if(ocultar)return'';const fim=p.fim.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}),title=todoPeriodo?'Semana de '+p.data+' a '+fim:'Semana '+(i+1)+' · '+p.data+' a '+fim;return'<text class="flow-axis" x="'+p.x.toFixed(1)+'" y="171" text-anchor="middle"><title>'+title+'</title>'+p.rotulo+'</text><text class="flow-count" x="'+p.x.toFixed(1)+'" y="'+Math.max(12,p.y-9).toFixed(1)+'" text-anchor="middle">'+p.v+'</text>';}).join('');
+  const labels=pontos.map((p,i)=>{const ocultar=todoPeriodo&&pontos.length>18&&i%Math.ceil(pontos.length/18)!==0;const fim=p.fim.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}),title=todoPeriodo?'Semana de '+p.data+' a '+fim:'Semana '+(i+1)+' · '+p.data+' a '+fim;const eixo=ocultar?'':'<text class="flow-axis" x="'+p.x.toFixed(1)+'" y="171" text-anchor="middle"><title>'+title+'</title>'+p.rotulo+'</text>';return eixo+'<text class="flow-count" x="'+p.x.toFixed(1)+'" y="'+Math.max(12,p.y-9).toFixed(1)+'" text-anchor="middle">'+p.v+'</text>';}).join('');
   const dots=pontos.map(p=>'<circle class="flow-dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="3.2"><title>'+p.v+' abastecimento(s)</title></circle>').join('');
   const subtitulo=todoPeriodo?'Histórico completo · '+semanas.length+' semanas com registros':'Distribuição por semana no mês', eixoX=todoPeriodo?'Semanas do histórico · data de início da semana':'Semanas do mês';
   return'<section class="monthly-flow" aria-label="Quantidade de abastecimentos por semana"><div class="monthly-flow-head"><strong>Quantidade de abastecimentos</strong><span>'+subtitulo+'</span></div><div class="monthly-flow-chart"><svg style="width:'+largura+'px;max-width:none" viewBox="0 0 '+largura+' '+altura+'" role="img" aria-label="Eixo horizontal: '+eixoX+'. Eixo vertical: quantidade de abastecimentos."><defs><filter id="flowGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+grade+'<path class="flow-line" pathLength="1000" d="'+path+'"/>'+dots+labels+'<text class="flow-axis" x="'+(esquerda+areaLargura/2)+'" y="197" text-anchor="middle">'+eixoX+'</text><text class="flow-axis" transform="translate(13 '+((topo+base)/2)+') rotate(-90)" text-anchor="middle">Quantidade de abastecimentos</text></svg></div></section>';
 }
 
+function fillsHistoricoCompleto(prefixo) {
+  return (FILLS[prefixo]||[]).filter(f=>Number.isFinite(parseData(f.data,f.ano).getTime()));
+}
+
 function renderNivel2(p) {
-  const v=FROTA.find(x=>x.p===p), fills=fillsAteReferencia(p);
+  const todoPeriodo=state.drillMesKey==='todos';
+  const v=FROTA.find(x=>x.p===p), fills=todoPeriodo?fillsHistoricoCompleto(p):fillsAteReferencia(p);
   if(!fills.length) return '<div class="sem-dados" style="padding:40px">Sem dados de abastecimento para este veículo.</div>';
   const meses=agruparPorMes(fills);
   if(!meses.length) return '<div class="sem-dados">Não há períodos mensais válidos.</div>';
-  const todoPeriodo=state.drillMesKey==='todos';
   const mes=todoPeriodo?null:(meses.find(m=>m.key===state.drillMesKey)||meses[meses.length-1]);
   state.drillMesKey=todoPeriodo?'todos':mes.key;
   const fillsPeriodo=todoPeriodo?fills:mes.fills, total=agregarPeriodo(fillsPeriodo), semanas=agruparPorSemana(fillsPeriodo), totalHistorico=agregarPeriodo(fills);
@@ -2789,7 +2793,7 @@ function renderNivel3(p, mesKey) {
 }
 
 function renderNivel4(p, semanaKey) {
-  const v=FROTA.find(x=>x.p===p), fills=fillsAteReferencia(p);
+  const v=FROTA.find(x=>x.p===p), fills=state.drillMesKey==='todos'?fillsHistoricoCompleto(p):fillsAteReferencia(p);
   const mes=state.drillMesKey==='todos'?null:agruparPorMes(fills).find(m=>m.key===state.drillMesKey);
   if(state.drillMesKey!=='todos'&&!mes) return '<div class="sem-dados">Mês não encontrado.</div>';
   const semanasBase=state.drillMesKey==='todos'?agruparPorSemana(fills):agruparPorSemana(mes.fills);
