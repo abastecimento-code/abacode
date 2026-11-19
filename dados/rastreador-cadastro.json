@@ -139,13 +139,6 @@
           "status": "awaiting_data"
         },
         {
-          "prefix": "1073",
-          "model": "Marcopolo/Volare DW9 EO",
-          "year": "2020/2021",
-          "data_file": null,
-          "status": "awaiting_data"
-        },
-        {
           "prefix": "1076",
           "model": "Marcopolo/Volare DW9 EO",
           "year": "2020/2021",
@@ -278,13 +271,6 @@
           "status": "awaiting_data"
         },
         {
-          "prefix": "1013",
-          "model": "Mercedes-Benz/Neobus SP",
-          "year": "2013/2014",
-          "data_file": null,
-          "status": "awaiting_data"
-        },
-        {
           "prefix": "1014",
           "model": "Mercedes-Benz/Neobus SP",
           "year": "2013/2014",
@@ -397,21 +383,7 @@
           "status": "awaiting_data"
         },
         {
-          "prefix": "1039",
-          "model": "Marcopolo/Volare DW9 EO",
-          "year": "2020/2021",
-          "data_file": null,
-          "status": "awaiting_data"
-        },
-        {
           "prefix": "1040",
-          "model": "Marcopolo/Volare DW9 EO",
-          "year": "2020/2021",
-          "data_file": null,
-          "status": "awaiting_data"
-        },
-        {
-          "prefix": "1041",
           "model": "Marcopolo/Volare DW9 EO",
           "year": "2020/2021",
           "data_file": null,
@@ -579,13 +551,6 @@
           "status": "awaiting_data"
         },
         {
-          "prefix": "1065",
-          "model": "Marcopolo/Volare DW9 EO",
-          "year": "2020/2021",
-          "data_file": null,
-          "status": "awaiting_data"
-        },
-        {
           "prefix": "1066",
           "model": "Marcopolo/Volare DW9 EO",
           "year": "2020/2021",
@@ -694,20 +659,6 @@
           "prefix": "1096",
           "model": "VW/Induscar Apache U",
           "year": "2019/2020",
-          "data_file": null,
-          "status": "awaiting_data"
-        },
-        {
-          "prefix": "1097",
-          "model": "VW/Induscar Apache U",
-          "year": "2018/2019",
-          "data_file": null,
-          "status": "awaiting_data"
-        },
-        {
-          "prefix": "1098",
-          "model": "M.Benz/MPolo Torino U",
-          "year": "2017/2017",
           "data_file": null,
           "status": "awaiting_data"
         },
@@ -1103,16 +1054,51 @@
       "name": "Manutenção",
       "vehicles": [
         {
-          "prefix": "527",
-          "model": "Renault/Master MinibusL3",
-          "year": "2025/2026",
+          "prefix": "1013",
+          "model": "Mercedes-Benz/Neobus SP",
+          "year": "2013/2014",
           "data_file": null,
           "status": "awaiting_data"
         },
         {
-          "prefix": "548",
-          "model": "Renault/Master MinibusL3",
-          "year": "2025/2026",
+          "prefix": "1039",
+          "model": "Marcopolo/Volare DW9 EO",
+          "year": "2020/2021",
+          "data_file": null,
+          "status": "awaiting_data"
+        },
+        {
+          "prefix": "1041",
+          "model": "Marcopolo/Volare DW9 EO",
+          "year": "2020/2021",
+          "data_file": null,
+          "status": "awaiting_data"
+        },
+        {
+          "prefix": "1065",
+          "model": "Marcopolo/Volare DW9 EO",
+          "year": "2020/2021",
+          "data_file": null,
+          "status": "awaiting_data"
+        },
+        {
+          "prefix": "1073",
+          "model": "Marcopolo/Volare DW9 EO",
+          "year": "2020/2021",
+          "data_file": null,
+          "status": "awaiting_data"
+        },
+        {
+          "prefix": "1097",
+          "model": "VW/Induscar Apache U",
+          "year": "2018/2019",
+          "data_file": null,
+          "status": "awaiting_data"
+        },
+        {
+          "prefix": "1098",
+          "model": "M.Benz/MPolo Torino U",
+          "year": "2017/2017",
           "data_file": null,
           "status": "awaiting_data"
         }
