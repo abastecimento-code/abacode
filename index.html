@@ -503,7 +503,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .th-modelo{position:relative;padding-right:34px!important;}
 .th-modelo>span:first-child{display:inline-block;vertical-align:middle;}
 .flip-trigger{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:25px;height:25px;margin-left:8px;border:1px solid rgba(255,255,255,.22);border-radius:8px;background:rgba(255,255,255,.08);color:#e7ebf2;font-family:inherit;font-size:15px;font-weight:700;line-height:1;cursor:pointer;vertical-align:middle;transition:background .2s,transform .25s,border-color .2s;}
-.flip-trigger:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.45);transform:rotate(-18deg);}
+.flip-trigger:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.45);transform:rotate(-18deg);}.flip-trigger:focus-visible,.investigacao-opcao:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 .flip-voltar{width:auto;padding:0 10px;font-size:11px;letter-spacing:.2px;}
 .veiculos-stage{display:grid;perspective:1600px;position:relative;align-items:stretch;}
 .veiculos-face{grid-area:1/1;min-width:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .62s cubic-bezier(.2,.72,.18,1),opacity .35s ease;transform-style:preserve-3d;}
@@ -2520,11 +2520,11 @@ function renderEvolucaoVerso() {
 }
 function abrirModalInvestigacao() {
   const m=document.getElementById('modalInvestigacao');
-  if(m)m.hidden=false;
+  if(m){m.hidden=false;document.body.style.overflow='hidden';}
 }
 function fecharModalInvestigacao() {
   const m=document.getElementById('modalInvestigacao');
-  if(m)m.hidden=true;
+  if(m){m.hidden=true;document.body.style.overflow='';}
 }
 
 function getListaEvolucaoFiltrada() {
