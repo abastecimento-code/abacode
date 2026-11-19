@@ -505,12 +505,12 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .flip-trigger{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:25px;height:25px;margin-left:8px;border:1px solid rgba(255,255,255,.22);border-radius:8px;background:rgba(255,255,255,.08);color:#e7ebf2;font-family:inherit;font-size:15px;font-weight:700;line-height:1;cursor:pointer;vertical-align:middle;transition:background .2s,transform .25s,border-color .2s;}
 .flip-trigger:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.45);transform:rotate(-18deg);}.flip-trigger:focus-visible,.investigacao-opcao:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
 .flip-voltar{width:auto;padding:0 10px;font-size:11px;letter-spacing:.2px;}
-.veiculos-stage{display:grid;perspective:1600px;position:relative;align-items:stretch;}
-.veiculos-face{grid-area:1/1;min-width:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .62s cubic-bezier(.2,.72,.18,1),opacity .35s ease;transform-style:preserve-3d;}
-.lista-face{transform:rotateY(0);opacity:1;pointer-events:auto;}
-.evolucao-face{transform:rotateY(-180deg);opacity:0;pointer-events:none;padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 18px 40px -28px rgba(18,22,29,.4);}
-.veiculos-stage.mostrar-evolucao .lista-face{transform:rotateY(180deg);opacity:0;pointer-events:none;}
-.veiculos-stage.mostrar-evolucao .evolucao-face{transform:rotateY(0);opacity:1;pointer-events:auto;}
+.veiculos-stage{display:grid;position:relative;align-items:start;}
+.veiculos-face{grid-area:1/1;min-width:0;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility 0s linear .28s;will-change:opacity;}
+.lista-face{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .28s ease,visibility 0s;}
+.evolucao-face{padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 10px 28px -24px rgba(18,22,29,.28);}
+.veiculos-stage.mostrar-evolucao .lista-face{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility 0s linear .22s;}
+.veiculos-stage.mostrar-evolucao .evolucao-face{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .3s ease,visibility 0s;}
 .evolucao-face-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;padding-bottom:11px;border-bottom:1px solid var(--line);}
 .evolucao-face-head>div{display:flex;flex-direction:column;gap:3px;}
 .evolucao-face-head strong{font-size:13px;color:var(--tx);}
@@ -2410,6 +2410,10 @@ function fecharDrilldown() {
   document.body.style.overflow = '';
 }
 
+function atualizarFluxoEvolucao() {
+  if (document.getElementById('veiculosStage')?.classList.contains('mostrar-evolucao')) renderEvolucaoVerso();
+  else renderDrill();
+}
 function drillVoltar() {
   if (state.drillNivel === 5) {
     state.drillNivel = 4;
@@ -2426,7 +2430,7 @@ function drillVoltar() {
     state.drillPrefixo = null;
     state.drillMesKey = null;
   }
-  renderDrill();
+  atualizarFluxoEvolucao();
 }
 
 function drillAbrirVeiculo(p) {
@@ -2436,7 +2440,7 @@ function drillAbrirVeiculo(p) {
   state.drillMesKey = meses.length ? meses[meses.length - 1].key : null;
   state.drillSemanaKey = null;
   state.drillDiaKey = null;
-  renderDrill();
+  atualizarFluxoEvolucao();
 }
 
 function drillAbrirMes(k) {
@@ -2444,20 +2448,20 @@ function drillAbrirMes(k) {
   state.drillMesKey = k;
   state.drillSemanaKey = null;
   state.drillDiaKey = null;
-  renderDrill();
+  atualizarFluxoEvolucao();
 }
 
 function drillAbrirSemana(k) {
   state.drillNivel = 4;
   state.drillSemanaKey = k;
   state.drillDiaKey = null;
-  renderDrill();
+  atualizarFluxoEvolucao();
 }
 
 function drillAbrirDia(k) {
   state.drillNivel = 5;
   state.drillDiaKey = k;
-  renderDrill();
+  atualizarFluxoEvolucao();
 }
 
 function renderDrill() {
@@ -2514,9 +2518,21 @@ function alternarEvolucaoVerso(event) {
 function renderEvolucaoVerso() {
   const alvo=document.getElementById('evolucaoVersoConteudo');
   if(!alvo)return;
-  state.drillNivel=1;
-  alvo.innerHTML=renderNivel1();
+  let titulo='Evolução da frota', subtitulo='Selecione um veículo para consultar mês, semana e dia', conteudo='';
+  if(state.drillNivel===1){
+    subtitulo='Selecione um veículo para consultar mês, semana e dia · '+getListaEvolucaoFiltrada().length+' veículos no contrato selecionado';
+    conteudo=renderNivel1();
+  } else {
+    const v=FROTA.find(x=>x.p===state.drillPrefixo);
+    const contexto=v?v.modelo+' · '+v.ano+' · '+CONTRATO_LABEL[v.contrato]:'';
+    if(state.drillNivel===2){titulo='Análise mensal — '+state.drillPrefixo;subtitulo=contexto+' · cada mês tem cálculo próprio';conteudo=renderNivel2(state.drillPrefixo);}
+    else if(state.drillNivel===3){titulo='Análise semanal — '+state.drillPrefixo;subtitulo=contexto+' · '+state.drillMesKey;conteudo=renderNivel3(state.drillPrefixo,state.drillMesKey);}
+    else if(state.drillNivel===4){titulo='Análise diária — '+state.drillPrefixo;subtitulo=contexto+' · '+state.drillSemanaKey;conteudo=renderNivel4(state.drillPrefixo,state.drillSemanaKey);}
+    else {titulo='Abastecimentos — '+state.drillPrefixo;subtitulo='Lançamentos registrados em '+state.drillDiaKey;conteudo=renderNivel5(state.drillPrefixo,state.drillDiaKey);}
+  }
+  alvo.innerHTML=(state.drillNivel>1?'<div class="evolucao-face-head"><div><strong>'+titulo+'</strong><span>'+subtitulo+'</span></div><button type="button" class="flip-trigger flip-voltar" onclick="drillVoltar()" aria-label="Voltar um nível na evolução">← <span>Voltar</span></button></div>':'')+conteudo;
   alvo.querySelector('#selContratoDrill')?.addEventListener('change',e=>{state.drillContrato=e.target.value;renderEvolucaoVerso();});
+  alvo.querySelector('#selMesAnalise')?.addEventListener('change',e=>{state.drillMesKey=e.target.value;renderEvolucaoVerso();});
 }
 function abrirModalInvestigacao() {
   const m=document.getElementById('modalInvestigacao');
