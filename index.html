@@ -112,7 +112,7 @@ td.litros{font-family:var(--f-num);font-variant-numeric:tabular-nums;font-weight
 .pill-spb{background:#e0e8f5;color:#2d4a7c;}
 .pill-res{background:#e8eaf0;color:#4a5568;}
 .pill-rip{background:#f5e6d8;color:#8b4513;}
-.pill-fug{background:#e2f0e6;color:#2d6b3a;}
+ .pill-fug{background:#e2f0e6;color:#2d6b3a;} .pill-man{background:#fce8e6;color:#a33a2b;}
 .pill-status{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;}
 .pill-status::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;}
 .ps-ok{background:var(--green-bg);color:var(--green);} .ps-acima{background:var(--blue-bg);color:var(--blue);}
@@ -571,6 +571,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
           <option value="res">Reserva</option>
           <option value="rip">RIP – Porto do Açu</option>
           <option value="fug">Fugro – Porto do Açu</option>
+          <option value="man">Manutenção</option>
         </select>
       </div>
       <div><span class="lbl">Buscar</span>
@@ -731,11 +732,12 @@ const CONTRATO_LABEL = {
   res: 'Reserva',
   rip: 'RIP – Porto do Açu',
   fug: 'Fugro – Porto do Açu',
+  man: 'Manutenção',
 };
 
 const CONTRATO_PILL = {
   rj: 'pill-rj', esc: 'pill-esc', escm: 'pill-escm', tec: 'pill-tec', mid: 'pill-mid', crc: 'pill-crc',
-  spb: 'pill-spb', res: 'pill-res', rip: 'pill-rip', fug: 'pill-fug',
+  spb: 'pill-spb', res: 'pill-res', rip: 'pill-rip', fug: 'pill-fug', man: 'pill-man',
 };
 
 const EURO_LABEL = { E5: 'EURO V', E6: 'EURO VI' };
@@ -791,7 +793,7 @@ const FROTA = [
   {p:'516', modelo:'Renault/Master MinibusL3', ano:'2026/2027', contrato:'rj', euro:'E6', km:18523, litros:2167.74, custo:15519.43, exp:9.00, abast:40},
   {p:'520', modelo:'Renault/Master MinibusL3', ano:'2025/2025', contrato:'rj', euro:'E6', km:23608, litros:2180.00, custo:15464.99, exp:9.00, abast:37},
   {p:'523', modelo:'Renault/Master MinibusL3', ano:'2024/2025', contrato:'rj', euro:'E6', km:14757, litros:1576.43, custo:11235.72, exp:9.00, abast:31},
-  {p:'527', modelo:'Renault/Master MinibusL3', ano:'2025/2026', contrato:'rj', euro:'E6', km:18392, litros:1563.02, custo:11131.64, exp:9.00, abast:28},
+  {p:'527', modelo:'Renault/Master MinibusL3', ano:'2025/2026', contrato:'man', euro:'E6', km:18392, litros:1563.02, custo:11131.64, exp:9.00, abast:28},
   {p:'531', modelo:'Renault/Master MinibusL3', ano:'2026/2027', contrato:'rj', euro:'E6', km:17878, litros:1719.91, custo:12202.74, exp:9.00, abast:36},
   {p:'532', modelo:'Renault/Master MinibusL3', ano:'2025/2025', contrato:'rj', euro:'E6', km:12102, litros:1286.51, custo:9177.18, exp:9.00, abast:21},
   {p:'542', modelo:'Renault/Master MinibusL3', ano:'2025/2026', contrato:'rj', euro:'E6', km:17086, litros:2048.85, custo:14710.02, exp:9.00, abast:34},
@@ -832,7 +834,7 @@ const FROTA = [
 
   /* ───── CRC (crc) — 2 ───── */
   {p:'222', modelo:'Marcopolo/Volare V8L ON', ano:'2019/2020', contrato:'crc', euro:'E5', km:18254, litros:4481.32, custo:29473.09, exp:5.00, abast:37},
-  {p:'548', modelo:'Renault/Master MinibusL3', ano:'2025/2026', contrato:'crc', euro:'E6', km:23761, litros:2546.81, custo:14633.99, exp:9.00, abast:57},
+  {p:'548', modelo:'Renault/Master MinibusL3', ano:'2025/2026', contrato:'man', euro:'E6', km:23761, litros:2546.81, custo:14633.99, exp:9.00, abast:57},
 
   /* ───── Spoolbase (spb) — 3 ───── */
   {p:'344', modelo:'VW/MPolo Viaggio R', ano:'2021/2022', contrato:'spb', euro:'E5', km:25943, litros:11222.37, custo:70459.16, exp:3.80, abast:70},
