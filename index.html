@@ -2512,7 +2512,7 @@ function alternarEvolucaoVerso(event) {
   document.getElementById('listaVeiculosFace').setAttribute('aria-hidden',String(mostrar));
   document.getElementById('evolucaoVeiculosFace').setAttribute('aria-hidden',String(!mostrar));
   const btn=document.getElementById('btnEvolucaoVerso');
-  if(btn){btn.setAttribute('aria-pressed',String(mostrar));btn.title=mostrar?'Voltar para a listagem':'Mostrar evolução dos veículos';}
+  if(btn){btn.setAttribute('aria-pressed',String(mostrar));btn.title=mostrar?'Voltar para a listagem':'Mostrar evolução dos veículos';const label=btn.querySelector('.toggle-label');if(label)label.textContent=mostrar?'Listagem':'Evolução';const icon=btn.querySelector('.toggle-icon');if(icon)icon.textContent=mostrar?'☷':'▦';}
   if(mostrar){state.drillContrato=state.contrato;state.drillNivel=1;renderEvolucaoVerso();}
 }
 function renderEvolucaoVerso() {
@@ -2565,8 +2565,10 @@ function renderNivel1() {
           <span class="drill-badge-soon" style="margin-left:auto;">dados em breve</span>
         </div>
         <div class="drill-veic-modelo">${v.modelo}</div>
-        <div class="drill-veic-meta"><span>${v.ano}</span><span class="contrato-card-nome">${CONTRATO_LABEL[v.contrato]}</span></div>
-      </div>`;
+        <div class="drill-veic-meta">
+        <span><b>Período:</b> ${dataLabel(semanaInicial)} – ${dataLabel(semanaFinal)}</span>
+        <span><b>${fills.length}</b> abastecimentos · <b>${semanas.length}</b> semanas com registros · EXP ${fmt2(v.exp)} km/L${u&&u.parcial?' · semana parcial':''}</span>
+      </div>
       return;
     }
 
@@ -2599,7 +2601,7 @@ function renderNivel1() {
         <span class="drill-veic-prefixo">${v.p}</span>
         <span class="pill-status ${stAtual.cls}" style="margin-left:auto;font-size:9px;padding:2px 8px;">${stAtual.label}${u&&u.parcial?' · parcial':''}</span>
       </div>
-      <div class="drill-veic-modelo">${v.modelo} · ${v.ano}</div>
+      <div class="drill-veic-modelo" title="${v.modelo} · ${v.ano}">${v.modelo} · ${v.ano}</div>
       ${spark}
       <div class="drill-veic-km">
         <span class="val">${kmLAtual != null ? fmt3safe(kmLAtual) : '—'}<span class="un">km/L recalculado</span></span>
@@ -2699,6 +2701,18 @@ function renderCardSemanaMes(semana, ref, mesKey, parcial=false) {
     <div style="margin-top:8px;text-align:center"><span class="pill-status ${st.cls}" style="font-size:9px">${st.label}</span></div>
   </div>`;
 }
+function renderGraficoAbastecimentosSemanais(semanas) {
+  if(!semanas || !semanas.length) return '';
+  const largura=620, altura=154, esquerda=30, direita=14, topo=18, base=112;
+  const valores=semanas.map(s=>s.fills.length), max=Math.max(1,...valores);
+  const passo=semanas.length>1?(largura-esquerda-direita)/(semanas.length-1):0;
+  const pontos=valores.map((v,i)=>({x:esquerda+i*passo,y:base-(v/max)*(base-topo),v,label:'S'+String(Math.ceil(semanas[i].inicio.getDate()/7)).padStart(2,'0')}));
+  const path=pontos.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+  const labels=pontos.map(p=>'<text class="flow-axis" x="'+p.x.toFixed(1)+'" y="139" text-anchor="middle">'+p.label+'</text><text class="flow-count" x="'+p.x.toFixed(1)+'" y="'+Math.max(11,p.y-9).toFixed(1)+'" text-anchor="middle">'+p.v+'</text>').join('');
+  const dots=pontos.map(p=>'<circle class="flow-dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="3.2"/>').join('');
+  return '<section class="monthly-flow" aria-label="Quantidade de abastecimentos por semana"><div class="monthly-flow-head"><strong>Frequência de abastecimentos</strong><span>Quantidade por semana</span></div><svg viewBox="0 0 '+largura+' '+altura+'" role="img" aria-label="Linha de abastecimentos por semana"><defs><filter id="flowGlow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><line x1="'+esquerda+'" y1="'+base+'" x2="'+(largura-direita)+'" y2="'+base+'" stroke="var(--line)" stroke-width="1"/><path class="flow-line" pathLength="1000" d="'+path+'"/>'+dots+labels+'</svg></section>';
+}
+
 function renderNivel2(p) {
   const v=FROTA.find(x=>x.p===p), fills=fillsAteReferencia(p);
   if(!fills.length) return '<div class="sem-dados" style="padding:40px">Sem dados de abastecimento para este veículo.</div>';
@@ -2723,6 +2737,7 @@ function renderNivel2(p) {
     </div>
     <div class="monthly-history">Histórico disponível: <b>${totalHistorico.kmL!=null?fmt3safe(totalHistorico.kmL)+' km/L':'Dados insuficientes'}</b> · ${meses.length} mês(es) com registros${parcial?' · mês em andamento':''}</div>
   </section>
+  ${renderGraficoAbastecimentosSemanais(semanas)}
   <div class="monthly-weeks-title"><b>Semanas do mês</b><span>Selecione um card para investigar os dias</span></div>
   <div class="drill-grid monthly-weeks-grid">`;
   semanas.forEach(s=>{
