@@ -57,7 +57,7 @@ header .chip b{color:var(--amber);font-weight:700;}
 .side-card-lbl{font-size:8.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--tx2);font-weight:700;margin-top:5px;line-height:1.15;}
 .side-card.repetido{--c:var(--amber-d);} .side-card.rastreador{--c:var(--teal);}
 .side-card.geral{--c:#d99100;} .side-card.escala{--c:var(--blue);}
-.side-card.evolucao{--c:var(--purple);} .side-card.auditoria{--c:#c2410c;}
+.side-card.evolucao{--c:var(--purple);} .side-card.auditoria{--c:#c2410c;} .side-card.investigacao{--c:#8a5bb5;}
 .side-card.anomalia{--c:var(--red);}
 .side-card.vazio{--c:var(--tx3);}
 .side-card.vazio .side-card-val{color:var(--tx3);}
@@ -499,21 +499,72 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .r200-table td{padding:10px 8px;border-bottom:1px solid var(--line2);text-align:center}
 .r200-table .r200-address{text-align:left;white-space:normal;min-width:220px}
 .r200-back{display:none}
+/* ===== EVOLUÇÃO NO VERSO DA LISTAGEM ===== */
+.th-modelo{position:relative;padding-right:34px!important;}
+.th-modelo>span:first-child{display:inline-block;vertical-align:middle;}
+.flip-trigger{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:25px;height:25px;margin-left:8px;border:1px solid rgba(255,255,255,.22);border-radius:8px;background:rgba(255,255,255,.08);color:#e7ebf2;font:700 15px/1 inherit;cursor:pointer;vertical-align:middle;transition:background .2s,transform .25s,border-color .2s;}
+.flip-trigger:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.45);transform:rotate(-18deg);}
+.flip-voltar{width:auto;padding:0 10px;font-size:11px;letter-spacing:.2px;}
+.veiculos-stage{display:grid;perspective:1600px;position:relative;align-items:stretch;}
+.veiculos-face{grid-area:1/1;min-width:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .62s cubic-bezier(.2,.72,.18,1),opacity .35s ease;transform-style:preserve-3d;}
+.lista-face{transform:rotateY(0);opacity:1;pointer-events:auto;}
+.evolucao-face{transform:rotateY(-180deg);opacity:0;pointer-events:none;padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 18px 40px -28px rgba(18,22,29,.4);}
+.veiculos-stage.mostrar-evolucao .lista-face{transform:rotateY(180deg);opacity:0;pointer-events:none;}
+.veiculos-stage.mostrar-evolucao .evolucao-face{transform:rotateY(0);opacity:1;pointer-events:auto;}
+.evolucao-face-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;padding-bottom:11px;border-bottom:1px solid var(--line);}
+.evolucao-face-head>div{display:flex;flex-direction:column;gap:3px;}
+.evolucao-face-head strong{font-size:13px;color:var(--tx);}
+.evolucao-face-head span{font-size:10px;color:var(--tx2);}
+.evolucao-face .flip-trigger{color:var(--tx2);border-color:var(--line);background:var(--surface2);}
+.evolucao-face .flip-trigger:hover{background:var(--surface);}
+.evolucao-face .barra{margin:0 0 12px;}
+.evolucao-face .drill-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
+.drill-veic{border-left:3px solid var(--contrato-cor,var(--line))!important;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}
+.drill-veic:hover{transform:translateY(-2px);box-shadow:0 10px 24px -18px rgba(20,30,45,.45);}
+.drill-veic-meta .contrato-card-nome{color:var(--contrato-cor,var(--tx2));font-weight:700;}
+/* Cores discretas por contrato */
+.contrato-nome{font-weight:750;color:var(--contrato-cor,var(--tx));white-space:nowrap;}
+/* Grade principal: larguras previsíveis e conteúdo alinhado */
+#tabela{table-layout:fixed;min-width:1060px;}
+#tabela th:nth-child(1),#tabela td:nth-child(1){width:7%;}
+#tabela th:nth-child(2),#tabela td:nth-child(2){width:25%;}
+#tabela th:nth-child(3),#tabela td:nth-child(3){width:14%;}
+#tabela th:nth-child(4),#tabela td:nth-child(4){width:9%;}
+#tabela th:nth-child(5),#tabela td:nth-child(5){width:10%;}
+#tabela th:nth-child(6),#tabela td:nth-child(6){width:11%;}
+#tabela th:nth-child(7),#tabela td:nth-child(7){width:7%;}
+#tabela th:nth-child(8),#tabela td:nth-child(8){width:7%;}
+#tabela th:nth-child(9),#tabela td:nth-child(9){width:10%;}
+#tabela td.modelo{overflow:hidden;text-overflow:ellipsis;}
+#tabela td.modelo .modelo-linha{display:flex;align-items:center;gap:5px;min-width:0;white-space:nowrap;overflow:hidden;}
+#tabela td.modelo .modelo-nome{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#tabela td.modelo .ano,#tabela td.modelo .euro-tag{flex:0 0 auto;white-space:nowrap;}
+#tabela td:nth-child(3){overflow:hidden;text-overflow:ellipsis;}
+#tabela td:nth-child(3) .contrato-nome{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;vertical-align:middle;}
+/* Modal de investigação */
+.modal-investigacao{max-width:560px;}
+.investigacao-opcoes{display:grid;gap:8px;}
+.investigacao-opcao{display:grid;grid-template-columns:34px minmax(0,1fr) auto 12px;align-items:center;gap:12px;width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--tx);text-align:left;cursor:pointer;transition:background .18s,border-color .18s,transform .18s;}
+.investigacao-opcao:hover{background:var(--surface2);border-color:var(--accent);transform:translateX(2px);}
+.investigacao-icone{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--surface2);font-size:16px;}
+.investigacao-opcao>span:nth-child(2){display:flex;flex-direction:column;gap:3px;min-width:0;}
+.investigacao-opcao b{font-size:12px;}
+.investigacao-opcao small{font-size:10px;color:var(--tx2);}
+.investigacao-opcao>strong{font:700 14px var(--f-num);color:var(--tx2);}
+.investigacao-seta{font-size:20px;color:var(--tx3);}
+@media(max-width:760px){.evolucao-face .drill-grid{grid-template-columns:1fr 1fr;}.evolucao-face-head{align-items:flex-start}.evolucao-face-head>div span{max-width:220px}}
+@media(max-width:520px){.evolucao-face .drill-grid{grid-template-columns:1fr}.investigacao-opcao{grid-template-columns:30px minmax(0,1fr) auto 8px;gap:8px;padding:11px}.investigacao-opcao small{white-space:normal}}
+
 </style>
 </head>
 <body>
 <div id="bloqueioDados" hidden role="alert" style="max-width:900px;margin:48px auto;padding:24px 28px;background:#fff2dc;border:1px solid #ffcf80;border-left:5px solid #b86b00;border-radius:12px;color:#342b20;font:14px/1.55 system-ui,sans-serif;white-space:pre-wrap;"></div>
 <div class="page">
   <aside class="sidebar">
-    <div class="side-card repetido" onclick="abrirModalRep()">
-      <div class="side-card-icon">🔁</div>
-      <div class="side-card-val" id="cardRepVal">—</div>
-      <div class="side-card-lbl">Grupos no mesmo dia</div>
-    </div>
-    <div class="side-card anomalia" onclick="abrirModalRep('anomalias')">
-      <div class="side-card-icon">⚠️</div>
-      <div class="side-card-val" id="cardAnomVal">—</div>
-      <div class="side-card-lbl">Abastecimentos com sinais</div>
+    <div class="side-card investigacao" onclick="abrirModalInvestigacao()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')abrirModalInvestigacao()">
+      <div class="side-card-icon">🧭</div>
+      <div class="side-card-val" id="cardInvestVal">—</div>
+      <div class="side-card-lbl">Investigação</div>
     </div>
     <div class="side-card rastreador" onclick="abrirModalRast()">
       <div class="side-card-icon">📡</div>
@@ -530,16 +581,8 @@ tfoot td.num.azul { color:#64b5f6!important; }
       <div class="side-card-val" id="cardEscalaVal">—</div>
       <div class="side-card-lbl">Escala</div>
     </div>
-    <div class="side-card evolucao" onclick="abrirDrilldown()">
-      <div class="side-card-icon">📈</div>
-      <div class="side-card-val" id="cardEvolVal">—</div>
-      <div class="side-card-lbl">Evolução</div>
-    </div>
-    <div class="side-card auditoria" onclick="abrirModalAudit()">
-      <div class="side-card-icon">🔍</div>
-      <div class="side-card-val" id="cardAuditVal">—</div>
-      <div class="side-card-lbl">Auditoria</div>
-    </div>
+
+
   </aside>
 
   <main class="conteudo">
@@ -592,12 +635,14 @@ tfoot td.num.azul { color:#64b5f6!important; }
       <span style="margin-left:auto;color:#6b3fc4;font-weight:700;">💡 Clique numa linha para ver a evolução semanal</span>
     </div>
 
-    <div class="tabela-wrap">
-      <table id="tabela">
+    <div class="veiculos-stage" id="veiculosStage">
+      <section class="veiculos-face lista-face" id="listaVeiculosFace" aria-hidden="false">
+       <div class="tabela-wrap">
+        <table id="tabela">
         <thead>
           <tr>
             <th class="sortable" data-sort="prefixo">Prefixo <span class="sort-ind">▲▼</span></th>
-            <th class="sortable" data-sort="modelo">Modelo · Ano · Motor <span class="sort-ind">▲▼</span></th>
+            <th class="sortable th-modelo" data-sort="modelo"><span>Modelo · Ano · Motor</span><button type="button" class="flip-trigger" id="btnEvolucaoVerso" aria-label="Mostrar evolução dos veículos" title="Mostrar evolução dos veículos" aria-pressed="false" onclick="alternarEvolucaoVerso(event)">↻</button><span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="contrato">Contrato <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="km">Km <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="litros">Litros <span class="sort-ind">▲▼</span></th>
@@ -609,7 +654,16 @@ tfoot td.num.azul { color:#64b5f6!important; }
         </thead>
         <tbody id="corpo"></tbody>
         <tfoot id="pe"></tfoot>
-      </table>
+        </table>
+       </div>
+      </section>
+      <section class="veiculos-face evolucao-face" id="evolucaoVeiculosFace" aria-hidden="true">
+        <div class="evolucao-face-head">
+          <div><strong>Evolução da frota</strong><span>Selecione um veículo para consultar mês, semana e dia</span></div>
+          <button type="button" class="flip-trigger flip-voltar" onclick="alternarEvolucaoVerso(event)" aria-label="Voltar para a listagem" title="Voltar para a listagem">↶ <span>Listagem</span></button>
+        </div>
+        <div id="evolucaoVersoConteudo"></div>
+      </section>
     </div>
 
     <footer>
@@ -619,6 +673,23 @@ tfoot td.num.azul { color:#64b5f6!important; }
   </main>
 </div>
 <!-- ═══════════ MODAIS ═══════════ -->
+
+<!-- Modal Investigação -->
+<div class="modal-overlay" id="modalInvestigacao" hidden>
+  <div class="modal modal-investigacao" role="dialog" aria-modal="true" aria-labelledby="tituloInvestigacao">
+    <div class="modal-head">
+      <div><div class="modal-title" id="tituloInvestigacao">Investigação</div><div class="modal-sub">Acesse as ferramentas de conferência e análise</div></div>
+      <button class="modal-x" onclick="fecharModalInvestigacao()" aria-label="Fechar">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="investigacao-opcoes">
+        <button type="button" class="investigacao-opcao" onclick="fecharModalInvestigacao();abrirModalRep('repetidos')"><span class="investigacao-icone">🔁</span><span><b>Grupos no mesmo dia</b><small>Identifica múltiplos abastecimentos na mesma data</small></span><strong id="investRepCount">—</strong><span class="investigacao-seta">›</span></button>
+        <button type="button" class="investigacao-opcao" onclick="fecharModalInvestigacao();abrirModalRep('anomalias')"><span class="investigacao-icone">⚠️</span><span><b>Abastecimentos com sinais</b><small>Registros que merecem conferência</small></span><strong id="investAnomCount">—</strong><span class="investigacao-seta">›</span></button>
+        <button type="button" class="investigacao-opcao" onclick="fecharModalInvestigacao();abrirModalAudit()"><span class="investigacao-icone">🔍</span><span><b>Auditoria</b><small>Conferência entre dados e fontes</small></span><strong id="investAuditCount">—</strong><span class="investigacao-seta">›</span></button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal unificado de ocorrências -->
 <div class="modal-overlay" id="modalRep" hidden>
@@ -738,6 +809,11 @@ const CONTRATO_LABEL = {
 const CONTRATO_PILL = {
   rj: 'pill-rj', esc: 'pill-esc', escm: 'pill-escm', tec: 'pill-tec', mid: 'pill-mid', crc: 'pill-crc',
   spb: 'pill-spb', res: 'pill-res', rip: 'pill-rip', fug: 'pill-fug', man: 'pill-man',
+};
+
+const CONTRATO_COR = {
+  rj:'#65758b', esc:'#b7791f', escm:'#c18b38', tec:'#167d83', mid:'#ad5a86',
+  crc:'#7962a8', spb:'#426b9b', res:'#697386', rip:'#a66b43', fug:'#4f8a68', man:'#b45b54',
 };
 
 const EURO_LABEL = { E5: 'EURO V', E6: 'EURO VI' };
@@ -1653,13 +1729,15 @@ function contarSuspeitos(lista) {
 function renderCards(lista) {
   const cont = contarSuspeitos(lista);
 
-  const cardRep = document.getElementById('cardRepVal');
+  const cardRep = document.getElementById('investRepCount');
   cardRep.textContent = fmt0(cont.repetidos);
-  cardRep.parentElement.classList.toggle('vazio', cont.repetidos === 0);
-
-  const cardAnom = document.getElementById('cardAnomVal');
+  const cardAnom = document.getElementById('investAnomCount');
   cardAnom.textContent = fmt0(cont.anomalias);
-  cardAnom.parentElement.classList.toggle('vazio', cont.anomalias === 0);
+  const cardInvest = document.getElementById('cardInvestVal');
+  cardInvest.textContent = fmt0(cont.repetidos + cont.anomalias);
+  cardInvest.parentElement.classList.toggle('vazio', cont.repetidos + cont.anomalias === 0);
+  const auditCount = getRastreadorFiltrado().filter(r => !r.semRastreador).length;
+  document.getElementById('investAuditCount').textContent = fmt0(auditCount);
 
   const rasts = getRastreadorFiltrado();
   const cardRast = document.getElementById('cardRastVal');
@@ -1675,12 +1753,7 @@ function renderCards(lista) {
   cardEsc.textContent = fmt0(escalas.length);
   cardEsc.parentElement.classList.toggle('vazio', escalas.length === 0);
 
-  const cardEvol = document.getElementById('cardEvolVal');
-  cardEvol.textContent = fmt0(lista.length);
-
-  const comRast = getRastreadorFiltrado().filter(r => !r.semRastreador).length;
-  const cardAudit = document.getElementById('cardAuditVal');
-  cardAudit.textContent = fmt0(comRast);
+  if (document.getElementById('veiculosStage')?.classList.contains('mostrar-evolucao')) renderEvolucaoVerso();
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1733,6 +1806,7 @@ function render() {
   if (lista.length === 0) {
     tbody.innerHTML = '<tr><td colspan="9" class="sem-dados">Nenhum veículo encontrado com os filtros atuais.</td></tr>';
     renderCards([]);
+    if (document.getElementById('veiculosStage')?.classList.contains('mostrar-evolucao')) renderEvolucaoVerso();
     return;
   }
 
@@ -1761,8 +1835,8 @@ function render() {
     tr.classList.add('clicavel-linha');
     tr.addEventListener('click', () => abrirDrilldown(v.p));
     tr.innerHTML = `<td><strong>${v.p}</strong></td>
-      <td class="modelo"><b>${v.modelo}</b> · <span class="ano">${v.ano}</span> · <span class="euro-tag">${(EURO_LABEL[v.euro] || (v.euro === 'ND' ? 'Não informado' : '—'))}</span></td>
-      <td><span class="pill ${CONTRATO_PILL[v.contrato]}">${CONTRATO_LABEL[v.contrato]}</span></td>
+      <td class="modelo"><span class="modelo-linha"><b class="modelo-nome">${v.modelo}</b><span class="ano">${v.ano}</span><span class="euro-tag">${(EURO_LABEL[v.euro] || (v.euro === 'ND' ? 'Não informado' : '—'))}</span></span></td>
+      <td><span class="contrato-nome" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}">${CONTRATO_LABEL[v.contrato]}</span></td>
       <td class="num">${v._km != null ? fmtKmNum(v._km) : '—'}</td>
       <td class="litros">${v._litros != null ? fmtL(v._litros) : '—'}</td>
       <td class="num ${realCls}" title="${v._ultimaSemana ? 'Período: ' + v._ultimaSemana.label + (v._ultimaSemana.parcial ? ' · parcial até 29/10/2026' : '') : 'Sem semana com abastecimento até 29/10/2026'}">${v._real != null ? fmt3safe(v._real) : '—'}</td>
@@ -2425,6 +2499,34 @@ function renderDrill() {
   }
 }
 
+function alternarEvolucaoVerso(event) {
+  if (event) event.stopPropagation();
+  const stage=document.getElementById('veiculosStage');
+  if(!stage)return;
+  const mostrar=!stage.classList.contains('mostrar-evolucao');
+  stage.classList.toggle('mostrar-evolucao',mostrar);
+  document.getElementById('listaVeiculosFace').setAttribute('aria-hidden',String(mostrar));
+  document.getElementById('evolucaoVeiculosFace').setAttribute('aria-hidden',String(!mostrar));
+  const btn=document.getElementById('btnEvolucaoVerso');
+  if(btn){btn.setAttribute('aria-pressed',String(mostrar));btn.title=mostrar?'Voltar para a listagem':'Mostrar evolução dos veículos';}
+  if(mostrar){state.drillContrato=state.contrato;state.drillNivel=1;renderEvolucaoVerso();}
+}
+function renderEvolucaoVerso() {
+  const alvo=document.getElementById('evolucaoVersoConteudo');
+  if(!alvo)return;
+  state.drillNivel=1;
+  alvo.innerHTML=renderNivel1();
+  alvo.querySelector('#selContratoDrill')?.addEventListener('change',e=>{state.drillContrato=e.target.value;renderEvolucaoVerso();});
+}
+function abrirModalInvestigacao() {
+  const m=document.getElementById('modalInvestigacao');
+  if(m)m.hidden=false;
+}
+function fecharModalInvestigacao() {
+  const m=document.getElementById('modalInvestigacao');
+  if(m)m.hidden=true;
+}
+
 function getListaEvolucaoFiltrada() {
   const q = state.busca.trim().toLowerCase();
   return FROTA.filter(v => state.drillContrato === 'todos' || v.contrato === state.drillContrato)
@@ -2441,13 +2543,13 @@ function renderNivel1() {
     const hasData = fills.length > 0;
 
     if (!hasData) {
-      html += `<div class="drill-veic drill-vazio" onclick="drillAbrirVeiculo('${v.p}')">
+      html += `<div class="drill-veic drill-vazio" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}" onclick="drillAbrirVeiculo('${v.p}')">
         <div class="drill-veic-head">
           <span class="drill-veic-prefixo">${v.p}</span>
           <span class="drill-badge-soon" style="margin-left:auto;">dados em breve</span>
         </div>
         <div class="drill-veic-modelo">${v.modelo}</div>
-        <div class="drill-veic-meta"><span>${v.ano}</span><span>${CONTRATO_LABEL[v.contrato]}</span></div>
+        <div class="drill-veic-meta"><span>${v.ano}</span><span class="contrato-card-nome">${CONTRATO_LABEL[v.contrato]}</span></div>
       </div>`;
       return;
     }
@@ -2476,7 +2578,7 @@ function renderNivel1() {
 
     const stAtual = statusDe(v, kmLAtual);
 
-    html += `<div class="drill-veic" onclick="drillAbrirVeiculo('${v.p}')">
+    html += `<div class="drill-veic" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}" onclick="drillAbrirVeiculo('${v.p}')">
       <div class="drill-veic-head">
         <span class="drill-veic-prefixo">${v.p}</span>
         <span class="pill-status ${stAtual.cls}" style="margin-left:auto;font-size:9px;padding:2px 8px;">${stAtual.label}${u&&u.parcial?' · parcial':''}</span>
