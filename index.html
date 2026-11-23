@@ -634,11 +634,12 @@ main.conteudo > header.fiel-header .header-frame-runner{
 }
 main.conteudo > header.fiel-header .header-frame-runner path{
   fill:none;stroke:url(#header-frame-glint-gradient);
-  stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;
+  stroke-width:.82;stroke-linecap:round;stroke-linejoin:round;
   vector-effect:non-scaling-stroke;pathLength:1000;
-  stroke-dasharray:34 966;stroke-dashoffset:0;
-  filter:drop-shadow(0 0 1.4px rgba(255,35,55,.3));
-  animation:header-frame-path-travel 3.2s linear infinite;
+  stroke-dasharray:13 987;stroke-dashoffset:0;
+  filter:drop-shadow(0 0 2px rgba(255,35,55,.58))
+         drop-shadow(0 0 4px rgba(255,35,55,.2));
+  animation:header-frame-path-travel 1.8s linear infinite;
 }
 @keyframes header-frame-path-travel{
   from{stroke-dashoffset:0}
@@ -738,9 +739,9 @@ main.conteudo > header.fiel-header .header-wave path:not(.wave-glow){
       <svg class="header-frame-runner" viewBox="0 0 1200 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <defs><linearGradient id="header-frame-glint-gradient" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="#ff263f" stop-opacity="0"/>
-          <stop offset=".42" stop-color="#ff344c" stop-opacity=".18"/>
-          <stop offset=".5" stop-color="#ff5265" stop-opacity=".78"/>
-          <stop offset=".58" stop-color="#ff344c" stop-opacity=".18"/>
+          <stop offset=".42" stop-color="#ff344c" stop-opacity=".28"/>
+          <stop offset=".5" stop-color="#ff6475" stop-opacity=".95"/>
+          <stop offset=".58" stop-color="#ff344c" stop-opacity=".28"/>
           <stop offset="1" stop-color="#ff263f" stop-opacity="0"/>
         </linearGradient></defs>
         <path d="M15 1.5 H1185 Q1198.5 1.5 1198.5 15 V165 Q1198.5 178.5 1185 178.5 H15 Q1.5 178.5 1.5 165 V15 Q1.5 1.5 15 1.5 Z"/>
