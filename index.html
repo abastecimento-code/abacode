@@ -684,6 +684,20 @@ main.conteudo > header.fiel-header .header-wave path.wave-gray:not(.wave-glow){
   main.conteudo > header.fiel-header::after{animation:none!important}
 }
 
+
+/* Marca Fiel Turismo discreta no canto inferior direito */
+.fiel-corner-mark{
+  position:fixed;right:20px;bottom:18px;z-index:2;
+  width:46px;height:48px;object-fit:contain;
+  opacity:.22;filter:drop-shadow(0 2px 5px rgba(0,0,0,.35));
+  pointer-events:none;user-select:none;
+}
+@media(max-width:700px){
+  .fiel-corner-mark{right:12px;bottom:12px;width:36px;height:38px;opacity:.18}
+}
+@media(prefers-reduced-motion:reduce){
+  .fiel-corner-mark{transition:none}
+}
 </style>
 </head>
 <body>
@@ -3542,5 +3556,6 @@ Object.assign(window, {
 });
 Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FROTA });
 </script>
+<img class="fiel-corner-mark" src="./assets/fiel-turismo-bomba-icon.webp" alt="" aria-hidden="true" loading="eager" decoding="async">
 </body>
 </html>
