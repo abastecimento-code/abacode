@@ -664,6 +664,13 @@ main.conteudo > header.fiel-header .header-wave .wave-glow{
 main.conteudo > header.fiel-header .header-wave path:not(.wave-glow){
   filter:drop-shadow(0 0 2px rgba(255,42,64,.62));
 }
+/* Teste: segunda linha em cinza frio, mantendo movimento e intensidade */
+main.conteudo > header.fiel-header .header-wave path.wave-gray{
+  stroke:#aeb6c2;
+}
+main.conteudo > header.fiel-header .header-wave path.wave-gray:not(.wave-glow){
+  filter:drop-shadow(0 0 2px rgba(174,182,194,.58));
+}
 @media(max-width:820px){
   main.conteudo > header.fiel-header{min-height:116px!important;padding:8px 16px!important}
   main.conteudo > header.fiel-header .header-logo{width:clamp(270px,48vw,400px)!important;height:100px!important;max-height:100px!important;max-width:72%!important}
@@ -720,12 +727,12 @@ main.conteudo > header.fiel-header .header-wave path:not(.wave-glow){
             keyTimes="0;0.5;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"
             values="M0 92 C170 28 320 160 510 94 S850 30 1200 16;M0 92 C170 148 320 24 510 106 S850 158 1200 16;M0 92 C170 28 320 160 510 94 S850 30 1200 16"/>
         </path>
-        <path class="wave-glow" d="M0 148 C180 90 340 178 550 132 S910 96 1200 72">
+        <path class="wave-glow wave-gray" d="M0 148 C180 90 340 178 550 132 S910 96 1200 72">
           <animate attributeName="d" dur="13s" repeatCount="indefinite" calcMode="spline"
             keyTimes="0;0.5;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"
             values="M0 148 C180 90 340 178 550 132 S910 96 1200 72;M0 148 C180 174 340 72 550 144 S910 164 1200 72;M0 148 C180 90 340 178 550 132 S910 96 1200 72"/>
         </path>
-        <path d="M0 148 C180 90 340 178 550 132 S910 96 1200 72">
+        <path class="wave-gray" d="M0 148 C180 90 340 178 550 132 S910 96 1200 72">
           <animate attributeName="d" dur="13s" repeatCount="indefinite" calcMode="spline"
             keyTimes="0;0.5;1" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"
             values="M0 148 C180 90 340 178 550 132 S910 96 1200 72;M0 148 C180 174 340 72 550 144 S910 164 1200 72;M0 148 C180 90 340 178 550 132 S910 96 1200 72"/>
