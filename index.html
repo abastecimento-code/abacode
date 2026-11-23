@@ -736,6 +736,31 @@ main.conteudo > header.fiel-header > .header-logo{
   }
 }
 
+
+/* Correção definitiva: arte horizontal centralizada no cabeçalho */
+main.conteudo > header.fiel-header{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  position:relative!important;
+}
+main.conteudo > header.fiel-header > .header-logo{
+  position:absolute!important;left:50%!important;top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  display:block!important;visibility:visible!important;opacity:1!important;
+  z-index:4!important;flex:none!important;
+  width:min(773px,calc(100% - 48px))!important;
+  height:auto!important;max-width:calc(100% - 48px)!important;
+  max-height:calc(100% - 20px)!important;
+  object-fit:contain!important;object-position:center center!important;
+  margin:0!important;padding:0!important;border:0!important;
+  background:transparent!important;
+}
+@media(max-width:700px){
+  main.conteudo > header.fiel-header > .header-logo{
+    width:calc(100% - 28px)!important;max-width:calc(100% - 28px)!important;
+    max-height:76px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -791,7 +816,7 @@ main.conteudo > header.fiel-header > .header-logo{
         </path>
       </svg>
       
-            <img class="header-logo" src="./assets/fiel-turismo-wordmark.png?v=3" alt="FIEL TURISMO — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
+            <img class="header-logo" src="./assets/fiel-analise-abastecimento.png?v=1" alt="FIEL TURISMO — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
       
     </header>
 
