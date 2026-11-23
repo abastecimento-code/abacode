@@ -626,31 +626,35 @@ main.conteudo > header.fiel-header::before{
     radial-gradient(ellipse 34% 110% at 0% 0%,rgba(205,24,43,.075),transparent 68%),
     linear-gradient(180deg,rgba(255,255,255,.025),transparent 48%,rgba(0,0,0,.2));
 }
-/* Reflexo vermelho percorre o perímetro inteiro em uma única volta contínua */
-main.conteudo > header.fiel-header::after{content:none!important}
-main.conteudo > header.fiel-header .header-frame-runner{
-  position:absolute;inset:0;z-index:5;width:100%;height:100%;
-  overflow:visible;pointer-events:none;
+/* Um único reflexo vermelho curto gira sobre a moldura existente */
+main.conteudo > header.fiel-header::after{
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
+  padding:1.2px;border-radius:inherit;
+  background:conic-gradient(from 0deg,
+    transparent 0deg 326deg,
+    rgba(255,35,55,.06) 336deg,
+    rgba(255,35,55,.24) 345deg,
+    rgba(255,65,78,.78) 352deg,
+    rgba(255,35,55,.18) 357deg,
+    transparent 360deg);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  filter:drop-shadow(0 0 2px rgba(255,28,48,.24));
+  transform:rotate(0deg);transform-origin:center;
+  animation:header-frame-glint 3.1s linear infinite;
 }
-main.conteudo > header.fiel-header .header-frame-runner path{
-  fill:none;stroke:rgba(255,48,67,.82);stroke-width:1.15;
-  stroke-linecap:round;vector-effect:non-scaling-stroke;pathLength:1000;
-  stroke-dasharray:28 972;stroke-dashoffset:0;
-  filter:drop-shadow(0 0 1.6px rgba(255,30,52,.62));
-  animation:header-frame-lap 9.5s linear infinite;
+@keyframes header-frame-glint{
+  to{transform:rotate(360deg)}
 }
-@keyframes header-frame-lap{
-  from{stroke-dashoffset:0}
-  to{stroke-dashoffset:-1000}
-}
+main.conteudo > header.fiel-header .header-frame-runner{display:none!important}
 main.conteudo > header.fiel-header .header-logo{
   position:relative!important;z-index:10!important;display:block!important;
   visibility:visible!important;opacity:1!important;flex:0 0 auto!important;
-  width:clamp(320px,33vw,420px)!important;max-width:58%!important;
-  height:98px!important;max-height:calc(100% - 12px)!important;
+  width:clamp(300px,36vw,460px)!important;max-width:54%!important;
+  height:112px!important;max-height:calc(100% - 10px)!important;
   object-fit:contain!important;object-position:left center!important;
-  background:#222!important;padding:0!important;border:0!important;
-  filter:drop-shadow(0 3px 7px rgba(0,0,0,.28));
+  background:transparent!important;padding:0!important;border:0!important;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.22));
 }
 main.conteudo > header.fiel-header .header-wave{
   position:absolute;z-index:2;inset:0;width:100%;height:100%;
@@ -669,7 +673,7 @@ main.conteudo > header.fiel-header .header-wave path:not(.wave-glow){
 }
 @media(max-width:820px){
   main.conteudo > header.fiel-header{min-height:116px!important;padding:8px 16px!important}
-  main.conteudo > header.fiel-header .header-logo{width:clamp(280px,48vw,390px)!important;height:90px!important;max-height:90px!important;max-width:72%!important}
+  main.conteudo > header.fiel-header .header-logo{width:clamp(270px,48vw,400px)!important;height:100px!important;max-height:100px!important;max-width:72%!important}
 }
 @media(max-width:560px){
   main.conteudo > header.fiel-header{min-height:100px!important;padding:8px 12px!important;border-radius:12px!important}
@@ -734,10 +738,7 @@ main.conteudo > header.fiel-header .header-wave path:not(.wave-glow){
             values="M0 148 C180 90 340 178 550 132 S910 96 1200 72;M0 148 C180 174 340 72 550 144 S910 164 1200 72;M0 148 C180 90 340 178 550 132 S910 96 1200 72"/>
         </path>
       </svg>
-      <svg class="header-frame-runner" viewBox="0 0 1200 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M15 1.5 H1185 Q1198.5 1.5 1198.5 15 V165 Q1198.5 178.5 1185 178.5 H15 Q1.5 178.5 1.5 165 V15 Q1.5 1.5 15 1.5 Z"/>
-      </svg>
-      <img class="header-logo" src="./assets/fiel-turismo-logo.webp?v=4" alt="Fiel Turismo — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
+            <img class="header-logo" src="./assets/fiel-turismo-logo.webp?v=5" alt="Fiel Turismo — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
     </header>
 
     <div class="barra">
