@@ -720,6 +720,22 @@ main.conteudo > header.fiel-header .header-brand-subtitle{
   }
 }
 
+
+/* Marca FIEL TURISMO substituída pela arte integral enviada */
+main.conteudo > header.fiel-header > .header-logo{
+  position:relative!important;z-index:10!important;display:block!important;
+  flex:0 1 auto!important;width:clamp(320px,42vw,520px)!important;
+  max-width:80%!important;height:auto!important;max-height:104px!important;
+  object-fit:contain!important;object-position:left center!important;
+  visibility:visible!important;opacity:1!important;
+  margin:0!important;padding:0!important;border:0!important;background:transparent!important;
+}
+@media(max-width:700px){
+  main.conteudo > header.fiel-header > .header-logo{
+    width:min(88vw,390px)!important;max-width:100%!important;max-height:76px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -775,10 +791,7 @@ main.conteudo > header.fiel-header .header-brand-subtitle{
         </path>
       </svg>
       
-            <div class="header-brand-stack">
-        <img class="header-logo" src="./assets/fiel-logo-header.webp?v=2" alt="FIEL" loading="eager" fetchpriority="high" decoding="async">
-        <div class="header-brand-subtitle">ANÁLISE DE ABASTECIMENTO</div>
-      </div>
+            <img class="header-logo" src="./assets/fiel-turismo-wordmark.webp?v=1" alt="FIEL TURISMO — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
       
     </header>
 
