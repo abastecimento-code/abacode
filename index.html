@@ -761,6 +761,11 @@ main.conteudo > header.fiel-header > .header-logo{
   }
 }
 
+
+/* Centralização final da marca FIEL — regra única de prioridade máxima */
+main.conteudo > header.fiel-header{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+main.conteudo > header.fiel-header > img.header-logo{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;display:block!important;width:min(773px,calc(100% - 48px))!important;height:auto!important;max-width:calc(100% - 48px)!important;max-height:calc(100% - 20px)!important;object-fit:contain!important;object-position:center center!important;margin:0!important;z-index:4!important;}
+@media(max-width:700px){main.conteudo > header.fiel-header > img.header-logo{width:calc(100% - 28px)!important;max-width:calc(100% - 28px)!important;max-height:76px!important}}
 </style>
 </head>
 <body>
@@ -816,7 +821,7 @@ main.conteudo > header.fiel-header > .header-logo{
         </path>
       </svg>
       
-            <img class="header-logo" src="./assets/fiel-analise-abastecimento.png?v=1" alt="FIEL TURISMO — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
+            <img class="header-logo" src="./assets/fiel-analise-abastecimento.png?v=2" alt="FIEL TURISMO — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
       
     </header>
 
