@@ -607,14 +607,13 @@ tfoot td.num.azul { color:#64b5f6!important; }
 @media(max-width:520px){.drill-veic-periodo{grid-template-columns:minmax(0,1fr) auto}.drill-veic-periodo b{font-size:10px}}
 
 
-/* ===== CABEÇALHO FIEL TURISMO — identidade e luz ambiente ===== */
+/* ===== CABEÇALHO FIEL TURISMO — luz ambiente sutil ===== */
 main.conteudo > header.fiel-header{
   position:relative!important;isolation:isolate;overflow:hidden!important;
   min-height:132px!important;padding:8px 22px!important;
   display:flex!important;align-items:center!important;justify-content:flex-start!important;
-  flex-wrap:nowrap!important;gap:0!important;
-  color:#fff!important;
-  background:linear-gradient(112deg,#07090c 0%,#090a0d 58%,#16090d 100%)!important;
+  flex-wrap:nowrap!important;gap:0!important;color:#fff!important;
+  background:linear-gradient(112deg,#07090c 0%,#090a0d 58%,#12090c 100%)!important;
   border:1px solid rgba(255,255,255,.12)!important;
   border-bottom:3px solid #ef233c!important;border-radius:14px!important;
   box-shadow:0 12px 30px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.045)!important;
@@ -622,17 +621,17 @@ main.conteudo > header.fiel-header{
 main.conteudo > header.fiel-header::before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 48% 125% at 100% 0%,rgba(190,12,34,.30),transparent 72%),
-    radial-gradient(ellipse 38% 120% at 0% 0%,rgba(225,28,49,.10),transparent 68%),
-    linear-gradient(180deg,rgba(255,255,255,.025),transparent 48%,rgba(0,0,0,.25));
+    radial-gradient(ellipse 44% 110% at 100% 0%,rgba(170,12,32,.22),transparent 72%),
+    radial-gradient(ellipse 34% 110% at 0% 0%,rgba(205,24,43,.075),transparent 68%),
+    linear-gradient(180deg,rgba(255,255,255,.02),transparent 48%,rgba(0,0,0,.2));
 }
 main.conteudo > header.fiel-header::after{
   content:"";position:absolute;z-index:1;pointer-events:none;
   left:34%;right:-5%;bottom:8px;height:78%;
-  border:1px solid transparent;border-bottom-color:rgba(255,43,65,.48);
+  border:1px solid transparent;border-bottom-color:rgba(255,43,65,.32);
   border-radius:0 0 55% 45%;transform:rotate(-6deg);
-  box-shadow:0 9px 18px -16px rgba(255,32,54,.9);
-  animation:header-wave-drift 16s ease-in-out infinite alternate;
+  box-shadow:0 9px 18px -16px rgba(255,32,54,.58);
+  animation:header-line-breathe 18s ease-in-out infinite;
 }
 main.conteudo > header.fiel-header .header-logo{
   position:relative;z-index:3;display:block;flex:0 1 auto;
@@ -642,23 +641,24 @@ main.conteudo > header.fiel-header .header-logo{
 }
 main.conteudo > header.fiel-header .header-wave{
   position:absolute;z-index:1;right:0;bottom:0;width:76%;height:100%;
-  overflow:visible;pointer-events:none;opacity:.72;
+  overflow:visible;pointer-events:none;opacity:.52;
 }
 main.conteudo > header.fiel-header .header-wave path{
-  fill:none;stroke:#ff263f;stroke-width:1.7;vector-effect:non-scaling-stroke;
-  stroke-dasharray:10 8;animation:header-wave-flow 30s linear infinite;
+  fill:none;stroke:#f52b43;stroke-width:1.35;vector-effect:non-scaling-stroke;
+  stroke-linecap:round;stroke-linejoin:round;
+  animation:header-line-breathe 20s ease-in-out infinite;
 }
 main.conteudo > header.fiel-header .header-wave .wave-glow{
-  stroke-width:5;opacity:.22;filter:blur(3px);stroke-dasharray:none;animation:none;
+  stroke-width:4;opacity:.13;filter:blur(3px);animation:header-glow-breathe 20s ease-in-out infinite;
 }
-main.conteudo > header.fiel-header .header-dots{
-  position:absolute;z-index:1;right:0;top:0;width:30%;height:100%;
-  pointer-events:none;background-image:radial-gradient(rgba(255,45,65,.23) .8px,transparent .95px);
-  background-size:11px 11px;mask-image:linear-gradient(270deg,#000 0%,transparent 100%);
-  opacity:.4;
+@keyframes header-line-breathe{
+  0%,100%{opacity:.34}
+  50%{opacity:.52}
 }
-@keyframes header-wave-flow{to{stroke-dashoffset:-360px}}
-@keyframes header-wave-drift{from{transform:translateY(0) rotate(-6deg)}to{transform:translateY(-5px) rotate(-5deg)}}
+@keyframes header-glow-breathe{
+  0%,100%{opacity:.10}
+  50%{opacity:.18}
+}
 @media(max-width:820px){
   main.conteudo > header.fiel-header{min-height:116px!important;padding:8px 16px!important}
   main.conteudo > header.fiel-header .header-logo{width:clamp(250px,48vw,410px);max-height:100px;max-width:72%}
@@ -667,8 +667,7 @@ main.conteudo > header.fiel-header .header-dots{
 @media(max-width:560px){
   main.conteudo > header.fiel-header{min-height:100px!important;padding:8px 12px!important;border-radius:12px!important}
   main.conteudo > header.fiel-header .header-logo{width:min(78vw,340px);max-width:100%;max-height:82px}
-  main.conteudo > header.fiel-header .header-wave{width:58%;opacity:.5}
-  main.conteudo > header.fiel-header .header-dots{width:24%;opacity:.26}
+  main.conteudo > header.fiel-header .header-wave{width:58%;opacity:.38}
 }
 @media(prefers-reduced-motion:reduce){
   main.conteudo > header.fiel-header::after,
@@ -707,7 +706,6 @@ main.conteudo > header.fiel-header .header-dots{
 
   <main class="conteudo">
     <header class="fiel-header" aria-label="Fiel Turismo — Análise de Abastecimento">
-      <span class="header-dots" aria-hidden="true"></span>
       <svg class="header-wave" viewBox="0 0 1200 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path class="wave-glow" d="M0 145 C210 110 380 164 590 132 S930 74 1200 12"/>
         <path d="M0 145 C210 110 380 164 590 132 S930 74 1200 12"/>
