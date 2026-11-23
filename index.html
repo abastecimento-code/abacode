@@ -685,18 +685,41 @@ main.conteudo > header.fiel-header .header-wave path.wave-gray:not(.wave-glow){
 }
 
 
-/* Ícone secundário integrado ao canto inferior direito do cabeçalho */
-main.conteudo > header.fiel-header .fiel-corner-mark{
-  position:absolute;right:17px;bottom:13px;z-index:3;
-  display:block;width:27px;height:29px;object-fit:contain;
-  opacity:.34;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35));
-  pointer-events:none;user-select:none;
+
+
+/* Identidade visual FIEL: logotipo e assinatura no cabeçalho */
+main.conteudo > header.fiel-header .header-brand-stack{
+  position:relative!important;z-index:10!important;
+  display:flex!important;flex:0 1 390px!important;flex-direction:column!important;
+  align-items:flex-start!important;justify-content:center!important;
+  width:clamp(230px,34vw,390px)!important;max-width:78%!important;
+  min-width:0!important;gap:3px!important;
+}
+main.conteudo > header.fiel-header .header-brand-stack .header-logo{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  width:100%!important;height:auto!important;max-width:100%!important;
+  max-height:88px!important;object-fit:contain!important;object-position:left center!important;
+  padding:0!important;margin:0!important;border:0!important;background:transparent!important;
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.22));
+}
+main.conteudo > header.fiel-header .header-brand-subtitle{
+  display:block!important;width:100%!important;
+  color:rgba(255,255,255,.9)!important;
+  font:600 10px/1.25 Arial,Helvetica,sans-serif!important;
+  letter-spacing:.29em!important;text-align:left!important;
+  white-space:nowrap!important;padding-left:2px!important;
+  text-shadow:0 1px 3px rgba(0,0,0,.45);
 }
 @media(max-width:700px){
-  main.conteudo > header.fiel-header .fiel-corner-mark{
-    right:10px;bottom:8px;width:22px;height:24px;opacity:.3;
+  main.conteudo > header.fiel-header .header-brand-stack{
+    width:min(78vw,310px)!important;max-width:100%!important;flex-basis:auto!important;
+  }
+  main.conteudo > header.fiel-header .header-brand-stack .header-logo{max-height:66px!important}
+  main.conteudo > header.fiel-header .header-brand-subtitle{
+    font-size:8px!important;letter-spacing:.2em!important;
   }
 }
+
 </style>
 </head>
 <body>
@@ -752,8 +775,11 @@ main.conteudo > header.fiel-header .fiel-corner-mark{
         </path>
       </svg>
       
-            <img class="header-logo" src="./assets/fiel-turismo-logo.png?v=1" alt="Fiel Turismo — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
-      <img class="fiel-corner-mark" src="./assets/fiel-turismo-bomba-icon.webp" alt="" aria-hidden="true" loading="eager" decoding="async">
+            <div class="header-brand-stack">
+        <img class="header-logo" src="./assets/fiel-logo-header.webp?v=2" alt="FIEL" loading="eager" fetchpriority="high" decoding="async">
+        <div class="header-brand-subtitle">ANÁLISE DE ABASTECIMENTO</div>
+      </div>
+      
     </header>
 
     <div class="barra">
