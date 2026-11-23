@@ -685,19 +685,17 @@ main.conteudo > header.fiel-header .header-wave path.wave-gray:not(.wave-glow){
 }
 
 
-/* Marca Fiel Turismo discreta no canto inferior direito */
-.fiel-corner-mark{
-  position:fixed;right:24px;bottom:22px;z-index:10000;
-  display:block;width:72px;height:76px;object-fit:contain;
-  opacity:.62;filter:drop-shadow(0 2px 7px rgba(0,0,0,.42))
-                  drop-shadow(0 0 5px rgba(220,35,52,.16));
+/* Ícone secundário integrado ao canto inferior direito do cabeçalho */
+main.conteudo > header.fiel-header .fiel-corner-mark{
+  position:absolute;right:17px;bottom:13px;z-index:3;
+  display:block;width:27px;height:29px;object-fit:contain;
+  opacity:.34;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35));
   pointer-events:none;user-select:none;
 }
 @media(max-width:700px){
-  .fiel-corner-mark{right:14px;bottom:14px;width:54px;height:58px;opacity:.52}
-}
-@media(prefers-reduced-motion:reduce){
-  .fiel-corner-mark{transition:none}
+  main.conteudo > header.fiel-header .fiel-corner-mark{
+    right:10px;bottom:8px;width:22px;height:24px;opacity:.3;
+  }
 }
 </style>
 </head>
@@ -755,6 +753,7 @@ main.conteudo > header.fiel-header .header-wave path.wave-gray:not(.wave-glow){
       </svg>
       
             <img class="header-logo" src="./assets/fiel-turismo-logo.png?v=1" alt="Fiel Turismo — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
+      <img class="fiel-corner-mark" src="./assets/fiel-turismo-bomba-icon.webp" alt="" aria-hidden="true" loading="eager" decoding="async">
     </header>
 
     <div class="barra">
@@ -3557,6 +3556,6 @@ Object.assign(window, {
 });
 Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FROTA });
 </script>
-<img class="fiel-corner-mark" src="./assets/fiel-turismo-bomba-icon.webp" alt="" aria-hidden="true" loading="eager" decoding="async">
+
 </body>
 </html>
