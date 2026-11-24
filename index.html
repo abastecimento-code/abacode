@@ -767,38 +767,51 @@ main.conteudo > header.fiel-header{position:relative!important;display:flex!impo
 main.conteudo > header.fiel-header > img.header-logo{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;display:block!important;width:min(773px,calc(100% - 48px))!important;height:auto!important;max-width:calc(100% - 48px)!important;max-height:calc(100% - 20px)!important;object-fit:contain!important;object-position:center center!important;margin:0!important;z-index:4!important;}
 @media(max-width:700px){main.conteudo > header.fiel-header > img.header-logo{width:calc(100% - 28px)!important;max-width:calc(100% - 28px)!important;max-height:76px!important}}
 
-/* Identidade tipográfica do cabeçalho — substitui integralmente a logo em imagem */
-main.conteudo > header.fiel-header{
-  display:flex!important;align-items:center!important;justify-content:center!important;
-  position:relative!important;
-}
-main.conteudo > header.fiel-header .header-text-brand{
+/* Componente glitch do cabeçalho — isolado do restante do painel */
+main.conteudo > header.fiel-header .header-glitch{
   position:absolute!important;left:50%!important;top:50%!important;
-  transform:translate(-50%,-50%)!important;z-index:10!important;
-  display:flex!important;flex-direction:column!important;align-items:center!important;
-  justify-content:center!important;gap:6px!important;
-  width:calc(100% - 32px)!important;max-width:100%!important;
+  transform:translate(-50%,-50%)!important;z-index:4!important;
+  width:calc(100% - 36px)!important;max-width:100%!important;
+  display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;
+  gap:clamp(5px, .8vh, 9px)!important;
   margin:0!important;padding:0!important;text-align:center!important;
-  pointer-events:none!important;
+  pointer-events:none!important;isolation:isolate;
+  font-family:"Segoe UI",system-ui,sans-serif!important;
 }
-main.conteudo > header.fiel-header .header-text-title{
-  color:#D8DCE2!important;
-  font:600 clamp(16px,1.55vw,20px)/1.2 "Segoe UI", "Helvetica Neue", Arial, sans-serif!important;
-  letter-spacing:.22em!important;
-  white-space:nowrap!important;text-transform:uppercase!important;
-  text-shadow:0 1px 4px rgba(0,0,0,.45)!important;
+main.conteudo > header.fiel-header .glitch-titulo{
+  position:relative;display:block;max-width:100%;
+  color:#fff;font-size:clamp(17px,2.05vw,27px);
+  line-height:1.12;font-weight:900;letter-spacing:.105em;
+  white-space:nowrap;text-transform:uppercase;
+  text-shadow:0 1px 7px rgba(255,255,255,.12);
+  will-change:transform;backface-visibility:hidden;transform:translateZ(0);
 }
-main.conteudo > header.fiel-header .header-text-signature{
-  color:#D8DCE2!important;
-  font:500 clamp(12px,1.1vw,14px)/1.2 "Segoe UI", "Helvetica Neue", Arial, sans-serif!important;
-  letter-spacing:.72em!important;padding-left:.72em!important;
-  white-space:nowrap!important;text-transform:uppercase!important;
-  text-shadow:0 1px 4px rgba(0,0,0,.45)!important;
+main.conteudo > header.fiel-header .glitch-camada{
+  position:absolute;inset:0;width:100%;height:100%;
+  background:transparent;pointer-events:none;opacity:0;
+  will-change:clip-path,transform;backface-visibility:hidden;
+}
+main.conteudo > header.fiel-header .glitch-camada-vermelha{
+  left:2px;color:transparent;text-shadow:-2px 0 #ff1e1e;
+}
+main.conteudo > header.fiel-header .glitch-camada-cinza{
+  left:-2px;color:transparent;text-shadow:2px 0 #9ca3af;
+}
+main.conteudo > header.fiel-header .glitch-sub{
+  position:relative;display:block;color:#fff;
+  margin:0;font-size:clamp(10px,1.05vw,14px);
+  line-height:1.15;font-weight:800;
+  letter-spacing:clamp(3px,.62vw,8px);
+  padding-left:clamp(3px,.62vw,8px);
+  white-space:nowrap;
+  text-shadow:0 0 8px rgba(255,255,255,.62),0 0 16px rgba(255,255,255,.24);
+  will-change:transform,opacity;backface-visibility:hidden;transform:translateZ(0);
 }
 @media(max-width:560px){
-  main.conteudo > header.fiel-header .header-text-brand{width:calc(100% - 20px)!important;gap:5px!important}
-  main.conteudo > header.fiel-header .header-text-title{font-size:clamp(11px,3.4vw,14px)!important;letter-spacing:.14em!important}
-  main.conteudo > header.fiel-header .header-text-signature{font-size:10px!important;letter-spacing:.38em!important;padding-left:.38em!important}
+  main.conteudo > header.fiel-header .header-glitch{width:calc(100% - 24px)!important}
+  main.conteudo > header.fiel-header .glitch-titulo{font-size:clamp(13px,3.35vw,18px);letter-spacing:.055em}
+  main.conteudo > header.fiel-header .glitch-sub{font-size:clamp(8px,2.25vw,11px);letter-spacing:clamp(2px,.7vw,4px);padding-left:clamp(2px,.7vw,4px)}
 }
 
 </style>
@@ -856,12 +869,77 @@ main.conteudo > header.fiel-header .header-text-signature{
         </path>
       </svg>
       
-            <div class="header-text-brand" aria-label="Análise de Abastecimento — Fiel Turismo">
-        <div class="header-text-title">ANÁLISE DE ABASTECIMENTO</div>
-        <div class="header-text-signature">FIEL TURISMO</div>
+      <div class="header-glitch" aria-label="Análise de Abastecimento — Fiel Turismo">
+        <div class="glitch-titulo" id="fiel-glitch-titulo">
+          ANALISE DE ABASTECIMENTO
+          <span class="glitch-camada glitch-camada-vermelha" id="fiel-glitch-vermelho">ANALISE DE ABASTECIMENTO</span>
+          <span class="glitch-camada glitch-camada-cinza" id="fiel-glitch-cinza">ANALISE DE ABASTECIMENTO</span>
+        </div>
+        <div class="glitch-sub" id="fiel-glitch-sub">FIEL TURISMO</div>
       </div>
       
     </header>
+    <script>
+    (() => {
+      const header = document.querySelector('main.conteudo > header.fiel-header');
+      if (!header || header.dataset.glitchReady === '1') return;
+      header.dataset.glitchReady = '1';
+      const base = header.querySelector('#fiel-glitch-titulo');
+      const red = header.querySelector('#fiel-glitch-vermelho');
+      const gray = header.querySelector('#fiel-glitch-cinza');
+      const sub = header.querySelector('#fiel-glitch-sub');
+      if (!base || !red || !gray || !sub) return;
+
+      const rand = (min, max) => (Math.random() * (max - min + 1) + min) | 0;
+      const cut = () => {
+        const top = rand(0, 80);
+        const bottom = rand(0, 85 - top);
+        return `inset(${top}% 0 ${bottom}% 0)`;
+      };
+      const start = performance.now();
+      let wasActive = false;
+      let lastCut = 0;
+      let frame = 0;
+
+      function update(now) {
+        const elapsed = (now - start) % 9000;
+        const active = elapsed < 200 || (elapsed >= 1200 && elapsed < 1700) ||
+                       (elapsed >= 4700 && elapsed < 5000);
+        if (active) {
+          if (!wasActive) {
+            red.style.opacity = '0.85';
+            gray.style.opacity = '0.85';
+            wasActive = true;
+          }
+          if (now - lastCut >= 24) {
+            red.style.clipPath = cut();
+            red.style.transform = `translate3d(${rand(-4,4)}px,${rand(-2,2)}px,0)`;
+            gray.style.clipPath = cut();
+            gray.style.transform = `translate3d(${rand(-4,4)}px,${rand(-2,2)}px,0)`;
+            base.style.transform = `translateZ(0) skewX(${rand(-7,7)}deg)`;
+            lastCut = now;
+          }
+          sub.style.opacity = Math.random() > .35 ? '1' : '.6';
+          sub.style.transform = `translate3d(${rand(-4,4)}px,0,0) skewX(${rand(-6,6)}deg)`;
+          sub.style.textShadow = '-2px 0 #ff1e1e, 2px 0 #9ca3af, 0 0 9px rgba(255,255,255,.45)';
+        } else if (wasActive) {
+          red.style.opacity = '0';
+          gray.style.opacity = '0';
+          base.style.transform = 'translateZ(0) skewX(0deg)';
+          sub.style.opacity = '1';
+          sub.style.transform = 'translate3d(0,0,0) skewX(0deg)';
+          sub.style.textShadow = '0 0 8px rgba(255,255,255,.62), 0 0 16px rgba(255,255,255,.24)';
+          wasActive = false;
+        }
+      }
+      function loop(now) {
+        update(now);
+        frame = requestAnimationFrame(loop);
+      }
+      frame = requestAnimationFrame(loop);
+      window.addEventListener('pagehide', () => cancelAnimationFrame(frame), {once:true});
+    })();
+    </script>
 
     <div class="barra">
       <div><span class="lbl">Contrato</span>
