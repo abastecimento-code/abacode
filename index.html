@@ -815,9 +815,17 @@ main.conteudo > header.fiel-header .glitch-sub .glitch-sub-gap{margin-left:clamp
   main.conteudo > header.fiel-header .glitch-sub{font-size:clamp(8px,2.25vw,11px);gap:clamp(6px,1.5vw,10px)!important} main.conteudo > header.fiel-header .glitch-sub .glitch-sub-gap{margin-left:clamp(7px,1.6vw,11px)!important}
 }
 
+
+/* BACKGROUND ANIMADO — ONDAS DE SEDA */
+html,body{background:#09090b!important;background-image:none!important}
+body{position:relative;isolation:isolate}
+#silk-canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0;pointer-events:none}
+.page{position:relative;z-index:1}
+.modal-overlay{z-index:1000}
 </style>
 </head>
 <body>
+<canvas id="silk-canvas" aria-hidden="true"></canvas>
 <div id="bloqueioDados" hidden role="alert" style="max-width:900px;margin:48px auto;padding:24px 28px;background:#fff2dc;border:1px solid #ffcf80;border-left:5px solid #b86b00;border-radius:12px;color:#342b20;font:14px/1.55 system-ui,sans-serif;white-space:pre-wrap;"></div>
 <div class="page">
   <aside class="sidebar">
@@ -3741,6 +3749,81 @@ Object.assign(window, {
   recalcularFrota, FROTA_ORIGINAL,
 });
 Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FROTA });
+</script>
+
+
+<script>
+/* Ondas de seda em canvas — camada decorativa independente do painel */
+(() => {
+  const canvas = document.getElementById('silk-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: false });
+  if (!ctx) return;
+
+  let w = 0, h = 0, dpr = 1;
+  const inicio = performance.now();
+  const ondas = [
+    { yBase:.35, amp:90,  freq:.0018, vel:.55,  fase:0,   topo:'rgba(220,38,38,.14)',  base:'rgba(9,9,11,0)' },
+    { yBase:.48, amp:120, freq:.0014, vel:-.40, fase:1.8, topo:'rgba(113,113,122,.16)',base:'rgba(9,9,11,0)' },
+    { yBase:.62, amp:105, freq:.0021, vel:.48,  fase:3.4, topo:'rgba(185,28,28,.11)',  base:'rgba(9,9,11,0)' },
+    { yBase:.75, amp:80,  freq:.0016, vel:-.35, fase:5.1, topo:'rgba(63,63,70,.24)',   base:'rgba(9,9,11,0)' }
+  ];
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  window.addEventListener('resize', resize, { passive:true });
+  resize();
+
+  function curva(o, x, t) {
+    const yc = h * o.yBase;
+    return yc
+      + Math.sin(x * o.freq + t * o.vel + o.fase) * o.amp
+      + Math.cos(x * (o.freq * .6) - t * (o.vel * .7)) * (o.amp * .35);
+  }
+
+  function render(agora) {
+    const t = (agora - inicio) * .001;
+    const bg = ctx.createRadialGradient(w*.5,h*.4,0,w*.5,h*.5,Math.max(w,h)*.8);
+    bg.addColorStop(0,'#18181b');
+    bg.addColorStop(1,'#09090b');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,w,h);
+
+    ctx.globalCompositeOperation = 'screen';
+    for (let i=0; i<ondas.length; i++) {
+      const o=ondas[i], yc=h*o.yBase;
+      const grad=ctx.createLinearGradient(0,yc-o.amp*1.4,0,yc+o.amp*2.2);
+      grad.addColorStop(0,'rgba(9,9,11,0)');
+      grad.addColorStop(.35,o.topo);
+      grad.addColorStop(1,o.base);
+      ctx.fillStyle=grad;
+      ctx.beginPath();
+      ctx.moveTo(0,h);
+      for(let x=0;x<=w+40;x+=40) ctx.lineTo(x,curva(o,x,t));
+      ctx.lineTo(w,h);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle=i%2===0?'rgba(239,68,68,.14)':'rgba(161,161,170,.12)';
+      ctx.lineWidth=1.2;
+      ctx.beginPath();
+      for(let x=0;x<=w+30;x+=30) {
+        const y=curva(o,x,t);
+        if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+    ctx.globalCompositeOperation='source-over';
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+})();
 </script>
 
 </body>
