@@ -766,6 +766,41 @@ main.conteudo > header.fiel-header > .header-logo{
 main.conteudo > header.fiel-header{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;}
 main.conteudo > header.fiel-header > img.header-logo{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;display:block!important;width:min(773px,calc(100% - 48px))!important;height:auto!important;max-width:calc(100% - 48px)!important;max-height:calc(100% - 20px)!important;object-fit:contain!important;object-position:center center!important;margin:0!important;z-index:4!important;}
 @media(max-width:700px){main.conteudo > header.fiel-header > img.header-logo{width:calc(100% - 28px)!important;max-width:calc(100% - 28px)!important;max-height:76px!important}}
+
+/* Identidade tipográfica do cabeçalho — substitui integralmente a logo em imagem */
+main.conteudo > header.fiel-header{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  position:relative!important;
+}
+main.conteudo > header.fiel-header .header-text-brand{
+  position:absolute!important;left:50%!important;top:50%!important;
+  transform:translate(-50%,-50%)!important;z-index:10!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  justify-content:center!important;gap:6px!important;
+  width:calc(100% - 32px)!important;max-width:100%!important;
+  margin:0!important;padding:0!important;text-align:center!important;
+  pointer-events:none!important;
+}
+main.conteudo > header.fiel-header .header-text-title{
+  color:#D8DCE2!important;
+  font:500 clamp(11px,1.15vw,15px)/1.2 Arial,Helvetica,sans-serif!important;
+  letter-spacing:.24em!important;
+  white-space:nowrap!important;text-transform:uppercase!important;
+  text-shadow:0 1px 4px rgba(0,0,0,.45)!important;
+}
+main.conteudo > header.fiel-header .header-text-signature{
+  color:#D8DCE2!important;
+  font:400 clamp(9px,.88vw,11px)/1.2 Arial,Helvetica,sans-serif!important;
+  letter-spacing:.62em!important;padding-left:.62em!important;
+  white-space:nowrap!important;text-transform:uppercase!important;
+  text-shadow:0 1px 4px rgba(0,0,0,.45)!important;
+}
+@media(max-width:560px){
+  main.conteudo > header.fiel-header .header-text-brand{width:calc(100% - 20px)!important;gap:5px!important}
+  main.conteudo > header.fiel-header .header-text-title{font-size:clamp(8px,2.7vw,11px)!important;letter-spacing:.10em!important}
+  main.conteudo > header.fiel-header .header-text-signature{font-size:8px!important;letter-spacing:.48em!important;padding-left:.48em!important}
+}
+
 </style>
 </head>
 <body>
@@ -797,7 +832,7 @@ main.conteudo > header.fiel-header > img.header-logo{position:absolute!important
   </aside>
 
   <main class="conteudo">
-    <header class="fiel-header" aria-label="Fiel Turismo — Análise de Abastecimento">
+    <header class="fiel-header" aria-label="Análise de Abastecimento — Fiel Turismo">
       <svg class="header-wave" viewBox="0 0 1200 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path class="wave-glow" d="M0 92 C170 28 320 160 510 94 S850 30 1200 16">
           <animate attributeName="d" dur="11s" repeatCount="indefinite" calcMode="spline"
@@ -821,7 +856,10 @@ main.conteudo > header.fiel-header > img.header-logo{position:absolute!important
         </path>
       </svg>
       
-            <img class="header-logo" src="./assets/fiel-analise-abastecimento.png?v=2" alt="FIEL TURISMO — Análise de Abastecimento" loading="eager" fetchpriority="high" decoding="async">
+            <div class="header-text-brand" aria-label="Análise de Abastecimento — Fiel Turismo">
+        <div class="header-text-title">ANÁLISE DE ABASTECIMENTO</div>
+        <div class="header-text-signature">FIEL TURISMO</div>
+      </div>
       
     </header>
 
