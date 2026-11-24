@@ -77,6 +77,19 @@ select:focus,.busca:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(25
 .info-nota b{color:var(--amber-d);font-weight:700;}
 .legenda{display:flex;flex-wrap:wrap;gap:6px 14px;padding:4px 4px 8px;font-size:10.5px;color:var(--tx2);align-items:center;}
 
+
+/* LEGENDA E CONTROLES NA MESMA LINHA */
+.lista-topline{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0;margin:0 0 9px}
+.lista-topline .legenda{display:flex;flex:1 1 auto;align-items:center;gap:6px 14px;min-width:0;padding:4px 4px;font-size:10.5px}
+.lista-topline .legenda-dica{margin-left:auto;color:#6b3fc4;font-weight:700;white-space:nowrap}
+.lista-topline .evolucao-toolbar{display:flex;flex:0 0 auto;justify-content:flex-end;align-items:center;gap:9px;margin:0;white-space:nowrap}
+@media(max-width:760px){
+  .lista-topline{flex-wrap:wrap;row-gap:4px}
+  .lista-topline .legenda{flex-wrap:wrap}
+  .lista-topline .legenda-dica{white-space:normal}
+  .lista-topline .evolucao-toolbar{margin-left:auto}
+}
+
 /* ===== TABLE ===== */
 .tabela-wrap{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:auto;max-height:84vh;box-shadow:0 18px 40px -28px rgba(18,22,29,.4);}
 table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px;}
@@ -978,14 +991,15 @@ body{position:relative;isolation:isolate}
     </div>
     <div class="info-nota" id="totalAbastecimentosGlobus">2.841 abastecimentos ativos · período efetivo varia por veículo; uma semana sem lançamento, por si só, não indica falha.</div>
     <div class="info-nota" id="globusPendenciasBanner" hidden></div>
-    <div class="legenda">
-  <span><span class="pill-status ps-ok" title="Dentro da referência">🟢</span></span>
-  <span><span class="pill-status ps-acima" title="Acima da referência">🔵</span></span>
-  <span><span class="pill-status ps-abaixo" title="Abaixo da referência">🔴</span></span>
-      <span style="margin-left:auto;color:#6b3fc4;font-weight:700;">💡 Clique numa linha para ver a evolução semanal</span>
+    <div class="lista-topline">
+      <div class="legenda">
+        <span><span class="pill-status ps-ok" title="Dentro da referência">🟢</span></span>
+        <span><span class="pill-status ps-acima" title="Acima da referência">🔵</span></span>
+        <span><span class="pill-status ps-abaixo" title="Abaixo da referência">🔴</span></span>
+        <span class="legenda-dica">💡 Clique numa linha para ver a evolução semanal</span>
+      </div>
+      <div class="evolucao-toolbar"><span>Visualização</span><button type="button" class="evolucao-toggle" id="btnEvolucaoVerso" aria-label="Mostrar evolução dos veículos" title="Mostrar evolução dos veículos" aria-pressed="false" onclick="alternarEvolucaoVerso(event)"><span class="toggle-icon">▦</span><span class="toggle-label">Evolução</span></button></div>
     </div>
-
-    <div class="evolucao-toolbar"><span>Visualização</span><button type="button" class="evolucao-toggle" id="btnEvolucaoVerso" aria-label="Mostrar evolução dos veículos" title="Mostrar evolução dos veículos" aria-pressed="false" onclick="alternarEvolucaoVerso(event)"><span class="toggle-icon">▦</span><span class="toggle-label">Evolução</span></button></div>
     <div class="veiculos-stage" id="veiculosStage">
       <section class="veiculos-face lista-face" id="listaVeiculosFace" aria-hidden="false">
        <div class="tabela-wrap">
