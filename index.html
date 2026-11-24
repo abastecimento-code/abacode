@@ -802,8 +802,8 @@ main.conteudo > header.fiel-header .glitch-sub{
   position:relative;display:block;color:#fff;
   margin:0;font-size:clamp(10px,1.05vw,14px);
   line-height:1.15;font-weight:800;
-  letter-spacing:clamp(6px,1vw,12px);
-  padding-left:clamp(6px,1vw,12px);
+  letter-spacing:0!important;
+  word-spacing:0!important;padding-left:0!important;
   white-space:nowrap;
   text-shadow:0 0 8px rgba(255,255,255,.62),0 0 16px rgba(255,255,255,.24);
   will-change:transform,opacity;backface-visibility:hidden;transform:translateZ(0);
@@ -811,7 +811,7 @@ main.conteudo > header.fiel-header .glitch-sub{
 @media(max-width:560px){
   main.conteudo > header.fiel-header .header-glitch{width:calc(100% - 24px)!important}
   main.conteudo > header.fiel-header .glitch-titulo{font-size:clamp(13px,3.35vw,18px);letter-spacing:.055em}
-  main.conteudo > header.fiel-header .glitch-sub{font-size:clamp(8px,2.25vw,11px);letter-spacing:clamp(4px,1vw,6px);padding-left:clamp(4px,1vw,6px)}
+  main.conteudo > header.fiel-header .glitch-sub{font-size:clamp(8px,2.25vw,11px);letter-spacing:0!important;word-spacing:0!important;padding-left:0!important}
 }
 
 </style>
@@ -875,7 +875,7 @@ main.conteudo > header.fiel-header .glitch-sub{
           <span class="glitch-camada glitch-camada-vermelha" id="fiel-glitch-vermelho">ANALISE DE ABASTECIMENTO</span>
           <span class="glitch-camada glitch-camada-cinza" id="fiel-glitch-cinza">ANALISE DE ABASTECIMENTO</span>
         </div>
-        <div class="glitch-sub" id="fiel-glitch-sub">FIEL TURISMO</div>
+        <div class="glitch-sub" id="fiel-glitch-sub" aria-label="FIEL TURISMO">F&nbsp;I&nbsp;E&nbsp;L&nbsp;&nbsp;T&nbsp;U&nbsp;R&nbsp;I&nbsp;S&nbsp;M&nbsp;O</div>
       </div>
       
     </header>
