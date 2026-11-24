@@ -3784,10 +3784,12 @@ Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FR
   let w = 0, h = 0, dpr = 1;
   const inicio = performance.now();
   const ondas = [
-    { yBase:.35, amp:90,  freq:.0018, vel:.55,  fase:0,   topo:'rgba(220,38,38,.14)',  base:'rgba(9,9,11,0)' },
-    { yBase:.48, amp:120, freq:.0014, vel:-.40, fase:1.8, topo:'rgba(113,113,122,.16)',base:'rgba(9,9,11,0)' },
-    { yBase:.62, amp:105, freq:.0021, vel:.48,  fase:3.4, topo:'rgba(185,28,28,.11)',  base:'rgba(9,9,11,0)' },
-    { yBase:.75, amp:80,  freq:.0016, vel:-.35, fase:5.1, topo:'rgba(63,63,70,.24)',   base:'rgba(9,9,11,0)' }
+    { yBase:.06, amp:85,  freq:.0017, vel:-.32, fase:.7, topo:'rgba(113,113,122,.085)', base:'rgba(9,9,11,0)' },
+    { yBase:.20, amp:95,  freq:.0019, vel:.36,  fase:2.3, topo:'rgba(220,38,38,.075)',  base:'rgba(9,9,11,0)' },
+    { yBase:.36, amp:90,  freq:.0018, vel:.38,  fase:0,   topo:'rgba(220,38,38,.085)',  base:'rgba(9,9,11,0)' },
+    { yBase:.52, amp:120, freq:.0014, vel:-.28, fase:1.8, topo:'rgba(113,113,122,.095)',base:'rgba(9,9,11,0)' },
+    { yBase:.68, amp:105, freq:.0021, vel:.33,  fase:3.4, topo:'rgba(185,28,28,.068)',  base:'rgba(9,9,11,0)' },
+    { yBase:.84, amp:80,  freq:.0016, vel:-.24, fase:5.1, topo:'rgba(63,63,70,.14)',   base:'rgba(9,9,11,0)' }
   ];
 
   function resize() {
@@ -3810,7 +3812,7 @@ Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FR
 
   function render(agora) {
     const t = (agora - inicio) * .001;
-    const bg = ctx.createRadialGradient(w*.5,h*.4,0,w*.5,h*.5,Math.max(w,h)*.8);
+    const bg = ctx.createRadialGradient(w*.5,h*.45,0,w*.5,h*.5,Math.max(w,h)*.85);
     bg.addColorStop(0,'#18181b');
     bg.addColorStop(1,'#09090b');
     ctx.fillStyle = bg;
@@ -3831,7 +3833,7 @@ Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FR
       ctx.closePath();
       ctx.fill();
 
-      ctx.strokeStyle=i%2===0?'rgba(239,68,68,.14)':'rgba(161,161,170,.12)';
+      ctx.strokeStyle=i%2===0?'rgba(239,68,68,.075)':'rgba(161,161,170,.065)';
       ctx.lineWidth=1.2;
       ctx.beginPath();
       for(let x=0;x<=w+30;x+=30) {
