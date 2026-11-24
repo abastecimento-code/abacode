@@ -799,19 +799,20 @@ main.conteudo > header.fiel-header .glitch-camada-cinza{
   left:-2px;color:transparent;text-shadow:2px 0 #9ca3af;
 }
 main.conteudo > header.fiel-header .glitch-sub{
-  position:relative;display:block;color:#fff;
+  position:relative;display:flex!important;align-items:center;justify-content:center;
+  gap:clamp(5px,.9vw,10px)!important;
   margin:0;font-size:clamp(10px,1.05vw,14px);
-  line-height:1.15;font-weight:800;
-  letter-spacing:0!important;
-  word-spacing:0!important;padding-left:0!important;
-  white-space:nowrap;
-  text-shadow:0 0 8px rgba(255,255,255,.62),0 0 16px rgba(255,255,255,.24);
+  line-height:1.15;font-weight:800;letter-spacing:0!important;
+  padding:0!important;white-space:nowrap;
+  color:#fff;text-shadow:0 0 8px rgba(255,255,255,.62),0 0 16px rgba(255,255,255,.24);
   will-change:transform,opacity;backface-visibility:hidden;transform:translateZ(0);
 }
+main.conteudo > header.fiel-header .glitch-sub span{display:inline-block!important;margin:0!important;padding:0!important;letter-spacing:0!important}
+main.conteudo > header.fiel-header .glitch-sub .glitch-sub-gap{margin-left:clamp(5px,1vw,11px)!important}
 @media(max-width:560px){
   main.conteudo > header.fiel-header .header-glitch{width:calc(100% - 24px)!important}
   main.conteudo > header.fiel-header .glitch-titulo{font-size:clamp(13px,3.35vw,18px);letter-spacing:.055em}
-  main.conteudo > header.fiel-header .glitch-sub{font-size:clamp(8px,2.25vw,11px);letter-spacing:0!important;word-spacing:0!important;padding-left:0!important}
+  main.conteudo > header.fiel-header .glitch-sub{font-size:clamp(8px,2.25vw,11px);gap:clamp(4px,1.1vw,7px)!important} main.conteudo > header.fiel-header .glitch-sub .glitch-sub-gap{margin-left:clamp(4px,1vw,7px)!important}
 }
 
 </style>
@@ -875,7 +876,7 @@ main.conteudo > header.fiel-header .glitch-sub{
           <span class="glitch-camada glitch-camada-vermelha" id="fiel-glitch-vermelho">ANALISE DE ABASTECIMENTO</span>
           <span class="glitch-camada glitch-camada-cinza" id="fiel-glitch-cinza">ANALISE DE ABASTECIMENTO</span>
         </div>
-        <div class="glitch-sub" id="fiel-glitch-sub" aria-label="FIEL TURISMO">F&nbsp;I&nbsp;E&nbsp;L&nbsp;&nbsp;T&nbsp;U&nbsp;R&nbsp;I&nbsp;S&nbsp;M&nbsp;O</div>
+        <div class="glitch-sub" id="fiel-glitch-sub" aria-label="FIEL TURISMO"><span>F</span><span>I</span><span>E</span><span>L</span><span class="glitch-sub-gap">T</span><span>U</span><span>R</span><span>I</span><span>S</span><span>M</span><span>O</span></div>
       </div>
       
     </header>
