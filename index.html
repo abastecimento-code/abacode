@@ -845,6 +845,20 @@ body{position:relative;isolation:isolate}
 #silk-canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block;z-index:0;pointer-events:none}
 .page{position:relative;z-index:1}
 .modal-overlay{z-index:1000}
+
+/* ===== TESTE VISUAL — LISTAGEM DE VEÍCULOS EM VIDRO FUMÊ ===== */
+.tabela-wrap{
+  background:rgba(34,36,40,.78)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(125%);
+  backdrop-filter:blur(14px) saturate(125%);
+  border:1px solid rgba(220,224,232,.16)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.075),
+    0 18px 42px -26px rgba(0,0,0,.72),
+    0 0 0 1px rgba(255,255,255,.025)!important;
+}
+.tabela-wrap table{background:transparent!important}
+.tabela-wrap tbody{background:transparent!important}
 </style>
 </head>
 <body>
