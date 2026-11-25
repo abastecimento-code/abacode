@@ -1740,7 +1740,7 @@ function statusPorKmL(kmL, exp) {
    STATUS DO VEÍCULO (tabela principal)
    ═══════════════════════════════════════════════════════ */
 function statusDe(v, real) {
-  if (real == null)  return { cls: '', label: '—', row: '', prio: 9 };
+  if (real == null || v.exp == null) return { cls: '', label: '—', row: '', prio: 9 };
   const min = v.exp - TOLERANCIA_KM;
   const max = v.exp + TOLERANCIA_KM;
   if (real > max) return { cls: 'ps-acima',  label: '🔵', row: 'linha-acima',  prio: 2 };
@@ -3283,6 +3283,7 @@ function garantirVeiculoSemContratoAttAba(prefixo){
 function aplicarCorrecoesAttAba(correcoes){
   let aplicadas=0;
   (correcoes||[]).forEach(c=>{
+    garantirVeiculoSemContratoAttAba(c.prefixo);
     const fills=FILLS[c.prefixo]||[],candidatos=fills.map((f,i)=>({f,i})).filter(x=>identidadeAbastecimentoAttAba(c.eventoNovo,{...x.f,prefixo:c.prefixo}));
     if(candidatos.length!==1)return;
     const alvo=candidatos[0].f;
