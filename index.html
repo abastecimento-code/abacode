@@ -57,7 +57,7 @@ header .chip b{color:var(--amber);font-weight:700;}
 .side-card-lbl{font-size:8.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--tx2);font-weight:700;margin-top:5px;line-height:1.15;}
 .side-card.repetido{--c:var(--amber-d);} .side-card.rastreador{--c:var(--teal);}
 .side-card.geral{--c:#d99100;} .side-card.escala{--c:var(--blue);}
-.side-card.evolucao{--c:var(--purple);} .side-card.auditoria{--c:#c2410c;} .side-card.investigacao{--c:#8a5bb5;}
+.side-card.evolucao{--c:var(--purple);} .side-card.auditoria{--c:#c2410c;} .side-card.investigacao{--c:#8a5bb5;} .side-card.att-aba{--c:#0f9b83;}
 .side-card.anomalia{--c:var(--red);}
 .side-card.vazio{--c:var(--tx3);}
 .side-card.vazio .side-card-val{color:var(--tx3);}
@@ -886,6 +886,11 @@ body{position:relative;isolation:isolate}
       <div class="side-card-val" id="cardEscalaVal">—</div>
       <div class="side-card-lbl">Escala</div>
     </div>
+    <div class="side-card att-aba" onclick="abrirModalAttAba()">
+      <div class="side-card-icon">📥</div>
+      <div class="side-card-val" id="cardAttAbaVal">—</div>
+      <div class="side-card-lbl">ATT ABA</div>
+    </div>
 
 
   </aside>
@@ -1164,6 +1169,16 @@ body{position:relative;isolation:isolate}
     <div class="modal-body" id="modalAuditBody"></div>
   </div>
 </div>
+<div class="modal-overlay" id="modalAttAba" hidden>
+  <div class="modal modal--largo" role="dialog" aria-modal="true" aria-labelledby="attAbaTitulo">
+    <div class="modal-head" style="border-bottom:4px solid #0f9b83;">
+      <div><div class="modal-title" id="attAbaTitulo">ATT ABA</div><div class="modal-sub">Atualização contínua da base de abastecimentos por relatório TXT</div></div>
+      <button class="modal-x" onclick="fecharModalAttAba()">×</button>
+    </div>
+    <div class="modal-body" id="modalAttAbaBody"></div>
+  </div>
+</div>
+
 <script>
 /* ═══════════════════════════════════════════════════════
    CONFIG — constantes globais
@@ -1176,7 +1191,7 @@ const PRECO_EXTERNO = 6.92;
 const ECONOMIA_L = PRECO_EXTERNO - PRECO_INTERNO;
 
 /** Data de referência — fim do período coberto pelos relatórios Globus */
-const DATA_REF = new Date(2026, 9, 29); // 29/10/2026, inclusive
+let DATA_REF = new Date(2026, 9, 29); // 29/10/2026, inclusive
 
 const CONTRATO_LABEL = {
   rj:  'VIBRA - Rio de Janeiro',
@@ -1531,7 +1546,7 @@ function gravarRevisaoGlobus(db,r){return new Promise((resolve,reject)=>{const t
 function ultimaRevisaoGlobus(sha,linha){return GLOBUS_REVISOES.filter(r=>r.loteSha256===sha&&r.linha===linha).sort((a,b)=>a.criadoEm.localeCompare(b.criadoEm)||(a.id||0)-(b.id||0)).at(-1)||null;}
 function pendenciasAtivasGlobus(){return GLOBUS_LOTES.flatMap(l=>(l.pendencias||[]).filter(p=>{const r=ultimaRevisaoGlobus(l.sha256,p.linha);return !r||!['ANALISADO_SEM_ALTERACAO','DIVERGENCIA_EM_ACOMPANHAMENTO'].includes(r.decisao)}));}
 function atualizarStatusGlobus(){const n=GLOBUS_LOTES.reduce((s,l)=>s+(l.eventosAceitos||[]).length,0),p=pendenciasAtivasGlobus().length;GLOBUS_STORAGE_STATUS=GLOBUS_LOTES.length+' arquivo(s) guardado(s) neste navegador · '+n+' lançamento(s) novo(s) ativo(s)'+(p?' · '+p+' aguardam análise':'')+'.';}
-function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até 29/10/2026';const abertas=pendenciasAtivasGlobus().length;if(b){b.hidden=!abertas;b.textContent=abertas?'⚠ '+abertas+' linha(s) aguardam análise; permanecem fora dos cálculos mesmo após registrar uma decisão.':'';}}
+function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até '+fmt(DATA_REF);const abertas=pendenciasAtivasGlobus().length;if(b){b.hidden=!abertas;b.textContent=abertas?'⚠ '+abertas+' linha(s) aguardam análise; permanecem fora dos cálculos mesmo após registrar uma decisão.':'';}}
 async function carregarDadosGlobusPublicados(){try{const resposta=await fetch('dados/globus-importados.json',{cache:'no-store'});if(!resposta.ok)throw new Error('HTTP '+resposta.status);const pacote=await resposta.json();if(pacote.versao!==1||pacote.corte!=='2026-10-29'||!Array.isArray(pacote.lancamentos))throw new Error('Formato ou corte do pacote incompatível.');let adicionados=0;for(const e of pacote.lancamentos){if(!FROTA.some(v=>v.p===e.prefixo))throw new Error('Prefixo não cadastrado: '+e.prefixo);const novo={...e,valor:e.valorTotal,tipo:e.origem,kmPorLitroGlobus:e.kmPorLitro,kmPorLitroCalculado:e.litros>0?e.km/e.litros:null,divergenciaHodometro:e.hodometroInicial!=null&&e.hodometroFinal!=null&&Math.abs((e.hodometroFinal-e.hodometroInicial)-e.km)>0.01,divergenciaKmL:e.kmPorLitro!=null&&e.litros>0&&Math.abs(e.kmPorLitro-e.km/e.litros)>0.002,prefixo:e.prefixo,linhaFonte:e.linha,linhaBruta:e.bruto,errosFonte:[],arquivoFonte:e.arquivoFonte||'Importação GitHub'};const dt=parseData(novo.data,novo.ano);if(Number.isNaN(dt.getTime())||dt>DATA_REF)throw new Error('Lançamento fora do corte em '+novo.prefixo+' linha '+novo.linhaFonte);if(!FILLS[novo.prefixo])FILLS[novo.prefixo]=[];const duplicado=FILLS[novo.prefixo].some(f=>f.ano===novo.ano&&f.data===novo.data&&f.tipo===novo.tipo&&f.litros===novo.litros&&f.km===novo.km&&f.precoL===novo.precoL&&f.valor===novo.valor&&f.cupom===novo.cupom);if(!duplicado){FILLS[novo.prefixo].push(novo);adicionados++;}}return adicionados;}catch(e){if(location.protocol==='file:'){console.warn('[dbatt] Abra o site publicado para carregar os dados Globus compartilhados.');return 0;}console.error('[dbatt] Dados Globus publicados não carregados:',e);throw e;}}
 async function carregarLotesGlobus(){
   const db=await abrirBancoGlobus();
@@ -3165,6 +3180,114 @@ function renderNivel5(p,diaKey) {
   return html+`</tbody><tfoot><tr><td>TOTAL</td><td></td><td class="num">${r.litros!=null?fmtL(r.litros):'—'}</td><td class="num">${fmtR(r.valor)}</td><td class="num">${r.km!=null?fmtKmNum(r.km):'—'}</td><td class="num">${r.kmL!=null?fmt3safe(r.kmL):'Dados insuficientes'}</td><td></td><td></td></tr></tfoot></table></div>`;
 }
 
+
+/* ═══════════════════════════════════════════════════════
+   ATT ABA — importação independente e incremental
+   ═══════════════════════════════════════════════════════ */
+const ATTABA_DB_NAME='PainelABA_ATTABA_v1';
+let ATTABA_DB_PROMISE=null,ATTABA_LOTES=[],ATTABA_PENDENTE=null;
+let ATTABA_STATUS='Nenhum arquivo importado neste navegador.';
+function abrirBancoAttAba(){
+  if(ATTABA_DB_PROMISE)return ATTABA_DB_PROMISE;
+  ATTABA_DB_PROMISE=new Promise((resolve,reject)=>{
+    if(!window.indexedDB)return reject(new Error('Armazenamento local indisponível neste navegador.'));
+    const req=indexedDB.open(ATTABA_DB_NAME,1);
+    req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('lotes'))db.createObjectStore('lotes',{keyPath:'sha256'});};
+    req.onsuccess=()=>{req.result.onversionchange=()=>req.result.close();resolve(req.result);};
+    req.onerror=()=>reject(req.error||new Error('Não foi possível abrir o banco ATT ABA.'));
+    req.onblocked=()=>reject(new Error('Feche outras abas do painel e tente novamente.'));
+  }).catch(e=>{ATTABA_DB_PROMISE=null;throw e;});
+  return ATTABA_DB_PROMISE;
+}
+function lerLotesAttAba(db){return new Promise((resolve,reject)=>{const q=db.transaction('lotes','readonly').objectStore('lotes').getAll();q.onsuccess=()=>resolve(q.result||[]);q.onerror=()=>reject(q.error||new Error('Falha ao ler histórico ATT ABA.'));});}
+function gravarLoteAttAba(db,lote){return new Promise((resolve,reject)=>{const tx=db.transaction('lotes','readwrite');tx.objectStore('lotes').add(lote);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error||new Error('Falha ao gravar importação ATT ABA.'));tx.onabort=()=>reject(tx.error||new Error('Importação cancelada.'));});}
+function dataCompletaAttAba(r){if(r.dataCompleta)return String(r.dataCompleta);if(r.data&&r.ano)return String(r.data)+'/'+String(r.ano);return String(r.data||'');}
+function valorPresenteAttAba(v){return v!==null&&v!==undefined&&String(v).trim()!=='';}
+function igualCampoAttAba(a,b,numerico){if(!valorPresenteAttAba(a)||!valorPresenteAttAba(b))return !valorPresenteAttAba(a)&&!valorPresenteAttAba(b);if(numerico)return Number(a)===Number(b);return String(a).trim().toUpperCase()===String(b).trim().toUpperCase();}
+function mesmoAbastecimentoAttAba(a,b){
+  const ap=String(a.prefixo||'').replace(/^0+/,'')||'0',bp=String(b.prefixo||'').replace(/^0+/,'')||'0';
+  if(ap!==bp||dataCompletaAttAba(a)!==dataCompletaAttAba(b))return false;
+  if(!igualCampoAttAba(a.origem??a.tipo,b.origem??b.tipo,false))return false;
+  if(!igualCampoAttAba(a.litros,b.litros,true)||!igualCampoAttAba(a.km,b.km,true))return false;
+  const av=a.valorTotal??a.valor,bv=b.valorTotal??b.valor;
+  const opcionais=[[a.hora,b.hora,false],[a.precoL,b.precoL,true],[av,bv,true],[a.cupom,b.cupom,false],[a.fornecedorCodigo,b.fornecedorCodigo,false],[a.hodometroInicial,b.hodometroInicial,true],[a.hodometroFinal,b.hodometroFinal,true],[a.kmAcumulado,b.kmAcumulado,true]];
+  for(const c of opcionais)if(!igualCampoAttAba(c[0],c[1],c[2]))return false;
+  return true;
+}
+function compararEventosAttAba(eventos){
+  const usados=new Set(),base=Object.keys(FILLS).flatMap(p=>(FILLS[p]||[]).map((f,i)=>({p,i,f:{...f,prefixo:p}})));
+  const novos=[],duplicados=[];
+  eventos.forEach(e=>{const idx=base.findIndex(x=>!usados.has(x.p+':'+x.i)&&mesmoAbastecimentoAttAba(e,x.f));if(idx>=0){usados.add(base[idx].p+':'+base[idx].i);duplicados.push(e);}else novos.push(e);});
+  return {novos,duplicados};
+}
+function validarEventosAttAba(relatorio){
+  const prefixos=new Set(FROTA.map(v=>String(v.p))),invalidos=[];
+  const validos=relatorio.eventos.map(e=>{
+    const falhas=[],dt=parseData(e.data,e.ano);
+    if(!prefixos.has(String(e.prefixo)))falhas.push('prefixo não cadastrado');
+    if(!(dt instanceof Date)||Number.isNaN(dt.getTime()))falhas.push('data inválida');
+    if(e.origem!=='I'&&e.origem!=='E')falhas.push('origem I/E');
+    if(!Number.isFinite(e.litros)||e.litros<=0)falhas.push('litros');
+    if(!Number.isFinite(e.km)||e.km<0)falhas.push('quilometragem');
+    if(!Number.isFinite(e.precoL)||e.precoL<0)falhas.push('preço por litro');
+    if(!Number.isFinite(e.valorTotal)||e.valorTotal<0)falhas.push('valor total');
+    if(falhas.length){invalidos.push({linha:e.linha,prefixo:e.prefixo,data:e.dataCompleta,motivos:falhas,bruto:e.bruto});return null;}
+    return {...e,valor:e.valorTotal,tipo:e.origem,kmPorLitroGlobus:e.kmPorLitro,kmPorLitroCalculado:e.litros>0?e.km/e.litros:null,prefixo:String(e.prefixo),linhaFonte:e.linha,linhaBruta:e.bruto,errosFonte:[],arquivoFonte:'ATT ABA'};
+  }).filter(Boolean);
+  return {validos,invalidos};
+}
+async function carregarLotesAttAba(){
+  const db=await abrirBancoAttAba();ATTABA_LOTES=await lerLotesAttAba(db);let total=0;
+  ATTABA_LOTES.sort((a,b)=>String(a.recebidoEm).localeCompare(String(b.recebidoEm))).forEach(l=>(l.eventosAceitos||[]).forEach(e=>{
+    if(!FILLS[e.prefixo])FILLS[e.prefixo]=[];
+    FILLS[e.prefixo].push({...e,arquivoFonte:l.nomeArquivo,loteSha256:l.sha256});
+    const dt=parseData(e.data,e.ano);if(dt instanceof Date&&!Number.isNaN(dt.getTime())&&dt>DATA_REF)DATA_REF=dt;
+    total++;
+  }));
+  ATTABA_STATUS=ATTABA_LOTES.length+' arquivo(s) importado(s) neste navegador · '+total+' abastecimento(s) incorporado(s).';atualizarCardAttAba();return total;
+}
+function atualizarCardAttAba(){const el=document.getElementById('cardAttAbaVal');if(el)el.textContent=String(ATTABA_LOTES.reduce((n,l)=>n+(l.eventosAceitos||[]).length,0));}
+function abrirModalAttAba(){renderAttAba();document.getElementById('modalAttAba').hidden=false;document.body.style.overflow='hidden';}
+function fecharModalAttAba(){document.getElementById('modalAttAba').hidden=true;document.body.style.overflow='';}
+function renderAttAba(){
+  const body=document.getElementById('modalAttAbaBody'),historico=ATTABA_LOTES.slice().sort((a,b)=>String(b.recebidoEm).localeCompare(String(a.recebidoEm))).slice(0,12);
+  let h='<div class="audit-resumo"><b>Atualização contínua da base</b><br>Selecione o relatório gerencial TXT do Globus. O ATT ABA identifica correspondências exatas, preserva abastecimentos distintos e incorpora somente lançamentos novos e válidos. Valores próximos nunca são descartados.</div>';
+  h+='<div class="audit-nota" style="margin-top:14px;"><b>Selecionar relatório</b><br><input id="attAbaArquivo" type="file" accept=".txt,text/plain" style="margin-top:10px;max-width:100%;"><div id="attAbaPreview" aria-live="polite" style="margin-top:12px;">'+escapeHtml(ATTABA_STATUS)+'</div></div>';
+  h+='<div class="audit-nota" style="margin-top:14px;"><b>Histórico de importações</b><br>';
+  if(!historico.length)h+='<small>Nenhuma importação registrada ainda.</small>';
+  else h+='<div style="overflow:auto;margin-top:8px;"><table class="audit-tabela"><thead><tr><th>Arquivo</th><th>Data</th><th>Novos</th><th>Duplicados</th><th>Inválidos</th></tr></thead><tbody>'+historico.map(l=>'<tr><td>'+escapeHtml(l.nomeArquivo)+'</td><td>'+new Date(l.recebidoEm).toLocaleString('pt-BR')+'</td><td>'+(l.eventosAceitos||[]).length+'</td><td>'+(l.duplicados||0)+'</td><td>'+(l.invalidos||0)+'</td></tr>').join('')+'</tbody></table></div>';
+  h+='</div><div class="audit-nota" style="margin-top:12px;"><small>Os dados ficam salvos no IndexedDB deste navegador. O HTML estático não consegue gravar diretamente no arquivo publicado nem sincronizar automaticamente com outros computadores.</small></div>';
+  body.innerHTML=h;body.querySelector('#attAbaArquivo')?.addEventListener('change',e=>mostrarPreviaAttAba(e.target.files?.[0]));
+}
+async function mostrarPreviaAttAba(file){
+  const alvo=document.getElementById('attAbaPreview');if(!file)return;alvo.textContent='Lendo e validando relatório…';
+  try{
+    const bytes=new Uint8Array(await file.arrayBuffer()),texto=new TextDecoder('windows-1252').decode(bytes),sha=await sha256Bytes(bytes);
+    if(ATTABA_LOTES.some(l=>l.sha256===sha)){alvo.innerHTML='<b>Este arquivo já foi importado.</b><br>Nenhum registro será repetido.';return;}
+    const relatorio=parsearRelatorioGlobus(texto),validacao=validarEventosAttAba(relatorio),comparacao=compararEventosAttAba(validacao.validos);
+    ATTABA_PENDENTE={file,bytes,sha,relatorio,validacao,comparacao};
+    let h='<b>Prévia do relatório: '+escapeHtml(file.name)+'</b><br>Período: '+escapeHtml(relatorio.faixaInicio)+' a '+escapeHtml(relatorio.faixaFim)+'<br>';
+    h+='Abastecimentos lidos: <b>'+relatorio.eventos.length+'</b> · Novos: <b>'+comparacao.novos.length+'</b> · Duplicados exatos: <b>'+comparacao.duplicados.length+'</b> · Inválidos: <b>'+validacao.invalidos.length+'</b><br>';
+    h+='<small>A duplicidade exige igualdade dos campos identificadores e dos demais campos disponíveis nos dois registros. Não existe tolerância ou comparação por aproximação.</small>';
+    if(validacao.invalidos.length)h+='<div style="margin-top:8px;"><b>Linhas não incorporadas por campos obrigatórios inválidos:</b><br>'+validacao.invalidos.map(x=>'Linha '+x.linha+' · prefixo '+escapeHtml(x.prefixo)+' · '+escapeHtml(x.motivos.join(', '))).join('<br>')+'</div>';
+    h+='<div style="margin-top:12px;"><button id="attAbaAplicar" type="button" style="padding:9px 14px;border:1px solid #0f9b83;border-radius:8px;background:#0f9b83;color:#fff;font:700 12px var(--f-ui);cursor:pointer;" '+(comparacao.novos.length?'':'disabled')+'>Atualizar base com '+comparacao.novos.length+' novo(s)</button> <span id="attAbaAplicacaoStatus" aria-live="polite"></span></div>';
+    alvo.innerHTML=h;alvo.querySelector('#attAbaAplicar')?.addEventListener('click',e=>{e.currentTarget.disabled=true;aplicarAttAba();});
+  }catch(err){ATTABA_PENDENTE=null;alvo.textContent='Não foi possível processar o arquivo: '+err.message;}
+}
+async function aplicarAttAba(){
+  const status=document.getElementById('attAbaAplicacaoStatus'),p=ATTABA_PENDENTE;if(!p)return;
+  try{
+    const db=await abrirBancoAttAba();if(ATTABA_LOTES.some(l=>l.sha256===p.sha)){status.textContent='Este arquivo já foi importado.';return;}
+    const comparacao=compararEventosAttAba(p.validacao.validos),aceitos=comparacao.novos;
+    const lote={sha256:p.sha,nomeArquivo:p.file.name,bytes:p.bytes.length,originalBase64:bytesBase64(p.bytes),recebidoEm:new Date().toISOString(),periodo:p.relatorio.faixaInicio+' a '+p.relatorio.faixaFim,eventosAceitos:aceitos.map(e=>({...e,arquivoFonte:p.file.name})),duplicados:comparacao.duplicados.length,invalidos:p.validacao.invalidos.length};
+    await gravarLoteAttAba(db,lote);ATTABA_LOTES.push(lote);
+    aceitos.forEach(e=>{if(!FILLS[e.prefixo])FILLS[e.prefixo]=[];FILLS[e.prefixo].push({...e,arquivoFonte:p.file.name,loteSha256:p.sha});const dt=parseData(e.data,e.ano);if(dt instanceof Date&&!Number.isNaN(dt.getTime())&&dt>DATA_REF)DATA_REF=dt;});
+    ATTABA_STATUS=ATTABA_LOTES.length+' arquivo(s) importado(s) neste navegador.';recalcularFrota();SUSPEITOS=detectarSuspeitos();render();atualizarInfoPeriodoGlobus();atualizarCardAttAba();
+    status.textContent='Concluído: '+aceitos.length+' novo(s) incorporado(s), '+comparacao.duplicados.length+' duplicado(s) exato(s) ignorado(s), '+p.validacao.invalidos.length+' inválido(s) mantido(s) fora dos cálculos.';
+    ATTABA_PENDENTE=null;setTimeout(()=>renderAttAba(),500);
+  }catch(err){status.textContent='Falha ao salvar. A base não foi alterada: '+err.message;}
+}
+
 /* ═══════════════════════════════════════════════════════
    MODAL AUDITORIA
    ═══════════════════════════════════════════════════════ */
@@ -3221,11 +3344,9 @@ function parsearRelatorioGerencialGlobus(linhas, texto) {
   });
   const eventos=registros.filter(x=>x.tipoLinha==='ABASTECIMENTO'); if(!eventos.length) throw new Error('Não encontrei linhas de abastecimento neste relatório gerencial.');
   if(registros.some(e=>{const d=parseCompleta(e.dataCompleta);return d<inicio||d>fim;})) throw new Error('Há linhas fora do período declarado no relatório.');
-  const corteGerencial=parseCompleta('29/10/2026'), fimGerencial=fim<corteGerencial?fim:corteGerencial;
-  const linhasGerenciais=registros.filter(e=>parseCompleta(e.dataCompleta)<=fimGerencial);
-  const eventosGerenciais=linhasGerenciais.filter(x=>x.tipoLinha==='ABASTECIMENTO');
-  if(!eventosGerenciais.length) throw new Error('Não há abastecimentos até 29/10/2026 para consolidar neste relatório.');
-  return {linhas:linhasGerenciais,linhasOriginais:registros,eventos:eventosGerenciais,linhasHodometro:[],linhasOutros:[],erros:erros.filter(e=>{const r=registros.find(x=>x.linha===e.linha);return r&&parseCompleta(r.dataCompleta)<=fimGerencial;}),inicio,fim:fimGerencial,fimOriginal:fim,faixaInicio:faixa[1],faixaFim:fimGerencial.getTime()<fim.getTime()? '29/10/2026':faixa[2]};
+  const eventosGerenciais=registros.filter(x=>x.tipoLinha==='ABASTECIMENTO');
+  if(!eventosGerenciais.length) throw new Error('Não há abastecimentos para consolidar neste relatório.');
+  return {linhas:registros,linhasOriginais:registros,eventos:eventosGerenciais,linhasHodometro:[],linhasOutros:[],erros,inicio,fim,fimOriginal:fim,faixaInicio:faixa[1],faixaFim:faixa[2]};
 }
 
 function parsearRelatorioGlobus(texto) {
@@ -3512,14 +3633,6 @@ function renderAuditoria() {
     Cobertura do rastreador: <b>${rastDiasComDados}/${rastDiasEsperados}</b> dias com valor · <b>${rastFalhas}</b> falhas; KM total soma apenas os dias com valor. Valores com cobertura incompleta são parciais.
   </div>`;
 
-  html += `<div class="audit-nota" style="margin-top:18px;">
-    <b>Pré-conferir relatório gerencial Globus (TXT)</b><br>
-    Selecione um relatório ABA para comparar suas linhas com a base atual. A leitura e a aplicação são locais: ao guardar, lançamentos novos e sem ambiguidade ficam no armazenamento deste navegador (IndexedDB), junto com o arquivo original. Isso não altera o HTML publicado nem os dados vistos em outros navegadores. Baixe um backup antes de limpar os dados do navegador ou trocar de dispositivo.<br>
-    <input id="globusTxtInput" type="file" accept=".txt,text/plain" style="margin-top:10px;max-width:100%;">
-    <button id="exportarBackupGlobus" type="button" style="margin:10px 0 0 8px;padding:7px 10px;">Baixar backup dos lotes</button> <button id="restaurarBackupGlobusBtn" type="button" style="padding:7px 10px;">Restaurar backup</button><input id="restaurarBackupGlobusInput" type="file" accept=".json,application/json" hidden>
-    <div id="globusLotesHistorico">${renderHistoricoGlobus()}</div><div id="globusRevisoes">${renderRevisoesGlobus()}</div><div id="globusBatchResult" aria-live="polite">${escapeHtml(GLOBUS_LAST_MESSAGE)}</div><div id="globusPreview" aria-live="polite"></div>
-  </div>`;
-
   html += `<table class="audit-tabela"><thead><tr>
     <th>Prefixo</th><th>Modelo</th><th>Km Rastreador</th><th>Cobertura rastreador</th><th>Km em abastecimentos Globus</th><th>Δ Km</th>
     <th>L Esperados</th><th>L Globus</th><th>Δ Litros</th><th>Impacto estimado*</th>
@@ -3611,11 +3724,6 @@ function renderAuditoria() {
 
   body.innerHTML = html;
 
-  const globusInput = body.querySelector('#globusTxtInput');
-  if (globusInput) globusInput.addEventListener('change', event => mostrarPreviaGlobus(event.target.files?.[0]));
-  body.querySelector('#exportarBackupGlobus')?.addEventListener('click',exportarBackupGlobus);
-  const bInput=body.querySelector('#restaurarBackupGlobusInput');body.querySelector('#restaurarBackupGlobusBtn')?.addEventListener('click',()=>bInput?.click());bInput?.addEventListener('change',e=>restaurarBackupGlobus(e.target.files?.[0]));
-  body.querySelectorAll('.globus-revisar').forEach(form=>form.addEventListener('submit',async e=>{e.preventDefault();try{await registrarRevisaoGlobus(form);renderAuditoria();}catch(err){alert(err.message);}}));
 
   body.querySelectorAll('tr[data-prefixo]').forEach(tr => {
     tr.addEventListener('click', () => {
@@ -3733,6 +3841,7 @@ async function boot() {
   console.log('[dbatt] Fills carregados:', Object.keys(FILLS).length, 'veículos');
   try { await carregarDadosGlobusPublicados(); } catch (e) { const bloqueio=document.getElementById('bloqueioDados');bloqueio.hidden=false;bloqueio.textContent='Cálculos suspensos: pacote público de abastecimentos não foi validado. '+e.message;document.querySelector('.page').hidden=true;return; }
   try { await carregarLotesGlobus(); } catch (e) { GLOBUS_STORAGE_STATUS='Armazenamento local indisponível: '+e.message+'. A base embutida segue disponível.'; console.warn('[dbatt] Importação local indisponível',e); }
+  try { await carregarLotesAttAba(); } catch (e) { ATTABA_STATUS='Armazenamento ATT ABA indisponível: '+e.message; console.warn('[dbatt] ATT ABA indisponível',e); }
 
   const falhasFonte = Object.values(FILLS).flatMap(fills => fills
     .filter(f => f.errosFonte.length)
@@ -3779,6 +3888,7 @@ Object.assign(window, {
   abrirModalGeral, fecharModalGeral,
   abrirModalEscala, fecharModalEscala,
   abrirModalAudit, fecharModalAudit,
+  abrirModalAttAba, fecharModalAttAba,
   abrirDrilldown, fecharDrilldown, drillVoltar,
   drillAbrirVeiculo, drillAbrirSemana,
   recalcularFrota, FROTA_ORIGINAL,
