@@ -849,8 +849,8 @@ body{position:relative;isolation:isolate}
 /* ===== TESTE VISUAL — LISTAGEM DE VEÍCULOS EM VIDRO FUMÊ ===== */
 .tabela-wrap{
   background:rgba(34,36,40,.50)!important;
-  -webkit-backdrop-filter:blur(14px) saturate(125%);
-  backdrop-filter:blur(14px) saturate(125%);
+  -webkit-backdrop-filter:blur(9px) saturate(115%);
+  backdrop-filter:blur(9px) saturate(115%);
   border:1px solid rgba(220,224,232,.16)!important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.075),
@@ -951,6 +951,8 @@ body{position:relative;isolation:isolate}
       let wasActive = false;
       let lastCut = 0;
       let frame = 0;
+      let lastFrame = 0;
+      const frameInterval = 1000 / 60;
 
       function update(now) {
         const elapsed = (now - start) % 9000;
@@ -984,11 +986,30 @@ body{position:relative;isolation:isolate}
         }
       }
       function loop(now) {
-        update(now);
+        if (document.hidden) { frame = 0; return; }
+        if (!lastFrame || now - lastFrame >= frameInterval) {
+          update(now);
+          lastFrame = now;
+        }
         frame = requestAnimationFrame(loop);
       }
-      frame = requestAnimationFrame(loop);
-      window.addEventListener('pagehide', () => cancelAnimationFrame(frame), {once:true});
+      function startLoop() {
+        if (!document.hidden && !frame) {
+          lastFrame = 0;
+          frame = requestAnimationFrame(loop);
+        }
+      }
+      function stopLoop() {
+        if (frame) cancelAnimationFrame(frame);
+        frame = 0;
+      }
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopLoop();
+        else startLoop();
+      });
+      window.addEventListener('pagehide', stopLoop);
+      window.addEventListener('pageshow', startLoop);
+      startLoop();
     })();
     </script>
 
@@ -3906,6 +3927,9 @@ Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FR
   if (!ctx) return;
 
   let w = 0, h = 0, dpr = 1;
+  let frameId = 0;
+  let ultimoFrame = 0;
+  const intervaloFrame = 1000 / 60;
   const inicio = performance.now();
   const ondas = [
     { yBase:.06, amp:85,  freq:.0017, vel:-.32, fase:.7, topo:'rgba(113,113,122,.085)', base:'rgba(9,9,11,0)' },
@@ -3935,6 +3959,12 @@ Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FR
   }
 
   function render(agora) {
+    if (document.hidden) { frameId = 0; return; }
+    if (ultimoFrame && agora - ultimoFrame < intervaloFrame - 0.5) {
+      frameId = requestAnimationFrame(render);
+      return;
+    }
+    ultimoFrame = agora;
     const t = (agora - inicio) * .001;
     const bg = ctx.createRadialGradient(w*.5,h*.45,0,w*.5,h*.5,Math.max(w,h)*.85);
     bg.addColorStop(0,'#18181b');
@@ -3967,9 +3997,26 @@ Object.defineProperty(window, 'DIVERGENCIAS_FROTA', { get: () => DIVERGENCIAS_FR
       ctx.stroke();
     }
     ctx.globalCompositeOperation='source-over';
-    requestAnimationFrame(render);
+    frameId = requestAnimationFrame(render);
   }
-  requestAnimationFrame(render);
+
+  function iniciarOndas() {
+    if (!document.hidden && !frameId) {
+      ultimoFrame = 0;
+      frameId = requestAnimationFrame(render);
+    }
+  }
+  function pausarOndas() {
+    if (frameId) cancelAnimationFrame(frameId);
+    frameId = 0;
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) pausarOndas();
+    else iniciarOndas();
+  });
+  window.addEventListener('pagehide', pausarOndas);
+  window.addEventListener('pageshow', iniciarOndas);
+  iniciarOndas();
 })();
 </script>
 
