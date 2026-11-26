@@ -859,6 +859,20 @@ body{position:relative;isolation:isolate}
 }
 .tabela-wrap table{background:transparent!important}
 .tabela-wrap tbody{background:transparent!important}
+
+/* ATT ABA — estados visíveis de leitura e gravação */
+.attaba-status{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:10px;color:var(--tx);font-size:12px}
+.attaba-status[hidden]{display:none}
+.attaba-spinner{width:17px;height:17px;border:2px solid #d8e7e4;border-top-color:#0f9b83;border-radius:50%;animation:attabaSpin .75s linear infinite;flex:0 0 auto}
+@keyframes attabaSpin{to{transform:rotate(360deg)}}
+.attaba-progress{height:6px;background:#e9ecef;border-radius:99px;overflow:hidden;margin-top:8px}
+.attaba-progress>span{display:block;height:100%;width:0;background:#0f9b83;transition:width .2s}
+.attaba-resumo{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:12px}
+.attaba-metrica{padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:9px}
+.attaba-metrica b{display:block;font:700 20px var(--f-num);color:var(--tx)}
+.attaba-metrica span{font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px}
+.attaba-sucesso{border-left:4px solid var(--green)!important;background:#f2fbf6!important}
+.attaba-alerta{border-left:4px solid var(--amber)!important;background:#fffaf0!important}
 </style>
 </head>
 <body>
@@ -3310,70 +3324,102 @@ function abrirModalAttAba(){renderAttAba();document.getElementById('modalAttAba'
 function fecharModalAttAba(){document.getElementById('modalAttAba').hidden=true;document.body.style.overflow='';}
 function renderAttAba(){
   const body=document.getElementById('modalAttAbaBody'),historico=ATTABA_LOTES.slice().sort((a,b)=>String(b.recebidoEm).localeCompare(String(a.recebidoEm))).slice(0,12);
-  let h='<div class="audit-resumo"><b>Atualização contínua da base</b><br>Selecione um ou vários relatórios gerenciais TXT do Globus. O ATT ABA consolida os arquivos, preserva abastecimentos distintos e reconhece correções retroativas de hodômetro. Valores próximos nunca são descartados.</div>';
-  h+='<div class="audit-nota" style="margin-top:14px;"><b>Selecionar relatórios (vários arquivos por operação)</b><br><input id="attAbaArquivo" type="file" accept=".txt,text/plain" multiple style="margin-top:10px;max-width:100%;"><div id="attAbaPreview" aria-live="polite" style="margin-top:12px;">'+escapeHtml(ATTABA_STATUS)+'</div></div>';
+  let h='<div class="audit-resumo"><b>Atualização contínua da base</b><br>Selecione um ou vários relatórios gerenciais TXT do Globus. Primeiro você verá a prévia; nada será gravado até clicar em “Aplicar atualização”. Durante a gravação, o painel mostrará o andamento e só confirmará o sucesso depois que o IndexedDB concluir.</div>';
+  h+='<div class="audit-nota" style="margin-top:14px;"><b>Selecionar relatórios (vários arquivos por operação)</b><br><input id="attAbaArquivo" type="file" accept=".txt,text/plain" multiple style="margin-top:10px;max-width:100%;"><div id="attAbaPreview" aria-live="polite" style="margin-top:12px;">'+escapeHtml(ATTABA_STATUS)+'</div><div id="attAbaProcesso" class="attaba-status" role="status" aria-live="polite" hidden><span class="attaba-spinner"></span><div style="flex:1"><b id="attAbaProcessoTitulo">Processando…</b><div id="attAbaProcessoTexto" style="color:var(--tx2);margin-top:2px"></div><div class="attaba-progress"><span id="attAbaProcessoBarra"></span></div></div></div></div>';
   h+='<div class="audit-nota" style="margin-top:14px;"><b>Histórico de importações</b><br>';
   if(!historico.length)h+='<small>Nenhuma importação registrada ainda.</small>';
-  else h+='<div style="overflow:auto;margin-top:8px;"><table class="audit-tabela"><thead><tr><th>Arquivos</th><th>Data</th><th>Novos</th><th>Corrigidos</th><th>Duplicados</th><th>Inválidos</th></tr></thead><tbody>'+historico.map(l=>'<tr><td>'+escapeHtml(l.nomeArquivo)+'</td><td>'+new Date(l.recebidoEm).toLocaleString('pt-BR')+'</td><td>'+(l.eventosAceitos||[]).length+'</td><td>'+(l.eventosAtualizados||[]).length+'</td><td>'+(l.duplicados||0)+'</td><td>'+(l.invalidos||0)+'</td></tr>').join('')+'</tbody></table></div>';
+  else h+='<div style="overflow:auto;margin-top:8px;"><table class="audit-tabela"><thead><tr><th>Arquivos</th><th>Data</th><th>Veículos</th><th>Novos</th><th>Corrigidos</th><th>Duplicados</th><th>Inválidos</th></tr></thead><tbody>'+historico.map(l=>'<tr><td>'+escapeHtml(l.nomeArquivo)+'</td><td>'+new Date(l.recebidoEm).toLocaleString('pt-BR')+'</td><td>'+(l.veiculosIncluidos||0)+'</td><td>'+(l.eventosAceitos||[]).length+'</td><td>'+(l.eventosAtualizados||[]).length+'</td><td>'+(l.duplicados||0)+'</td><td>'+(l.invalidos||0)+'</td></tr>').join('')+'</tbody></table></div>';
   h+='</div><div class="audit-nota" style="margin-top:12px;"><small>Os dados ficam salvos no IndexedDB deste navegador. O HTML estático não grava diretamente no arquivo publicado nem sincroniza automaticamente com outros computadores.</small></div>';
   body.innerHTML=h;body.querySelector('#attAbaArquivo')?.addEventListener('change',e=>mostrarPreviaAttAba(Array.from(e.target.files||[])));
 }
 async function mostrarPreviaAttAba(files){
-  const alvo=document.getElementById('attAbaPreview');if(!files||!files.length)return;alvo.textContent='Lendo e validando '+files.length+' relatório(s)…';
+  const alvo=document.getElementById('attAbaPreview'),input=document.getElementById('attAbaArquivo');
+  if(!files||!files.length)return;
+  const processo=document.getElementById('attAbaProcesso'),titulo=document.getElementById('attAbaProcessoTitulo'),textoStatus=document.getElementById('attAbaProcessoTexto'),barra=document.getElementById('attAbaProcessoBarra');
+  const mostrarProcesso=(tituloTxt,detalhe,pct)=>{if(processo)processo.hidden=false;if(titulo)titulo.textContent=tituloTxt;if(textoStatus)textoStatus.textContent=detalhe||'';if(barra)barra.style.width=Math.max(0,Math.min(100,pct||0))+'%';};
+  if(input)input.disabled=true;
+  if(alvo)alvo.textContent='Preparando leitura dos relatórios…';
+  mostrarProcesso('Analisando relatórios','A leitura ainda não altera a base.',0);
   try{
-    const arquivos=[],eventos=[],invalidos=[],shaVistos=new Set();
-    for(const file of files){
+    const arquivos=[],eventos=[],invalidos=[],shaVistos=new Set(),prefixosRelatorio=new Set();
+    for(let i=0;i<files.length;i++){
+      const file=files[i];
+      mostrarProcesso('Lendo arquivo '+(i+1)+' de '+files.length,file.name,Math.round(i/files.length*80));
+      await new Promise(resolve=>requestAnimationFrame(()=>resolve()));
       const bytes=new Uint8Array(await file.arrayBuffer()),sha=await sha256Bytes(bytes);
       const jaImportado=ATTABA_LOTES.some(l=>l.sha256===sha||(l.arquivos||[]).some(a=>a.sha256===sha));
       if(jaImportado||shaVistos.has(sha)){arquivos.push({file,bytes,sha,duplicadoArquivo:true});continue;}
       shaVistos.add(sha);
       const texto=new TextDecoder('windows-1252').decode(bytes),relatorio=parsearRelatorioGlobus(texto),validacao=validarEventosAttAba(relatorio);
       arquivos.push({file,bytes,sha,relatorio,validacao});
+      (relatorio.linhas||[]).forEach(l=>{if(l.prefixo)prefixosRelatorio.add(String(l.prefixo).replace(/^0+/,'')||'0');});
       validacao.validos.forEach(e=>eventos.push({...e,arquivoFonte:file.name}));
       invalidos.push(...validacao.invalidos.map(x=>({...x,arquivo:file.name})));
     }
     if(!arquivos.some(a=>a.relatorio))throw new Error('Todos os arquivos selecionados já foram importados.');
     const comparacao=compararEventosAttAba(eventos);
-    ATTABA_PENDENTE={arquivos,eventos,comparacao,invalidos};
+    const prefixosNovos=[...prefixosRelatorio].filter(p=>!FROTA.some(v=>String(v.p).replace(/^0+/,'')===p));
+    ATTABA_PENDENTE={arquivos,eventos,comparacao,invalidos,prefixosRelatorio:[...prefixosRelatorio]};
     const lidos=arquivos.reduce((n,a)=>n+(a.relatorio?a.relatorio.eventos.length:0),0);
     const periodos=arquivos.filter(a=>a.relatorio).map(a=>a.file.name+': '+a.relatorio.faixaInicio+' a '+a.relatorio.faixaFim);
-    let h='<b>Prévia consolidada de '+arquivos.filter(a=>a.relatorio).length+' arquivo(s)</b><br>'+periodos.map(escapeHtml).join('<br>')+'<br>';
-    h+='Abastecimentos lidos: <b>'+lidos+'</b> · Novos: <b>'+comparacao.novos.length+'</b> · Correções retroativas: <b>'+comparacao.correcoes.length+'</b> · Duplicados exatos: <b>'+comparacao.duplicados.length+'</b> · Inválidos: <b>'+invalidos.length+'</b>';
-    const novosPrefixos=[...new Set(comparacao.novos.map(e=>e.prefixo).filter(p=>!FROTA.some(v=>String(v.p)===String(p))))];
-    if(novosPrefixos.length)h+='<br>Novos veículos que serão cadastrados em <b>Sem contrato</b>: '+novosPrefixos.map(escapeHtml).join(', ');
+    let h='<b>PRÉVIA — nada foi gravado ainda</b><br>'+periodos.map(escapeHtml).join('<br>');
+    h+='<div class="attaba-resumo"><div class="attaba-metrica"><b>'+lidos+'</b><span>Abastecimentos lidos</span></div><div class="attaba-metrica"><b>'+prefixosNovos.length+'</b><span>Veículos a incluir</span></div><div class="attaba-metrica"><b>'+comparacao.novos.length+'</b><span>Abastecimentos novos</span></div><div class="attaba-metrica"><b>'+comparacao.correcoes.length+'</b><span>Correções</span></div><div class="attaba-metrica"><b>'+comparacao.duplicados.length+'</b><span>Sem alteração</span></div><div class="attaba-metrica"><b>'+invalidos.length+'</b><span>Linhas inválidas</span></div></div>';
+    if(prefixosNovos.length)h+='<div style="margin-top:10px;"><b>Veículos que serão incluídos em “Sem contrato”:</b> '+prefixosNovos.map(escapeHtml).join(', ')+'</div>';
     const repetidos=arquivos.filter(a=>a.duplicadoArquivo).map(a=>a.file.name);
-    if(repetidos.length)h+='<br>Arquivo(s) já importado(s), ignorado(s): '+repetidos.map(escapeHtml).join(', ');
-    h+='<div style="margin-top:8px;"><small>Correções retroativas são aplicadas somente quando prefixo, data e demais identificadores do abastecimento apontam para um único registro. A quilometragem e os hodômetros não são usados para rejeitar a correspondência. Registros ambíguos não são descartados.</small></div>';
-    if(invalidos.length)h+='<div style="margin-top:8px;"><b>Linhas inválidas:</b><br>'+invalidos.slice(0,30).map(x=>escapeHtml(x.arquivo)+' · Linha '+x.linha+' · prefixo '+escapeHtml(x.prefixo)+' · '+escapeHtml(x.motivos.join(', '))).join('<br>')+(invalidos.length>30?'<br>… e mais '+(invalidos.length-30)+' linha(s).':'')+'</div>';
-    h+='<div style="margin-top:12px;"><button id="attAbaAplicar" type="button" style="padding:9px 14px;border:1px solid #0f9b83;border-radius:8px;background:#0f9b83;color:#fff;font:700 12px var(--f-ui);cursor:pointer;" '+(comparacao.novos.length||comparacao.correcoes.length?'':'disabled')+'>Aplicar atualização consolidada</button> <span id="attAbaAplicacaoStatus" aria-live="polite"></span></div>';
-    alvo.innerHTML=h;alvo.querySelector('#attAbaAplicar')?.addEventListener('click',e=>{e.currentTarget.disabled=true;aplicarAttAba();});
-  }catch(err){ATTABA_PENDENTE=null;alvo.textContent='Não foi possível processar os arquivos: '+err.message;}
+    if(repetidos.length)h+='<div style="margin-top:8px;">Arquivo(s) já importado(s), ignorado(s): '+repetidos.map(escapeHtml).join(', ')+'</div>';
+    h+='<div style="margin-top:8px;"><small>Veículos já cadastrados permanecem no contrato atual. A inclusão do veículo é avaliada separadamente da inclusão do abastecimento; portanto, um prefixo pode ser cadastrado mesmo quando todos os seus abastecimentos já existem. Correções só são aplicadas quando a correspondência identifica um único lançamento. Registros ambíguos não são descartados.</small></div>';
+    if(invalidos.length)h+='<div class="attaba-alerta" style="margin-top:10px;padding:10px;"><b>Linhas inválidas:</b><br>'+invalidos.slice(0,30).map(x=>escapeHtml(x.arquivo)+' · Linha '+x.linha+' · prefixo '+escapeHtml(x.prefixo)+' · '+escapeHtml(x.motivos.join(', '))).join('<br>')+(invalidos.length>30?'<br>… e mais '+(invalidos.length-30)+' linha(s).':'')+'</div>';
+    h+='<div style="margin-top:12px;"><button id="attAbaAplicar" type="button" style="padding:10px 16px;border:1px solid #0f9b83;border-radius:8px;background:#0f9b83;color:#fff;font:700 12px var(--f-ui);cursor:pointer;" '+(comparacao.novos.length||comparacao.correcoes.length||prefixosNovos.length?'':'disabled')+'>Aplicar atualização na base</button> <span style="font-size:11px;color:var(--tx2)">A base só muda após clicar aqui.</span></div>';
+    alvo.innerHTML=h;
+    if(processo)processo.hidden=true;
+    alvo.querySelector('#attAbaAplicar')?.addEventListener('click',e=>{e.currentTarget.disabled=true;aplicarAttAba();});
+  }catch(err){
+    ATTABA_PENDENTE=null;
+    if(alvo)alvo.innerHTML='<div class="attaba-alerta" style="padding:10px;">Não foi possível gerar a prévia: '+escapeHtml(err.message)+'. Nenhuma alteração foi aplicada.</div>';
+    if(processo)processo.hidden=true;
+  }finally{if(input)input.disabled=false;}
 }
 async function aplicarAttAba(){
-  const status=document.getElementById('attAbaAplicacaoStatus'),p=ATTABA_PENDENTE;if(!p)return;
+  const status=document.getElementById('attAbaAplicacaoStatus'),p=ATTABA_PENDENTE;
+  const processo=document.getElementById('attAbaProcesso'),titulo=document.getElementById('attAbaProcessoTitulo'),textoStatus=document.getElementById('attAbaProcessoTexto'),barra=document.getElementById('attAbaProcessoBarra');
+  if(!p)return;
+  const mostrar=(t,d,pct)=>{if(processo)processo.hidden=false;if(titulo)titulo.textContent=t;if(textoStatus)textoStatus.textContent=d||'';if(barra)barra.style.width=Math.max(0,Math.min(100,pct||0))+'%';};
+  const botao=document.getElementById('attAbaAplicar');if(botao)botao.disabled=true;
   try{
+    mostrar('Gravando atualização','Salvando o lote no armazenamento local…',15);
+    await new Promise(resolve=>requestAnimationFrame(()=>resolve()));
     const db=await abrirBancoAttAba(),arquivos=p.arquivos.filter(a=>a.relatorio);
     const shaLote=await sha256Bytes(new TextEncoder().encode(arquivos.map(a=>a.sha).sort().join('|')));
-    if(ATTABA_LOTES.some(l=>l.sha256===shaLote)){status.textContent='Este conjunto de arquivos já foi importado.';return;}
+    if(ATTABA_LOTES.some(l=>l.sha256===shaLote)){if(status)status.textContent='Este conjunto de arquivos já foi importado. Nenhuma duplicação foi criada.';if(processo)processo.hidden=true;ATTABA_PENDENTE=null;return;}
     const aceitos=p.comparacao.novos.map(e=>({...e,arquivoFonte:e.arquivoFonte||'ATT ABA'}));
     const atualizados=p.comparacao.correcoes.map(c=>({prefixo:c.prefixo,eventoNovo:{...c.eventoNovo,arquivoFonte:c.eventoNovo.arquivoFonte||'ATT ABA'}}));
-    const lote={sha256:shaLote,nomeArquivo:arquivos.map(a=>a.file.name).join(', '),arquivos:arquivos.map(a=>({nomeArquivo:a.file.name,sha256:a.sha,bytes:a.bytes.length,originalBase64:bytesBase64(a.bytes),periodo:a.relatorio.faixaInicio+' a '+a.relatorio.faixaFim})),bytes:arquivos.reduce((n,a)=>n+a.bytes.length,0),recebidoEm:new Date().toISOString(),eventosAceitos:aceitos,eventosAtualizados:atualizados,duplicados:p.comparacao.duplicados.length,invalidos:p.invalidos.length};
+    const lote={sha256:shaLote,nomeArquivo:arquivos.map(a=>a.file.name).join(', '),arquivos:arquivos.map(a=>({nomeArquivo:a.file.name,sha256:a.sha,bytes:a.bytes.length,originalBase64:bytesBase64(a.bytes),periodo:a.relatorio.faixaInicio+' a '+a.relatorio.faixaFim})),bytes:arquivos.reduce((n,a)=>n+a.bytes.length,0),recebidoEm:new Date().toISOString(),eventosAceitos:aceitos,eventosAtualizados:atualizados,duplicados:p.comparacao.duplicados.length,invalidos:p.invalidos.length,veiculosIncluidos:0};
     await gravarLoteAttAba(db,lote);
+    mostrar('Atualizando painel','Aplicando lançamentos e cadastrando prefixos desconhecidos…',65);
+    await new Promise(resolve=>requestAnimationFrame(()=>resolve()));
     ATTABA_LOTES.push(lote);
+    const prefixosParaCadastrar=new Set([...(p.prefixosRelatorio||[]),...aceitos.map(e=>e.prefixo),...atualizados.map(e=>e.prefixo)]);
+    let veiculosIncluidos=0;
+    prefixosParaCadastrar.forEach(prefixo=>{if(garantirVeiculoSemContratoAttAba(prefixo))veiculosIncluidos++;});
     aceitos.forEach(e=>{
-      garantirVeiculoSemContratoAttAba(e.prefixo);
       if(!FILLS[e.prefixo])FILLS[e.prefixo]=[];
       FILLS[e.prefixo].push({...e,loteSha256:lote.sha256});
       const dt=parseData(e.data,e.ano);if(dt instanceof Date&&!Number.isNaN(dt.getTime())&&dt>DATA_REF)DATA_REF=dt;
     });
     const correcoesAplicadas=aplicarCorrecoesAttAba(atualizados);
+    lote.veiculosIncluidos=veiculosIncluidos;
     ATTABA_STATUS=ATTABA_LOTES.length+' lote(s) importado(s) neste navegador.';
     recalcularFrota();SUSPEITOS=detectarSuspeitos();render();atualizarInfoPeriodoGlobus();atualizarCardAttAba();
-    status.textContent='Concluído: '+aceitos.length+' novo(s) incorporado(s), '+correcoesAplicadas+' abastecimento(s) retroativo(s) corrigido(s), '+p.comparacao.duplicados.length+' duplicado(s) exato(s) ignorado(s), '+p.invalidos.length+' inválido(s) fora dos cálculos.';
-    ATTABA_PENDENTE=null;setTimeout(()=>renderAttAba(),500);
-  }catch(err){status.textContent='Falha ao salvar. A base não foi alterada: '+err.message;}
+    mostrar('Atualização concluída','A gravação foi confirmada e o painel foi recalculado.',100);
+    if(status)status.innerHTML='<div class="attaba-sucesso" style="padding:12px;border-radius:8px;margin-top:10px;"><b>Atualização concluída e salva.</b><div class="attaba-resumo"><div class="attaba-metrica"><b>'+veiculosIncluidos+'</b><span>Veículos incluídos</span></div><div class="attaba-metrica"><b>'+aceitos.length+'</b><span>Abastecimentos novos</span></div><div class="attaba-metrica"><b>'+correcoesAplicadas+'</b><span>Abastecimentos corrigidos</span></div><div class="attaba-metrica"><b>'+p.comparacao.duplicados.length+'</b><span>Sem alteração</span></div><div class="attaba-metrica"><b>'+p.invalidos.length+'</b><span>Linhas inválidas</span></div></div><small>Veículos já cadastrados e seus contratos foram preservados. Os desconhecidos foram incluídos em “Sem contrato”.</small></div>';
+    ATTABA_PENDENTE=null;
+    setTimeout(()=>{if(processo)processo.hidden=true;renderAttAba();const novoStatus=document.getElementById('attAbaPreview');if(novoStatus)novoStatus.innerHTML=status?.innerHTML||ATTABA_STATUS;},700);
+  }catch(err){
+    mostrar('Falha na atualização','A gravação não foi confirmada: '+err.message,0);
+    if(status)status.textContent='Falha ao salvar: '+err.message+'. Não considere a atualização concluída.';
+    if(botao)botao.disabled=false;
+  }
 }
-
 /* ═══════════════════════════════════════════════════════
    MODAL AUDITORIA
    ═══════════════════════════════════════════════════════ */
