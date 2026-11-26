@@ -3276,15 +3276,14 @@ function compararEventosAttAba(eventos){
 function validarEventosAttAba(relatorio){
   const invalidos=[];
   const validos=relatorio.eventos.map(e=>{
-    const falhas=[],dt=parseData(e.data,e.ano);
+    const falhas=[],dt=parseData(e.dataCompleta||e.data,e.ano);
     if(!(dt instanceof Date)||Number.isNaN(dt.getTime()))falhas.push('data inválida');
     if(e.origem!=='I'&&e.origem!=='E')falhas.push('origem I/E');
     if(!Number.isFinite(e.litros)||e.litros<=0)falhas.push('litros');
-    if(!Number.isFinite(e.km)||e.km<0)falhas.push('quilometragem');
-    if(!Number.isFinite(e.precoL)||e.precoL<0)falhas.push('preço por litro');
-    if(!Number.isFinite(e.valorTotal)||e.valorTotal<0)falhas.push('valor total');
+    // Este relatório gerencial de ABA/Quilometragem não contém preço/L nem valor total.
+    // KM e KM/L podem estar em branco em linhas sem deslocamento válido; preservar o abastecimento.
     if(falhas.length){invalidos.push({linha:e.linha,prefixo:e.prefixo,data:e.dataCompleta,motivos:falhas,bruto:e.bruto});return null;}
-    return {...e,valor:e.valorTotal,tipo:e.origem,kmPorLitroGlobus:e.kmPorLitro,kmPorLitroCalculado:e.litros>0?e.km/e.litros:null,prefixo:String(e.prefixo),linhaFonte:e.linha,linhaBruta:e.bruto,errosFonte:[],arquivoFonte:'ATT ABA'};
+    return {...e,valor:e.valorTotal??null,tipo:e.origem,kmPorLitroGlobus:e.kmPorLitro,kmPorLitroCalculado:Number.isFinite(e.km)&&e.litros>0?e.km/e.litros:null,prefixo:String(e.prefixo),linhaFonte:e.linha,linhaBruta:e.bruto,errosFonte:e.camposInvalidos||[],arquivoFonte:'ATT ABA'};
   }).filter(Boolean);
   return {validos,invalidos};
 }
@@ -3566,9 +3565,9 @@ function parsearRelatorioGlobus(texto) {
     };
     const hodometroInicial = numeroGlobus(linha.slice(100, 110));
     const hodometroFinal = numeroGlobus(linha.slice(110, 120));
-    const km = numeroGlobus(linha.slice(120, 131));
-    const kmAcumulado = numeroGlobus(linha.slice(131, 143));
-    const kmPorLitro = numeroGlobus(linha.slice(144, 152));
+    const km = numeroGlobus(linha.slice(120, 130));
+    const kmAcumulado = numeroGlobus(linha.slice(130, 143));
+    const kmPorLitro = numeroGlobus(linha.slice(143, 151));
     const dataObj = parseDataCompleta(dataCompleta);
     const camposInvalidos = [];
     if (!dataObj) camposInvalidos.push('data');
