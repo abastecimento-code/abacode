@@ -1496,16 +1496,17 @@ function parseFills(raw, prefixo) {
     if (Number.isNaN(dt.getTime())) errosFonte.push('data ausente ou inválida');
     const litros=num(r.litros), precoL=num(r.precoL), valor=num(r.valor), km=num(r.km);
     if (litros == null || litros <= 0) errosFonte.push('litros ausentes, inválidos ou não positivos');
-    if (precoL == null || precoL < 0) errosFonte.push('preço/L ausente ou inválido');
-    if (valor == null || valor < 0) errosFonte.push('valor total Globus ausente ou inválido');
-    if (km == null || km < 0) errosFonte.push('KM percorrido ausente ou inválido');
-    if (r.tipo !== 'I' && r.tipo !== 'E') errosFonte.push('origem ausente ou diferente de I/E');
+    // No relatório gerencial ABA/Quilometragem, preço/L e valor total não são fornecidos.
+    // KM pode estar ausente em abastecimentos sem deslocamento calculável; não invalidar a linha.
+    const tipo = r.tipo || r.origem || null;
+    if (tipo !== 'I' && tipo !== 'E') errosFonte.push('origem ausente ou diferente de I/E');
+    if (km != null && km < 0) errosFonte.push('KM percorrido negativo');
     const kmPorLitroCalculado=litros>0&&km!=null?km/litros:null;
     const kmPorLitroGlobus=num(r.kmPorLitroGlobus ?? r.kmPorLitro);
     const hodometroInicial=num(r.hodometroInicial),hodometroFinal=num(r.hodometroFinal),kmAcumulado=num(r.kmAcumulado);
     const divergenciaHodometro=hodometroInicial!=null&&hodometroFinal!=null&&km!=null&&Math.abs((hodometroFinal-hodometroInicial)-km)>0.01;
     const divergenciaKmL=kmPorLitroGlobus!=null&&kmPorLitroCalculado!=null&&Math.abs(kmPorLitroGlobus-kmPorLitroCalculado)>0.002;
-    return {...r,data,ano,litros,precoL,valor,km,kmPorLitroCalculado,kmPorLitroGlobus,hodometroInicial,hodometroFinal,kmAcumulado,tipo:r.tipo||null,prefixo,linhaFonte:r.linhaFonte||indice+1,errosFonte,divergenciaHodometro,divergenciaKmL};
+    return {...r,data,ano,litros,precoL,valor,km,kmPorLitroCalculado,kmPorLitroGlobus,hodometroInicial,hodometroFinal,kmAcumulado,tipo,prefixo,linhaFonte:r.linhaFonte||indice+1,errosFonte,divergenciaHodometro,divergenciaKmL};
   });
 }
 
@@ -4046,21 +4047,22 @@ async function boot() {
     .filter(f => f.errosFonte.length)
     .map(f => `Prefixo ${f.prefixo}, linha ${f.linhaFonte} (${f.linhaBruta}): ${f.errosFonte.join('; ')}`)
   );
-  const prefixosFrota = new Set();
-  FROTA.forEach(v => {
-    if (prefixosFrota.has(v.p)) falhasFonte.push(`Prefixo ${v.p}: cadastro duplicado em FROTA.`);
-    prefixosFrota.add(v.p);
-  });
-  Object.keys(FILLS).filter(p => !prefixosFrota.has(p)).forEach(p => {
-    falhasFonte.push(`Prefixo ${p}: há linhas em FILLS_RAW sem cadastro correspondente em FROTA.`);
-  });
+  // Prefixos repetidos podem representar veículos diferentes; não bloquear o painel por isso.
+  // Todo prefixo dos pacotes Globus publicados é cadastrado durante carregarDadosGlobusPublicados().
+  const prefixosFrota = new Set(FROTA.map(v => String(v.p)));
+  const prefixosSemCadastro = Object.keys(FILLS).filter(p => !prefixosFrota.has(String(p)));
+  if (prefixosSemCadastro.length) {
+    console.warn('[dbatt] Prefixos com abastecimentos sem veículo visível:', prefixosSemCadastro);
+  }
   if (falhasFonte.length) {
-    const bloqueio = document.getElementById('bloqueioDados');
-    bloqueio.hidden = false;
-    bloqueio.textContent = `Cálculos suspensos: ${falhasFonte.length} linha(s) de FILLS_RAW têm campos inválidos. A linha de origem foi preservada; revise o relatório e corrija a entrada antes de recalcular.\n\n${falhasFonte.join('\n')}`;
-    document.querySelector('.page').hidden = true;
-    console.error('[dbatt] Cálculos suspensos por falhas de validação da fonte:', falhasFonte);
-    return;
+    // Falhas pontuais ficam auditáveis no console, mas não escondem toda a tela inicial.
+    // Linhas válidas continuam alimentando os indicadores e as análises.
+    console.warn('[dbatt] Linhas de origem com campos essenciais inválidos; preservadas fora dos cálculos:', falhasFonte);
+    const aviso = document.getElementById('bloqueioDados');
+    if (aviso) {
+      aviso.hidden = false;
+      aviso.textContent = `${falhasFonte.length} linha(s) com data, litros ou origem inválidos foram preservadas para auditoria e não entram nos cálculos. Os demais dados seguem disponíveis.`;
+    }
   }
 
   // Garante consistência FROTA = Σ FILLS_RAW antes de calcular suspeitos
