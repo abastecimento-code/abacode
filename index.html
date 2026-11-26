@@ -3309,6 +3309,7 @@ function aplicarCorrecoesAttAba(correcoes){
 async function carregarLotesAttAba(){
   const db=await abrirBancoAttAba();ATTABA_LOTES=await lerLotesAttAba(db);let total=0;
   ATTABA_LOTES.sort((a,b)=>String(a.recebidoEm).localeCompare(String(b.recebidoEm))).forEach(l=>{
+    (l.prefixosRelatorio||[]).forEach(p=>garantirVeiculoSemContratoAttAba(p));
     (l.eventosAceitos||[]).forEach(e=>{
       garantirVeiculoSemContratoAttAba(e.prefixo);
       if(!FILLS[e.prefixo])FILLS[e.prefixo]=[];
@@ -3369,7 +3370,7 @@ async function mostrarPreviaAttAba(files){
     if(repetidos.length)h+='<div style="margin-top:8px;">Arquivo(s) já importado(s), ignorado(s): '+repetidos.map(escapeHtml).join(', ')+'</div>';
     h+='<div style="margin-top:8px;"><small>Veículos já cadastrados permanecem no contrato atual. A inclusão do veículo é avaliada separadamente da inclusão do abastecimento; portanto, um prefixo pode ser cadastrado mesmo quando todos os seus abastecimentos já existem. Correções só são aplicadas quando a correspondência identifica um único lançamento. Registros ambíguos não são descartados.</small></div>';
     if(invalidos.length)h+='<div class="attaba-alerta" style="margin-top:10px;padding:10px;"><b>Linhas inválidas:</b><br>'+invalidos.slice(0,30).map(x=>escapeHtml(x.arquivo)+' · Linha '+x.linha+' · prefixo '+escapeHtml(x.prefixo)+' · '+escapeHtml(x.motivos.join(', '))).join('<br>')+(invalidos.length>30?'<br>… e mais '+(invalidos.length-30)+' linha(s).':'')+'</div>';
-    h+='<div style="margin-top:12px;"><button id="attAbaAplicar" type="button" style="padding:10px 16px;border:1px solid #0f9b83;border-radius:8px;background:#0f9b83;color:#fff;font:700 12px var(--f-ui);cursor:pointer;" '+(comparacao.novos.length||comparacao.correcoes.length||prefixosNovos.length?'':'disabled')+'>Aplicar atualização na base</button> <span style="font-size:11px;color:var(--tx2)">A base só muda após clicar aqui.</span></div>';
+    h+='<div style="margin-top:12px;"><button id="attAbaAplicar" type="button" style="padding:10px 16px;border:1px solid #0f9b83;border-radius:8px;background:#0f9b83;color:#fff;font:700 12px var(--f-ui);cursor:pointer;" '+(comparacao.novos.length||comparacao.correcoes.length||prefixosNovos.length?'':'disabled')+'>Aplicar atualização na base</button> <span id="attAbaAplicacaoStatus" aria-live="polite" style="display:block;margin-top:10px"></span><span style="font-size:11px;color:var(--tx2)">A base só muda após clicar aqui.</span></div>';
     alvo.innerHTML=h;
     if(processo)processo.hidden=true;
     alvo.querySelector('#attAbaAplicar')?.addEventListener('click',e=>{e.currentTarget.disabled=true;aplicarAttAba();});
@@ -3393,7 +3394,7 @@ async function aplicarAttAba(){
     if(ATTABA_LOTES.some(l=>l.sha256===shaLote)){if(status)status.textContent='Este conjunto de arquivos já foi importado. Nenhuma duplicação foi criada.';if(processo)processo.hidden=true;ATTABA_PENDENTE=null;return;}
     const aceitos=p.comparacao.novos.map(e=>({...e,arquivoFonte:e.arquivoFonte||'ATT ABA'}));
     const atualizados=p.comparacao.correcoes.map(c=>({prefixo:c.prefixo,eventoNovo:{...c.eventoNovo,arquivoFonte:c.eventoNovo.arquivoFonte||'ATT ABA'}}));
-    const lote={sha256:shaLote,nomeArquivo:arquivos.map(a=>a.file.name).join(', '),arquivos:arquivos.map(a=>({nomeArquivo:a.file.name,sha256:a.sha,bytes:a.bytes.length,originalBase64:bytesBase64(a.bytes),periodo:a.relatorio.faixaInicio+' a '+a.relatorio.faixaFim})),bytes:arquivos.reduce((n,a)=>n+a.bytes.length,0),recebidoEm:new Date().toISOString(),eventosAceitos:aceitos,eventosAtualizados:atualizados,duplicados:p.comparacao.duplicados.length,invalidos:p.invalidos.length,veiculosIncluidos:0};
+    const lote={sha256:shaLote,nomeArquivo:arquivos.map(a=>a.file.name).join(', '),arquivos:arquivos.map(a=>({nomeArquivo:a.file.name,sha256:a.sha,bytes:a.bytes.length,originalBase64:bytesBase64(a.bytes),periodo:a.relatorio.faixaInicio+' a '+a.relatorio.faixaFim})),bytes:arquivos.reduce((n,a)=>n+a.bytes.length,0),recebidoEm:new Date().toISOString(),eventosAceitos:aceitos,eventosAtualizados:atualizados,duplicados:p.comparacao.duplicados.length,invalidos:p.invalidos.length,veiculosIncluidos:(p.prefixosRelatorio||[]).filter(prefixo=>!FROTA.some(v=>String(v.p).replace(/^0+/,'')===String(prefixo).replace(/^0+/,'') )).length,prefixosRelatorio:p.prefixosRelatorio||[]};
     await gravarLoteAttAba(db,lote);
     mostrar('Atualizando painel','Aplicando lançamentos e cadastrando prefixos desconhecidos…',65);
     await new Promise(resolve=>requestAnimationFrame(()=>resolve()));
