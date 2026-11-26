@@ -3308,7 +3308,23 @@ function aplicarCorrecoesAttAba(correcoes){
 }
 async function carregarLotesAttAba(){
   const db=await abrirBancoAttAba();ATTABA_LOTES=await lerLotesAttAba(db);let total=0;
-  ATTABA_LOTES.sort((a,b)=>String(a.recebidoEm).localeCompare(String(b.recebidoEm))).forEach(l=>{
+  for(const l of ATTABA_LOTES.sort((a,b)=>String(a.recebidoEm).localeCompare(String(b.recebidoEm)))){
+    // Migração compatível: lotes anteriores não guardavam a lista de prefixos do relatório.
+    // Os TXT originais já estão preservados em Base64 no próprio lote; recuperamos os prefixos
+    // para incluir veículos que antes não eram cadastrados quando seus abastecimentos eram duplicados.
+    if(!Array.isArray(l.prefixosRelatorio)){
+      const prefixos=new Set();
+      for(const arquivo of (l.arquivos||[])){
+        if(!arquivo.originalBase64)continue;
+        try{
+          const binario=atob(arquivo.originalBase64),bytes=new Uint8Array(binario.length);
+          for(let i=0;i<binario.length;i++)bytes[i]=binario.charCodeAt(i);
+          const relatorio=parsearRelatorioGlobus(new TextDecoder('windows-1252').decode(bytes));
+          (relatorio.linhas||[]).forEach(linha=>{if(linha.prefixo)prefixos.add(String(linha.prefixo).replace(/^0+/,'')||'0');});
+        }catch(erro){console.warn('[ATT ABA] Não foi possível recuperar prefixos do arquivo histórico',arquivo.nomeArquivo,erro);}
+      }
+      l.prefixosRelatorio=[...prefixos];
+    }
     (l.prefixosRelatorio||[]).forEach(p=>garantirVeiculoSemContratoAttAba(p));
     (l.eventosAceitos||[]).forEach(e=>{
       garantirVeiculoSemContratoAttAba(e.prefixo);
@@ -3317,7 +3333,7 @@ async function carregarLotesAttAba(){
       const dt=parseData(e.data,e.ano);if(dt instanceof Date&&!Number.isNaN(dt.getTime())&&dt>DATA_REF)DATA_REF=dt;
     });
     aplicarCorrecoesAttAba(l.eventosAtualizados||[]);
-  });
+  }
   ATTABA_STATUS=ATTABA_LOTES.length+' lote(s) importado(s) neste navegador · '+total+' abastecimento(s) incorporado(s).';atualizarCardAttAba();return total;
 }
 function atualizarCardAttAba(){const el=document.getElementById('cardAttAbaVal');if(el)el.textContent=String(ATTABA_LOTES.reduce((n,l)=>n+(l.eventosAceitos||[]).length,0));}
