@@ -3368,10 +3368,23 @@ function validarEventosAttAba(relatorio){
   }).filter(Boolean);
   return {validos,invalidos};
 }
+function normalizarModeloKmLAttAba(modelo){
+  return String(modelo??'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/[^A-Z0-9]/gi,'').toUpperCase();
+}
+/* Expectativas informadas e validadas pelo usuário em 26/11/2026.
+   Aplicação por modelo exato normalizado, sem inferir por semelhança. */
+const REFERENCIAS_KML_ATUALIZADAS_ATT_ABA = new Map([["I/FIAT DUCATO MB COMFORT",10],["I/M.BENZ 417 SPRINTER",10],["I/M.BENZ 417 SPRINTER C",10],["I/M.BENZ 417 TAKO PAS",10.2],["I/M.BENZ 517 JI M.21",9.5],["I/M.BENZ 517 PRIMEB PAS",9.5],["I/M.BENZ 517 SPRINTER F",9.5],["I/M.BENZ TAKO SPRINM 16",9.5],["IVECO/DAILY 45CD",8.5],["IVECO/TECTOR 11-190",4.8],["IVECO/TECTOR 240E28",3.8],["M.BENZ/517 SPRINTER A4",9.5],["M.BENZ/ACCELO 1417CE",4.8],["M.BENZ/ATEGO 2429CE - MUNCK MOBILIDADE",3.3],["M.BENZ/ATEGO 3033CE - MUNCK",2.9],["M.BENZ/COMIL VERSATILE R",3.5],["M.BENZ/MPOLO TORINO U",2.8],["M.BENZ/SPRINTER CDI",10],["MARCOPOLO/VOLARE DW9 ON",5.2],["MARCOPOLO/VOLARE V8L EO - AGRALLE",5.8],["MARCOPOLO/VOLARE V8L MO",5.6],["MARCOPOLO/VOLARE W9C",5.2],["MARCOPOLO/VOLARE W9C EO",5.4],["MARCOPOLO/VOLAREV8L EO",5.6],["MERCEDES-BENZ/COMIL CAMPIONE",3.4],["MERCEDES-BENZ/MARCOPOLO AUDACE",3.5],["MERCEDES-BENZ/MARCOPOLO AUDACE R",3.5],["MERCEDES-BENZ/MARCOPOLO SENIOR",5.5],["MERCEDES-BENZ/MARCOPOLO SENIOR ON",5.5],["MERCEDES-BENZ/MARCOPOLO VIAGGIO",3.4],["MERCEDES-BENZ/NEOBUS SP",3.6],["MERCEDES-BENZ/SPRINTER",9.8],["RENAULT/MASTER MINIBUS - FURGÃO",9.3],["RETRO ESCAVADEIRA",1.5],["SCANIA/MARCOPOLO PARADISO",3],["SCANIA/MARCOPOLO VIAGGIO R",3.2],["VOLKSWAGEN/COMIL VERSATILE",3.4],["VOLKSWAGEN/NEOBUS",3.6],["VW / MPOLO TORINO U",2.8],["VW/11.180 DRC 4X2",5.8],["VW/17.190 CRM 4X2 ROB 4P",4.3],["VW/24.260 CRM 6X2",3.8],["VW/29.520 METEOR 6X4",2.1],["VW/9170 DCR 4X2",6.2],["VW/COMIL CAMPIONE R",3.1],["VW/COMIL STELVO U",3.3],["VW/ITALBUS NASCERE CITTA",3],["VW/MASCA ROMA",3.5]].map(([modelo,exp])=>[normalizarModeloKmLAttAba(modelo),exp]));
 function referenciaKmLModeloAttAba(modelo){
-  const normalizar=x=>String(x??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Z0-9]/gi,'').toUpperCase();
-  const chave=normalizar(modelo),referencias=[...new Set(FROTA.filter(v=>v.exp!=null&&normalizar(v.modelo)===chave).map(v=>Number(v.exp)).filter(Number.isFinite))];
+  const chave=normalizarModeloKmLAttAba(modelo);
+  if(REFERENCIAS_KML_ATUALIZADAS_ATT_ABA.has(chave))return REFERENCIAS_KML_ATUALIZADAS_ATT_ABA.get(chave);
+  const referencias=[...new Set(FROTA.filter(v=>v.exp!=null&&normalizarModeloKmLAttAba(v.modelo)===chave).map(v=>Number(v.exp)).filter(Number.isFinite))];
   return referencias.length===1?referencias[0]:null;
+}
+/* Atualiza também as referências dos veículos já carregados, mantendo os
+   dados operacionais e os contratos intactos. */
+for(const v of [...FROTA,...FROTA_ORIGINAL]){
+  const expectativa=referenciaKmLModeloAttAba(v.modelo);
+  if(expectativa!==null)v.exp=expectativa;
 }
 function garantirVeiculoSemContratoAttAba(prefixo){
   const p=String(prefixo).replace(/^0+/,'')||'0',cadastro=CADASTRO_COMPLETO_VEICULOS.get(p)||null;
