@@ -1683,7 +1683,7 @@ function agruparPorSemana(fills) {
         inicio: seg,
         fim: dom,
         label: dataLabel(seg) + ' – ' + dataLabel(dom),
-        litros: 0, valor: 0, km: 0, kmLGlobusPonderado: 0, litrosComRealGlobus: 0, linhasComRealGlobus: 0, divergenciasRealGlobus: 0, divergenciasHodometro: 0, fills: []
+        litros: 0, valor: 0, km: 0, kmCompleto: true, kmLGlobusPonderado: 0, litrosComRealGlobus: 0, linhasComRealGlobus: 0, divergenciasRealGlobus: 0, divergenciasHodometro: 0, fills: []
       };
     }
     semanas[key].litros += f.litros;
