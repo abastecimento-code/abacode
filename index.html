@@ -1048,6 +1048,13 @@ body{position:relative;isolation:isolate}
       <div><span class="lbl">Buscar</span>
         <input type="text" class="busca" id="busca" placeholder="Prefixo ou modelo...">
       </div>
+      <div><span class="lbl">Período</span>
+        <select id="selPeriodoLista" class="busca" aria-label="Filtrar indicadores da listagem por período">
+          <option value="semana">Semana</option>
+          <option value="mes">Mês</option>
+          <option value="todos" selected>Todo período</option>
+        </select>
+      </div>
       <div class="lista-topline">
         <div class="legenda">
           <span class="legenda-dica">💡 Clique numa linha para ver a evolução semanal</span>
@@ -1073,7 +1080,7 @@ body{position:relative;isolation:isolate}
             <th class="sortable" data-sort="contrato">Contrato <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="km">Km <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="litros">Litros <span class="sort-ind">▲▼</span></th>
-            <th class="sortable" data-sort="real" title="Média recalculada da última semana com abastecimento para cada veículo">km/L última semana <span class="sort-ind">▲▼</span></th>
+            <th class="sortable" data-sort="real" title="Média km/L recalculada no período selecionado da listagem">km/L período <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="exp">EXP km/L <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="abast">QTD ABA <span class="sort-ind">▲▼</span></th>
             <th class="sortable" data-sort="status">Status <span class="sort-ind">▲▼</span></th>
@@ -1813,6 +1820,7 @@ function tendencia(kmLIni, kmLFim) {
 const state = {
   contrato: 'todos',
   busca: '',
+  periodoLista: 'todos',
   sortKey: null,
   sortDir: 'asc',
   drillNivel: 1,
@@ -2235,21 +2243,24 @@ function render() {
   tbody.innerHTML = '';
   tfoot.innerHTML = '';
 
-  // A listagem nunca deve desaparecer por causa de um único registro inconsistente.
-  // Calculamos cada veículo isoladamente; se um lançamento falhar, a linha do veículo
-  // continua visível e os demais prefixos seguem sendo apresentados normalmente.
+  // O filtro da listagem altera somente a janela de cálculo; nunca apaga o histórico.
+  const fimPeriodo = new Date(DATA_REF.getFullYear(), DATA_REF.getMonth(), DATA_REF.getDate(), 23, 59, 59, 999);
+  const inicioSemana = semanaSegunda(DATA_REF);
+  const inicioMes = new Date(DATA_REF.getFullYear(), DATA_REF.getMonth(), 1);
+  const inicioPeriodo = state.periodoLista === 'semana' ? inicioSemana : state.periodoLista === 'mes' ? inicioMes : null;
+  const rotuloPeriodo = state.periodoLista === 'semana' ? 'semana atual' : state.periodoLista === 'mes' ? 'mês atual' : 'todo o período';
   let lista = getListaFiltrada().map(v => {
     try {
-      const fillsAteCorte = fillsAteReferencia(String(v.p));
-      const kmCompletoCorte=fillsAteCorte.length>0&&fillsAteCorte.every(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
-      const kmCorte = kmCompletoCorte ? fillsAteCorte.reduce((s, f) => s + Number(f.km), 0) : null;
-      const litrosCorte = fillsAteCorte.length ? +fillsAteCorte.reduce((s, f) => s + (Number(f.litros)||0), 0).toFixed(2) : null;
-      const ultimaSemana = calcularUltimaSemana(String(v.p));
-      const kmLUltimaSemana = ultimaSemana ? ultimaSemana.kmL : null;
-      return {...v,_km:kmCorte,_litros:litrosCorte,_real:kmLUltimaSemana,_ultimaSemana:ultimaSemana,_abast:fillsAteCorte.length,_st:statusDe(v,kmLUltimaSemana)};
+      const historico = fillsAteReferencia(String(v.p));
+      const fillsPeriodo = inicioPeriodo ? historico.filter(f => { const d=parseData(f.data,f.ano); return d>=inicioPeriodo && d<=fimPeriodo; }) : historico;
+      const kmCompleto = fillsPeriodo.length>0 && fillsPeriodo.every(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
+      const kmPeriodo = kmCompleto ? fillsPeriodo.reduce((s,f)=>s+Number(f.km),0) : null;
+      const litrosPeriodo = fillsPeriodo.length ? +fillsPeriodo.reduce((s,f)=>s+(Number(f.litros)||0),0).toFixed(2) : null;
+      const kmLPeriodo = kmCompleto && litrosPeriodo>0 ? kmPeriodo/litrosPeriodo : null;
+      return {...v,_km:kmPeriodo,_litros:litrosPeriodo,_real:kmLPeriodo,_ultimaSemana:null,_abast:fillsPeriodo.length,_st:statusDe(v,kmLPeriodo),_periodo:rotuloPeriodo};
     } catch (erro) {
       console.warn('[dbatt] Falha ao calcular indicadores do prefixo '+v.p+'; mantendo veículo na listagem.',erro);
-      return {...v,_km:null,_litros:null,_real:null,_ultimaSemana:null,_abast:0,_st:statusDe(v,null),_erroCalculo:true};
+      return {...v,_km:null,_litros:null,_real:null,_ultimaSemana:null,_abast:0,_st:statusDe(v,null),_erroCalculo:true,_periodo:rotuloPeriodo};
     }
   });
 
@@ -2310,7 +2321,7 @@ function render() {
       <td><span class="contrato-nome" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}">${CONTRATO_LABEL[v.contrato]}</span></td>
       <td class="num">${v._km != null ? fmtKmNum(v._km) : '—'}</td>
       <td class="litros">${v._litros != null ? fmtL(v._litros) : '—'}</td>
-      <td class="num ${realCls}" title="${v._ultimaSemana ? 'Período: ' + v._ultimaSemana.label + (v._ultimaSemana.parcial ? ' · parcial até ' + dataLabel(DATA_REF) : '') : 'Sem semana com abastecimento até ' + dataLabel(DATA_REF)}">${v._real != null ? fmt3safe(v._real) : '—'}</td>
+      <td class="num ${realCls}" title="${v._abast ? 'Cálculo referente a ' + v._periodo + ' até ' + dataLabel(DATA_REF) : 'Sem abastecimentos no período selecionado'}">${v._real != null ? fmt3safe(v._real) : '—'}</td>
       <td class="faixa">${fmt2(v.exp)}</td>
       <td class="num">${v._abast > 0 ? fmt0(v._abast) : '—'}</td>
       <td><span class="pill-status ${v._st.cls}">${v._st.label}</span></td>`;
@@ -2323,7 +2334,7 @@ function render() {
   const stGeral = statusDe({ exp: expGeral ?? 0 }, realGeral);
 
   tfoot.innerHTML = `<tr>
-    <td colspan="3">TOTAL — acumulado até o corte · ${nComAbast} de ${lista.length} com lançamentos; média km/L ponderada das últimas semanas de ${nComSemana} veículos</td>
+    <td colspan="3">TOTAL — ${rotuloPeriodo} até o corte · ${nComAbast} de ${lista.length} veículos com lançamentos</td>
     <td class="num">${fmtKmNum(somaKm)}</td>
     <td class="litros">${fmtL(somaL)}</td>
     <td class="num">${realGeral != null ? fmt3safe(realGeral) : '—'}</td>
@@ -3982,6 +3993,10 @@ document.getElementById('selContrato').addEventListener('change', e => {
 });
 document.getElementById('busca').addEventListener('input', e => {
   state.busca = e.target.value;
+  render();
+});
+document.getElementById('selPeriodoLista').addEventListener('change', e => {
+  state.periodoLista = ['semana','mes','todos'].includes(e.target.value) ? e.target.value : 'todos';
   render();
 });
 
