@@ -1837,8 +1837,8 @@ function getListaFiltrada() {
   const q = state.busca.trim().toLowerCase();
   let l = FROTA.filter(v => state.contrato === 'todos' || v.contrato === state.contrato);
   if (q) l = l.filter(v =>
-    v.p.toLowerCase().includes(q) ||
-    v.modelo.toLowerCase().includes(q)
+    String(v.p ?? '').toLowerCase().includes(q) ||
+    String(v.modelo ?? '').toLowerCase().includes(q)
   );
   return l;
 }
@@ -2235,22 +2235,22 @@ function render() {
   tbody.innerHTML = '';
   tfoot.innerHTML = '';
 
+  // A listagem nunca deve desaparecer por causa de um único registro inconsistente.
+  // Calculamos cada veículo isoladamente; se um lançamento falhar, a linha do veículo
+  // continua visível e os demais prefixos seguem sendo apresentados normalmente.
   let lista = getListaFiltrada().map(v => {
-    const fillsAteCorte = fillsAteReferencia(v.p);
-    const kmCompletoCorte=fillsAteCorte.length>0&&fillsAteCorte.every(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
-    const kmCorte = kmCompletoCorte ? fillsAteCorte.reduce((s, f) => s + Number(f.km), 0) : null;
-    const litrosCorte = fillsAteCorte.length ? +fillsAteCorte.reduce((s, f) => s + f.litros, 0).toFixed(2) : null;
-    const ultimaSemana = calcularUltimaSemana(v.p);
-    const kmLUltimaSemana = ultimaSemana ? ultimaSemana.kmL : null;
-    return {
-      ...v,
-      _km: kmCorte,
-      _litros: litrosCorte,
-      _real: kmLUltimaSemana,
-      _ultimaSemana: ultimaSemana,
-      _abast: fillsAteCorte.length,
-      _st: statusDe(v, kmLUltimaSemana),
-    };
+    try {
+      const fillsAteCorte = fillsAteReferencia(String(v.p));
+      const kmCompletoCorte=fillsAteCorte.length>0&&fillsAteCorte.every(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
+      const kmCorte = kmCompletoCorte ? fillsAteCorte.reduce((s, f) => s + Number(f.km), 0) : null;
+      const litrosCorte = fillsAteCorte.length ? +fillsAteCorte.reduce((s, f) => s + (Number(f.litros)||0), 0).toFixed(2) : null;
+      const ultimaSemana = calcularUltimaSemana(String(v.p));
+      const kmLUltimaSemana = ultimaSemana ? ultimaSemana.kmL : null;
+      return {...v,_km:kmCorte,_litros:litrosCorte,_real:kmLUltimaSemana,_ultimaSemana:ultimaSemana,_abast:fillsAteCorte.length,_st:statusDe(v,kmLUltimaSemana)};
+    } catch (erro) {
+      console.warn('[dbatt] Falha ao calcular indicadores do prefixo '+v.p+'; mantendo veículo na listagem.',erro);
+      return {...v,_km:null,_litros:null,_real:null,_ultimaSemana:null,_abast:0,_st:statusDe(v,null),_erroCalculo:true};
+    }
   });
 
   if (state.sortKey) {
