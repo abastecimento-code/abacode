@@ -4036,6 +4036,33 @@ function recalcularFrota() {
     Object.assign(v,derivado,{kmParcial,custoParcial,kmIncompleto:!kmCompleto,custoIncompleto:!custoCompleto});
   });
 }
+function renderListaEmergencia() {
+  const tbody = document.getElementById('corpo');
+  const tfoot = document.getElementById('pe');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  if (tfoot) tfoot.innerHTML = '';
+  const lista = getListaFiltrada();
+  if (!lista.length) {
+    tbody.innerHTML = '<tr><td colspan="9" class="sem-dados">Nenhum veículo encontrado com os filtros atuais.</td></tr>';
+  } else {
+    lista.slice().sort((a,b)=>Number(a.p)-Number(b.p)).forEach(v => {
+      const tr = document.createElement('tr');
+      tr.classList.add('clicavel-linha');
+      tr.addEventListener('click', () => abrirDrilldown(v.p));
+      tr.innerHTML = '<td><strong>'+escapeHtml(v.p)+'</strong></td><td class="modelo"><b>'+escapeHtml(v.modelo||'—')+'</b> <span class="ano">'+escapeHtml(v.ano||'—')+'</span></td><td>'+escapeHtml(CONTRATO_LABEL[v.contrato]||v.contrato||'—')+'</td><td class="num">—</td><td class="litros">—</td><td class="num">—</td><td class="faixa">'+(Number.isFinite(Number(v.exp))?fmt2(Number(v.exp)):'—')+'</td><td class="num">—</td><td><span class="pill-status">Análise indisponível</span></td>';
+      tbody.appendChild(tr);
+    });
+  }
+  const definir=(id,valor)=>{const el=document.getElementById(id);if(el)el.textContent=fmt0(valor);};
+  definir('cardGeralVal',lista.length);
+  definir('cardRastVal',getRastreadorFiltrado().length);
+  definir('cardEscalaVal',getEscalaFiltrada().length);
+  definir('investRepCount',0);
+  definir('investAnomCount',0);
+  definir('investAuditCount',getRastreadorFiltrado().filter(r=>!r.semRastreador).length);
+  definir('cardInvestVal',0);
+}
 async function boot() {
   console.log('[dbatt] Boot iniciado · frota:', FROTA.length, 'veículos');
   console.log('[dbatt] Fills carregados:', Object.keys(FILLS).length, 'veículos');
@@ -4065,16 +4092,31 @@ async function boot() {
     }
   }
 
-  // Garante consistência FROTA = Σ FILLS_RAW antes de calcular suspeitos
-  recalcularFrota();
+  // A consolidação, a investigação e a interface são etapas independentes.
+  // Uma inconsistência no motor matemático/de detecção não pode impedir a listagem.
+  try {
+    recalcularFrota();
+  } catch (erro) {
+    console.error('[dbatt] Falha ao recalcular indicadores; preservando a frota cadastrada:', erro);
+  }
 
-  // Motor de detecção
-  SUSPEITOS = detectarSuspeitos();
-  console.log('[dbatt] Detecção concluída ·', SUSPEITOS.repetidos.length, 'repetidos ·', SUSPEITOS.anomalias.length, 'anomalias');
+  try {
+    SUSPEITOS = detectarSuspeitos();
+    console.log('[dbatt] Detecção concluída ·', SUSPEITOS.repetidos.length, 'repetidos ·', SUSPEITOS.anomalias.length, 'anomalias');
+  } catch (erro) {
+    SUSPEITOS = { repetidos: [], anomalias: [] };
+    console.error('[dbatt] Motor de investigação indisponível; listagem e demais análises continuarão:', erro);
+  }
 
-  // Render inicial
-  render();
-  atualizarInfoPeriodoGlobus();
+  // A tabela e os contadores devem aparecer mesmo se uma análise secundária falhar.
+  try {
+    render();
+  } catch (erro) {
+    console.error('[dbatt] Falha na renderização analítica; exibindo listagem cadastral de segurança:', erro);
+    renderListaEmergencia();
+  }
+  try { atualizarInfoPeriodoGlobus(); }
+  catch (erro) { console.warn('[dbatt] Não foi possível atualizar o período exibido:', erro); }
   console.log('[dbatt] Boot concluído.');
 }
 boot().catch(e=>console.error('[dbatt] Falha ao iniciar',e));
