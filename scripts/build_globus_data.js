@@ -1,114 +1,198 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const vm = require('node:vm');
 const crypto = require('node:crypto');
 
 const root = process.cwd();
-const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-const inputDir = path.join(root, 'relatorios', 'entrada');
-const outputPath = path.join(root, 'dados', 'globus-importados.json');
+const CORTE = '2026-11-25';
+const PERIODO_INICIO = '01/07/2026';
+const PERIODO_FIM = '25/11/2026';
+const fontes = [
+  { arquivo: '500-699.TXT', destino: 'dados/globus-500-699.json' },
+  { arquivo: '1000-2999.TXT', destino: 'dados/globus-1000-2999.json' },
+  { arquivo: '200-300.TXT', destino: 'dados/globus-200-300.json' },
+];
 
-function jsonConstant(name) {
-  const match = html.match(new RegExp(`const ${name} = (\\{[\\s\\S]*?\\});`));
-  if (!match) throw new Error(`Não localizei ${name} no index.html.`);
-  return JSON.parse(match[1]);
+function dataPt(valor) {
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(valor);
+  if (!m) return null;
+  const data = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
+  return data.getFullYear() === Number(m[3]) &&
+    data.getMonth() === Number(m[2]) - 1 &&
+    data.getDate() === Number(m[1]) ? data : null;
 }
 
-function extractFunction(start, next) {
-  const from = html.indexOf(start);
-  const to = html.indexOf(next, from);
-  if (from < 0 || to < 0) throw new Error(`Não localizei o trecho ${start}.`);
-  return html.slice(from, to).trim();
+function numeroPt(valor) {
+  const texto = String(valor ?? '').trim().replace(/\*/g, '');
+  if (!texto) return null;
+  if (!/^\d+(?:,\d+)?$/.test(texto)) return null;
+  const numero = Number(texto.replace(',', '.'));
+  return Number.isFinite(numero) ? numero : null;
 }
 
-const rawBase = { ...jsonConstant('FILLS_RAW'), ...jsonConstant('MACAE_FILLS_RAW') };
-const fleetBlock = html.slice(html.indexOf('const FROTA = ['), html.indexOf('const FROTA_ORIGINAL'));
-const knownPrefixes = new Set([
-  ...[...fleetBlock.matchAll(/\bp:'([^']+)'/g)].map(m => m[1]),
-  ...[...fleetBlock.matchAll(/"p":"([^"]+)"/g)].map(m => m[1]),
-]);
-const parserSource = extractFunction('function parsearRelatorioGerencialGlobus(', '\nfunction parsearRelatorioGlobus(');
-const parseGerencial = vm.runInNewContext(`(${parserSource})`, { Date, Number, String, Math, Error, RegExp });
-
-function coreKey(e) {
-  return [e.prefixo, e.ano, e.data, e.tipo ?? e.origem, Number(e.litros), Number(e.km)].join('|');
-}
-function exactKey(e) { return [coreKey(e), e.cupom || '', Number(e.precoL), Number(e.valor ?? e.valorTotal)].join('|'); }
-function formatDate(d) { return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`; }
-
-const coreCounts = new Map();
-const exactCounts = new Map();
-function countRecord(e) {
-  const core = coreKey(e), exact = exactKey(e);
-  coreCounts.set(core, (coreCounts.get(core) || 0) + 1);
-  exactCounts.set(exact, (exactCounts.get(exact) || 0) + 1);
-}
-for (const [prefixo, rows] of Object.entries(rawBase)) {
-  for (const row of rows) countRecord({ ...row, prefixo });
+function numeroRodape(linha) {
+  return [...linha.slice(100).matchAll(/\d[\d.]*,\d{2}/g)]
+    .map(match => Number(match[0].replace(/\./g, '').replace(',', '.')));
 }
 
-let pacote;
-if (fs.existsSync(outputPath)) pacote = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
-else pacote = { versao: 1, corte: '2026-10-29', lancamentos: [], relatorios: [] };
-if (pacote.versao !== 1 || pacote.corte !== '2026-10-29' || !Array.isArray(pacote.lancamentos)) {
-  throw new Error('O arquivo de dados publicado tem formato inesperado.');
-}
-for (const e of pacote.lancamentos) {
-  countRecord({ ...e, tipo: e.origem, valor: e.valorTotal });
-}
-
-if (!fs.existsSync(inputDir)) throw new Error('A pasta relatorios/entrada não existe.');
-const files = fs.readdirSync(inputDir).filter(n => /\.txt$/i.test(n)).sort();
-if (!files.length) throw new Error('Nenhum .TXT foi enviado para relatorios/entrada/.');
-const reportIds = new Set((pacote.relatorios || []).map(r => r.sha256));
-const reportsToAdd = [];
-let newlyAccepted = 0;
-
-for (const filename of files) {
-  const bytes = fs.readFileSync(path.join(inputDir, filename));
+function processarFonte(fonte) {
+  const caminho = path.join(root, fonte.arquivo);
+  if (!fs.existsSync(caminho)) throw new Error('Relatório ausente: ' + fonte.arquivo);
+  const bytes = fs.readFileSync(caminho);
   const sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
-  if (reportIds.has(sha256)) continue;
-  let text = bytes.toString('utf8');
-  if (text.includes('\uFFFD')) text = new TextDecoder('windows-1252').decode(bytes);
-  const report = parseGerencial(text.replace(/^\uFEFF/, '').split(/\r?\n/), text);
-  if (report.erros.length) {
-    const details = report.erros.slice(0, 12).map(e => `linha ${e.linha}, prefixo ${e.prefixo}: ${(e.campos || []).join(', ')}`).join('\n');
-    throw new Error(`${filename}: há campos inválidos no período analisado.\n${details}`);
+  let texto = bytes.toString('utf8');
+  if (texto.includes('\uFFFD')) texto = new TextDecoder('windows-1252').decode(bytes);
+  texto = texto.replace(/^\uFEFF/, '');
+  const linhas = texto.split(/\r?\n/);
+  const faixa = texto.match(/Datas:\s*(\d{2}\/\d{2}\/\d{4})\s+\d{2}:\d{2}\s+a\s+(\d{2}\/\d{2}\/\d{4})\s+\d{2}:\d{2}/);
+  if (!faixa) throw new Error(fonte.arquivo + ': período não identificado no cabeçalho.');
+  if (faixa[1] !== PERIODO_INICIO || faixa[2] !== PERIODO_FIM) {
+    throw new Error(fonte.arquivo + ': período diferente do esperado (' + faixa[1] + ' a ' + faixa[2] + ').');
   }
-  for (const event of report.eventos) {
-    if (!knownPrefixes.has(event.prefixo)) throw new Error(`${filename}: prefixo ${event.prefixo} não cadastrado (linha ${event.linha}).`);
-    if ((event.camposInvalidos || []).length) throw new Error(`${filename}: linha ${event.linha} precisa de revisão: ${event.camposInvalidos.join(', ')}.`);
-    const core = coreKey(event), exact = exactKey(event);
-    const exactExisting = exactCounts.get(exact) || 0;
-    if (exactExisting > 0) {
-      exactCounts.set(exact, exactExisting - 1);
-      coreCounts.set(core, (coreCounts.get(core) || 1) - 1);
+  const inicio = dataPt(faixa[1]), fim = dataPt(faixa[2]);
+  if (!inicio || !fim || inicio > fim) throw new Error(fonte.arquivo + ': período inválido.');
+
+  let candidatas = 0;
+  const lancamentos = [];
+  const erros = [];
+  for (let i = 0; i < linhas.length; i++) {
+    const linha = linhas[i];
+    if (!/^\s*\d{7}\s+\d{2}\/\d{2}\/\d{4}\s+\d{2}:\d{2}/.test(linha)) continue;
+    candidatas++;
+
+    const prefixo = linha.slice(0, 7).trim().replace(/^0+/, '') || '0';
+    const dataCompleta = linha.slice(8, 18).trim();
+    const data = dataPt(dataCompleta);
+    const hora = linha.slice(20, 25).trim();
+    const origem = linha.slice(26, 27).trim();
+    if (!data || data < inicio || data > fim || !/^\d{2}:\d{2}$/.test(hora)) {
+      erros.push('linha ' + (i + 1) + ': data/hora fora do padrão');
       continue;
     }
-    if ((coreCounts.get(core) || 0) > 0) {
-      throw new Error(`${filename}: linha ${event.linha}, prefixo ${event.prefixo} coincide em data/origem/litros/KM com lançamento já cadastrado, mas cupom/preço/valor divergem. Revisão manual necessária.`);
-    }
-    const record = {
-      prefixo: event.prefixo, data: event.data, ano: event.ano, litros: event.litros,
-      precoL: event.precoL, valorTotal: event.valorTotal, km: event.km, origem: event.origem,
-      linha: event.linha, bruto: event.bruto, hora: event.hora, cupom: event.cupom,
-      fornecedor: event.fornecedor, hodometroInicial: event.hodometroInicial,
-      hodometroFinal: event.hodometroFinal, kmAcumulado: event.kmAcumulado,
-      kmPorLitro: event.kmPorLitro, idealKmL: event.idealKmL, perdaPct: event.perdaPct,
-      arquivoFonte: filename,
+
+    const fatias = {
+      combustivel: linha.slice(48, 56),
+      motor: linha.slice(56, 64),
+      graxa: linha.slice(64, 70),
+      hidraulico: linha.slice(70, 77),
+      diferencial: linha.slice(77, 84),
+      cambio: linha.slice(84, 88),
+      freio: linha.slice(88, 94),
+      outros: linha.slice(94, 100),
     };
-    pacote.lancamentos.push(record);
-    countRecord({ ...record, tipo: record.origem, valor: record.valorTotal });
-    newlyAccepted++;
+    const produtos = {};
+    for (const [campo, fatia] of Object.entries(fatias)) {
+      produtos[campo] = numeroPt(fatia);
+      if (fatia.trim() && produtos[campo] === null) {
+        erros.push('linha ' + (i + 1) + ': quantidade ' + campo + ' inválida');
+      }
+    }
+
+    const rodape = numeroRodape(linha);
+    let hodometroInicial = null;
+    let hodometroFinal = null;
+    let km = null;
+    let kmAcumulado = null;
+    let kmPorLitro = null;
+    if (rodape.length === 5) {
+      [hodometroInicial, hodometroFinal, km, kmAcumulado, kmPorLitro] = rodape;
+    } else if (rodape.length === 4) {
+      [hodometroInicial, hodometroFinal, km, kmAcumulado] = rodape;
+    } else if (rodape.length !== 0) {
+      erros.push('linha ' + (i + 1) + ': rodapé numérico ambíguo (' + rodape.length + ' campos)');
+      continue;
+    }
+
+    const litros = produtos.combustivel;
+    if (litros === null || litros <= 0) continue;
+    if (origem !== 'I' && origem !== 'E') {
+      erros.push('linha ' + (i + 1) + ': origem de abastecimento inválida');
+      continue;
+    }
+
+    lancamentos.push({
+      prefixo,
+      data: dataCompleta.slice(0, 5),
+      ano: data.getFullYear(),
+      hora,
+      origem,
+      litros,
+      km,
+      kmAcumulado,
+      kmPorLitro,
+      hodometroInicial,
+      hodometroFinal,
+      produtos,
+      linha: i + 1,
+      arquivoFonte: fonte.arquivo,
+    });
   }
-  reportsToAdd.push({ arquivo: filename, sha256, periodoDeclarado: `${report.faixaInicio} a ${report.fimOriginal ? formatDate(report.fimOriginal) : report.faixaFim}`, linhasOriginais: report.linhasOriginais.length, analisadasAteCorte: report.eventos.length });
+
+  if (erros.length) {
+    throw new Error(fonte.arquivo + ': ' + erros.length + ' inconsistência(s):\n' + erros.slice(0, 20).join('\n'));
+  }
+  if (!lancamentos.length) throw new Error(fonte.arquivo + ': nenhum abastecimento foi identificado.');
+
+  return {
+    pacote: {
+      versao: 1,
+      corte: CORTE,
+      arquivo: fonte.arquivo,
+      sha256,
+      periodoInicio: faixa[1],
+      periodoFim: faixa[2],
+      linhasCandidatas: candidatas,
+      lancamentos,
+    },
+    resumo: {
+      arquivo: fonte.arquivo,
+      origem: fonte.arquivo,
+      sha256,
+      lancamentos: lancamentos.length,
+      candidatas,
+    },
+  };
 }
 
-if (!newlyAccepted) {
-  console.log(`Sem novos lançamentos. ${reportsToAdd.length} relatório(s) novo(s) conferido(s); originais permanecem na pasta de entrada.`);
-  process.exit(0);
+const resultados = fontes.map(processarFonte);
+const todos = resultados.flatMap(r => r.pacote.lancamentos);
+const prefixos = [...new Set(todos.map(e => e.prefixo))]
+  .sort((a, b) => Number(a) - Number(b));
+const resumo = {
+  lancamentos: todos.length,
+  prefixos: prefixos.length,
+  kmAusente: todos.filter(e => e.km == null).length,
+  kmPorLitroAusente: todos.filter(e => e.kmPorLitro == null).length,
+  precoEValorNaoDisponiveis: true,
+  kmAcumuladoAusente: todos.filter(e => e.kmAcumulado == null).length,
+};
+
+if (resumo.lancamentos !== 9456 || resumo.prefixos !== 340 ||
+    resumo.kmAusente !== 15 || resumo.kmAcumuladoAusente !== 15 ||
+    resumo.kmPorLitroAusente !== 506) {
+  throw new Error('Auditoria de totais divergente: ' + JSON.stringify(resumo));
 }
-pacote.relatorios = [...(pacote.relatorios || []), ...reportsToAdd];
-fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-fs.writeFileSync(outputPath, JSON.stringify(pacote, null, 2) + '\n');
-console.log(`Preparados ${newlyAccepted} lançamento(s) novo(s), até 29/10/2026. Original(is) preservado(s) na pasta de entrada.`);
+
+for (let i = 0; i < resultados.length; i++) {
+  const destino = path.join(root, fontes[i].destino);
+  fs.mkdirSync(path.dirname(destino), { recursive: true });
+  fs.writeFileSync(destino, JSON.stringify(resultados[i].pacote) + '\n');
+}
+
+const manifesto = {
+  versao: 1,
+  corte: CORTE,
+  geradoEm: new Date().toISOString().slice(0, 10),
+  origem: 'Relatórios gerenciais Globus ABA - Abastecimento / Quilometragem',
+  periodoInicio: PERIODO_INICIO,
+  periodoFim: PERIODO_FIM,
+  arquivos: resultados.map((r, i) => ({
+    arquivo: fontes[i].destino,
+    origem: fontes[i].arquivo,
+    sha256: r.pacote.sha256,
+    lancamentos: r.pacote.lancamentos.length,
+  })),
+  resumo,
+  prefixos,
+};
+fs.writeFileSync(path.join(root, 'dados/globus-importados.json'), JSON.stringify(manifesto) + '\n');
+console.log('Pacotes Globus reconstruídos e auditados: ' + JSON.stringify(resumo));
