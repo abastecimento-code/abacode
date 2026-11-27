@@ -1574,6 +1574,8 @@ const GLOBUS_DB_NAME = 'PainelABA_Globus_v1';
 let GLOBUS_DB_PROMISE = null;
 let GLOBUS_LOTES = [];
 let GLOBUS_REVISOES = [];
+// Eventos com mais de um candidato ficam isolados e não entram nos cálculos.
+let GLOBUS_EVENTOS_AMBIGUOS = [];
 let GLOBUS_STORAGE_STATUS = 'Importação local ainda não verificada.';
 let GLOBUS_LAST_MESSAGE = '';
 function abrirBancoGlobus() {
@@ -1593,8 +1595,8 @@ function gravarLoteGlobus(db,lote){return new Promise((resolve,reject)=>{const t
 function gravarRevisaoGlobus(db,r){return new Promise((resolve,reject)=>{const tx=db.transaction('revisoes','readwrite'),req=tx.objectStore('revisoes').add(r);req.onsuccess=()=>r.id=req.result;tx.oncomplete=()=>resolve(r);tx.onerror=()=>reject(tx.error||new Error('Falha ao gravar revisão.'));tx.onabort=()=>reject(tx.error||new Error('Registro cancelado.'));});}
 function ultimaRevisaoGlobus(sha,linha){return GLOBUS_REVISOES.filter(r=>r.loteSha256===sha&&r.linha===linha).sort((a,b)=>a.criadoEm.localeCompare(b.criadoEm)||(a.id||0)-(b.id||0)).at(-1)||null;}
 function pendenciasAtivasGlobus(){return GLOBUS_LOTES.flatMap(l=>(l.pendencias||[]).filter(p=>{const r=ultimaRevisaoGlobus(l.sha256,p.linha);return !r||!['ANALISADO_SEM_ALTERACAO','DIVERGENCIA_EM_ACOMPANHAMENTO'].includes(r.decisao)}));}
-function atualizarStatusGlobus(){const n=GLOBUS_LOTES.reduce((s,l)=>s+(l.eventosAceitos||[]).length,0),p=pendenciasAtivasGlobus().length;GLOBUS_STORAGE_STATUS=GLOBUS_LOTES.length+' arquivo(s) guardado(s) neste navegador · '+n+' lançamento(s) novo(s) ativo(s)'+(p?' · '+p+' aguardam análise':'')+'.';}
-function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);const resumo=document.getElementById('dataRefResumo');if(resumo)resumo.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até '+fmt(DATA_REF);const abertas=pendenciasAtivasGlobus().length;if(b){b.hidden=!abertas;b.textContent=abertas?'⚠ '+abertas+' linha(s) aguardam análise; permanecem fora dos cálculos mesmo após registrar uma decisão.':'';}}
+function atualizarStatusGlobus(){const n=GLOBUS_LOTES.reduce((s,l)=>s+(l.eventosAceitos||[]).length,0),p=pendenciasAtivasGlobus().length,a=GLOBUS_EVENTOS_AMBIGUOS.length;GLOBUS_STORAGE_STATUS=GLOBUS_LOTES.length+' arquivo(s) guardado(s) neste navegador · '+n+' lançamento(s) novo(s) ativo(s)'+(p?' · '+p+' aguardam análise':'')+(a?' · '+a+' abastecimento(s) com pareamento ambíguo':'')+'.';}
+function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);const resumo=document.getElementById('dataRefResumo');if(resumo)resumo.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até '+fmt(DATA_REF);const abertas=pendenciasAtivasGlobus().length,ambiguos=GLOBUS_EVENTOS_AMBIGUOS.length;if(b){const avisos=[];if(abertas)avisos.push('⚠ '+abertas+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');if(ambiguos)avisos.push('⚠ '+ambiguos+' abastecimento(s) publicados têm pareamento ambíguo e foram mantidos fora dos cálculos até reconciliação.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}}
 async function carregarDadosGlobusPublicados(){
   try{
     const resposta=await fetch('dados/globus-importados.json',{cache:'no-store'});
@@ -1619,7 +1621,8 @@ async function carregarDadosGlobusPublicados(){
       else if(resultado==='AMBIGUO')totais.ambiguos++;
       else totais.iguais++;
     });
-    console.info('[dbatt] Globus publicado integrado:',{...totais,total:eventos.length,prefixos:manifesto.resumo.prefixos});
+    atualizarStatusGlobus();
+    console.info('[dbatt] Globus publicado integrado:',{...totais,total:eventos.length,prefixos:manifesto.resumo.prefixos,ambiguidade:GLOBUS_EVENTOS_AMBIGUOS});
     return totais;
   }catch(e){
     if(location.protocol==='file:'){console.warn('[dbatt] Abra o painel publicado para carregar os relatórios Globus compartilhados.');return 0;}
@@ -3293,10 +3296,39 @@ function identidadeAbastecimentoAttAba(a,b){
   const campos=[[a.hora,b.hora,false],[a.precoL,b.precoL,true],[a.valorTotal??a.valor,b.valorTotal??b.valor,true],[a.cupom,b.cupom,false],[a.fornecedorCodigo,b.fornecedorCodigo,false]];
   return campos.every(([x,y,n])=>!valorPresenteAttAba(x)||!valorPresenteAttAba(y)||igualCampoAttAba(x,y,n));
 }
+function mesmoCampoFonteAttAba(a,b,tolerancia=0){
+  const pa=valorPresenteAttAba(a),pb=valorPresenteAttAba(b);
+  if(!pa||!pb)return pa===pb;
+  const na=Number(a),nb=Number(b);
+  return Number.isFinite(na)&&Number.isFinite(nb)&&Math.abs(na-nb)<=tolerancia;
+}
+function mesmosCamposOperacionaisAttAba(a,b){
+  const campos=[
+    [a.km,b.km,0.011],
+    [a.hodometroInicial,b.hodometroInicial,0.011],
+    [a.hodometroFinal,b.hodometroFinal,0.011],
+    [a.kmAcumulado,b.kmAcumulado,0.011],
+    [a.kmPorLitro??a.kmPorLitroGlobus,b.kmPorLitro??b.kmPorLitroGlobus,0.0051],
+  ];
+  return campos.every(([x,y,t])=>mesmoCampoFonteAttAba(x,y,t));
+}
 function mesmoAbastecimentoAttAba(a,b){
   if(!identidadeAbastecimentoAttAba(a,b))return false;
-  const campos=[[a.km,b.km,true],[a.hodometroInicial,b.hodometroInicial,true],[a.hodometroFinal,b.hodometroFinal,true],[a.kmAcumulado,b.kmAcumulado,true],[a.kmPorLitro??a.kmPorLitroGlobus,b.kmPorLitro??b.kmPorLitroGlobus,true]];
-  return campos.every(([x,y,n])=>!valorPresenteAttAba(x)||!valorPresenteAttAba(y)||igualCampoAttAba(x,y,n));
+  // Hora e métricas fornecidas pelo TXT são autoritativas: ausência de um lado
+  // não pode ser tratada como igualdade nem conservar silenciosamente dado antigo.
+  return igualCampoAttAba(a.hora,b.hora,false)&&mesmosCamposOperacionaisAttAba(a,b);
+}
+function aplicarCorrecaoGlobusAttAba(alvo,novo){
+  const mesclado={...alvo,...novo};
+  // O TXT atual não fornece preço, valor, cupom, fornecedor ou motorista.
+  // Preservar somente esses campos externos; métricas ausentes no TXT ficam ausentes.
+  ['precoL','valor','valorTotal','cupom','fornecedorCodigo','fornecedor','motorista'].forEach(campo=>{
+    if(!valorPresenteAttAba(novo[campo])&&valorPresenteAttAba(alvo[campo]))mesclado[campo]=alvo[campo];
+  });
+  mesclado.valor=mesclado.valor??mesclado.valorTotal??null;
+  mesclado.errosFonte=[];
+  mesclado.avisosFonte=novo.avisosFonte||alvo.avisosFonte||[];
+  Object.assign(alvo,mesclado,{correcaoRetroativa:true});
 }
 function integrarEventoGlobusNaBase(evento,origemPadrao){
   const prefixo=String(evento.prefixo||'').replace(/^0+/,'')||'0';
@@ -3325,16 +3357,23 @@ function integrarEventoGlobusNaBase(evento,origemPadrao){
   if(candidatos.length===1){
     const alvo=candidatos[0];
     if(mesmoAbastecimentoAttAba(novo,{...alvo,prefixo}))return 'IGUAL';
-    const mesclado={...alvo,...novo};
-    ['precoL','valor','valorTotal','cupom','fornecedorCodigo','fornecedor','motorista','km','kmAcumulado','kmPorLitro','kmPorLitroGlobus','hodometroInicial','hodometroFinal'].forEach(campo=>{if(!valorPresenteAttAba(novo[campo])&&valorPresenteAttAba(alvo[campo]))mesclado[campo]=alvo[campo];});
-    mesclado.valor=mesclado.valor??mesclado.valorTotal??null;mesclado.errosFonte=[];mesclado.avisosFonte=novo.avisosFonte||alvo.avisosFonte||[];
-    Object.assign(alvo,mesclado,{correcaoRetroativa:true});
+    aplicarCorrecaoGlobusAttAba(alvo,novo);
     return 'CORRIGIDO';
   }
   if(candidatos.length>1){
-    const exatos=candidatos.filter(f=>mesmoAbastecimentoAttAba(novo,{...f,prefixo}));
-    if(exatos.length===1)return 'IGUAL';
-    novo.reconciliacaoPendente=true;novo.candidatosReconciliacao=candidatos.length;FILLS[prefixo].push(novo);return 'AMBIGUO';
+    // Hora pode não existir na base antiga. Desambiguar apenas por métricas
+    // presentes e coincidentes; nunca escolher por data/litros isoladamente.
+    const exatos=candidatos.filter(f=>mesmosCamposOperacionaisAttAba(novo,{...f,prefixo}));
+    if(exatos.length===1){
+      const alvo=exatos[0];
+      if(mesmoAbastecimentoAttAba(novo,{...alvo,prefixo}))return 'IGUAL';
+      aplicarCorrecaoGlobusAttAba(alvo,novo);
+      return 'CORRIGIDO';
+    }
+    novo.reconciliacaoPendente=true;
+    novo.candidatosReconciliacao=candidatos.length;
+    GLOBUS_EVENTOS_AMBIGUOS.push({evento:novo,candidatos:candidatos.map(f=>({prefixo,data:dataCompletaAttAba(f),hora:f.hora??null,litros:f.litros,km:f.km??null,hodometroInicial:f.hodometroInicial??null,hodometroFinal:f.hodometroFinal??null}))});
+    return 'AMBIGUO';
   }
   FILLS[prefixo].push(novo);return 'ADICIONADO';
 }
