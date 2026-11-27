@@ -1600,7 +1600,7 @@ async function carregarDadosGlobusPublicados(){
     const resposta=await fetch('dados/globus-importados.json',{cache:'no-store'});
     if(!resposta.ok)throw new Error('Manifesto Globus: HTTP '+resposta.status);
     const manifesto=await resposta.json();
-    if(manifesto.versao!==1||manifesto.corte!=='2026-11-25'||!Array.isArray(manifesto.arquivos)||!manifesto.arquivos.length)throw new Error('Manifesto Globus incompatível ou sem relatórios publicados.');
+    if(manifesto.versao!==1||!/^\d{4}-\d{2}-\d{2}$/.test(manifesto.corte)||!Array.isArray(manifesto.arquivos)||!manifesto.arquivos.length)throw new Error('Manifesto Globus incompatível ou sem relatórios publicados.');
     const pacotes=await Promise.all(manifesto.arquivos.map(async item=>{
       const r=await fetch(item.arquivo,{cache:'no-store'});
       if(!r.ok)throw new Error(item.origem+': HTTP '+r.status);
