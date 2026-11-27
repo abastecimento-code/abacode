@@ -63,19 +63,19 @@ header .chip b{color:var(--amber);font-weight:700;}
 .side-card.vazio .side-card-val{color:var(--tx3);}
 
 /* ===== TOOLBAR / FILTROS RESPONSIVOS ===== */
-.barra{margin-top:8px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:grid;grid-template-columns:minmax(220px,1.1fr) minmax(180px,1fr) minmax(180px,1fr);gap:12px 16px;align-items:end;min-width:0;}
-.barra>div:not(.lista-topline){display:flex;flex-direction:column;align-items:stretch;gap:6px;min-width:0;width:100%;}
-.barra .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--tx2);font-weight:700;line-height:1.2;}
-.barra select,.barra input.busca{box-sizing:border-box;width:100%;max-width:100%;min-width:0;height:39px;border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:12px;font-family:inherit;color:var(--tx);background:var(--surface2);transition:border-color .15s,box-shadow .15s;outline:none;}
-.barra select{cursor:pointer;}
+.barra{margin-top:8px;padding:11px 12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.85fr);gap:10px 12px;align-items:end;min-width:0;width:100%;max-width:100%;overflow:hidden;}
+.barra>div:not(.lista-topline){display:flex;flex-direction:column;align-items:stretch;gap:5px;min-width:0;width:100%;max-width:100%;}
+.barra .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.1px;color:var(--tx2);font-weight:700;line-height:1.2;}
+.barra select,.barra input.busca{box-sizing:border-box;display:block;width:100%;max-width:100%;min-width:0;height:37px;border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:11.5px;font-family:inherit;color:var(--tx);background:var(--surface2);transition:border-color .15s,box-shadow .15s;outline:none;}
+.barra select{cursor:pointer;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
 .barra input.busca::placeholder{color:var(--tx3);}
 .barra select:focus,.barra input.busca:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,159,28,.16);background:#fff;}
-.barra>.lista-topline{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;min-width:0;width:100%;margin:0;padding-top:9px;border-top:1px solid var(--line);}
-.barra>.lista-topline .legenda{flex:1 1 220px;min-width:0;display:flex;flex-wrap:wrap;gap:5px 10px;padding:0;}
+.barra>.lista-topline{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;min-width:0;width:100%;max-width:100%;margin:0;padding-top:8px;border-top:1px solid var(--line);}
+.barra>.lista-topline .legenda{flex:1 1 200px;min-width:0;display:flex;flex-wrap:wrap;gap:5px 9px;padding:0;}
 .barra>.lista-topline .legenda-dica{font-size:10px;white-space:normal;line-height:1.4;}
-.barra>.lista-topline .evolucao-toolbar{flex:0 0 auto;display:flex;align-items:center;margin:0;gap:7px;}
-@media(max-width:760px){.barra{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px;padding:11px;}.barra>div:first-child{grid-column:1/-1;}}
-@media(max-width:480px){.barra{grid-template-columns:minmax(0,1fr);}.barra>div:first-child{grid-column:auto;}.barra>.lista-topline{align-items:flex-start;}.barra>.lista-topline .evolucao-toolbar{width:100%;justify-content:flex-start;}}
+.barra>.lista-topline .evolucao-toolbar{flex:0 0 auto;display:flex;align-items:center;margin:0;gap:7px;max-width:100%;}
+@media(max-width:760px){.barra{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 10px;padding:10px;}.barra>div:first-child{grid-column:auto;}}
+@media(max-width:480px){.barra{grid-template-columns:minmax(0,1fr);gap:9px;}.barra>div:first-child{grid-column:auto;}.barra>.lista-topline{align-items:flex-start;}.barra>.lista-topline .evolucao-toolbar{width:100%;justify-content:flex-start;}}
 
 
 /* ===== INFO ===== */
@@ -1918,6 +1918,11 @@ function aplicarCadastroPlanilhaFrota() {
     if(id&&!CADASTRO_CONTRATO_POR_PREFIXO.has(reg.p))CADASTRO_CONTRATO_POR_PREFIXO.set(reg.p,id);
     if(id)CONTRATO_LABEL[id]=rotuloContratoCadastro(reg.contrato);
     if(id&&!CONTRATO_PILL[id])CONTRATO_PILL[id]='pill-man';
+  });
+  // Padroniza a apresentação dos nomes sem alterar a identidade dos contratos.
+  Object.keys(CONTRATO_LABEL).forEach(id=>{
+    const nome=String(CONTRATO_LABEL[id]||id).replace(/\\s+/g,' ').trim();
+    CONTRATO_LABEL[id]=id==='Sem contrato'?'SEM CONTRATO':nome.toLocaleUpperCase('pt-BR');
   });
   const idsComContrato=Object.keys(CONTRATO_LABEL).filter(id=>id!=='Sem contrato').sort();
   idsComContrato.forEach((id,i)=>{CONTRATO_COR[id]='hsl('+Math.round(i*360/Math.max(idsComContrato.length,1))+' 66% 36%)';});
