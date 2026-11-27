@@ -3805,10 +3805,10 @@ async function mostrarPreviaGlobus(file) {
     });
     const formatarOuTraco = (n, formatador) => n == null ? '—' : formatador(n);
     let html = `<div class="audit-resumo" style="margin-top:12px;">
-      <b>Prévia · ${escapeHtml(file.name)}</b><br>Período consolidado até 29/10/2026 (inclusive) · período original ${escapeHtml(relatorio.faixaInicio)} a ${escapeHtml(relatorio.fimOriginal ? dataLabel(relatorio.fimOriginal) : relatorio.faixaFim)} · Prefixos: ${prefixos.map(escapeHtml).join(', ')} · ${relatorio.linhas.length} linhas interpretadas · ${relatorio.eventos.length} linhas com Comb. > 0 · ${relatorio.linhasHodometro.length} sem combustível com hodômetro · ${relatorio.linhasOutros.length} com outros insumos · ${relatorio.erros.length} linha(s) com campo para conferir<br>
+      <b>Prévia · ${escapeHtml(file.name)}</b><br>Período analisado conforme intervalo declarado no TXT · período original ${escapeHtml(relatorio.faixaInicio)} a ${escapeHtml(relatorio.fimOriginal ? dataLabel(relatorio.fimOriginal) : relatorio.faixaFim)} · Prefixos: ${prefixos.map(escapeHtml).join(', ')} · ${relatorio.linhas.length} linhas interpretadas · ${relatorio.eventos.length} linhas com Comb. > 0 · ${relatorio.linhasHodometro.length} sem combustível com hodômetro · ${relatorio.linhasOutros.length} com outros insumos · ${relatorio.erros.length} linha(s) com campo para conferir<br>
       Linhas com data/I-E/litros/KM iguais: <b>${contagens.EXATO}</b> · Possível par por data/origem/litros com KM diferente: <b>${contagens.KM_DIVERGENTE}</b> · Possível par por data/origem, com campos diferentes: <b>${contagens.PAREAMENTO_POSSIVEL}</b> · Sem par identificado no relatório: <b>${contagens.SOMENTE_RELATORIO}</b> · Sem par na base neste período: <b>${comparacao.somenteBase.length}</b> · KM diferente da variação do hodômetro: <b>${divergenciasHodometro}</b> · km/L informado diferente de KM/litros: <b>${divergenciasKmL}</b><br>
       KM Globus disponível: <b>${fmtKmNum(somaKmRelatorio)}</b> em ${linhasComKm}/${relatorio.linhas.length} linhas · KM nas linhas de abastecimento da base atual: <b>${fmtKmNum(somaKmBase)}</b> · diferença para investigar: <b>${(somaKmRelatorio - somaKmBase >= 0 ? '+' : '') + fmtKmNum(somaKmRelatorio - somaKmBase)}</b><br>
-      <small>A fonte original e todas as linhas posteriores a 29/10/2026 são preservadas, mas ficam fora desta análise. Eventos ambíguos ou inválidos ficam fora dos cálculos e vão para revisão. A base reconstruída inicial não conserva hora ou hodômetros por lançamento; os novos lotes mantêm esses campos quando o TXT os fornece. Alertas não confirmam erro ou causa.</small><br>
+      <small>A fonte original é preservada; todas as linhas dentro do período declarado são conferidas, e linhas inválidas ou ambíguas permanecem fora dos cálculos até revisão. Eventos ambíguos ou inválidos ficam fora dos cálculos e vão para revisão. A base reconstruída inicial não conserva hora ou hodômetros por lançamento; os novos lotes mantêm esses campos quando o TXT os fornece. Alertas não confirmam erro ou causa.</small><br>
       ${GLOBUS_LOTES.some(l=>l.sha256===hashArquivo)?'<div class="audit-nota">Este arquivo já foi guardado; não haverá duplicação.</div>':erroHash?'<div class="audit-nota">Aplicação indisponível: '+escapeHtml(erroHash)+'</div>':'<button id="aplicarLoteGlobus" type="button" style="margin-top:10px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:600 12px var(--f-ui);cursor:pointer;">Guardar arquivo e aplicar somente lançamentos novos não ambíguos</button><span id="globusAplicacaoStatus" aria-live="polite"></span>'}<br>
       <button id="baixarPreviaGlobus" type="button" style="margin-top:10px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:600 12px var(--f-ui);cursor:pointer;">Baixar CSV completo da prévia</button>
       <small style="display:block;margin-top:4px;">O CSV é gerado localmente e inclui as linhas originais do TXT selecionado.</small>
@@ -3882,7 +3882,7 @@ function renderAuditoria() {
   const somaRsTxt = somaRs > 0 ? '− ' + fmtR(somaRs) : '+ ' + fmtR(Math.abs(somaRs));
 
   let html = `<div class="audit-resumo">
-    📊 Comparação adicional · Rastreador: <b>31/08–11/10/2026</b> · Globus: abastecimentos na mesma janela · painel geral até 29/10 · <b>${total}</b> veículo${total > 1 ? 's' : ''} com dados de rastreador${veiculosSemRast ? ` · ${veiculosSemRast} sem dados` : ''}${veiculosSemGlobusDetalhado ? ` · ${veiculosSemGlobusDetalhado} sem lançamentos Globus detalhados` : ''}${veiculosSemRegistroNoRast ? ` · ${veiculosSemRegistroNoRast} sem registro neste conjunto` : ''}<br>
+    📊 Comparação adicional · Rastreador: <b>31/08–11/10/2026</b> · Globus: abastecimentos na mesma janela · painel geral até ${DATA_REF.toLocaleDateString('pt-BR')} · <b>${total}</b> veículo${total > 1 ? 's' : ''} com dados de rastreador${veiculosSemRast ? ` · ${veiculosSemRast} sem dados` : ''}${veiculosSemGlobusDetalhado ? ` · ${veiculosSemGlobusDetalhado} sem lançamentos Globus detalhados` : ''}${veiculosSemRegistroNoRast ? ` · ${veiculosSemRegistroNoRast} sem registro neste conjunto` : ''}<br>
     Km Rastreador: <b>${fmtKmNum(somaKmRast)}</b> · Km das linhas de abastecimento Globus: <b>${fmtKmNum(somaKmGlobus)}</b> ·
     Litros estimados: <b>${fmtL(somaLitrosEsp)}</b> · Litros Globus: <b>${fmtL(somaLitrosReal)}</b> ·
     Impacto estimado: <b style="color:${somaRsCor};">${somaRsTxt}</b> · somatório inclui comparações parciais<br>
@@ -3934,13 +3934,13 @@ function renderAuditoria() {
     <td class="rs">${somaRsTxt}</td>
   </tr></tfoot></table>`;
 
-  html += `<div class="audit-nota">A comparação Rastreador × Globus usa o período fixo de 31/08 a 11/10/2026; não representa o acumulado da análise geral até 29/10.</div>`;
+  html += `<div class="audit-nota">A comparação Rastreador × Globus usa o período fixo de 31/08 a 11/10/2026; não representa o acumulado da análise geral até ${DATA_REF.toLocaleDateString('pt-BR')}.</div>`;
   const totalCamposDivergentes = DIVERGENCIAS_FROTA.reduce((s, item) => s + item.diferencas.length, 0);
   const modelosSemTanque = modelosSemTanqueConfigurado();
   html += `<div class="audit-resumo" style="margin-top:18px;border-left-color:var(--amber);">
     <b>Conferência FROTA × FILLS_RAW (dados Globus)</b><br>
     ${DIVERGENCIAS_FROTA.length} veículo(s) com diferença registrada · ${totalCamposDivergentes} campo(s) divergente(s).<br>
-    <small>O período original da fonte e todas as linhas permanecem preservados. Para esta conferência, valores base e soma dos abastecimentos usam somente lançamentos até 29/10/2026, inclusive; divergências são sinalizadas para conferência.</small>
+    <small>O período original da fonte e todas as linhas permanecem preservados. Para esta conferência, os valores base e a soma dos abastecimentos consideram os lançamentos válidos até ${DATA_REF.toLocaleDateString('pt-BR')}, inclusive; divergências são sinalizadas para conferência.</small>
   </div>`;
   if (modelosSemTanque.length) {
     html += `<div class="audit-resumo" style="margin-top:18px;border-left-color:var(--amber);">
