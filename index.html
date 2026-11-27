@@ -1896,6 +1896,7 @@ function idContratoCadastro(valor) {
   return 'cad_'+chave.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
 }
 function aplicarCadastroPlanilhaFrota() {
+  CONTRATO_LABEL.escm='ESCOLAR MACAÉ';
   CADASTRO_FROTA_REGISTROS.forEach(reg=>{
     const id=reg.contrato?idContratoCadastro(reg.contrato):null;
     if(id&&!CADASTRO_CONTRATO_POR_PREFIXO.has(reg.p))CADASTRO_CONTRATO_POR_PREFIXO.set(reg.p,id);
@@ -1930,7 +1931,8 @@ function aplicarCadastroPlanilhaFrota() {
   });
   const seletor=document.getElementById('selContrato');
   if(seletor)Object.entries(CONTRATO_LABEL).forEach(([id,label])=>{
-    if(!Array.from(seletor.options).some(o=>o.value===id))seletor.add(new Option(label,id));
+    const opcao=Array.from(seletor.options).find(o=>o.value===id);
+    if(opcao)opcao.textContent=label;else seletor.add(new Option(label,id));
   });
 }
 aplicarCadastroPlanilhaFrota();
@@ -2412,9 +2414,9 @@ function render() {
     else tr.title='Cadastro da frota sem abastecimentos Globus vinculados a este registro.';
     const modeloExibido=v.modeloCadastro||v.modelo;
     const detalheCadastro=[v.placa?'Placa '+v.placa:'',v.placaObservacao?'Placa não confirmada: '+v.placaObservacao:'',v.empresa||''].filter(Boolean).join(' · ');
-    tr.innerHTML = `<td><strong>${v.p}</strong></td>
-      <td class="modelo"><span class="modelo-linha"><b class="modelo-nome">${modeloExibido}</b><span class="ano">${v.ano||'—'}</span><span class="euro-tag">${(EURO_LABEL[v.euro] || (v.euro === 'ND' ? 'Não informado' : '—'))}</span><span class="ano">${detalheCadastro}</span></span></td>
-      <td><span class="contrato-nome" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}">${CONTRATO_LABEL[v.contrato]||v.contrato||'—'}</span></td>
+    tr.innerHTML = `<td><strong>${escapeHtml(v.p)}</strong></td>
+      <td class="modelo"><span class="modelo-linha"><b class="modelo-nome">${escapeHtml(modeloExibido)}</b><span class="ano">${escapeHtml(v.ano||'—')}</span><span class="euro-tag">${(EURO_LABEL[v.euro] || (v.euro === 'ND' ? 'Não informado' : '—'))}</span><span class="ano">${escapeHtml(detalheCadastro)}</span></span></td>
+      <td><span class="contrato-nome" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}">${escapeHtml(CONTRATO_LABEL[v.contrato]||v.contrato||'—')}</span></td>
       <td class="num" title="${v._kmParcial ? 'KM parcial: '+v._kmAusentes+' abastecimento(s) sem KM informado; soma somente os KM disponíveis.' : 'Soma dos KM informados no período.'}">${v._km != null ? fmtKmNum(v._km)+(v._kmParcial?' *':'') : '—'}</td>
       <td class="litros">${v._litros != null ? fmtL(v._litros) : '—'}</td>
       <td class="num ${realCls}" title="${v._abast ? 'Cálculo referente a ' + v._periodo + ' até ' + dataLabel(DATA_REF) : 'Sem abastecimentos no período selecionado'}">${v._real != null ? fmt3safe(v._real) : '—'}</td>
@@ -3539,7 +3541,7 @@ function garantirVeiculoSemContratoAttAba(prefixo){
   const p=String(prefixo).replace(/^0+/,'')||'0',cadastro=CADASTRO_COMPLETO_VEICULOS.get(p)||null;
   const normalizar=x=>String(x??'').replace(/^0+/,'')||'0',existente=FROTA.find(v=>normalizar(v.p)===p&&!v.cadastroSomente)||FROTA.find(v=>normalizar(v.p)===p);
   if(existente){
-    if(existente.cadastroSomente){existente.cadastroSomente=false;FROTA_ORIGINAL.push({...existente});}
+    if(existente.cadastroSomente){existente.cadastroSomente=false;existente.exp=referenciaKmLModeloAttAba(existente.modeloCadastro||existente.modelo);}
     if(existente.modelo==='Veículo sem cadastro'&&cadastro){
       Object.assign(existente,{modelo:cadastro.modelo,ano:cadastro.ano,placa:cadastro.placa,chassi:cadastro.chassi,exp:referenciaKmLModeloAttAba(cadastro.modelo)});
       const original=FROTA_ORIGINAL.find(v=>normalizar(v.p)===p);
@@ -3549,7 +3551,7 @@ function garantirVeiculoSemContratoAttAba(prefixo){
     return false;
   }
   const veiculo={p,modelo:cadastro?.modelo||'Veículo sem cadastro',modeloCadastro:cadastro?.modelo||'Veículo sem cadastro',ano:cadastro?.ano||'—',placa:cadastro?.placa||null,chassi:cadastro?.chassi||null,contrato:CADASTRO_CONTRATO_POR_PREFIXO.get(p)||'Sem contrato',euro:'—',km:null,litros:null,custo:null,exp:cadastro?referenciaKmLModeloAttAba(cadastro.modelo):null,abast:0,empresa:null,cadastroSomente:false};
-  FROTA.push(veiculo);FROTA_ORIGINAL.push({...veiculo});CONTRATO_POR_PREFIXO[p]='Sem contrato';
+  FROTA.push(veiculo);FROTA_ORIGINAL.push({...veiculo});CONTRATO_POR_PREFIXO[p]=veiculo.contrato;
   const sel=document.getElementById('selContrato');if(sel&&!Array.from(sel.options).some(o=>o.value==='Sem contrato'))sel.add(new Option('Sem contrato','Sem contrato'));
   return true;
 }
