@@ -31,12 +31,9 @@ function numeroPt(valor) {
   return Number.isFinite(numero) ? numero : null;
 }
 
-function numeroColuna(linha, inicio, fim) {
-  const bruto = linha.slice(inicio, fim).replace(/\*/g, '').trim();
-  if (!bruto) return null;
-  if (!/^\d[\d.]*,\d{2}$/.test(bruto)) return undefined;
-  const numero = Number(bruto.replace(/\./g, '').replace(',', '.'));
-  return Number.isFinite(numero) ? numero : undefined;
+function numeroRodape(linha) {
+  return [...linha.slice(100).matchAll(/\d[\d.]*,\d{2}/g)]
+    .map(match => Number(match[0].replace(/\./g, '').replace(',', '.')));
 }
 
 function processarFonte(fonte) {
@@ -95,25 +92,22 @@ function processarFonte(fonte) {
       }
     }
 
-    // Cada campo do rodapé tem posição própria no layout do Globus.
-    // Não compactar os números encontrados: um campo ausente não pode deslocar os seguintes.
-    const colunas = [
-      ['hodometroInicial', 100, 110],
-      ['hodometroFinal', 110, 120],
-      ['km', 120, 130],
-      ['kmAcumulado', 130, 140],
-      ['kmPorLitro', 140, 150],
-    ];
-    const valoresRodape = {};
-    for (const [campo, inicioColuna, fimColuna] of colunas) {
-      valoresRodape[campo] = numeroColuna(linha, inicioColuna, fimColuna);
-      if (valoresRodape[campo] === undefined) {
-        erros.push('linha ' + (i + 1) + ': campo ' + campo + ' inválido');
-      }
+    // Os valores podem ultrapassar a largura impressa da coluna (ex.: KM acumulado
+    // acima de 999.999), por isso são lidos em sequência no rodapé, sem fatias fixas.
+    const rodape = numeroRodape(linha);
+    let hodometroInicial = null;
+    let hodometroFinal = null;
+    let km = null;
+    let kmAcumulado = null;
+    let kmPorLitro = null;
+    if (rodape.length === 5) {
+      [hodometroInicial, hodometroFinal, km, kmAcumulado, kmPorLitro] = rodape;
+    } else if (rodape.length === 4) {
+      [hodometroInicial, hodometroFinal, km, kmAcumulado] = rodape;
+    } else if (rodape.length !== 0) {
+      erros.push('linha ' + (i + 1) + ': rodapé numérico ambíguo (' + rodape.length + ' campos)');
+      continue;
     }
-    const {
-      hodometroInicial, hodometroFinal, km, kmAcumulado, kmPorLitro,
-    } = valoresRodape;
 
     const litros = produtos.combustivel;
     if (litros === null || litros <= 0) {
