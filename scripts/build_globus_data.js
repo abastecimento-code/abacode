@@ -31,9 +31,12 @@ function numeroPt(valor) {
   return Number.isFinite(numero) ? numero : null;
 }
 
-function numeroRodape(linha) {
-  return [...linha.slice(100).matchAll(/\d[\d.]*,\d{2}/g)]
-    .map(match => Number(match[0].replace(/\./g, '').replace(',', '.')));
+function numeroColuna(linha, inicio, fim) {
+  const bruto = linha.slice(inicio, fim).replace(/\*/g, '').trim();
+  if (!bruto) return null;
+  if (!/^\d[\d.]*,\d{2}$/.test(bruto)) return undefined;
+  const numero = Number(bruto.replace(/\./g, '').replace(',', '.'));
+  return Number.isFinite(numero) ? numero : undefined;
 }
 
 function processarFonte(fonte) {
@@ -56,6 +59,7 @@ function processarFonte(fonte) {
   periodoComum = periodoAtual;
 
   let candidatas = 0;
+  let linhasSemCombustivel = 0;
   const lancamentos = [];
   const erros = [];
   for (let i = 0; i < linhas.length; i++) {
@@ -91,23 +95,31 @@ function processarFonte(fonte) {
       }
     }
 
-    const rodape = numeroRodape(linha);
-    let hodometroInicial = null;
-    let hodometroFinal = null;
-    let km = null;
-    let kmAcumulado = null;
-    let kmPorLitro = null;
-    if (rodape.length === 5) {
-      [hodometroInicial, hodometroFinal, km, kmAcumulado, kmPorLitro] = rodape;
-    } else if (rodape.length === 4) {
-      [hodometroInicial, hodometroFinal, km, kmAcumulado] = rodape;
-    } else if (rodape.length !== 0) {
-      erros.push('linha ' + (i + 1) + ': rodapé numérico ambíguo (' + rodape.length + ' campos)');
-      continue;
+    // Cada campo do rodapé tem posição própria no layout do Globus.
+    // Não compactar os números encontrados: um campo ausente não pode deslocar os seguintes.
+    const colunas = [
+      ['hodometroInicial', 100, 110],
+      ['hodometroFinal', 110, 120],
+      ['km', 120, 130],
+      ['kmAcumulado', 130, 140],
+      ['kmPorLitro', 140, 150],
+    ];
+    const valoresRodape = {};
+    for (const [campo, inicioColuna, fimColuna] of colunas) {
+      valoresRodape[campo] = numeroColuna(linha, inicioColuna, fimColuna);
+      if (valoresRodape[campo] === undefined) {
+        erros.push('linha ' + (i + 1) + ': campo ' + campo + ' inválido');
+      }
     }
+    const {
+      hodometroInicial, hodometroFinal, km, kmAcumulado, kmPorLitro,
+    } = valoresRodape;
 
     const litros = produtos.combustivel;
-    if (litros === null || litros <= 0) continue;
+    if (litros === null || litros <= 0) {
+      linhasSemCombustivel++;
+      continue;
+    }
     if (origem !== 'I' && origem !== 'E') {
       erros.push('linha ' + (i + 1) + ': origem de abastecimento inválida');
       continue;
@@ -153,6 +165,7 @@ function processarFonte(fonte) {
       sha256,
       lancamentos: lancamentos.length,
       candidatas,
+      linhasSemCombustivel,
     },
   };
 }
@@ -168,6 +181,7 @@ const resumo = {
   kmPorLitroAusente: todos.filter(e => e.kmPorLitro == null).length,
   precoEValorNaoDisponiveis: true,
   kmAcumuladoAusente: todos.filter(e => e.kmAcumulado == null).length,
+  linhasSemCombustivel: resultados.reduce((soma, r) => soma + r.resumo.linhasSemCombustivel, 0),
 };
 
 if (!resumo.lancamentos || !resumo.prefixos) {
