@@ -2,26 +2,26 @@
 
 Os três relatórios oficiais usados pelo painel ficam na raiz do repositório:
 
-- \`1000-2999.TXT\`
-- \`200-300.TXT\`
-- \`500-699.TXT\`
+- `1000-2999.TXT`
+- `200-300.TXT`
+- `500-699.TXT`
 
 Os três arquivos devem corresponder ao mesmo período. O importador lê o intervalo diretamente do cabeçalho de cada TXT e interrompe a geração se os períodos forem diferentes ou se houver linha fora do intervalo declarado.
 
 ## Reconstrução dos pacotes publicados
 
-O parser oficial está em \`scripts/build_globus_data.js\`. Ele lê os campos por posições fixas do relatório e trata o rodapé numérico separadamente, pois hodômetro final e KM podem aparecer concatenados sem espaços.
+O parser oficial está em `scripts/build_globus_data.js`. Ele lê os campos por posições fixas do relatório e trata o rodapé numérico separadamente, pois hodômetro final e KM podem aparecer concatenados sem espaços.
 
 Para reconstruir e auditar os pacotes manualmente:
 
 1. Atualize os três TXT na raiz do repositório.
-2. Execute \`node scripts/build_globus_data.js\`.
+2. Execute `node scripts/build_globus_data.js`.
 3. Confira os arquivos gerados:
-   - \`dados/globus-1000-2999.json\`
-   - \`dados/globus-200-300.json\`
-   - \`dados/globus-500-699.json\`
-   - \`dados/globus-importados.json\`
-4. Revise a proposta gerada antes de integrá-la à branch \`main\`.
+   - `dados/globus-1000-2999.json`
+   - `dados/globus-200-300.json`
+   - `dados/globus-500-699.json`
+   - `dados/globus-importados.json`
+4. Revise a proposta gerada antes de integrá-la à branch `main`.
 
 O GitHub Actions também executa essa rotina quando um dos três TXT da raiz é atualizado, ou quando o fluxo é iniciado manualmente. Se houver dados ambíguos, campos numéricos inválidos ou períodos divergentes, a execução falha sem publicar os pacotes e apresenta a linha de origem para revisão. Quando os pacotes mudam, o fluxo abre um pull request para revisão.
 
@@ -29,8 +29,8 @@ O GitHub Actions também executa essa rotina quando um dos três TXT da raiz é 
 
 - Cada lançamento mantém o número da linha original e o nome do TXT de origem.
 - KM, hodômetros e KM/L são extraídos do relatório sem completar dígitos por suposição.
-- Quando o relatório não informa hodômetros ou KM, os campos permanecem \`null\`.
-- Quando o relatório não informa KM/L, esse campo permanece \`null\`; o sistema não substitui o valor por um cálculo.
+- Quando o relatório não informa hodômetros ou KM, os campos permanecem `null`.
+- Quando o relatório não informa KM/L, esse campo permanece `null`; o sistema não substitui o valor por um cálculo.
 - Linhas sem combustível não entram na contagem de abastecimentos nem na soma de litros.
 - Os três TXT originais são preservados no repositório.
 - O manifesto registra o período, os hashes dos TXT, a quantidade de lançamentos e os prefixos incluídos.
