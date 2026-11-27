@@ -8,6 +8,7 @@ on:
       - '1000-2999.TXT'
       - '200-300.TXT'
       - '500-699.TXT'
+      - 'scripts/build_globus_data.js'
 
 permissions:
   contents: write
