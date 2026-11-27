@@ -1767,7 +1767,7 @@ function capacidadesDoModelo(modelo) {
 }
 
 function modelosSemTanqueConfigurado() {
-  return [...new Set(FROTA.filter(v => !TANQUES[v.modelo]).map(v => v.modelo))]
+  return [...new Set(FROTA.filter(v => !v.cadastroSomente && !TANQUES[v.modelo]).map(v => v.modelo))]
     .sort((a, b) => a.localeCompare(b, 'pt-BR'));
 }
 
