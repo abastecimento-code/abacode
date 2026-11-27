@@ -1070,6 +1070,7 @@ body{position:relative;isolation:isolate}
     <div class="info-nota" id="totalAbastecimentosGlobus">2.841 abastecimentos ativos · período efetivo varia por veículo; uma semana sem lançamento, por si só, não indica falha.</div>
     <div class="info-nota" id="globusPendenciasBanner" hidden></div>
     <div class="info-nota" id="globusLinhasSemCombustivelInfo" hidden><span id="globusLinhasSemCombustivelTexto"></span> <button type="button" class="evolucao-toggle" onclick="exportarLinhasSemCombustivelGlobus()">Exportar linhas</button></div>
+    <div class="info-nota" id="globusDivergenciasInfo" hidden><span id="globusDivergenciasTexto"></span> <button type="button" class="evolucao-toggle" onclick="exportarDivergenciasGlobus()">Exportar 187 divergências</button> <details id="globusDivergenciasDetalhes" style="display:inline-block;margin-left:8px;"><summary style="display:inline;cursor:pointer;">Consultar registros</summary><div id="globusDivergenciasTabela" style="overflow:auto;max-height:420px;margin-top:10px;"></div></details></div>
     <div class="veiculos-stage" id="veiculosStage">
       <section class="veiculos-face lista-face" id="listaVeiculosFace" aria-hidden="false">
        <div class="tabela-wrap">
@@ -1578,6 +1579,7 @@ let GLOBUS_REVISOES = [];
 // Eventos com mais de um candidato ficam isolados e não entram nos cálculos.
 let GLOBUS_EVENTOS_AMBIGUOS = [];
 let GLOBUS_LINHAS_SEM_COMBUSTIVEL = [];
+let GLOBUS_DIVERGENCIAS = [];
 let GLOBUS_AUDITORIA_PUBLICADA = {};
 let GLOBUS_STORAGE_STATUS = 'Importação local ainda não verificada.';
 let GLOBUS_LAST_MESSAGE = '';
@@ -1600,6 +1602,29 @@ function ultimaRevisaoGlobus(sha,linha){return GLOBUS_REVISOES.filter(r=>r.loteS
 function pendenciasAtivasGlobus(){return GLOBUS_LOTES.flatMap(l=>(l.pendencias||[]).filter(p=>{const r=ultimaRevisaoGlobus(l.sha256,p.linha);return !r||!['ANALISADO_SEM_ALTERACAO','DIVERGENCIA_EM_ACOMPANHAMENTO'].includes(r.decisao)}));}
 function atualizarInfoLinhasSemCombustivelGlobus(){const el=document.getElementById('globusLinhasSemCombustivelInfo'),txt=document.getElementById('globusLinhasSemCombustivelTexto'),linhas=GLOBUS_LINHAS_SEM_COMBUSTIVEL,total=linhas.length,comKm=linhas.filter(e=>[e.hodometroInicial,e.hodometroFinal,e.km,e.kmAcumulado].some(v=>v!==null&&v!==undefined)).length,comOutros=linhas.filter(e=>Object.entries(e.produtos||{}).some(([k,v])=>k!=='combustivel'&&v!=null&&Number(v)>0)).length,divOdo=Number(GLOBUS_AUDITORIA_PUBLICADA.divergenciaHodometro||0),divKmL=Number(GLOBUS_AUDITORIA_PUBLICADA.divergenciaKmL||0),kmLAusente=Number(GLOBUS_AUDITORIA_PUBLICADA.kmPorLitroAusente||0),kmLZero=Number(GLOBUS_AUDITORIA_PUBLICADA.kmPorLitroAusenteComKmZero||0),kmLSemKm=Number(GLOBUS_AUDITORIA_PUBLICADA.kmPorLitroAusenteSemKm||0),divOdoSemFuel=linhas.filter(e=>e.divergenciaHodometro).length;if(el)el.hidden=!total;if(txt)txt.textContent=total+' linha(s) sem combustível preservadas · '+comKm+' com hodômetro/KM · '+comOutros+' com outros produtos · '+divOdoSemFuel+' divergências de hodômetro nessas linhas. Não são contadas como abastecimentos. Auditoria dos TXT: '+divOdo+' divergências de hodômetro e '+divKmL+' de KM/L; '+kmLAusente+' KM/L ausentes ('+kmLZero+' com KM zero e '+kmLSemKm+' sem KM).'}
 function exportarLinhasSemCombustivelGlobus(){const linhas=GLOBUS_LINHAS_SEM_COMBUSTIVEL;if(!linhas.length)return;const colunas=['Arquivo fonte','Linha TXT','Prefixo','Data','Hora','Origem','Tipo de linha','Combustível L','Motor L','Graxa L','Hidráulico L','Diferencial L','Câmbio L','Freio L','Outros L','Hodômetro inicial','Hodômetro final','KM','KM acumulado','KM/L','Divergência hodômetro','Linha original'];const celula=v=>{const t=v==null?'':String(v);return '"'+t.replace(/"/g,'""')+'"';};const csv='\uFEFF'+[colunas,...linhas.map(e=>[e.arquivoFonte,e.linha,e.prefixo,e.dataCompleta,e.hora,e.origem,e.tipoLinha,e.produtos?.combustivel,e.produtos?.motor,e.produtos?.graxa,e.produtos?.hidraulico,e.produtos?.diferencial,e.produtos?.cambio,e.produtos?.freio,e.produtos?.outros,e.hodometroInicial,e.hodometroFinal,e.km,e.kmAcumulado,e.kmPorLitro,e.divergenciaHodometro?'SIM':'NÃO',e.bruto])].map(l=>l.map(celula).join(';')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));const a=document.createElement('a');a.href=url;a.download='globus-linhas-sem-combustivel.csv';a.click();URL.revokeObjectURL(url);}
+function atualizarInfoDivergenciasGlobus(){
+  const el=document.getElementById('globusDivergenciasInfo'),txt=document.getElementById('globusDivergenciasTexto');
+  const odo=GLOBUS_DIVERGENCIAS.filter(e=>e.tipoDivergencia.startsWith('HODOMETRO')).length;
+  const kmL=GLOBUS_DIVERGENCIAS.filter(e=>e.tipoDivergencia==='KM/L').length;
+  const chavesOdo=new Set(GLOBUS_DIVERGENCIAS.filter(e=>e.tipoDivergencia.startsWith('HODOMETRO')).map(e=>e.arquivoFonte+':'+e.linha));
+  const sobreposicao=GLOBUS_DIVERGENCIAS.filter(e=>e.tipoDivergencia==='KM/L'&&chavesOdo.has(e.arquivoFonte+':'+e.linha)).length;
+  if(el)el.hidden=!GLOBUS_DIVERGENCIAS.length;
+  if(txt)txt.textContent=odo+' divergências de hodômetro · '+kmL+' divergências de KM/L · '+sobreposicao+' lançamento(s) aparecem nos dois grupos. Valores originais preservados para conferência.';
+  const detalhes=document.getElementById('globusDivergenciasDetalhes');
+  if(detalhes&&!detalhes.dataset.inicializado){detalhes.addEventListener('toggle',()=>{if(detalhes.open&&!detalhes.dataset.carregado){renderTabelaDivergenciasGlobus();detalhes.dataset.carregado='1';}});detalhes.dataset.inicializado='1';}
+}
+function renderTabelaDivergenciasGlobus(){
+  const alvo=document.getElementById('globusDivergenciasTabela');if(!alvo)return;
+  const linhas=GLOBUS_DIVERGENCIAS;
+  const fmt=v=>v==null?'—':Number(v).toLocaleString('pt-BR',{maximumFractionDigits:3});
+  alvo.innerHTML='<table class="audit-tabela"><thead><tr><th>Divergência</th><th>Arquivo</th><th>Linha</th><th>Prefixo</th><th>Data</th><th>Litros</th><th>KM</th><th>Hod. inicial</th><th>Hod. final</th><th>KM/L Globus</th><th>KM/L calculado</th></tr></thead><tbody>'+linhas.map(e=>{const calc=e.km!=null&&Number(e.litros)>0?Number(e.km)/Number(e.litros):null;const tipo=e.tipoDivergencia==='KM/L'?'KM/L':e.tipoDivergencia==='HODOMETRO_SEM_COMBUSTIVEL'?'Hodômetro · sem combustível':'Hodômetro';return '<tr><td>'+tipo+'</td><td>'+escapeHtml(e.arquivoFonte||'')+'</td><td>'+escapeHtml(String(e.linha??''))+'</td><td>'+escapeHtml(String(e.prefixo??''))+'</td><td>'+escapeHtml(e.dataCompleta||((e.data||'')+'/'+(e.ano||'')))+'</td><td>'+fmt(e.litros)+'</td><td>'+fmt(e.km)+'</td><td>'+fmt(e.hodometroInicial)+'</td><td>'+fmt(e.hodometroFinal)+'</td><td>'+fmt(e.kmPorLitro)+'</td><td>'+fmt(calc)+'</td></tr>';}).join('')+'</tbody></table>';
+}
+function exportarDivergenciasGlobus(){
+  const colunas=['Tipo de divergência','Arquivo fonte','Linha TXT','Prefixo','Data','Hora','Origem','Litros','Hodômetro inicial','Hodômetro final','KM informado','Diferença hodômetro final-inicial menos KM','KM acumulado','KM/L Globus','KM/L calculado (KM/litros)','Diferença KM/L','Linha original'];
+  const celula=v=>{const t=v==null?'':String(v);return '"'+t.replace(/"/g,'""')+'"';};
+  const csv='\\uFEFF'+[colunas,...GLOBUS_DIVERGENCIAS.map(e=>[e.tipoDivergencia,e.arquivoFonte,e.linha,e.prefixo,e.dataCompleta||((e.data||'')+'/'+(e.ano||'')),e.hora,e.origem??e.tipo,e.litros,e.hodometroInicial,e.hodometroFinal,e.km,e.hodometroInicial!=null&&e.hodometroFinal!=null&&e.km!=null?Number((Number(e.hodometroFinal)-Number(e.hodometroInicial)-Number(e.km)).toFixed(3)):null,e.kmAcumulado,e.kmPorLitro,e.km!=null&&Number(e.litros)>0?Number((Number(e.km)/Number(e.litros)).toFixed(4)):null,e.kmPorLitro!=null&&e.km!=null&&Number(e.litros)>0?Number((Number(e.kmPorLitro)-Number(e.km)/Number(e.litros)).toFixed(4)):null,e.bruto])].map(l=>l.map(celula).join(';')).join('\\r\\n');
+  const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));const a=document.createElement('a');a.href=url;a.download='globus-divergencias-hodometro-kml.csv';a.click();URL.revokeObjectURL(url);
+}
 function atualizarStatusGlobus(){const n=GLOBUS_LOTES.reduce((s,l)=>s+(l.eventosAceitos||[]).length,0),p=pendenciasAtivasGlobus().length,a=GLOBUS_EVENTOS_AMBIGUOS.length;GLOBUS_STORAGE_STATUS=GLOBUS_LOTES.length+' arquivo(s) guardado(s) neste navegador · '+n+' lançamento(s) novo(s) ativo(s)'+(p?' · '+p+' aguardam análise':'')+(a?' · '+a+' abastecimento(s) com pareamento ambíguo':'')+'.';const b=document.getElementById('globusPendenciasBanner');if(b){const avisos=[];if(p)avisos.push('⚠ '+p+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');if(a)avisos.push('⚠ '+a+' abastecimento(s) publicados têm pareamento ambíguo e foram mantidos fora dos cálculos até reconciliação.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}}
 function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);const resumo=document.getElementById('dataRefResumo');if(resumo)resumo.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até '+fmt(DATA_REF);const abertas=pendenciasAtivasGlobus().length,ambiguos=GLOBUS_EVENTOS_AMBIGUOS.length;if(b){const avisos=[];if(abertas)avisos.push('⚠ '+abertas+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');if(ambiguos)avisos.push('⚠ '+ambiguos+' abastecimento(s) publicados têm pareamento ambíguo e foram mantidos fora dos cálculos até reconciliação.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}}
 async function carregarDadosGlobusPublicados(){
@@ -1621,6 +1646,10 @@ async function carregarDadosGlobusPublicados(){
     if(eventos.length!==manifesto.resumo?.lancamentos)throw new Error('A quantidade de lançamentos não confere com o manifesto.');
     if(manifesto.resumo?.linhasSemCombustivel!=null&&linhasSemCombustivel.length!==manifesto.resumo.linhasSemCombustivel)throw new Error('A quantidade de linhas sem combustível não confere com o manifesto.');
     GLOBUS_LINHAS_SEM_COMBUSTIVEL=linhasSemCombustivel;
+    const divergenciasOdo=eventos.filter(e=>e.hodometroInicial!=null&&e.hodometroFinal!=null&&e.km!=null&&Math.abs((Number(e.hodometroFinal)-Number(e.hodometroInicial))-Number(e.km))>0.01).map(e=>({...e,tipoDivergencia:'HODOMETRO'}));
+    const divergenciasOdoSemComb=linhasSemCombustivel.filter(e=>e.divergenciaHodometro).map(e=>({...e,tipoDivergencia:'HODOMETRO_SEM_COMBUSTIVEL'}));
+    const divergenciasKmL=eventos.filter(e=>e.kmPorLitro!=null&&e.km!=null&&Number(e.litros)>0&&Math.abs(Number(e.kmPorLitro)-Number(e.km)/Number(e.litros))>0.0051).map(e=>({...e,tipoDivergencia:'KM/L'}));
+    GLOBUS_DIVERGENCIAS=[...divergenciasOdo,...divergenciasOdoSemComb,...divergenciasKmL];
     const totais={adicionados:0,corrigidos:0,iguais:0,ambiguos:0,veiculosIncluidos:0};
     eventos.forEach(e=>{
       const antes=FROTA.length,resultado=integrarEventoGlobusNaBase(e,'Globus · '+(e.arquivoFonte||'relatório publicado'));
@@ -1632,6 +1661,7 @@ async function carregarDadosGlobusPublicados(){
     });
     atualizarStatusGlobus();
     atualizarInfoLinhasSemCombustivelGlobus();
+    atualizarInfoDivergenciasGlobus();
     console.info('[dbatt] Globus publicado integrado:',{...totais,total:eventos.length,linhasSemCombustivel:linhasSemCombustivel.length,prefixos:manifesto.resumo.prefixos,ambiguidade:GLOBUS_EVENTOS_AMBIGUOS});
     return totais;
   }catch(e){
