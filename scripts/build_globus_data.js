@@ -133,6 +133,7 @@ function processarFonte(fonte) {
         km,
         kmAcumulado,
         kmPorLitro,
+        divergenciaHodometro: hodometroInicial !== null && hodometroFinal !== null && km !== null && Math.abs((hodometroFinal - hodometroInicial) - km) > 0.01,
         tipoLinha,
         linha: i + 1,
         arquivoFonte: fonte.arquivo,
@@ -191,12 +192,16 @@ function processarFonte(fonte) {
         [e.hodometroInicial, e.hodometroFinal, e.km, e.kmAcumulado].some(v => v !== null)).length,
       linhasSemCombustivelComOutrosProdutos: linhasSemCombustivelDetalhadas.filter(e =>
         Object.entries(e.produtos).some(([campo, valor]) => campo !== 'combustivel' && valor !== null && valor > 0)).length,
+      linhasSemCombustivelComDivergenciaHodometro: linhasSemCombustivelDetalhadas.filter(e => e.divergenciaHodometro).length,
+      divergenciaHodometroAbastecimentos: lancamentos.filter(e => e.hodometroInicial !== null && e.hodometroFinal !== null && e.km !== null && Math.abs((e.hodometroFinal - e.hodometroInicial) - e.km) > 0.01).length,
+      divergenciaKmL: lancamentos.filter(e => e.kmPorLitro !== null && e.km !== null && e.litros > 0 && Math.abs(e.kmPorLitro - (e.km / e.litros)) > 0.0051).length,
     },
   };
 }
 
 const resultados = fontes.map(processarFonte);
 const todos = resultados.flatMap(r => r.pacote.lancamentos);
+const todasLinhasSemCombustivel = resultados.flatMap(r => r.pacote.linhasSemCombustivel);
 const prefixos = [...new Set(todos.map(e => e.prefixo))]
   .sort((a, b) => Number(a) - Number(b));
 const resumo = {
@@ -209,6 +214,12 @@ const resumo = {
   linhasSemCombustivel: resultados.reduce((soma, r) => soma + r.resumo.linhasSemCombustivel, 0),
   linhasSemCombustivelComHodometro: resultados.reduce((soma, r) => soma + r.resumo.linhasSemCombustivelComHodometro, 0),
   linhasSemCombustivelComOutrosProdutos: resultados.reduce((soma, r) => soma + r.resumo.linhasSemCombustivelComOutrosProdutos, 0),
+  kmPorLitroAusenteComKmZero: todos.filter(e => e.kmPorLitro == null && e.km === 0).length,
+  kmPorLitroAusenteSemKm: todos.filter(e => e.kmPorLitro == null && e.km == null).length,
+  divergenciaHodometroAbastecimentos: resultados.reduce((soma, r) => soma + r.resumo.divergenciaHodometroAbastecimentos, 0),
+  divergenciaHodometroSemCombustivel: resultados.reduce((soma, r) => soma + r.resumo.linhasSemCombustivelComDivergenciaHodometro, 0),
+  divergenciaHodometro: resultados.reduce((soma, r) => soma + r.resumo.divergenciaHodometroAbastecimentos + r.resumo.linhasSemCombustivelComDivergenciaHodometro, 0),
+  divergenciaKmL: resultados.reduce((soma, r) => soma + r.resumo.divergenciaKmL, 0),
 };
 
 if (!resumo.lancamentos || !resumo.prefixos) {
@@ -236,6 +247,9 @@ const manifesto = {
     linhasSemCombustivel: r.pacote.linhasSemCombustivel.length,
     linhasSemCombustivelComHodometro: r.resumo.linhasSemCombustivelComHodometro,
     linhasSemCombustivelComOutrosProdutos: r.resumo.linhasSemCombustivelComOutrosProdutos,
+    linhasSemCombustivelComDivergenciaHodometro: r.resumo.linhasSemCombustivelComDivergenciaHodometro,
+    divergenciaHodometroAbastecimentos: r.resumo.divergenciaHodometroAbastecimentos,
+    divergenciaKmL: r.resumo.divergenciaKmL,
   })),
   resumo,
   prefixos,
