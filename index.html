@@ -1885,12 +1885,19 @@ function rotuloContratoCadastro(valor) {
   if(!chave)return '';
   const aliases={
     'ESCOLAR (BASE)':'ESCOLAR MACAÉ','ESCOLAR MACAE':'ESCOLAR MACAÉ',
+    'CONTRATO SILVA JARDIM':'ESCOLAR - SILVA JARDIM',
     'PREFEITURA MUNICIPAL DE CONCEICAO DE MACABU':'PMCM',
     'CONTRATO ARARUAMA':'ARARUAMA',
     'PREFEITURA MUNICIPAL QUISSAMA':'PM QUISSAMA','PREFEITURA MUNICIPAL DE QUISSAMA':'PM QUISSAMA',
     'PREFEITURA MUNICIPAL MACAE':'PMM','PREFEITURA MUNICIPAL DE MACAE':'PMM',
+    'PREFEITURA MUNICIPAL DE CASIMIRO DE ABREU':'PMCA',
+    'TECNIP - PORTO DO ACU':'TECHNIP - PORTO DO AÇU',
+    'TECHNIP - PORTO DO ACU':'TECHNIP - PORTO DO AÇU',
+    'TECHNIP ACU':'TECHNIP - PORTO DO AÇU','TECHINIP ACU':'TECHNIP - PORTO DO AÇU',
+    'TECHNIP MACAE':'TECHNIP - MACAÉ',
+    'PREFEITURA DE ANGRA DOS REIS':'PMMAR',
+    'PREFEITURA DE MACAE - PMM - SAUDE':'PREFEITURA DE MACAÉ - PMM - SAÚDE',
     'TECHNIP SPOOLBASE':'SPOOLBASE – PORTO DO AÇU','SPOOLBASE':'SPOOLBASE – PORTO DO AÇU',
-    'TECHNIP ACU':'TECHNIP – PORTO DO AÇU','TECHINIP ACU':'TECHNIP – PORTO DO AÇU',
     'CONTRATO MID':'MID – PORTO DO AÇU','CRC':'CRC – PORTO DO AÇU','RIP':'RIP – PORTO DO AÇU'
   };
   return aliases[chave]||chave;
@@ -1900,12 +1907,14 @@ function idContratoCadastro(valor) {
   const chave=normalizarContratoCadastro(rotulo);
   if(!chave)return null;
   if(chave.includes('CONTRATO CONCEICAO DE MACABU')&&chave.includes('VENDA'))return null;
-  const aliases={'VIBRA':'rj','ESCOLAR MACAE':'escm','PMCM':'cad_pmcm','ARARUAMA':'cad_araruama','PM QUISSAMA':'cad_pm_quissama','PMM':'cad_pmm','SPOOLBASE – PORTO DO ACU':'spb','TECHNIP – PORTO DO ACU':'tec','MID – PORTO DO ACU':'mid','CRC – PORTO DO ACU':'crc','RIP – PORTO DO ACU':'rip'};
+  const aliases={'VIBRA':'rj','ESCOLAR MACAE':'escm','ESCOLAR - SILVA JARDIM':'esc','PMCM':'cad_pmcm','ARARUAMA':'cad_araruama','PM QUISSAMA':'cad_pm_quissama','PMM':'cad_pmm','PMCA':'cad_pmca','PMMAR':'cad_pmmar','TECHNIP - PORTO DO ACU':'tec','TECHNIP - MACAE':'cad_technip_macae','PREFEITURA DE MACAE - PMM - SAUDE':'cad_pmm_saude','SPOOLBASE – PORTO DO ACU':'spb','MID – PORTO DO ACU':'mid','CRC – PORTO DO ACU':'crc','RIP – PORTO DO ACU':'rip'};
   if(aliases[chave])return aliases[chave];
   return 'cad_'+chave.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
 }
 function aplicarCadastroPlanilhaFrota() {
   CONTRATO_LABEL.escm='ESCOLAR MACAÉ';
+  CONTRATO_LABEL.esc='ESCOLAR - SILVA JARDIM';
+  CONTRATO_LABEL.tec='TECHNIP - PORTO DO AÇU';
   const porPrefixo=new Map();
   CADASTRO_FROTA_REGISTROS.forEach(reg=>{
     if(!reg.contrato)return;
@@ -1944,7 +1953,8 @@ function aplicarCadastroPlanilhaFrota() {
     cad_base_wings:'#1565C0',             // BASE WINGS — azul
     cad_contrato_wings:'#283593',         // CONTRATO WINGS — azul profundo
     cad_prefeitura_municipal_de_quissama:'#00838F',cad_garagem_de_macae_alexandre:'#455A64',
-    cad_pmcm:'#5D4037',cad_araruama:'#00796B',cad_pm_quissama:'#F9A825',cad_pmm:'#C2185B'
+    cad_pmcm:'#5D4037',cad_araruama:'#00796B',cad_pm_quissama:'#F9A825',cad_pmm:'#C2185B',
+    cad_pmca:'#4527A0',cad_pmmar:'#00897B',cad_technip_macae:'#3949AB',cad_pmm_saude:'#EF6C00'
   };
   Object.entries(coresContratos).forEach(([id,cor])=>{
     if(CONTRATO_LABEL[id])CONTRATO_COR[id]=cor;
