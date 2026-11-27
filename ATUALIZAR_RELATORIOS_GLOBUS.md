@@ -10,7 +10,7 @@ Os três arquivos devem corresponder ao mesmo período. O importador lê o inter
 
 ## Reconstrução dos pacotes publicados
 
-O parser oficial está em `scripts/build_globus_data.js`. Ele lê combustível e demais produtos por suas posições fixas e extrai cada campo do rodapé (hodômetros, KM, KM acumulado e KM/L) em sua própria coluna. A extração não compacta números: se um campo estiver ausente, os campos seguintes mantêm suas posições e a ausência permanece `null`.
+O parser oficial está em `scripts/build_globus_data.js`. Ele lê combustível e demais produtos por posições fixas e interpreta o rodapé numérico em sequência. Como valores longos (por exemplo, KM acumulado acima de 999.999) podem ultrapassar a largura visual da coluna, o rodapé não deve ser lido por fatias fixas. O importador aceita os quatro campos básicos (hodômetro inicial, hodômetro final, KM e KM acumulado) e trata KM/L como campo final opcional.
 
 Para reconstruir e auditar os pacotes manualmente:
 
