@@ -62,23 +62,21 @@ header .chip b{color:var(--amber);font-weight:700;}
 .side-card.vazio{--c:var(--tx3);}
 .side-card.vazio .side-card-val{color:var(--tx3);}
 
-/* ===== TOOLBAR ===== */
-.barra{margin-top:8px;padding:8px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:flex;flex-wrap:wrap;gap:20px;align-items:center;}
-.barra>div{display:flex;align-items:center;gap:10px;}
-.barra .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--tx2);font-weight:700;}
-select,.busca{border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:12.5px;font-family:inherit;color:var(--tx);background:var(--surface2);transition:.15s;outline:none;}
-select{cursor:pointer;} .busca{width:250px;} .busca::placeholder{color:var(--tx3);}
-select:focus,.busca:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,159,28,.2);background:#fff;}
+/* ===== TOOLBAR / FILTROS RESPONSIVOS ===== */
+.barra{margin-top:8px;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:grid;grid-template-columns:minmax(220px,1.1fr) minmax(180px,1fr) minmax(180px,1fr);gap:12px 16px;align-items:end;min-width:0;}
+.barra>div:not(.lista-topline){display:flex;flex-direction:column;align-items:stretch;gap:6px;min-width:0;width:100%;}
+.barra .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--tx2);font-weight:700;line-height:1.2;}
+.barra select,.barra input.busca{box-sizing:border-box;width:100%;max-width:100%;min-width:0;height:39px;border:1px solid var(--line);border-radius:9px;padding:8px 11px;font-size:12px;font-family:inherit;color:var(--tx);background:var(--surface2);transition:border-color .15s,box-shadow .15s;outline:none;}
+.barra select{cursor:pointer;}
+.barra input.busca::placeholder{color:var(--tx3);}
+.barra select:focus,.barra input.busca:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,159,28,.16);background:#fff;}
+.barra>.lista-topline{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;min-width:0;width:100%;margin:0;padding-top:9px;border-top:1px solid var(--line);}
+.barra>.lista-topline .legenda{flex:1 1 220px;min-width:0;display:flex;flex-wrap:wrap;gap:5px 10px;padding:0;}
+.barra>.lista-topline .legenda-dica{font-size:10px;white-space:normal;line-height:1.4;}
+.barra>.lista-topline .evolucao-toolbar{flex:0 0 auto;display:flex;align-items:center;margin:0;gap:7px;}
+@media(max-width:760px){.barra{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px;padding:11px;}.barra>div:first-child{grid-column:1/-1;}}
+@media(max-width:480px){.barra{grid-template-columns:minmax(0,1fr);}.barra>div:first-child{grid-column:auto;}.barra>.lista-topline{align-items:flex-start;}.barra>.lista-topline .evolucao-toolbar{width:100%;justify-content:flex-start;}}
 
-
-/* Controles de status e evolução integrados à caixa de filtros do contrato */
-.barra>.lista-topline{flex:1 1 560px;min-width:0;margin:0 0 0 auto;gap:12px}
-.barra>.lista-topline .legenda{flex:1 1 auto;min-width:0;flex-wrap:nowrap;gap:5px 10px;padding:2px 0}
-.barra>.lista-topline .legenda-dica{font-size:10px;white-space:nowrap}
-.barra>.lista-topline .evolucao-toolbar{flex:0 0 auto;margin:0;gap:7px}
-@media(min-width:1100px){.barra{flex-wrap:nowrap;gap:14px}.barra>.lista-topline{flex:1 1 auto}}
-@media(max-width:1099px){.barra>.lista-topline{flex-basis:100%;padding-top:5px;border-top:1px solid var(--line)}}
-@media(max-width:760px){.barra>.lista-topline .legenda{flex-wrap:wrap}.barra>.lista-topline .legenda-dica{white-space:normal}}
 
 /* ===== INFO ===== */
 .info{padding:8px 4px 2px;font-size:11.5px;color:var(--tx2);display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;}
@@ -1888,10 +1886,27 @@ const CADASTRO_CONTRATO_POR_PREFIXO = new Map();
 function normalizarContratoCadastro(valor) {
   return String(valor||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/\s+/g,' ').trim();
 }
-function idContratoCadastro(valor) {
+function rotuloContratoCadastro(valor) {
   const chave=normalizarContratoCadastro(valor);
+  if(!chave)return '';
+  const aliases={
+    'ESCOLAR (BASE)':'ESCOLAR MACAÉ',
+    'ESCOLAR MACAE':'ESCOLAR MACAÉ',
+    'TECHNIP SPOOLBASE':'SPOOLBASE – PORTO DO AÇU',
+    'SPOOLBASE':'SPOOLBASE – PORTO DO AÇU',
+    'TECHNIP ACU':'TECHNIP – PORTO DO AÇU',
+    'TECHINIP ACU':'TECHNIP – PORTO DO AÇU',
+    'CONTRATO MID':'MID – PORTO DO AÇU',
+    'CRC':'CRC – PORTO DO AÇU',
+    'RIP':'RIP – PORTO DO AÇU'
+  };
+  return aliases[chave]||chave;
+}
+function idContratoCadastro(valor) {
+  const rotulo=rotuloContratoCadastro(valor);
+  const chave=normalizarContratoCadastro(rotulo);
   if(!chave)return null;
-  const aliases={'VIBRA':'rj','ESCOLAR (BASE)':'escm','TECHNIP SPOOLBASE':'spb','SPOOLBASE':'spb','TECHNIP ACU':'tec','TECHINIP ACU':'tec','CONTRATO MID':'mid','CRC':'crc','RIP':'rip'};
+  const aliases={'VIBRA':'rj','ESCOLAR MACAE':'escm','SPOOLBASE – PORTO DO AÇU':'spb','TECHNIP – PORTO DO AÇU':'tec','MID – PORTO DO AÇU':'mid','CRC – PORTO DO AÇU':'crc','RIP – PORTO DO AÇU':'rip'};
   if(aliases[chave])return aliases[chave];
   return 'cad_'+chave.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
 }
@@ -1900,10 +1915,11 @@ function aplicarCadastroPlanilhaFrota() {
   CADASTRO_FROTA_REGISTROS.forEach(reg=>{
     const id=reg.contrato?idContratoCadastro(reg.contrato):null;
     if(id&&!CADASTRO_CONTRATO_POR_PREFIXO.has(reg.p))CADASTRO_CONTRATO_POR_PREFIXO.set(reg.p,id);
-    if(id&&!CONTRATO_LABEL[id])CONTRATO_LABEL[id]=reg.contrato;
-    if(id&&!CONTRATO_COR[id])CONTRATO_COR[id]='#65758b';
+    if(id)CONTRATO_LABEL[id]=rotuloContratoCadastro(reg.contrato);
     if(id&&!CONTRATO_PILL[id])CONTRATO_PILL[id]='pill-man';
   });
+  const paleta=['#2457e6','#b45309','#0f766e','#7c3aed','#be185d','#15803d','#0369a1','#a16207','#6d28d9','#0e7490','#c2410c','#4d7c0f','#9333ea','#1d4ed8','#9f1239','#047857','#854d0e','#4338ca','#0f766e','#a21caf','#166534','#9a3412','#1e40af','#7e22ce','#0f766e','#be123c'];
+  Object.keys(CONTRATO_LABEL).sort().forEach((id,i)=>{CONTRATO_COR[id]=id==='Sem contrato'?'#64748b':paleta[i%paleta.length];});
   CADASTRO_FROTA_REGISTROS.forEach(reg=>{
     const existente=FROTA.find(v=>String(v.p)===reg.p&&!v.cadastroSomente&&(!v.placa||v.placa===reg.placa));
     if(existente){
