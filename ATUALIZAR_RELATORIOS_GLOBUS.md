@@ -1,32 +1,42 @@
-# Atualizar relatórios Globus sem usar créditos de IA
+# Atualizar os relatórios gerenciais Globus
 
-Use o importador do próprio dashboard para relatórios de prefixos já cadastrados. Ele lê o TXT no navegador, compara os lançamentos com a base e permite guardar somente os novos registros sem divergências. Não é necessário enviar o relatório ao ChatGPT nem pedir uma edição do HTML para cada arquivo.
+Os três relatórios oficiais usados pelo painel ficam na raiz do repositório:
 
-## Caminho
+- \`1000-2999.TXT\`
+- \`200-300.TXT\`
+- \`500-699.TXT\`
 
-1. Abra <https://abastecimento-code.github.io/abacode/> no mesmo navegador e perfil em que pretende consultar os dados.
-2. Abra **Auditoria** e, em **Pré-conferir relatório gerencial Globus (TXT)**, selecione o relatório.
-3. Confira o período, prefixos, linhas com divergências e os pares encontrados.
-4. Se a prévia estiver correta, clique em **Guardar arquivo e aplicar somente lançamentos novos não ambíguos**. Linhas ambíguas ou inválidas permanecem nas pendências para revisão.
-5. Em **Auditoria**, use **Baixar backup dos lotes** para salvar uma cópia. Para recuperar os dados em outro navegador, use **Restaurar backup**.
+Os três arquivos devem corresponder ao mesmo período. O importador lê o intervalo diretamente do cabeçalho de cada TXT e interrompe a geração se os períodos forem diferentes ou se houver linha fora do intervalo declarado.
 
-## Onde os dados ficam
+## Reconstrução dos pacotes publicados
 
-Os TXT e lançamentos aceitos ficam no IndexedDB do navegador atual. O arquivo original é guardado junto com o histórico de aplicação e as pendências. O conteúdo não é enviado ao servidor pelo importador; a prévia e os cálculos são feitos no navegador.
+O parser oficial está em \`scripts/build_globus_data.js\`. Ele lê os campos por posições fixas do relatório e trata o rodapé numérico separadamente, pois hodômetro final e KM podem aparecer concatenados sem espaços.
 
-Essa atualização vale para esse navegador e perfil. Ela não altera o `index.html` publicado e não sincroniza os dados com outros usuários ou dispositivos. Para compartilhar uma nova base com todos, é necessária uma atualização/publicação do HTML. Um prefixo que ainda não esteja cadastrado precisa ser incluído no cadastro do dashboard antes que seus lançamentos possam ser aplicados.
+Para reconstruir e auditar os pacotes manualmente:
 
-O dashboard é analisado até **29/10/2026, inclusive**. Isso vale para a tabela principal, indicadores, suspeitas, evolução e relatório gerencial. Linhas posteriores permanecem preservadas no TXT original e nos lotes/backups, mas ficam fora de todos os cálculos analíticos até que uma nova data de referência seja definida no HTML.
+1. Atualize os três TXT na raiz do repositório.
+2. Execute \`node scripts/build_globus_data.js\`.
+3. Confira os arquivos gerados:
+   - \`dados/globus-1000-2999.json\`
+   - \`dados/globus-200-300.json\`
+   - \`dados/globus-500-699.json\`
+   - \`dados/globus-importados.json\`
+4. Revise a proposta gerada antes de integrá-la à branch \`main\`.
 
-## Propor atualização pelo GitHub
+O GitHub Actions também executa essa rotina quando um dos três TXT da raiz é atualizado, ou quando o fluxo é iniciado manualmente. Se houver dados ambíguos, campos numéricos inválidos ou períodos divergentes, a execução falha sem publicar os pacotes e apresenta a linha de origem para revisão. Quando os pacotes mudam, o fluxo abre um pull request para revisão.
 
-1. Envie somente relatórios gerenciais `.TXT` para `relatorios/entrada/` no repositório. O repositório e os arquivos são públicos.
-2. O GitHub Actions valida o layout, o período, os campos numéricos e os prefixos. O processamento reaproveita o parser do dashboard, inclui somente datas até 29/10/2026 e mantém o TXT original na pasta de entrada.
-3. Se houver campo inválido ou prefixo não cadastrado, a execução falha sem propor atualização; confira **Actions** e corrija/revise o relatório antes de reenviar.
-4. Se houver lançamentos novos válidos, o fluxo abre um pull request alterando `dados/globus-importados.json`. Revise contagem, prefixos e linhas; só então integre o PR. O GitHub Pages publica os dados após a integração.
+## Regras de preservação dos dados
 
-O fluxo mantém no máximo uma proposta de importação aberta por vez. Se outro TXT for enviado enquanto houver uma proposta aberta, a execução avisa e não cria uma segunda proposta concorrente. Integre a proposta aberta e depois use **Actions → Preparar atualização de relatório Globus → Run workflow** para processar os relatórios que ficaram na pasta.
+- Cada lançamento mantém o número da linha original e o nome do TXT de origem.
+- KM, hodômetros e KM/L são extraídos do relatório sem completar dígitos por suposição.
+- Quando o relatório não informa hodômetros ou KM, os campos permanecem \`null\`.
+- Quando o relatório não informa KM/L, esse campo permanece \`null\`; o sistema não substitui o valor por um cálculo.
+- Linhas sem combustível não entram na contagem de abastecimentos nem na soma de litros.
+- Os três TXT originais são preservados no repositório.
+- O manifesto registra o período, os hashes dos TXT, a quantidade de lançamentos e os prefixos incluídos.
 
-Para permitir que o fluxo abra pull requests, em **Settings → Actions → General**, marque **Allow GitHub Actions to create and approve pull requests**. Mantenha o padrão de **Read repository contents and packages**; o workflow solicita apenas `contents: write` e `pull-requests: write` para esse trabalho. O workflow não usa ações externas de terceiros.
+## Importação local pelo painel
 
-O comparador evita reimportar linhas que já existem com mesmo prefixo, data, origem, litros e KM. Prefixos desconhecidos e campos inválidos interrompem a proposta para evitar distribuição automática incorreta. O TXT continua acessível publicamente junto com o histórico do repositório.
+O painel também oferece em **Auditoria** a opção **Pré-conferir relatório gerencial Globus (TXT)**. Essa função é independente da publicação dos pacotes do repositório: guarda os lotes no IndexedDB do navegador e mantém o TXT original junto com o histórico de aplicação e as pendências. Esses dados locais não são sincronizados automaticamente com outros navegadores ou dispositivos.
+
+Antes de aplicar um lote local, confira o período, os prefixos, as linhas com divergências e os pares encontrados. Linhas ambíguas ou inválidas permanecem nas pendências para revisão.
