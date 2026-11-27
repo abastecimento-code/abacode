@@ -1284,6 +1284,7 @@ const TANQUES = {
   'VW/MPolo Viaggio FR':        { diesel: 275, arla: 35 },
   'VW/MPolo Senior R':          { diesel: 275, arla: 35 },
   'M.Benz/Marcopolo Senior ON': { diesel: 200, arla: 30 },
+  'MERCEDES-BENZ/MARCOPOLO SENIOR ON': { diesel: 200, arla: 30 },
   'M.Benz/Marcopolo Senior R':  { diesel: 200, arla: 30 },
   'M.Benz/MPolo Viaggio FR':    { diesel: 275, arla: 35 },
   'M.Benz/Induscar Apache U':   { diesel: 300, arla: 50 },
@@ -1291,7 +1292,7 @@ const TANQUES = {
 };
 
 /* ═══════════════════════════════════════════════════════
-   FROTA — 56 veículos · totais extraídos fielmente dos TXTs
+   FROTA — 150 veículos iniciais · totais extraídos fielmente dos TXTs
    Período de análise: 01/07/2026 → 25/11/2026 (inclusive)
    ═══════════════════════════════════════════════════════ */
 const FROTA = [
@@ -1638,12 +1639,21 @@ async function carregarDadosGlobusPublicados(){
     const linhasSemCombustivel=pacotes.flatMap(p=>Array.isArray(p.linhasSemCombustivel)?p.linhasSemCombustivel:[]);
     if(eventos.length!==manifesto.resumo?.lancamentos)throw new Error('A quantidade de lançamentos não confere com o manifesto.');
     if(manifesto.resumo?.linhasSemCombustivel!=null&&linhasSemCombustivel.length!==manifesto.resumo.linhasSemCombustivel)throw new Error('A quantidade de linhas sem combustível não confere com o manifesto.');
+    const prefixosComAbastecimento=new Set(eventos.map(e=>String(e.prefixo??'').replace(/^0+/,'')||'0').filter(p=>p!=='0'));
+    if(manifesto.resumo?.prefixos!=null&&prefixosComAbastecimento.size!==manifesto.resumo.prefixos)throw new Error('A quantidade de prefixos com abastecimento não confere com o manifesto.');
     GLOBUS_LINHAS_SEM_COMBUSTIVEL=linhasSemCombustivel;
     const divergenciasOdo=eventos.filter(e=>e.hodometroInicial!=null&&e.hodometroFinal!=null&&e.km!=null&&Math.abs((Number(e.hodometroFinal)-Number(e.hodometroInicial))-Number(e.km))>0.01).map(e=>({...e,tipoDivergencia:'HODOMETRO'}));
     const divergenciasOdoSemComb=linhasSemCombustivel.filter(e=>e.divergenciaHodometro).map(e=>({...e,tipoDivergencia:'HODOMETRO_SEM_COMBUSTIVEL'}));
     const divergenciasKmL=eventos.filter(e=>e.kmPorLitro!=null&&e.km!=null&&Number(e.litros)>0&&Math.abs(Number(e.kmPorLitro)-Number(e.km)/Number(e.litros))>0.0051).map(e=>({...e,tipoDivergencia:'KM/L'}));
     GLOBUS_DIVERGENCIAS=[...divergenciasOdo,...divergenciasOdoSemComb,...divergenciasKmL];
     const totais={adicionados:0,corrigidos:0,iguais:0,ambiguos:0,veiculosIncluidos:0};
+    const prefixosSemCombustivel=new Set(linhasSemCombustivel.map(e=>String(e.prefixo??'').replace(/^0+/,'')||'0').filter(p=>p!=='0'));
+    prefixosSemCombustivel.forEach(p=>{
+      const antes=FROTA.length;
+      garantirVeiculoSemContratoAttAba(p);
+      if(FROTA.length>antes)totais.veiculosIncluidos++;
+      FROTA.filter(v=>(String(v.p).replace(/^0+/,'')||'0')===p).forEach(v=>{v.semCombustivelNoPeriodo=true;});
+    });
     eventos.forEach(e=>{
       const antes=FROTA.length,resultado=integrarEventoGlobusNaBase(e,'Globus · '+(e.arquivoFonte||'relatório publicado'));
       if(FROTA.length>antes)totais.veiculosIncluidos++;
@@ -1655,7 +1665,8 @@ async function carregarDadosGlobusPublicados(){
     atualizarStatusGlobus();
     atualizarInfoLinhasSemCombustivelGlobus();
     atualizarInfoDivergenciasGlobus();
-    console.info('[dbatt] Globus publicado integrado:',{...totais,total:eventos.length,linhasSemCombustivel:linhasSemCombustivel.length,prefixos:manifesto.resumo.prefixos,ambiguidade:GLOBUS_EVENTOS_AMBIGUOS});
+    const prefixosComQualquerLinha=new Set([...eventos,...linhasSemCombustivel].map(e=>String(e.prefixo??'').replace(/^0+/,'')||'0').filter(p=>p!=='0'));
+    console.info('[dbatt] Globus publicado integrado:',{...totais,total:eventos.length,linhasSemCombustivel:linhasSemCombustivel.length,prefixosComAbastecimento:prefixosComAbastecimento.size,prefixosComQualquerLinha:prefixosComQualquerLinha.size,ambiguidade:GLOBUS_EVENTOS_AMBIGUOS});
     return totais;
   }catch(e){
     if(location.protocol==='file:'){console.warn('[dbatt] Abra o painel publicado para carregar os relatórios Globus compartilhados.');return 0;}
@@ -1895,7 +1906,7 @@ function rotuloContratoCadastro(valor) {
     'TECHNIP - PORTO DO ACU':'TECHNIP - PORTO DO AÇU',
     'TECHNIP ACU':'TECHNIP - PORTO DO AÇU','TECHINIP ACU':'TECHNIP - PORTO DO AÇU',
     'TECHNIP MACAE':'TECHNIP - MACAÉ',
-    'PREFEITURA DE ANGRA DOS REIS':'PMMAR',
+    'PREFEITURA DE ANGRA DOS REIS':'PMMAR','PREFEITURA ANGRA DOS REIS':'PMMAR',
     'PREFEITURA DE MACAE - PMM - SAUDE':'PREFEITURA DE MACAÉ - PMM - SAÚDE',
     'TECHNIP SPOOLBASE':'SPOOLBASE – PORTO DO AÇU','SPOOLBASE':'SPOOLBASE – PORTO DO AÇU',
     'CONTRATO MID':'MID – PORTO DO AÇU','CRC':'CRC – PORTO DO AÇU','RIP':'RIP – PORTO DO AÇU'
@@ -1921,10 +1932,23 @@ function aplicarModeloAnoCadastroNoVeiculo(veiculo){
   if(!dados)return false;
   const generico=valor=>!String(valor??'').trim()||/^(?:—|-|ve[ií]culo sem cadastro|sem cadastro)$/i.test(String(valor).trim());
   let alterado=false;
-  const modeloFinal=generico(veiculo.modelo)&&dados[0]?dados[0]:veiculo.modelo;
-  if(generico(veiculo.modelo)&&dados[0]){veiculo.modelo=dados[0];alterado=true;}
-  if(Object.prototype.hasOwnProperty.call(veiculo,'modeloCadastro')&&generico(veiculo.modeloCadastro)&&modeloFinal){veiculo.modeloCadastro=modeloFinal;alterado=true;}
-  if(generico(veiculo.ano)&&dados[1]){veiculo.ano=dados[1];alterado=true;}
+  // A planilha técnica confirma que o prefixo 222 é Mercedes-Benz/Marcopolo Senior ON.
+  if(p==='222'&&dados[0]){
+    if(veiculo.modelo!==dados[0]){veiculo.modelo=dados[0];alterado=true;}
+    if(Object.prototype.hasOwnProperty.call(veiculo,'modeloCadastro')&&veiculo.modeloCadastro!==dados[0]){
+      veiculo.modeloCadastro=dados[0];alterado=true;
+    }
+  }else if(generico(veiculo.modelo)&&dados[0]){
+    veiculo.modelo=dados[0];alterado=true;
+  }
+  const modeloFinal=p==='222'&&dados[0]?dados[0]:(generico(veiculo.modelo)&&dados[0]?dados[0]:veiculo.modelo);
+  if(Object.prototype.hasOwnProperty.call(veiculo,'modeloCadastro')&&generico(veiculo.modeloCadastro)&&modeloFinal){
+    veiculo.modeloCadastro=modeloFinal;alterado=true;
+  }
+  // Quando a planilha técnica informa o ano, ela prevalece sobre o valor antigo.
+  if(dados[1]&&String(veiculo.ano??'').trim()!==String(dados[1]).trim()){
+    veiculo.ano=dados[1];alterado=true;
+  }
   return alterado;
 }
 
@@ -1932,43 +1956,81 @@ function aplicarCadastroPlanilhaFrota() {
   CONTRATO_LABEL.escm='ESCOLAR MACAÉ';
   CONTRATO_LABEL.esc='ESCOLAR - SILVA JARDIM';
   CONTRATO_LABEL.tec='TECHNIP - PORTO DO AÇU';
+  CADASTRO_CONTRATO_POR_PREFIXO.clear();
   const porPrefixo=new Map();
   CADASTRO_FROTA_REGISTROS.forEach(reg=>{
-    if(!reg.contrato)return;
-    const nomeNormalizado=normalizarContratoCadastro(reg.contrato);
+    const p=String(reg.p??'').replace(/^0+/,'')||'0';
+    if(!p||p==='0')return;
+    const contrato=String(reg.contrato??'').trim();
+    const nomeNormalizado=normalizarContratoCadastro(contrato);
     if(nomeNormalizado.includes('CONTRATO CONCEICAO DE MACABU')&&nomeNormalizado.includes('VENDA'))return;
-    const id=idContratoCadastro(reg.contrato);
+    if(!porPrefixo.has(p))porPrefixo.set(p,new Set());
+    if(!contrato)return;
+    const id=idContratoCadastro(contrato);
     if(!id)return;
-    if(!porPrefixo.has(reg.p))porPrefixo.set(reg.p,new Set());
-    porPrefixo.get(reg.p).add(id);
-    if(!CONTRATO_LABEL[id])CONTRATO_LABEL[id]=rotuloContratoCadastro(reg.contrato);
+    porPrefixo.get(p).add(id);
+    if(!CONTRATO_LABEL[id])CONTRATO_LABEL[id]=rotuloContratoCadastro(contrato);
   });
-  // A relação de contratos atribui somente contratos; os dados técnicos vêm da relação separada.
-  // Placas e dados de empresas nunca são importados ou exibidos.
+  const adicionarCadastroSomente=(p,id)=>{
+    const contrato=id||'Sem contrato';
+    const existente=FROTA.find(v=>String(v.p)===p&&v.contrato===contrato);
+    if(existente)return existente;
+    const veiculo={p,modelo:'Veículo sem cadastro',modeloCadastro:'Veículo sem cadastro',ano:'—',contrato,euro:'—',km:null,litros:null,custo:null,exp:null,abast:0,cadastroSomente:true};
+    if(p==='503'&&contrato==='cad_hudson')veiculo.observacaoCadastro='Prefixo 503 repetido na planilha: registro HUDSON mantido separado, sem duplicar os abastecimentos do registro operacional.';
+    aplicarModeloAnoCadastroNoVeiculo(veiculo);
+    FROTA.push(veiculo);
+    FROTA_ORIGINAL.push({...veiculo});
+    return veiculo;
+  };
   porPrefixo.forEach((ids,p)=>{
-    if(ids.size!==1)return;
-    const id=[...ids][0];
-    CADASTRO_CONTRATO_POR_PREFIXO.set(p,id);
-    FROTA.filter(v=>String(v.p)===p).forEach(v=>{v.contrato=id;});
-    CONTRATO_POR_PREFIXO[p]=id;
+    const lista=[...ids];
+    const existentes=FROTA.filter(v=>String(v.p)===p);
+    if(lista.length===1){
+      const id=lista[0];
+      CADASTRO_CONTRATO_POR_PREFIXO.set(p,id);
+      if(existentes.length){
+        const alvo=existentes.find(v=>!v.cadastroSomente)||existentes[0];
+        const indice=FROTA.indexOf(alvo);
+        alvo.contrato=id;
+        if(FROTA_ORIGINAL[indice])FROTA_ORIGINAL[indice].contrato=id;
+        CONTRATO_POR_PREFIXO[p]=id;
+      }else{
+        adicionarCadastroSomente(p,id);
+        CONTRATO_POR_PREFIXO[p]=id;
+      }
+      return;
+    }
+    if(lista.length>1){
+      // Prefixos com contratos diferentes permanecem como registros separados.
+      // Sem associação única, nenhum contrato é escolhido automaticamente para os abastecimentos.
+      lista.forEach(id=>adicionarCadastroSomente(p,id));
+      return;
+    }
+    // Registro da planilha sem contrato: preservar contratos já existentes;
+    // se ainda não houver veículo, exibir como SEM CONTRATO.
+    if(!existentes.length){
+      adicionarCadastroSomente(p,'Sem contrato');
+      if(!CONTRATO_POR_PREFIXO[p])CONTRATO_POR_PREFIXO[p]='Sem contrato';
+    }
   });
+  FROTA.forEach(v=>aplicarModeloAnoCadastroNoVeiculo(v));
+  FROTA_ORIGINAL.forEach(v=>aplicarModeloAnoCadastroNoVeiculo(v));
   Object.keys(CONTRATO_LABEL).forEach(id=>{
     const nome=String(CONTRATO_LABEL[id]||id).replace(/\\s+/g,' ').trim();
     CONTRATO_LABEL[id]=id==='Sem contrato'?'SEM CONTRATO':nome.toLocaleUpperCase('pt-BR');
   });
-  // Distribui os contratos por famílias cromáticas diferentes e fixa cores bem distintas
-  // para os contratos mais usados, evitando vários verdes visualmente parecidos.
+  // Cores de famílias diferentes, com tons fixos para os contratos mais usados.
   const ids=Object.keys(CONTRATO_LABEL).filter(id=>id!=='Sem contrato').sort();
   ids.forEach((id,i)=>{
     const matiz=(i*137.508)%360;
     CONTRATO_COR[id]='hsl('+matiz.toFixed(2)+' 82% 38%)';
   });
   const coresContratos={
-    rj:'#D62828',                         // VIBRA — vermelho
-    mid:'#F57C00',                        // MID — laranja
-    crc:'#6A1B9A',                        // CRC — roxo
-    cad_base_wings:'#1565C0',             // BASE WINGS — azul
-    cad_contrato_wings:'#283593',         // CONTRATO WINGS — azul profundo
+    rj:'#D62828',
+    mid:'#F57C00',
+    crc:'#6A1B9A',
+    cad_base_wings:'#1565C0',
+    cad_contrato_wings:'#283593',
     cad_prefeitura_municipal_de_quissama:'#00838F',cad_garagem_de_macae_alexandre:'#455A64',
     cad_pmcm:'#5D4037',cad_araruama:'#00796B',cad_pm_quissama:'#F9A825',cad_pmm:'#C2185B',
     cad_pmca:'#4527A0',cad_pmmar:'#00897B',cad_technip_macae:'#3949AB',cad_pmm_saude:'#EF6C00'
@@ -2184,6 +2246,7 @@ function detectarSuspeitos() {
   const anomalias = [];
 
   FROTA.forEach(v => {
+    if(v.cadastroSomente)return;
     const fills = fillsAteReferencia(v.p);
     if (fills.length === 0) return;
 
@@ -2403,7 +2466,8 @@ function render() {
       const kmAusentes = fillsPeriodo.length-kmLinhasValidas.length;
       const litrosPeriodo = fillsPeriodo.length ? +fillsPeriodo.reduce((s,f)=>s+(Number(f.litros)||0),0).toFixed(2) : null;
       const kmLPeriodo = kmCompleto && litrosPeriodo>0 ? kmPeriodo/litrosPeriodo : null;
-      return {...v,_km:kmPeriodo,_kmParcial:kmAusentes>0,_kmAusentes:kmAusentes,_litros:litrosPeriodo,_real:kmLPeriodo,_ultimaSemana:null,_abast:fillsPeriodo.length,_st:v.cadastroSomente?{cls:'',label:'Cadastro',row:'',prio:9}:statusDe(v,kmLPeriodo),_periodo:rotuloPeriodo};
+      const statusLista=v.cadastroSomente?{cls:'',label:'Cadastro',row:'',prio:9}:(!fillsPeriodo.length&&v.semCombustivelNoPeriodo?{cls:'',label:'Sem combustível',row:'',prio:8}:statusDe(v,kmLPeriodo));
+      return {...v,_km:kmPeriodo,_kmParcial:kmAusentes>0,_kmAusentes:kmAusentes,_litros:litrosPeriodo,_real:kmLPeriodo,_ultimaSemana:null,_abast:fillsPeriodo.length,_st:statusLista,_periodo:rotuloPeriodo};
     } catch (erro) {
       console.warn('[dbatt] Falha ao calcular indicadores do prefixo '+v.p+'; mantendo veículo na listagem.',erro);
       return {...v,_km:null,_kmParcial:false,_kmAusentes:0,_litros:null,_real:null,_ultimaSemana:null,_abast:0,_st:statusDe(v,null),_erroCalculo:true,_periodo:rotuloPeriodo};
@@ -2459,7 +2523,8 @@ function render() {
     const tr = document.createElement('tr');
     if (v._st.row) tr.classList.add(v._st.row);
     if(!v.cadastroSomente){tr.classList.add('clicavel-linha');if(!v.cadastroSomente)tr.addEventListener('click', () => abrirDrilldown(v.p));}
-    else tr.title='Cadastro da frota sem abastecimentos Globus vinculados a este registro.';
+    else tr.title=v.observacaoCadastro||'Cadastro da frota sem abastecimentos de combustível vinculados a este registro.';
+    if(!v.cadastroSomente&&v.semCombustivelNoPeriodo&&!v._abast)tr.title='O relatório Globus contém linhas para este prefixo, mas sem abastecimento de combustível no período.';
     const modeloExibido=v.modeloCadastro||v.modelo;
     tr.innerHTML = `<td><strong>${escapeHtml(v.p)}</strong></td>
       <td class="modelo"><span class="modelo-linha"><b class="modelo-nome">${escapeHtml(modeloExibido)}</b><span class="ano">${escapeHtml(v.ano||'—')}</span><span class="euro-tag">${(EURO_LABEL[v.euro] || (v.euro === 'ND' ? 'Não informado' : '—'))}</span></span></td>
@@ -2869,7 +2934,7 @@ function abrirModalGeral() {
   const periodosConsiderados = {};
 
   lista.forEach(v => {
-    const u = calcularUltimaSemana(v.p);
+    const u = v.cadastroSomente ? null : calcularUltimaSemana(v.p);
     const km     = u ? u.km     : 0;
     const litros = u ? u.litros : 0;
     const valor  = u ? u.valor  : 0;
@@ -3187,12 +3252,15 @@ function renderNivel1(){
   const select=opcoes.map(([id,nome])=>'<option value="'+id+'"'+(state.drillContrato===id?' selected':'')+'>'+nome+'</option>').join('');
   let html='<div class="barra" style="margin:0 0 14px;"><div><span class="lbl">Contrato</span><select id="selContratoDrill" aria-label="Filtrar cartões de evolução por contrato">'+select+'</select></div></div><div class="drill-grid">';
   getListaEvolucaoFiltrada().slice().sort((a,b)=>Number(a.p)-Number(b.p)).forEach(v=>{
-    const fills=fillsAteReferencia(v.p), cor=CONTRATO_COR[v.contrato]||'#65758b';
+    const fills=v.cadastroSomente?[]:fillsAteReferencia(v.p), cor=CONTRATO_COR[v.contrato]||'#65758b';
     if(!fills.length){
-      html+=`<button type="button" class="drill-veic drill-vazio" style="--contrato-cor:${cor}" onclick="drillAbrirVeiculo('${v.p}')">
-        <span class="drill-veic-head"><span class="drill-veic-prefixo">${v.p}</span><span class="drill-badge-soon">dados em breve</span></span>
+      const badge=v.cadastroSomente?'cadastro':v.semCombustivelNoPeriodo?'sem combustível':'dados em breve';
+      const detalhe=v.observacaoCadastro?'Prefixo compartilhado; dados não duplicados':v.cadastroSomente?'Cadastro sem abastecimentos vinculados':v.semCombustivelNoPeriodo?'Linhas Globus sem combustível':'Aguardando registros';
+      const acao=v.cadastroSomente?'disabled aria-disabled="true"':`onclick="drillAbrirVeiculo('${v.p}')"`;
+      html+=`<button type="button" class="drill-veic drill-vazio" style="--contrato-cor:${cor}" ${acao}>
+        <span class="drill-veic-head"><span class="drill-veic-prefixo">${v.p}</span><span class="drill-badge-soon">${badge}</span></span>
         <span class="drill-veic-modelo">${v.modelo}</span><span class="drill-veic-sub">${v.ano}</span>
-        <span class="drill-veic-meta"><span class="contrato-card-nome">${CONTRATO_LABEL[v.contrato]}</span><span>Aguardando registros</span></span>
+        <span class="drill-veic-meta"><span class="contrato-card-nome">${CONTRATO_LABEL[v.contrato]}</span><span>${detalhe}</span></span>
       </button>`;
       return;
     }
@@ -3592,25 +3660,45 @@ for(const v of [...FROTA,...FROTA_ORIGINAL]){
 }
 function garantirVeiculoSemContratoAttAba(prefixo){
   const p=String(prefixo).replace(/^0+/,'')||'0';
-  const normalizar=x=>String(x??'').replace(/^0+/,'')||'0',existente=FROTA.find(v=>normalizar(v.p)===p&&!v.cadastroSomente)||FROTA.find(v=>normalizar(v.p)===p);
+  const normalizar=x=>String(x??'').replace(/^0+/,'')||'0';
+  const correspondentes=FROTA.filter(v=>normalizar(v.p)===p);
+  const existente=correspondentes.find(v=>!v.cadastroSomente);
+  const atualizarExistente=v=>{
+    const indice=FROTA.indexOf(v);
+    aplicarModeloAnoCadastroNoVeiculo(v);
+    if(v.exp==null)v.exp=referenciaKmLModeloAttAba(v.modeloCadastro||v.modelo);
+    const original=FROTA_ORIGINAL[indice];
+    if(original){
+      aplicarModeloAnoCadastroNoVeiculo(original);
+      if(original.exp==null)original.exp=referenciaKmLModeloAttAba(original.modeloCadastro||original.modelo);
+      original.contrato=v.contrato;
+      original.cadastroSomente=!!v.cadastroSomente;
+    }
+    if(!CONTRATO_POR_PREFIXO[p])CONTRATO_POR_PREFIXO[p]=v.contrato;
+  };
   if(existente){
-    FROTA.filter(v=>normalizar(v.p)===p).forEach(v=>{
-      if(v.cadastroSomente)v.cadastroSomente=false;
-      aplicarModeloAnoCadastroNoVeiculo(v);
-      if(v.exp==null)v.exp=referenciaKmLModeloAttAba(v.modeloCadastro||v.modelo);
-    });
-    FROTA_ORIGINAL.filter(v=>normalizar(v.p)===p).forEach(v=>{
-      aplicarModeloAnoCadastroNoVeiculo(v);
-      if(v.exp==null)v.exp=referenciaKmLModeloAttAba(v.modeloCadastro||v.modelo);
-    });
-    if(!CONTRATO_POR_PREFIXO[p])CONTRATO_POR_PREFIXO[p]=existente.contrato;
+    // Atualiza somente o registro operacional; não transforma uma segunda associação
+    // do mesmo prefixo em veículo com os mesmos abastecimentos.
+    atualizarExistente(existente);
     return false;
   }
-  const veiculo={p,modelo:'Veículo sem cadastro',modeloCadastro:'Veículo sem cadastro',ano:'—',contrato:CADASTRO_CONTRATO_POR_PREFIXO.get(p)||'Sem contrato',euro:'—',km:null,litros:null,custo:null,exp:null,abast:0,cadastroSomente:false};
+  if(correspondentes.length===1){
+    const unico=correspondentes[0];
+    unico.cadastroSomente=false;
+    atualizarExistente(unico);
+    return false;
+  }
+  // Se houver mais de um contrato para o mesmo prefixo e nenhum registro operacional,
+  // os abastecimentos ficam em SEM CONTRATO até existir identificação inequívoca.
+  const contrato=correspondentes.length>1?'Sem contrato':(CADASTRO_CONTRATO_POR_PREFIXO.get(p)||'Sem contrato');
+  const veiculo={p,modelo:'Veículo sem cadastro',modeloCadastro:'Veículo sem cadastro',ano:'—',contrato,euro:'—',km:null,litros:null,custo:null,exp:null,abast:0,cadastroSomente:false};
   aplicarModeloAnoCadastroNoVeiculo(veiculo);
   if(veiculo.exp==null)veiculo.exp=referenciaKmLModeloAttAba(veiculo.modeloCadastro||veiculo.modelo);
-  FROTA.push(veiculo);FROTA_ORIGINAL.push({...veiculo});CONTRATO_POR_PREFIXO[p]=veiculo.contrato;
-  const sel=document.getElementById('selContrato');if(sel&&!Array.from(sel.options).some(o=>o.value==='Sem contrato'))sel.add(new Option('Sem contrato','Sem contrato'));
+  FROTA.push(veiculo);
+  FROTA_ORIGINAL.push({...veiculo});
+  CONTRATO_POR_PREFIXO[p]=veiculo.contrato;
+  const sel=document.getElementById('selContrato');
+  if(sel&&!Array.from(sel.options).some(o=>o.value==='Sem contrato'))sel.add(new Option('Sem contrato','Sem contrato'));
   return true;
 }
 function aplicarCorrecoesAttAba(correcoes){
@@ -4268,7 +4356,7 @@ function recalcularFrota() {
   VEICULOS_SEM_FILLS = [];
   FROTA.forEach(v => {
     if(v.cadastroSomente)return;
-    const fills=fillsAteReferencia(v.p),original=FROTA_ORIGINAL.find(o=>o.p===v.p)||v;
+    const fills=fillsAteReferencia(v.p),original=FROTA_ORIGINAL.find(o=>o.p===v.p)||null;
     if(!fills.length){VEICULOS_SEM_FILLS.push({p:v.p,modelo:v.modelo,original});v.km=null;v.litros=null;v.custo=null;v.abast=0;v.kmIncompleto=false;v.custoIncompleto=false;return;}
     const kmCompleto=fills.every(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
     const custoCompleto=fills.every(f=>f.valor!==null&&f.valor!==undefined&&f.valor!==''&&Number.isFinite(Number(f.valor))&&Number(f.valor)>=0);
@@ -4276,7 +4364,8 @@ function recalcularFrota() {
     const custoParcial=fills.reduce((s,f)=>s+(Number.isFinite(Number(f.valor))?Number(f.valor):0),0);
     const derivado={km:kmCompleto?kmParcial:null,litros:+fills.reduce((s,f)=>s+(Number(f.litros)||0),0).toFixed(2),custo:custoCompleto?+custoParcial.toFixed(2):null,abast:fills.length};
     const diferencas=[];
-    ['km','litros','custo','abast'].forEach(campo=>{
+    const possuiTotaisOriginais=!!original&&(original.km!=null||original.litros!=null||original.custo!=null||Number(original.abast)>0);
+    if(possuiTotaisOriginais)['km','litros','custo','abast'].forEach(campo=>{
       if(derivado[campo]===null)return;
       const base=Number(original[campo])||0,calculado=Number(derivado[campo])||0,tolerancia=campo==='km'||campo==='abast'?0:0.01;
       if(Math.abs(base-calculado)>tolerancia)diferencas.push({campo,original:base,derivado:calculado,delta:+(calculado-base).toFixed(2)});
@@ -4297,9 +4386,10 @@ function renderListaEmergencia() {
   } else {
     lista.slice().sort((a,b)=>Number(a.p)-Number(b.p)).forEach(v => {
       const tr = document.createElement('tr');
-      tr.classList.add('clicavel-linha');
-      tr.addEventListener('click', () => abrirDrilldown(v.p));
-      tr.innerHTML = '<td><strong>'+escapeHtml(v.p)+'</strong></td><td class="modelo"><b>'+escapeHtml(v.modelo||'—')+'</b> <span class="ano">'+escapeHtml(v.ano||'—')+'</span></td><td>'+escapeHtml(CONTRATO_LABEL[v.contrato]||v.contrato||'—')+'</td><td class="num">—</td><td class="litros">—</td><td class="num">—</td><td class="faixa">'+(Number.isFinite(Number(v.exp))?fmt2(Number(v.exp)):'—')+'</td><td class="num">—</td><td><span class="pill-status">Análise indisponível</span></td>';
+      if(!v.cadastroSomente){tr.classList.add('clicavel-linha');tr.addEventListener('click', () => abrirDrilldown(v.p));}
+      else tr.title=v.observacaoCadastro||'Cadastro da frota sem abastecimentos de combustível vinculados a este registro.';
+      const statusFallback=v.cadastroSomente?'Cadastro':v.semCombustivelNoPeriodo?'Sem combustível':'Análise indisponível';
+      tr.innerHTML = '<td><strong>'+escapeHtml(v.p)+'</strong></td><td class="modelo"><b>'+escapeHtml(v.modelo||'—')+'</b> <span class="ano">'+escapeHtml(v.ano||'—')+'</span></td><td>'+escapeHtml(CONTRATO_LABEL[v.contrato]||v.contrato||'—')+'</td><td class="num">—</td><td class="litros">—</td><td class="num">—</td><td class="faixa">'+(Number.isFinite(Number(v.exp))?fmt2(Number(v.exp)):'—')+'</td><td class="num">—</td><td><span class="pill-status">'+statusFallback+'</span></td>';
       tbody.appendChild(tr);
     });
   }
