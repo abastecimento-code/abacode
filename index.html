@@ -1069,6 +1069,7 @@ body{position:relative;isolation:isolate}
     </div>
     <div class="info-nota" id="totalAbastecimentosGlobus">2.841 abastecimentos ativos · período efetivo varia por veículo; uma semana sem lançamento, por si só, não indica falha.</div>
     <div class="info-nota" id="globusPendenciasBanner" hidden></div>
+    <div class="info-nota" id="globusLinhasSemCombustivelInfo" hidden><span id="globusLinhasSemCombustivelTexto"></span> <button type="button" class="evolucao-toggle" onclick="exportarLinhasSemCombustivelGlobus()">Exportar linhas</button></div>
     <div class="veiculos-stage" id="veiculosStage">
       <section class="veiculos-face lista-face" id="listaVeiculosFace" aria-hidden="false">
        <div class="tabela-wrap">
@@ -1576,6 +1577,7 @@ let GLOBUS_LOTES = [];
 let GLOBUS_REVISOES = [];
 // Eventos com mais de um candidato ficam isolados e não entram nos cálculos.
 let GLOBUS_EVENTOS_AMBIGUOS = [];
+let GLOBUS_LINHAS_SEM_COMBUSTIVEL = [];
 let GLOBUS_STORAGE_STATUS = 'Importação local ainda não verificada.';
 let GLOBUS_LAST_MESSAGE = '';
 function abrirBancoGlobus() {
@@ -1595,6 +1597,8 @@ function gravarLoteGlobus(db,lote){return new Promise((resolve,reject)=>{const t
 function gravarRevisaoGlobus(db,r){return new Promise((resolve,reject)=>{const tx=db.transaction('revisoes','readwrite'),req=tx.objectStore('revisoes').add(r);req.onsuccess=()=>r.id=req.result;tx.oncomplete=()=>resolve(r);tx.onerror=()=>reject(tx.error||new Error('Falha ao gravar revisão.'));tx.onabort=()=>reject(tx.error||new Error('Registro cancelado.'));});}
 function ultimaRevisaoGlobus(sha,linha){return GLOBUS_REVISOES.filter(r=>r.loteSha256===sha&&r.linha===linha).sort((a,b)=>a.criadoEm.localeCompare(b.criadoEm)||(a.id||0)-(b.id||0)).at(-1)||null;}
 function pendenciasAtivasGlobus(){return GLOBUS_LOTES.flatMap(l=>(l.pendencias||[]).filter(p=>{const r=ultimaRevisaoGlobus(l.sha256,p.linha);return !r||!['ANALISADO_SEM_ALTERACAO','DIVERGENCIA_EM_ACOMPANHAMENTO'].includes(r.decisao)}));}
+function atualizarInfoLinhasSemCombustivelGlobus(){const el=document.getElementById('globusLinhasSemCombustivelInfo'),txt=document.getElementById('globusLinhasSemCombustivelTexto'),linhas=GLOBUS_LINHAS_SEM_COMBUSTIVEL,total=linhas.length,comKm=linhas.filter(e=>[e.hodometroInicial,e.hodometroFinal,e.km,e.kmAcumulado].some(v=>v!==null&&v!==undefined)).length,comOutros=linhas.filter(e=>Object.entries(e.produtos||{}).some(([k,v])=>k!=='combustivel'&&v!=null&&Number(v)>0)).length;if(el)el.hidden=!total;if(txt)txt.textContent=total+' linha(s) Globus sem combustível preservadas para auditoria · '+comKm+' com hodômetro/KM · '+comOutros+' com outros produtos. Não são contadas como abastecimentos.';}
+function exportarLinhasSemCombustivelGlobus(){const linhas=GLOBUS_LINHAS_SEM_COMBUSTIVEL;if(!linhas.length)return;const colunas=['Arquivo fonte','Linha TXT','Prefixo','Data','Hora','Origem','Tipo de linha','Combustível L','Motor L','Graxa L','Hidráulico L','Diferencial L','Câmbio L','Freio L','Outros L','Hodômetro inicial','Hodômetro final','KM','KM acumulado','KM/L','Linha original'];const celula=v=>{const t=v==null?'':String(v);return '"'+t.replace(/"/g,'""')+'"';};const csv='\uFEFF'+[colunas,...linhas.map(e=>[e.arquivoFonte,e.linha,e.prefixo,e.dataCompleta,e.hora,e.origem,e.tipoLinha,e.produtos?.combustivel,e.produtos?.motor,e.produtos?.graxa,e.produtos?.hidraulico,e.produtos?.diferencial,e.produtos?.cambio,e.produtos?.freio,e.produtos?.outros,e.hodometroInicial,e.hodometroFinal,e.km,e.kmAcumulado,e.kmPorLitro,e.bruto])].map(l=>l.map(celula).join(';')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));const a=document.createElement('a');a.href=url;a.download='globus-linhas-sem-combustivel.csv';a.click();URL.revokeObjectURL(url);}
 function atualizarStatusGlobus(){const n=GLOBUS_LOTES.reduce((s,l)=>s+(l.eventosAceitos||[]).length,0),p=pendenciasAtivasGlobus().length,a=GLOBUS_EVENTOS_AMBIGUOS.length;GLOBUS_STORAGE_STATUS=GLOBUS_LOTES.length+' arquivo(s) guardado(s) neste navegador · '+n+' lançamento(s) novo(s) ativo(s)'+(p?' · '+p+' aguardam análise':'')+(a?' · '+a+' abastecimento(s) com pareamento ambíguo':'')+'.';const b=document.getElementById('globusPendenciasBanner');if(b){const avisos=[];if(p)avisos.push('⚠ '+p+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');if(a)avisos.push('⚠ '+a+' abastecimento(s) publicados têm pareamento ambíguo e foram mantidos fora dos cálculos até reconciliação.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}}
 function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);const resumo=document.getElementById('dataRefResumo');if(resumo)resumo.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até '+fmt(DATA_REF);const abertas=pendenciasAtivasGlobus().length,ambiguos=GLOBUS_EVENTOS_AMBIGUOS.length;if(b){const avisos=[];if(abertas)avisos.push('⚠ '+abertas+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');if(ambiguos)avisos.push('⚠ '+ambiguos+' abastecimento(s) publicados têm pareamento ambíguo e foram mantidos fora dos cálculos até reconciliação.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}}
 async function carregarDadosGlobusPublicados(){
@@ -1607,11 +1611,14 @@ async function carregarDadosGlobusPublicados(){
       const r=await fetch(item.arquivo,{cache:'no-store'});
       if(!r.ok)throw new Error(item.origem+': HTTP '+r.status);
       const p=await r.json();
-      if(p.versao!==1||p.corte!==manifesto.corte||!Array.isArray(p.lancamentos)||p.lancamentos.length!==item.lancamentos)throw new Error('Pacote inválido: '+item.origem);
+      if(p.versao!==1||p.corte!==manifesto.corte||!Array.isArray(p.lancamentos)||p.lancamentos.length!==item.lancamentos||(p.linhasSemCombustivel!==undefined&&!Array.isArray(p.linhasSemCombustivel))||(item.linhasSemCombustivel!=null&&(!Array.isArray(p.linhasSemCombustivel)||p.linhasSemCombustivel.length!==item.linhasSemCombustivel)))throw new Error('Pacote inválido: '+item.origem);
       return p;
     }));
     const eventos=pacotes.flatMap(p=>p.lancamentos);
+    const linhasSemCombustivel=pacotes.flatMap(p=>Array.isArray(p.linhasSemCombustivel)?p.linhasSemCombustivel:[]);
     if(eventos.length!==manifesto.resumo?.lancamentos)throw new Error('A quantidade de lançamentos não confere com o manifesto.');
+    if(manifesto.resumo?.linhasSemCombustivel!=null&&linhasSemCombustivel.length!==manifesto.resumo.linhasSemCombustivel)throw new Error('A quantidade de linhas sem combustível não confere com o manifesto.');
+    GLOBUS_LINHAS_SEM_COMBUSTIVEL=linhasSemCombustivel;
     const totais={adicionados:0,corrigidos:0,iguais:0,ambiguos:0,veiculosIncluidos:0};
     eventos.forEach(e=>{
       const antes=FROTA.length,resultado=integrarEventoGlobusNaBase(e,'Globus · '+(e.arquivoFonte||'relatório publicado'));
@@ -1622,7 +1629,8 @@ async function carregarDadosGlobusPublicados(){
       else totais.iguais++;
     });
     atualizarStatusGlobus();
-    console.info('[dbatt] Globus publicado integrado:',{...totais,total:eventos.length,prefixos:manifesto.resumo.prefixos,ambiguidade:GLOBUS_EVENTOS_AMBIGUOS});
+    atualizarInfoLinhasSemCombustivelGlobus();
+    console.info('[dbatt] Globus publicado integrado:',{...totais,total:eventos.length,linhasSemCombustivel:linhasSemCombustivel.length,prefixos:manifesto.resumo.prefixos,ambiguidade:GLOBUS_EVENTOS_AMBIGUOS});
     return totais;
   }catch(e){
     if(location.protocol==='file:'){console.warn('[dbatt] Abra o painel publicado para carregar os relatórios Globus compartilhados.');return 0;}
