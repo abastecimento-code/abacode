@@ -3674,7 +3674,6 @@ function parsearRelatorioGlobus(texto) {
     });
     const temCombustivel = produtos.combustivel != null && produtos.combustivel > 0;
     if (temCombustivel && origem !== 'I' && origem !== 'E') camposInvalidos.push('origem I/E do abastecimento');
-    if (temCombustivel && kmPorLitro === null) camposInvalidos.push('km/L do abastecimento');
     if (camposInvalidos.length) {
       erros.push({ linha: i + 1, prefixo, data: dataCompleta, campos: camposInvalidos, bruto: linha });
     }
