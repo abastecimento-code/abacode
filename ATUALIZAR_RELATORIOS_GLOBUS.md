@@ -30,8 +30,10 @@ O GitHub Actions também executa essa rotina quando um dos três TXT da raiz é 
 - Cada lançamento mantém o número da linha original e o nome do TXT de origem.
 - KM, hodômetros e KM/L são extraídos do relatório sem completar dígitos por suposição.
 - Quando o relatório não informa hodômetros ou KM, os campos permanecem `null`.
-- Quando o relatório não informa KM/L, esse campo permanece `null`; o sistema não substitui o valor por um cálculo.
-- Linhas sem combustível não entram na contagem de abastecimentos nem na soma de litros.
+- Quando o relatório não informa KM/L, esse campo permanece `null`; o sistema não substitui o valor por um cálculo. O KM/L calculado pelo ATT ABA permanece em campo separado.
+- A conferência de KM/L considera a precisão de duas casas decimais do TXT (tolerância de 0,0051), evitando classificar simples arredondamentos como divergência.
+- Linhas sem combustível são preservadas separadamente em `linhasSemCombustivel`; não entram na contagem de abastecimentos nem na soma de litros. Isso mantém disponíveis registros de hodômetro/KM e outros produtos sem tratá-los como abastecimentos.
+- O manifesto também registra linhas sem combustível com hodômetro, linhas com outros produtos, divergências entre hodômetro inicial/final e KM percorrido, divergências de KM/L acima da tolerância de arredondamento e campos KM/L ausentes.
 - Os três TXT originais são preservados no repositório.
 - O manifesto registra o período, os hashes dos TXT, a quantidade de lançamentos, as linhas candidatas sem combustível e os prefixos incluídos.
 - Alterações no próprio importador também acionam a auditoria automática do GitHub Actions.
