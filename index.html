@@ -1064,13 +1064,6 @@ body{position:relative;isolation:isolate}
     </div>
     <div class="info-nota" id="totalAbastecimentosGlobus">2.841 abastecimentos ativos · período efetivo varia por veículo; uma semana sem lançamento, por si só, não indica falha.</div>
     <div id="globusPendenciasBanner" hidden role="status" aria-live="polite" style="margin:8px 16px;padding:8px 12px;border-left:3px solid var(--amber);border-radius:6px;background:rgba(245,158,11,.07);font-size:12px;line-height:1.45;"></div>
-    <div id="globusPareamentoAviso" hidden role="status" aria-live="polite" style="margin:8px 16px;padding:8px 12px;border-left:3px solid var(--amber);border-radius:6px;background:rgba(245,158,11,.07);font-size:12px;line-height:1.45;">
-      <strong id="globusPareamentoResumo"></strong>
-      <details style="margin-top:5px;">
-        <summary style="cursor:pointer;">Ver registros e candidatos</summary>
-        <div id="globusPareamentoLista"></div>
-      </details>
-    </div>
     <div class="veiculos-stage" id="veiculosStage">
       <section class="veiculos-face lista-face" id="listaVeiculosFace" aria-hidden="false">
        <div class="tabela-wrap">
@@ -1627,24 +1620,8 @@ function exportarDivergenciasGlobus(){
   const csv='\uFEFF'+[colunas,...GLOBUS_DIVERGENCIAS.map(e=>[e.tipoDivergencia,e.arquivoFonte,e.linha,e.prefixo,e.dataCompleta||((e.data||'')+'/'+(e.ano||'')),e.hora,e.origem??e.tipo,e.litros,e.hodometroInicial,e.hodometroFinal,e.km,e.hodometroInicial!=null&&e.hodometroFinal!=null&&e.km!=null?Number((Number(e.hodometroFinal)-Number(e.hodometroInicial)-Number(e.km)).toFixed(3)):null,e.kmAcumulado,e.kmPorLitro,e.km!=null&&Number(e.litros)>0?Number((Number(e.km)/Number(e.litros)).toFixed(4)):null,e.kmPorLitro!=null&&e.km!=null&&Number(e.litros)>0?Number((Number(e.kmPorLitro)-Number(e.km)/Number(e.litros)).toFixed(4)):null,e.bruto])].map(l=>l.map(celula).join(';')).join('\r\n');
   const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));const a=document.createElement('a');a.href=url;a.download='globus-divergencias-hodometro-kml.csv';a.click();URL.revokeObjectURL(url);
 }
-function atualizarStatusGlobus(){const n=GLOBUS_LOTES.reduce((s,l)=>s+(l.eventosAceitos||[]).length,0),p=pendenciasAtivasGlobus().length,a=GLOBUS_EVENTOS_AMBIGUOS.length;GLOBUS_STORAGE_STATUS=GLOBUS_LOTES.length+' arquivo(s) guardado(s) neste navegador · '+n+' lançamento(s) novo(s) ativo(s)'+(p?' · '+p+' aguardam análise':'')+(a?' · '+a+' abastecimento(s) com pareamento ambíguo':'')+'.';const b=document.getElementById('globusPendenciasBanner');if(b){const avisos=[];if(p)avisos.push('⚠ '+p+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}atualizarAvisoPareamentoGlobus();}
-function atualizarAvisoPareamentoGlobus(){
-  const box=document.getElementById('globusPareamentoAviso');
-  const resumo=document.getElementById('globusPareamentoResumo');
-  const lista=document.getElementById('globusPareamentoLista');
-  if(!box||!resumo||!lista)return;
-  const itens=GLOBUS_EVENTOS_AMBIGUOS;
-  box.hidden=!itens.length;
-  if(!itens.length){resumo.textContent='';lista.innerHTML='';return;}
-  resumo.textContent=itens.length+' abastecimento(s) com pareamento ambíguo. Não foram integrados aos cálculos para evitar associação incorreta.';
-  const numero=v=>v===null||v===undefined||v===''?'—':Number(v).toLocaleString('pt-BR',{maximumFractionDigits:2});
-  lista.innerHTML='<ol style="margin:6px 0 0;padding-left:20px;">'+itens.map(item=>{
-    const e=item.evento||{};
-    const candidatos=(item.candidatos||[]).map((c,i)=>'<li>Opção '+(i+1)+': '+escapeHtml(c.data||'data não informada')+' · '+escapeHtml(c.hora||'hora não informada')+' · '+numero(c.litros)+' L · KM '+numero(c.km)+' · hodômetro '+numero(c.hodometroInicial)+' → '+numero(c.hodometroFinal)+'</li>').join('');
-    return '<li style="margin:6px 0;"><b>Prefixo '+escapeHtml(e.prefixo)+' · '+escapeHtml(dataCompletaAttAba(e))+' '+escapeHtml(e.hora||'')+'</b> · '+numero(e.litros)+' L · KM '+numero(e.km)+' · '+escapeHtml(e.arquivoFonte||'TXT')+' linha '+escapeHtml(e.linha||'—')+'<ul>'+candidatos+'</ul></li>';
-  }).join('')+'</ol>';
-}
-function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);const resumo=document.getElementById('dataRefResumo');if(resumo)resumo.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até '+fmt(DATA_REF);const abertas=pendenciasAtivasGlobus().length,ambiguos=GLOBUS_EVENTOS_AMBIGUOS.length;if(b){const avisos=[];if(abertas)avisos.push('⚠ '+abertas+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}}
+function atualizarStatusGlobus(){const n=GLOBUS_LOTES.reduce((s,l)=>s+(l.eventosAceitos||[]).length,0),p=pendenciasAtivasGlobus().length;GLOBUS_STORAGE_STATUS=GLOBUS_LOTES.length+' arquivo(s) guardado(s) neste navegador · '+n+' lançamento(s) novo(s) ativo(s)'+(p?' · '+p+' aguardam análise':'')+'.';const b=document.getElementById('globusPendenciasBanner');if(b){const avisos=[];if(p)avisos.push('⚠ '+p+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}}
+function atualizarInfoPeriodoGlobus(){const fills=Object.keys(FILLS).flatMap(p=>fillsAteReferencia(p)),datas=fills.map(f=>parseData(f.data,f.ano)).sort((a,b)=>a-b),fmt=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear();const p=document.getElementById('periodoGlobus'),r=document.getElementById('dataRefGlobus'),n=document.getElementById('totalAbastecimentosGlobus'),b=document.getElementById('globusPendenciasBanner');if(p&&datas.length)p.textContent=fmt(datas[0])+' a '+fmt(DATA_REF);if(r)r.textContent=fmt(DATA_REF);const resumo=document.getElementById('dataRefResumo');if(resumo)resumo.textContent=fmt(DATA_REF);if(n)n.textContent=fills.length.toLocaleString('pt-BR')+' abastecimentos até '+fmt(DATA_REF);const abertas=pendenciasAtivasGlobus().length;if(b){const avisos=[];if(abertas)avisos.push('⚠ '+abertas+' linha(s) da importação local aguardam análise; permanecem fora dos cálculos.');b.hidden=!avisos.length;b.textContent=avisos.join(' ');}}
 async function carregarDadosGlobusPublicados(){
   try{
     const resposta=await fetch('dados/globus-importados.json',{cache:'no-store'});
