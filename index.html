@@ -4356,7 +4356,7 @@ function recalcularFrota() {
   VEICULOS_SEM_FILLS = [];
   FROTA.forEach(v => {
     if(v.cadastroSomente)return;
-    const fills=fillsAteReferencia(v.p),original=FROTA_ORIGINAL.find(o=>o.p===v.p)||null;
+    const fills=fillsAteReferencia(v.p),original=FROTA_ORIGINAL.find(o=>o.p===v.p)||v;
     if(!fills.length){VEICULOS_SEM_FILLS.push({p:v.p,modelo:v.modelo,original});v.km=null;v.litros=null;v.custo=null;v.abast=0;v.kmIncompleto=false;v.custoIncompleto=false;return;}
     const kmCompleto=fills.every(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
     const custoCompleto=fills.every(f=>f.valor!==null&&f.valor!==undefined&&f.valor!==''&&Number.isFinite(Number(f.valor))&&Number(f.valor)>=0);
@@ -4364,7 +4364,8 @@ function recalcularFrota() {
     const custoParcial=fills.reduce((s,f)=>s+(Number.isFinite(Number(f.valor))?Number(f.valor):0),0);
     const derivado={km:kmCompleto?kmParcial:null,litros:+fills.reduce((s,f)=>s+(Number(f.litros)||0),0).toFixed(2),custo:custoCompleto?+custoParcial.toFixed(2):null,abast:fills.length};
     const diferencas=[];
-    const possuiTotaisOriginais=!!original&&(original.km!=null||original.litros!=null||original.custo!=null||Number(original.abast)>0);
+    const registroOriginal=FROTA_ORIGINAL.find(o=>o.p===v.p);
+    const possuiTotaisOriginais=!!registroOriginal&&(registroOriginal.km!=null||registroOriginal.litros!=null||registroOriginal.custo!=null||Number(registroOriginal.abast)>0);
     if(possuiTotaisOriginais)['km','litros','custo','abast'].forEach(campo=>{
       if(derivado[campo]===null)return;
       const base=Number(original[campo])||0,calculado=Number(derivado[campo])||0,tolerancia=campo==='km'||campo==='abast'?0:0.01;
