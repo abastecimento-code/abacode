@@ -1896,6 +1896,7 @@ function rotuloContratoCadastro(valor) {
     'SPOOLBASE':'SPOOLBASE – PORTO DO AÇU',
     'TECHNIP ACU':'TECHNIP – PORTO DO AÇU',
     'TECHINIP ACU':'TECHNIP – PORTO DO AÇU',
+    'TECHNIP ACU':'TECHNIP – PORTO DO AÇU',
     'CONTRATO MID':'MID – PORTO DO AÇU',
     'CRC':'CRC – PORTO DO AÇU',
     'RIP':'RIP – PORTO DO AÇU'
@@ -1918,8 +1919,9 @@ function aplicarCadastroPlanilhaFrota() {
     if(id)CONTRATO_LABEL[id]=rotuloContratoCadastro(reg.contrato);
     if(id&&!CONTRATO_PILL[id])CONTRATO_PILL[id]='pill-man';
   });
-  const paleta=['#2457e6','#b45309','#0f766e','#7c3aed','#be185d','#15803d','#0369a1','#a16207','#6d28d9','#0e7490','#c2410c','#4d7c0f','#9333ea','#1d4ed8','#9f1239','#047857','#854d0e','#4338ca','#0f766e','#a21caf','#166534','#9a3412','#1e40af','#7e22ce','#0f766e','#be123c'];
-  Object.keys(CONTRATO_LABEL).sort().forEach((id,i)=>{CONTRATO_COR[id]=id==='Sem contrato'?'#64748b':paleta[i%paleta.length];});
+  const idsComContrato=Object.keys(CONTRATO_LABEL).filter(id=>id!=='Sem contrato').sort();
+  idsComContrato.forEach((id,i)=>{CONTRATO_COR[id]='hsl('+Math.round(i*360/Math.max(idsComContrato.length,1))+' 66% 36%)';});
+  CONTRATO_COR['Sem contrato']='#64748b';
   CADASTRO_FROTA_REGISTROS.forEach(reg=>{
     const existente=FROTA.find(v=>String(v.p)===reg.p&&!v.cadastroSomente&&(!v.placa||v.placa===reg.placa));
     if(existente){
