@@ -1906,7 +1906,7 @@ function idContratoCadastro(valor) {
   const rotulo=rotuloContratoCadastro(valor);
   const chave=normalizarContratoCadastro(rotulo);
   if(!chave)return null;
-  const aliases={'VIBRA':'rj','ESCOLAR MACAE':'escm','SPOOLBASE – PORTO DO AÇU':'spb','TECHNIP – PORTO DO AÇU':'tec','MID – PORTO DO AÇU':'mid','CRC – PORTO DO AÇU':'crc','RIP – PORTO DO AÇU':'rip'};
+  const aliases={'VIBRA':'rj','ESCOLAR MACAE':'escm','SPOOLBASE – PORTO DO ACU':'spb','TECHNIP – PORTO DO ACU':'tec','MID – PORTO DO ACU':'mid','CRC – PORTO DO ACU':'crc','RIP – PORTO DO ACU':'rip'};
   if(aliases[chave])return aliases[chave];
   return 'cad_'+chave.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
 }
