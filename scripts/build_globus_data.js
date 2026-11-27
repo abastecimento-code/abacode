@@ -58,6 +58,7 @@ function processarFonte(fonte) {
   let candidatas = 0;
   let linhasSemCombustivel = 0;
   const lancamentos = [];
+  const linhasSemCombustivelDetalhadas = [];
   const erros = [];
   for (let i = 0; i < linhas.length; i++) {
     const linha = linhas[i];
@@ -112,6 +113,31 @@ function processarFonte(fonte) {
     const litros = produtos.combustivel;
     if (litros === null || litros <= 0) {
       linhasSemCombustivel++;
+      const temOutroProduto = Object.entries(produtos)
+        .some(([campo, valor]) => campo !== 'combustivel' && valor !== null && valor > 0);
+      const temHodometro = [hodometroInicial, hodometroFinal, km, kmAcumulado]
+        .some(valor => valor !== null);
+      const tipoLinha = temOutroProduto ? 'OUTRO_INSUMO'
+        : temHodometro ? 'HODOMETRO_SEM_COMBUSTIVEL' : 'SEM_COMBUSTIVEL';
+      linhasSemCombustivelDetalhadas.push({
+        prefixo,
+        data: dataCompleta.slice(0, 5),
+        ano: data.getFullYear(),
+        dataCompleta,
+        hora,
+        origem: origem === 'I' || origem === 'E' ? origem : null,
+        litros,
+        produtos,
+        hodometroInicial,
+        hodometroFinal,
+        km,
+        kmAcumulado,
+        kmPorLitro,
+        tipoLinha,
+        linha: i + 1,
+        arquivoFonte: fonte.arquivo,
+        bruto: linha,
+      });
       continue;
     }
     if (origem !== 'I' && origem !== 'E') {
@@ -152,6 +178,7 @@ function processarFonte(fonte) {
       periodoFim: faixa[2],
       linhasCandidatas: candidatas,
       lancamentos,
+      linhasSemCombustivel: linhasSemCombustivelDetalhadas,
     },
     resumo: {
       arquivo: fonte.arquivo,
@@ -160,6 +187,10 @@ function processarFonte(fonte) {
       lancamentos: lancamentos.length,
       candidatas,
       linhasSemCombustivel,
+      linhasSemCombustivelComHodometro: linhasSemCombustivelDetalhadas.filter(e =>
+        [e.hodometroInicial, e.hodometroFinal, e.km, e.kmAcumulado].some(v => v !== null)).length,
+      linhasSemCombustivelComOutrosProdutos: linhasSemCombustivelDetalhadas.filter(e =>
+        Object.entries(e.produtos).some(([campo, valor]) => campo !== 'combustivel' && valor !== null && valor > 0)).length,
     },
   };
 }
@@ -176,6 +207,8 @@ const resumo = {
   precoEValorNaoDisponiveis: true,
   kmAcumuladoAusente: todos.filter(e => e.kmAcumulado == null).length,
   linhasSemCombustivel: resultados.reduce((soma, r) => soma + r.resumo.linhasSemCombustivel, 0),
+  linhasSemCombustivelComHodometro: resultados.reduce((soma, r) => soma + r.resumo.linhasSemCombustivelComHodometro, 0),
+  linhasSemCombustivelComOutrosProdutos: resultados.reduce((soma, r) => soma + r.resumo.linhasSemCombustivelComOutrosProdutos, 0),
 };
 
 if (!resumo.lancamentos || !resumo.prefixos) {
@@ -200,6 +233,9 @@ const manifesto = {
     origem: fontes[i].arquivo,
     sha256: r.pacote.sha256,
     lancamentos: r.pacote.lancamentos.length,
+    linhasSemCombustivel: r.pacote.linhasSemCombustivel.length,
+    linhasSemCombustivelComHodometro: r.resumo.linhasSemCombustivelComHodometro,
+    linhasSemCombustivelComOutrosProdutos: r.resumo.linhasSemCombustivelComOutrosProdutos,
   })),
   resumo,
   prefixos,
