@@ -1932,15 +1932,25 @@ function aplicarCadastroPlanilhaFrota() {
     const nome=String(CONTRATO_LABEL[id]||id).replace(/\\s+/g,' ').trim();
     CONTRATO_LABEL[id]=id==='Sem contrato'?'SEM CONTRATO':nome.toLocaleUpperCase('pt-BR');
   });
-  const paleta=[
-    '#D62728','#1F77B4','#FF7F0E','#9467BD','#17BECF','#8C564B','#E377C2','#BCBD22',
-    '#003F5C','#FFA600','#58508D','#FF6361','#2F4B7C','#A05195','#F95D6A','#00A6A6',
-    '#7A5195','#EF5675','#374C80','#00B4D8','#006D77','#E76F51','#264653','#6A4C93',
-    '#1982C4','#8AC926','#FF595E','#FFCA3A','#6D597A','#355070','#B56576','#2A9D8F',
-    '#E9C46A','#F4A261','#606C38','#9B2226','#005F73','#CA6702'
-  ];
+  // Distribui os contratos por famílias cromáticas diferentes e fixa cores bem distintas
+  // para os contratos mais usados, evitando vários verdes visualmente parecidos.
   const ids=Object.keys(CONTRATO_LABEL).filter(id=>id!=='Sem contrato').sort();
-  ids.forEach((id,i)=>{CONTRATO_COR[id]=paleta[i%paleta.length];});
+  ids.forEach((id,i)=>{
+    const matiz=(i*137.508)%360;
+    CONTRATO_COR[id]='hsl('+matiz.toFixed(2)+' 82% 38%)';
+  });
+  const coresContratos={
+    rj:'#D62828',                         // VIBRA — vermelho
+    mid:'#F57C00',                        // MID — laranja
+    crc:'#6A1B9A',                        // CRC — roxo
+    cad_base_wings:'#1565C0',             // BASE WINGS — azul
+    cad_contrato_wings:'#283593',         // CONTRATO WINGS — azul profundo
+    cad_prefeitura_municipal_de_quissama:'#00838F', // QUISSAMÃ — ciano escuro
+    cad_garagem_de_macae_alexandre:'#C2185B'        // GARAGEM ALEXANDRE — magenta
+  };
+  Object.entries(coresContratos).forEach(([id,cor])=>{
+    if(CONTRATO_LABEL[id])CONTRATO_COR[id]=cor;
+  });
   CONTRATO_COR['Sem contrato']='#64748b';
   const seletor=document.getElementById('selContrato');
   if(seletor)Object.entries(CONTRATO_LABEL).forEach(([id,label])=>{
