@@ -63,19 +63,19 @@ header .chip b{color:var(--amber);font-weight:700;}
 .side-card.vazio .side-card-val{color:var(--tx3);}
 
 /* ===== TOOLBAR / FILTROS RESPONSIVOS ===== */
-.barra{margin-top:8px;padding:11px 12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,.85fr);gap:10px 12px;align-items:end;min-width:0;width:100%;max-width:100%;overflow:hidden;}
+.barra{margin-top:8px;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:grid;grid-template-columns:minmax(180px,1.2fr) minmax(135px,1fr) minmax(115px,.78fr) minmax(150px,.82fr);gap:9px 10px;align-items:end;min-width:0;width:100%;max-width:100%;}
 .barra>div:not(.lista-topline){display:flex;flex-direction:column;align-items:stretch;gap:5px;min-width:0;width:100%;max-width:100%;}
-.barra .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1.1px;color:var(--tx2);font-weight:700;line-height:1.2;}
-.barra select,.barra input.busca{box-sizing:border-box;display:block;width:100%;max-width:100%;min-width:0;height:37px;border:1px solid var(--line);border-radius:9px;padding:7px 10px;font-size:11.5px;font-family:inherit;color:var(--tx);background:var(--surface2);transition:border-color .15s,box-shadow .15s;outline:none;}
+.barra .lbl{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:var(--tx2);font-weight:700;line-height:1.2;}
+.barra select,.barra input.busca{box-sizing:border-box;display:block;width:100%;max-width:100%;min-width:0;height:34px;border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:10.5px;font-family:inherit;color:var(--tx);background:var(--surface2);transition:border-color .15s,box-shadow .15s;outline:none;}
 .barra select{cursor:pointer;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
 .barra input.busca::placeholder{color:var(--tx3);}
 .barra select:focus,.barra input.busca:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,159,28,.16);background:#fff;}
-.barra>.lista-topline{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;min-width:0;width:100%;max-width:100%;margin:0;padding-top:8px;border-top:1px solid var(--line);}
-.barra>.lista-topline .legenda{flex:1 1 200px;min-width:0;display:flex;flex-wrap:wrap;gap:5px 9px;padding:0;}
-.barra>.lista-topline .legenda-dica{font-size:10px;white-space:normal;line-height:1.4;}
-.barra>.lista-topline .evolucao-toolbar{flex:0 0 auto;display:flex;align-items:center;margin:0;gap:7px;max-width:100%;}
-@media(max-width:760px){.barra{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 10px;padding:10px;}.barra>div:first-child{grid-column:auto;}}
-@media(max-width:480px){.barra{grid-template-columns:minmax(0,1fr);gap:9px;}.barra>div:first-child{grid-column:auto;}.barra>.lista-topline{align-items:flex-start;}.barra>.lista-topline .evolucao-toolbar{width:100%;justify-content:flex-start;}}
+.barra>.lista-topline{grid-column:auto;display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0;width:100%;max-width:100%;margin:0;padding:0;border:0;}
+.barra>.lista-topline .legenda{display:none;}
+.barra>.lista-topline .evolucao-toolbar{flex:0 1 auto;display:flex;align-items:center;justify-content:flex-end;flex-wrap:nowrap;white-space:nowrap;margin:0;gap:6px;max-width:100%;font-size:10px;}
+.barra>.lista-topline .evolucao-toggle{flex:0 0 auto;}
+@media(max-width:760px){.barra{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 10px;padding:10px;}.barra>.lista-topline{justify-content:flex-start;}}
+@media(max-width:480px){.barra{grid-template-columns:minmax(0,1fr);gap:9px;}.barra>.lista-topline{justify-content:flex-start;}}
 
 
 /* ===== INFO ===== */
@@ -544,7 +544,7 @@ tfoot td.num.azul { color:#64b5f6!important; }
 .drill-veic:hover{transform:translateY(-2px);box-shadow:0 10px 24px -18px rgba(20,30,45,.45);}
 .drill-veic-meta .contrato-card-nome{color:var(--contrato-cor,var(--tx2));font-weight:700;}
 /* Cores discretas por contrato */
-.contrato-nome{font-weight:750;color:var(--contrato-cor,var(--tx));white-space:nowrap;}
+.contrato-nome{font-weight:750;color:var(--contrato-cor,var(--tx));white-space:nowrap;text-transform:uppercase;}
 /* Grade principal: larguras previsíveis e conteúdo alinhado */
 #tabela{table-layout:fixed;min-width:1060px;}
 #tabela th:nth-child(1),#tabela td:nth-child(1){width:7%;}
@@ -1054,9 +1054,6 @@ body{position:relative;isolation:isolate}
         </select>
       </div>
       <div class="lista-topline">
-        <div class="legenda">
-          <span class="legenda-dica">💡 Clique numa linha para ver a evolução semanal</span>
-        </div>
         <div class="evolucao-toolbar"><span>Visualização</span><button type="button" class="evolucao-toggle" id="btnEvolucaoVerso" aria-label="Mostrar evolução dos veículos" title="Mostrar evolução dos veículos" aria-pressed="false" onclick="alternarEvolucaoVerso(event)"><span class="toggle-icon">▦</span><span class="toggle-label">Evolução</span></button></div>
       </div>
     </div>
@@ -1919,13 +1916,16 @@ function aplicarCadastroPlanilhaFrota() {
     if(id)CONTRATO_LABEL[id]=rotuloContratoCadastro(reg.contrato);
     if(id&&!CONTRATO_PILL[id])CONTRATO_PILL[id]='pill-man';
   });
-  // Padroniza a apresentação dos nomes sem alterar a identidade dos contratos.
+  // Normaliza todos os rótulos visíveis e atribui uma cor exclusiva por contrato.
   Object.keys(CONTRATO_LABEL).forEach(id=>{
-    const nome=String(CONTRATO_LABEL[id]||id).replace(/\\s+/g,' ').trim();
+    const nome=String(CONTRATO_LABEL[id]||id).replace(/\s+/g,' ').trim();
     CONTRATO_LABEL[id]=id==='Sem contrato'?'SEM CONTRATO':nome.toLocaleUpperCase('pt-BR');
   });
   const idsComContrato=Object.keys(CONTRATO_LABEL).filter(id=>id!=='Sem contrato').sort();
-  idsComContrato.forEach((id,i)=>{CONTRATO_COR[id]='hsl('+Math.round(i*360/Math.max(idsComContrato.length,1))+' 66% 36%)';});
+  idsComContrato.forEach((id,i)=>{
+    const matiz=(i*137.508)%360;
+    CONTRATO_COR[id]='hsl('+matiz.toFixed(2)+' 76% 34%)';
+  });
   CONTRATO_COR['Sem contrato']='#64748b';
   CADASTRO_FROTA_REGISTROS.forEach(reg=>{
     const existente=FROTA.find(v=>String(v.p)===reg.p&&!v.cadastroSomente&&(!v.placa||v.placa===reg.placa));
