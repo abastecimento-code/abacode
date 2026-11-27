@@ -3638,11 +3638,22 @@ function parsearRelatorioGlobus(texto) {
       freio: numeroGlobus(linha.slice(88, 94)),
       outros: numeroGlobus(linha.slice(94, 100)),
     };
-    const hodometroInicial = numeroGlobus(linha.slice(100, 110));
-    const hodometroFinal = numeroGlobus(linha.slice(110, 120));
-    const km = numeroGlobus(linha.slice(120, 130));
-    const kmAcumulado = numeroGlobus(linha.slice(130, 143));
-    const kmPorLitro = numeroGlobus(linha.slice(143, 151));
+    // Os campos numéricos do rodapé são contíguos e podem não ter espaço
+    // entre hodômetro final e KM. Extraí-los por tokens decimais preserva
+    // todos os dígitos, inclusive valores acima de 999.999.
+    const numerosRodape = [...linha.slice(100).matchAll(/\d[\d.]*,\d{2}/g)]
+      .map(m => {
+        const n = Number(m[0].replace(/\./g, '').replace(',', '.'));
+        return Number.isFinite(n) ? n : null;
+      });
+    let hodometroInicial = null, hodometroFinal = null, km = null, kmAcumulado = null, kmPorLitro = null;
+    if (numerosRodape.length >= 5) {
+      [hodometroInicial, hodometroFinal, km, kmAcumulado, kmPorLitro] = numerosRodape;
+    } else if (numerosRodape.length === 4) {
+      [hodometroInicial, hodometroFinal, km, kmAcumulado] = numerosRodape;
+    } else if (numerosRodape.length > 0) {
+      erros.push({ linha: i + 1, prefixo, data: dataCompleta, campos: ['estrutura numérica incompleta do rodapé'], bruto: linha });
+    }
     const dataObj = parseDataCompleta(dataCompleta);
     const camposInvalidos = [];
     if (!dataObj) camposInvalidos.push('data');
