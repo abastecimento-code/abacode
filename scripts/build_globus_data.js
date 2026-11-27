@@ -3,9 +3,11 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 
 const root = process.cwd();
-const CORTE = '2026-11-25';
-const PERIODO_INICIO = '01/07/2026';
-const PERIODO_FIM = '25/11/2026';
+let periodoComum = null;
+
+function isoData(data) {
+  return data.getFullYear() + '-' + String(data.getMonth() + 1).padStart(2, '0') + '-' + String(data.getDate()).padStart(2, '0');
+}
 const fontes = [
   { arquivo: '500-699.TXT', destino: 'dados/globus-500-699.json' },
   { arquivo: '1000-2999.TXT', destino: 'dados/globus-1000-2999.json' },
@@ -45,11 +47,13 @@ function processarFonte(fonte) {
   const linhas = texto.split(/\r?\n/);
   const faixa = texto.match(/Datas:\s*(\d{2}\/\d{2}\/\d{4})\s+\d{2}:\d{2}\s+a\s+(\d{2}\/\d{2}\/\d{4})\s+\d{2}:\d{2}/);
   if (!faixa) throw new Error(fonte.arquivo + ': período não identificado no cabeçalho.');
-  if (faixa[1] !== PERIODO_INICIO || faixa[2] !== PERIODO_FIM) {
-    throw new Error(fonte.arquivo + ': período diferente do esperado (' + faixa[1] + ' a ' + faixa[2] + ').');
-  }
   const inicio = dataPt(faixa[1]), fim = dataPt(faixa[2]);
   if (!inicio || !fim || inicio > fim) throw new Error(fonte.arquivo + ': período inválido.');
+  const periodoAtual = { inicio: faixa[1], fim: faixa[2], corte: isoData(fim) };
+  if (periodoComum && (periodoComum.inicio !== periodoAtual.inicio || periodoComum.fim !== periodoAtual.fim)) {
+    throw new Error(fonte.arquivo + ': período diferente dos demais relatórios.');
+  }
+  periodoComum = periodoAtual;
 
   let candidatas = 0;
   const lancamentos = [];
@@ -135,7 +139,7 @@ function processarFonte(fonte) {
   return {
     pacote: {
       versao: 1,
-      corte: CORTE,
+      corte: periodoAtual.corte,
       arquivo: fonte.arquivo,
       sha256,
       periodoInicio: faixa[1],
@@ -166,10 +170,8 @@ const resumo = {
   kmAcumuladoAusente: todos.filter(e => e.kmAcumulado == null).length,
 };
 
-if (resumo.lancamentos !== 9456 || resumo.prefixos !== 340 ||
-    resumo.kmAusente !== 15 || resumo.kmAcumuladoAusente !== 15 ||
-    resumo.kmPorLitroAusente !== 506) {
-  throw new Error('Auditoria de totais divergente: ' + JSON.stringify(resumo));
+if (!resumo.lancamentos || !resumo.prefixos) {
+  throw new Error('Nenhum lançamento válido foi consolidado: ' + JSON.stringify(resumo));
 }
 
 for (let i = 0; i < resultados.length; i++) {
@@ -180,11 +182,11 @@ for (let i = 0; i < resultados.length; i++) {
 
 const manifesto = {
   versao: 1,
-  corte: CORTE,
+  corte: periodoComum.corte,
   geradoEm: new Date().toISOString().slice(0, 10),
   origem: 'Relatórios gerenciais Globus ABA - Abastecimento / Quilometragem',
-  periodoInicio: PERIODO_INICIO,
-  periodoFim: PERIODO_FIM,
+  periodoInicio: periodoComum.inicio,
+  periodoFim: periodoComum.fim,
   arquivos: resultados.map((r, i) => ({
     arquivo: fontes[i].destino,
     origem: fontes[i].arquivo,
