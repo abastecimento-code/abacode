@@ -2016,7 +2016,7 @@ function aplicarCadastroPlanilhaFrota() {
   FROTA.forEach(v=>aplicarModeloAnoCadastroNoVeiculo(v));
   FROTA_ORIGINAL.forEach(v=>aplicarModeloAnoCadastroNoVeiculo(v));
   Object.keys(CONTRATO_LABEL).forEach(id=>{
-    const nome=String(CONTRATO_LABEL[id]||id).replace(/\\s+/g,' ').trim();
+    const nome=String(CONTRATO_LABEL[id]||id).replace(/\s+/g,' ').trim();
     CONTRATO_LABEL[id]=id==='Sem contrato'?'SEM CONTRATO':nome.toLocaleUpperCase('pt-BR');
   });
   // Cores de famílias diferentes, com tons fixos para os contratos mais usados.
