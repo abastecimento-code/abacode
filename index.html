@@ -3313,16 +3313,18 @@ function mesmosCamposOperacionaisAttAba(a,b){
   return campos.every(([x,y,t])=>mesmoCampoFonteAttAba(x,y,t));
 }
 function correspondeCamposConhecidosAttAba(fonte,base){
-  const campos=[
-    [fonte.km,base.km,0.011],
-    [fonte.hodometroInicial,base.hodometroInicial,0.011],
-    [fonte.hodometroFinal,base.hodometroFinal,0.011],
-    [fonte.kmAcumulado,base.kmAcumulado,0.011],
-    [fonte.kmPorLitro??fonte.kmPorLitroGlobus,base.kmPorLitro??base.kmPorLitroGlobus,0.0051],
-  ];
-  // Campo ausente no TXT não serve como chave de pareamento; os campos
-  // presentes precisam coincidir com a base para identificar um único candidato.
-  return campos.every(([x,y,t])=>!valorPresenteAttAba(x)||mesmoCampoFonteAttAba(x,y,t));
+  // Para desambiguar registros repetidos, exigir ao menos dois campos centrais
+  // presentes no TXT e coincidentes: KM, hodômetro inicial e hodômetro final.
+  // KM acumulado e km/L não são usados como chave, pois podem ter arredondamento
+  // ou estar ausentes na origem.
+  const campos=[[fonte.km,base.km],[fonte.hodometroInicial,base.hodometroInicial],[fonte.hodometroFinal,base.hodometroFinal]];
+  let comparaveis=0;
+  for(const [x,y] of campos){
+    if(!valorPresenteAttAba(x))continue;
+    comparaveis++;
+    if(!valorPresenteAttAba(y)||!mesmoCampoFonteAttAba(x,y,0.011))return false;
+  }
+  return comparaveis>=2;
 }
 function mesmoAbastecimentoAttAba(a,b){
   if(!identidadeAbastecimentoAttAba(a,b))return false;
