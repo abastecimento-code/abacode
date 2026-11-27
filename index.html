@@ -3362,7 +3362,7 @@ function integrarEventoGlobusNaBase(evento,origemPadrao){
     kmPorLitro:kmPorLitro==null?null:Number(kmPorLitro),kmPorLitroGlobus:kmPorLitro==null?null:Number(kmPorLitro),
     kmPorLitroCalculado:km!=null&&litros>0?km/litros:null,
     divergenciaHodometro:evento.hodometroInicial!=null&&evento.hodometroFinal!=null&&km!=null&&Math.abs((Number(evento.hodometroFinal)-Number(evento.hodometroInicial))-km)>0.01,
-    divergenciaKmL:kmPorLitro!=null&&km!=null&&litros>0&&Math.abs(Number(kmPorLitro)-km/litros)>0.002,
+    divergenciaKmL:kmPorLitro!=null&&km!=null&&litros>0&&Math.abs(Number(kmPorLitro)-km/litros)>0.0051,
     linhaFonte:evento.linhaFonte||evento.linha||null,linhaBruta:evento.linhaBruta||evento.bruto||null,
     arquivoFonte:evento.arquivoFonte||origemPadrao||'Globus',errosFonte:[],avisosFonte:evento.avisosFonte||evento.camposInvalidos||[]};
   if(dt>DATA_REF)DATA_REF=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate());
