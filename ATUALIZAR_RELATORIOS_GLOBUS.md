@@ -10,7 +10,7 @@ Os três arquivos devem corresponder ao mesmo período. O importador lê o inter
 
 ## Reconstrução dos pacotes publicados
 
-O parser oficial está em `scripts/build_globus_data.js`. Ele lê os campos por posições fixas do relatório e trata o rodapé numérico separadamente, pois hodômetro final e KM podem aparecer concatenados sem espaços.
+O parser oficial está em `scripts/build_globus_data.js`. Ele lê combustível e demais produtos por suas posições fixas e extrai cada campo do rodapé (hodômetros, KM, KM acumulado e KM/L) em sua própria coluna. A extração não compacta números: se um campo estiver ausente, os campos seguintes mantêm suas posições e a ausência permanece `null`.
 
 Para reconstruir e auditar os pacotes manualmente:
 
@@ -33,7 +33,8 @@ O GitHub Actions também executa essa rotina quando um dos três TXT da raiz é 
 - Quando o relatório não informa KM/L, esse campo permanece `null`; o sistema não substitui o valor por um cálculo.
 - Linhas sem combustível não entram na contagem de abastecimentos nem na soma de litros.
 - Os três TXT originais são preservados no repositório.
-- O manifesto registra o período, os hashes dos TXT, a quantidade de lançamentos e os prefixos incluídos.
+- O manifesto registra o período, os hashes dos TXT, a quantidade de lançamentos, as linhas candidatas sem combustível e os prefixos incluídos.
+- Alterações no próprio importador também acionam a auditoria automática do GitHub Actions.
 
 ## Importação local pelo painel
 
