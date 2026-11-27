@@ -2294,14 +2294,18 @@ function render() {
     try {
       const historico = fillsAteReferencia(String(v.p));
       const fillsPeriodo = inicioPeriodo ? historico.filter(f => { const d=parseData(f.data,f.ano); return d>=inicioPeriodo && d<=fimPeriodo; }) : historico;
-      const kmCompleto = fillsPeriodo.length>0 && fillsPeriodo.every(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
-      const kmPeriodo = kmCompleto ? fillsPeriodo.reduce((s,f)=>s+Number(f.km),0) : null;
+      const kmLinhasValidas = fillsPeriodo.filter(f=>f.km!==null&&f.km!==undefined&&f.km!==''&&Number.isFinite(Number(f.km))&&Number(f.km)>=0);
+      const kmCompleto = fillsPeriodo.length>0 && kmLinhasValidas.length===fillsPeriodo.length;
+      // Exibe a soma dos KM informados sem ocultar os valores válidos quando
+      // outro abastecimento não trouxe KM. KM/L exige dados completos.
+      const kmPeriodo = kmLinhasValidas.length ? kmLinhasValidas.reduce((s,f)=>s+Number(f.km),0) : null;
+      const kmAusentes = fillsPeriodo.length-kmLinhasValidas.length;
       const litrosPeriodo = fillsPeriodo.length ? +fillsPeriodo.reduce((s,f)=>s+(Number(f.litros)||0),0).toFixed(2) : null;
       const kmLPeriodo = kmCompleto && litrosPeriodo>0 ? kmPeriodo/litrosPeriodo : null;
-      return {...v,_km:kmPeriodo,_litros:litrosPeriodo,_real:kmLPeriodo,_ultimaSemana:null,_abast:fillsPeriodo.length,_st:statusDe(v,kmLPeriodo),_periodo:rotuloPeriodo};
+      return {...v,_km:kmPeriodo,_kmParcial:kmAusentes>0,_kmAusentes:kmAusentes,_litros:litrosPeriodo,_real:kmLPeriodo,_ultimaSemana:null,_abast:fillsPeriodo.length,_st:statusDe(v,kmLPeriodo),_periodo:rotuloPeriodo};
     } catch (erro) {
       console.warn('[dbatt] Falha ao calcular indicadores do prefixo '+v.p+'; mantendo veículo na listagem.',erro);
-      return {...v,_km:null,_litros:null,_real:null,_ultimaSemana:null,_abast:0,_st:statusDe(v,null),_erroCalculo:true,_periodo:rotuloPeriodo};
+      return {...v,_km:null,_kmParcial:false,_kmAusentes:0,_litros:null,_real:null,_ultimaSemana:null,_abast:0,_st:statusDe(v,null),_erroCalculo:true,_periodo:rotuloPeriodo};
     }
   });
 
@@ -2337,10 +2341,8 @@ function render() {
   let expPondSemanasRecentes = 0, abastTotal = 0, nComAbast = 0, nComSemana = 0;
 
   lista.forEach(v => {
-    if (v._km != null && v._litros != null) {
-      somaKm += v._km;
-      somaL  += v._litros;
-    }
+    if (v._km != null) somaKm += v._km;
+    if (v._litros != null) somaL += v._litros;
     if (v._ultimaSemana && v._ultimaSemana.litros > 0 && v._ultimaSemana.kmL != null) {
       kmSemanasRecentes += v._ultimaSemana.km;
       litrosSemanasRecentes += v._ultimaSemana.litros;
@@ -2360,7 +2362,7 @@ function render() {
     tr.innerHTML = `<td><strong>${v.p}</strong></td>
       <td class="modelo"><span class="modelo-linha"><b class="modelo-nome">${v.modelo}</b><span class="ano">${v.ano}</span><span class="euro-tag">${(EURO_LABEL[v.euro] || (v.euro === 'ND' ? 'Não informado' : '—'))}</span></span></td>
       <td><span class="contrato-nome" style="--contrato-cor:${CONTRATO_COR[v.contrato]||'#65758b'}">${CONTRATO_LABEL[v.contrato]}</span></td>
-      <td class="num">${v._km != null ? fmtKmNum(v._km) : '—'}</td>
+      <td class="num" title="${v._kmParcial ? 'KM parcial: '+v._kmAusentes+' abastecimento(s) sem KM informado; soma somente os KM disponíveis.' : 'Soma dos KM informados no período.'}">${v._km != null ? fmtKmNum(v._km)+(v._kmParcial?' *':'') : '—'}</td>
       <td class="litros">${v._litros != null ? fmtL(v._litros) : '—'}</td>
       <td class="num ${realCls}" title="${v._abast ? 'Cálculo referente a ' + v._periodo + ' até ' + dataLabel(DATA_REF) : 'Sem abastecimentos no período selecionado'}">${v._real != null ? fmt3safe(v._real) : '—'}</td>
       <td class="faixa">${fmt2(v.exp)}</td>
@@ -2374,9 +2376,10 @@ function render() {
 
   const stGeral = statusDe({ exp: expGeral ?? 0 }, realGeral);
 
+  const veiculosKmParcial = lista.filter(v=>v._kmParcial).length;
   tfoot.innerHTML = `<tr>
     <td colspan="3">TOTAL — ${rotuloPeriodo} até o corte · ${nComAbast} de ${lista.length} veículos com lançamentos</td>
-    <td class="num">${fmtKmNum(somaKm)}</td>
+    <td class="num" title="${veiculosKmParcial ? 'Soma dos KM informados; '+veiculosKmParcial+' veículo(s) têm abastecimentos sem KM e o total é parcial.' : 'Soma dos KM informados.'}">${fmtKmNum(somaKm)}${veiculosKmParcial?' *':''}</td>
     <td class="litros">${fmtL(somaL)}</td>
     <td class="num">${realGeral != null ? fmt3safe(realGeral) : '—'}</td>
     <td class="faixa">${expGeral != null ? fmt2(expGeral) : '—'}</td>
